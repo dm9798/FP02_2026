@@ -19,7 +19,7 @@ public class HexagonBoundaryGenerator : MonoBehaviour
         Vector2[] points = new Vector2[6];
         for(int i = 0; i < 6; i++)
         {
-            float angle = 90f + i * 60f; // Start at top, to match koch snowflake orientation
+            float angle = 60f + i * 60f; // Start at top, to match koch snowflake orientation
             points[i] = center + radius * new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
