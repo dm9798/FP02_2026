@@ -825,11 +825,11 @@ MonoBehaviour:
   radius: 3
   roomNames:
   - Room A
-  - Room B
-  - Room C
-  - Room D
-  - Room E
   - Room F
+  - Room E
+  - Room D
+  - Room C
+  - Room B
 --- !u!4 &1470918529
 Transform:
   m_ObjectHideFlags: 0

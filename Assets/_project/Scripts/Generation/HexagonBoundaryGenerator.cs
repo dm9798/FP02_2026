@@ -6,8 +6,8 @@ public class HexagonBoundaryGenerator : MonoBehaviour
     public Vector2 center = Vector2.zero;
     public float radius = 3f;
 
-    [Header("Room Labels (clockwise order)")]
-    public string[] roomNames = { "Room A", "Room B", "Room C", "Room D", "Room E", "Room F" };
+    [Header("Zoom Transition Wiring")]
+    public FractalZoomController zoomController;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class HexagonBoundaryGenerator : MonoBehaviour
         Vector2[] points = new Vector2[6];
         for(int i = 0; i < 6; i++)
         {
-            float angle = 60f + i * 60f; // Start at top, to match koch snowflake orientation
+            float angle = 60f + i * 60f;
             points[i] = center + radius * new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
@@ -30,7 +30,7 @@ public class HexagonBoundaryGenerator : MonoBehaviour
         {
             Vector2 a = points[i];
             Vector2 b = points[(i + 1) % 6];
-            CreateEdgeCollider(a, b, roomNames[i]);
+            CreateEdgeCollider(a, b, FractalNode.LetterNames[i]);
         }
     }
 
@@ -41,13 +41,14 @@ public class HexagonBoundaryGenerator : MonoBehaviour
 
         EdgeCollider2D edge = edgeObj.AddComponent<EdgeCollider2D>();
         edge.points = new Vector2[] { a, b };
-
-        RoomZoneTrigger triggerable = edgeObj.AddComponent<RoomZoneTrigger>();
-        triggerable.roomName = roomName;
-
         edge.isTrigger = true;
 
-        //LineRenderer for visual debugging
+        RoomZoneTrigger trigger = edgeObj.AddComponent<RoomZoneTrigger>();
+        trigger.roomName = roomName;
+        trigger.isReturnEdge = false; // Root hexagon edges always lead deeper, never back to a parent
+        trigger.ownerNode = null;     // Root does not itself need FractalNode identity 
+        trigger.zoomController = zoomController;
+
         LineRenderer line = edgeObj.AddComponent<LineRenderer>();
         line.positionCount = 2;
         line.SetPosition(0, a);
