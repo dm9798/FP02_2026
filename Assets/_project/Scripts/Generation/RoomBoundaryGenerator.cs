@@ -2,60 +2,90 @@ using UnityEngine;
 
 public class RoomBoundaryGenerator : MonoBehaviour
 {
-    [Header("Hexagon-Derived Shape")]
+    public enum RoomLetter
+    {
+        A, B, C, D, E, F
+    }
+
+    [Header("Room Identity")]
+    public RoomLetter roomLetter = RoomLetter.A;
+
+    [Header("Hexagon Settings")]
     public Vector2 center = Vector2.zero;
     public float radius = 3f;
 
-    [Header("Return Edge (Parent)")]
-    public Vector2 returnEdgeStart = new Vector2(-4f, -3f);
-    public Vector2 returnEdgeEnd = new Vector2(4f, -3f);
+    [Header("Parent Edge Tuning")]
 
-    [Header("Room Identity")]
-    public FractalNode node; // Assigned by the manager when this room is generated
+    public float gap = 0.75f;
+    public float widen = 0.3f; 
+
+    [Header("Zooms Transition Wiring")]
     public FractalZoomController zoomController;
+    public FractalNode ownerNode;
 
     void Start()
     {
-        if(node == null)
-            node = new FractalNode { letter = 0 }; // Hardcode "A" for this test
-
         GenerateEdges();
+    }
+
+    int GetRotationSteps()
+    {
+        string letter = roomLetter.ToString();
+        return System.Array.IndexOf(FractalNode.LetterNames, letter);
+    }
+
+    Vector2 RotatePoint(Vector2 point, float angleDegrees)
+    {
+        float rad = angleDegrees * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(rad);
+        float sin = Mathf.Sin(rad);
+        Vector2 offset = point - center;
+        Vector2 rotated = new Vector2(
+            offset.x * cos - offset.y * sin,
+            offset.x * sin + offset.y * cos
+        );
+        return center + rotated;
     }
 
     void GenerateEdges()
     {
-        int[] childLetters = node.GetChildLetters(); // [prev, self, next]
+        int steps = GetRotationSteps();
+        float rotationAngle = steps * 60f;
 
-        // Same hexagon point formula as HexagonBoundaryGenerator, just only need 4 consecutive points
-        Vector2[] hexPoints = new Vector2[4];
+        Vector2[] baseHexPoints = new Vector2[4];
         for(int i = 0; i < 4; i++)
         {
-            float angle = i * 60f; 
-
-            hexPoints[i] = center + radius * new Vector2(
+            float angle = i * 60f;
+            baseHexPoints[i] = center + radius * new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
             );
         }
 
-        // 3 consecutive edges sharing vertices, like a cut-out hexagon segment
-        CreateEdge(hexPoints[0], hexPoints[1], FractalNode.LetterNames[childLetters[0]], isReturnEdge: false); // prev (F) — right diagonal
-        CreateEdge(hexPoints[1], hexPoints[2], FractalNode.LetterNames[childLetters[1]], isReturnEdge: false); // self (A) — top
-        CreateEdge(hexPoints[2], hexPoints[3], FractalNode.LetterNames[childLetters[2]], isReturnEdge: false); // next (B) — left diagonal
+        // Parent edge base points computed in SAME unrotated frame as Room A - baseline
+        Vector2 parentStartBase = new Vector2(baseHexPoints[3].x - widen, baseHexPoints[3].y - gap);
+        Vector2 parentEndBase = new Vector2(baseHexPoints[0].x + widen, baseHexPoints[0].y - gap);
 
-        // Separate, disconnected return edge back to parent
-        // hard coded values, will need to be redone when scale changed
-        float gap = 0.75f;
-        float widen = 0.5f; // extend outward both sides, has to be fine tuned
-        
-        Vector2 parentStart = new Vector2(hexPoints[3].x - widen, hexPoints[3].y - gap);
-        Vector2 parentEnd = new Vector2(hexPoints[0].x + widen, hexPoints[0].y - gap);
+        // Now rotate ALL points together, including parent edge
+        Vector2[] hexPoints = new Vector2[4];
+        for(int i = 0; i < 4; i++)
+            hexPoints[i] = RotatePoint(baseHexPoints[i], rotationAngle);
+
+        Vector2 parentStart = RotatePoint(parentStartBase, rotationAngle);
+        Vector2 parentEnd = RotatePoint(parentEndBase, rotationAngle);
+
+        int[] childLetters = FractalNode.GetChildLetters(steps);
+
+        CreateEdge(hexPoints[0], hexPoints[1], FractalNode.LetterNames[childLetters[0]], isReturnEdge: false);
+        CreateEdge(hexPoints[1], hexPoints[2], FractalNode.LetterNames[childLetters[1]], isReturnEdge: false);
+        CreateEdge(hexPoints[2], hexPoints[3], FractalNode.LetterNames[childLetters[2]], isReturnEdge: false);
+
         CreateEdge(parentStart, parentEnd, "Parent", isReturnEdge: true);
     }
 
-    void CreateEdge(Vector2 a, Vector2 b, string label, bool isReturnEdge)
+    void CreateEdge(Vector2 a, Vector2 b, string edgeName, bool isReturnEdge)
     {
-        GameObject edgeObj = new GameObject($"Edge_{label}");
+        GameObject edgeObj = new GameObject($"Edge_{edgeName}");
         edgeObj.transform.parent = this.transform;
 
         EdgeCollider2D edge = edgeObj.AddComponent<EdgeCollider2D>();
@@ -63,10 +93,10 @@ public class RoomBoundaryGenerator : MonoBehaviour
         edge.isTrigger = true;
 
         RoomZoneTrigger trigger = edgeObj.AddComponent<RoomZoneTrigger>();
-        trigger.roomName = label;
+        trigger.roomName = edgeName;
         trigger.isReturnEdge = isReturnEdge;
+        trigger.ownerNode = ownerNode;
         trigger.zoomController = zoomController;
-        trigger.ownerNode = node;
 
         LineRenderer line = edgeObj.AddComponent<LineRenderer>();
         line.positionCount = 2;
@@ -75,5 +105,10 @@ public class RoomBoundaryGenerator : MonoBehaviour
         line.startWidth = 0.05f;
         line.endWidth = 0.05f;
         line.material = new Material(Shader.Find("Sprites/Default"));
+        if(isReturnEdge)
+        {
+            line.startColor = Color.red;
+            line.endColor = Color.red;
+        }
     }
 }

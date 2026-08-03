@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 53977796}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08445, y: 0.37581, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -589,7 +589,7 @@ Transform:
   m_GameObject: {fileID: 570662200}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08445, y: 0.37581, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -679,6 +679,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &708787317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708787318}
+  - component: {fileID: 708787319}
+  m_Layer: 0
+  m_Name: TestRoomA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708787318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708787317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708787319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708787317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 1
+  center: {x: 0, y: 0}
+  radius: 3
+  gap: 0
+  widen: 0
+  zoomController: {fileID: 1470918530}
 --- !u!1 &1355684009
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,13 +852,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1470918529}
   - component: {fileID: 1470918528}
+  - component: {fileID: 1470918530}
   m_Layer: 0
   m_Name: HexagonBoundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1470918528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,13 +874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HexagonBoundaryGenerator
   center: {x: 0, y: 0}
   radius: 3
-  roomNames:
-  - Room A
-  - Room F
-  - Room E
-  - Room D
-  - Room C
-  - Room B
+  zoomController: {fileID: 1470918530}
 --- !u!4 &1470918529
 Transform:
   m_ObjectHideFlags: 0
@@ -839,12 +884,27 @@ Transform:
   m_GameObject: {fileID: 1470918527}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08445, y: 0.37581, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1470918530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470918527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f64c52dc4b181f44bc32b6f2483e478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FractalZoomController
+  zoomDuration: 1.5
+  startScale: {x: 0.05, y: 0.05, z: 0.05}
+  targetScale: {x: 10, y: 10, z: 10}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -855,3 +915,4 @@ SceneRoots:
   - {fileID: 570662203}
   - {fileID: 53977798}
   - {fileID: 1470918529}
+  - {fileID: 708787318}
