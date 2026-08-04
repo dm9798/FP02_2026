@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class HexagonBoundaryGenerator : MonoBehaviour
+public class RootBoundaryGenerator : MonoBehaviour
 {
-    [Header("Hexagon Settings")]
+    [Header("Root Hexagonal Edge Settings")]
     public Vector2 center = Vector2.zero;
     public float radius = 3f;
 

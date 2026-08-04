@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class KochSnowflakeRenderer : MonoBehaviour
+public class KochSnowflakeRootRenderer : MonoBehaviour
 {
     [Header("Snowflake Settings")]
     public Vector2 center = Vector2.zero;
