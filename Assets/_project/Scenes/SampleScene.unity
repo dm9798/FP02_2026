@@ -336,6 +336,11 @@ MonoBehaviour:
   widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
 --- !u!4 &482495929
 Transform:
   m_ObjectHideFlags: 0
@@ -609,13 +614,14 @@ GameObject:
   - component: {fileID: 570662203}
   - component: {fileID: 570662202}
   - component: {fileID: 570662201}
+  - component: {fileID: 570662204}
   m_Layer: 0
-  m_Name: KochSnowflakeRoot
+  m_Name: SnowflakeRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &570662201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +638,10 @@ MonoBehaviour:
   radius: 5
   recursionDepth: 5
   lineWidth: 0.05
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  lineMaterial: {fileID: 0}
+  sortingLayerName: Default
+  sortingOrder: 0
 --- !u!120 &570662202
 LineRenderer:
   serializedVersion: 3
@@ -749,6 +759,105 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570662200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &570662204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570662200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4802a99407e3ad64da1e85079a952ffe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootBoundaryGenerator
+  center: {x: 0, y: 0}
+  radius: 3
+  boundaryContainer: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  edgeColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 10
+--- !u!1 &618323285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 618323288}
+  - component: {fileID: 618323287}
+  - component: {fileID: 618323286}
+  m_Layer: 0
+  m_Name: SnowflakeRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &618323286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618323285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 5
+  center: {x: 0, y: 0}
+  radius: 3
+  gapRatio: 0.15
+  widenRatio: -0.2
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &618323287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618323285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 5
+  center: {x: 0, y: 0}
+  radius: 5
+  gapRatio: 0.15
+  widenRatio: -0.2
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!4 &618323288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618323285}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -885,12 +994,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
-  roomLetter: 5
+  roomLetter: 0
   center: {x: 0, y: 0}
   radius: 3
   gapRatio: 0.15
   widenRatio: -0.2
   zoomController: {fileID: 1470918530}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1470918527
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +1021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1470918528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +1036,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HexagonBoundaryGenerator
   center: {x: 0, y: 0}
   radius: 3
-  zoomController: {fileID: 1470918530}
+  boundaryContainer: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  edgeColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 10
 --- !u!4 &1470918529
 Transform:
   m_ObjectHideFlags: 0
@@ -954,6 +1072,85 @@ MonoBehaviour:
   zoomDuration: 1.5
   startScale: {x: 0.05, y: 0.05, z: 0.05}
   targetScale: {x: 10, y: 10, z: 10}
+--- !u!1 &1482010538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482010541}
+  - component: {fileID: 1482010540}
+  - component: {fileID: 1482010539}
+  m_Layer: 0
+  m_Name: SnowflakeRoom2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1482010539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482010538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 0
+  center: {x: 0, y: 0}
+  radius: 3
+  gapRatio: 0.15
+  widenRatio: -0.2
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &1482010540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482010538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 0
+  center: {x: 0, y: 0}
+  radius: 5
+  gapRatio: 0.15
+  widenRatio: -0.2
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!4 &1482010541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482010538}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1870460219
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +1180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e0677887029094bbd54fed9156f415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractalUniverseManager
+  CurrentState: 0
+  CurrentNode: {fileID: 0}
 --- !u!4 &1870460221
 Transform:
   m_ObjectHideFlags: 0
@@ -1006,7 +1205,9 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1870460221}
   - {fileID: 570662203}
+  - {fileID: 618323288}
   - {fileID: 1470918529}
   - {fileID: 482495929}
   - {fileID: 708787318}
   - {fileID: 53977798}
+  - {fileID: 1482010541}

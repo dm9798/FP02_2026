@@ -4,36 +4,104 @@ using UnityEngine;
 public class KochSnowflakeRootRenderer : MonoBehaviour
 {
     [Header("Snowflake Settings")]
-    public Vector2 center = Vector2.zero;
-    public float radius = 5f;
-    [Range(0, 6)] public int recursionDepth = 3;
+    [SerializeField] private Vector2 center = Vector2.zero;
+    [SerializeField] private float radius = 5f;
+
+    [Range(0, 6)]
+    [SerializeField] private int recursionDepth = 3;
 
     [Header("Line Settings")]
-    public float lineWidth = 0.05f;
+    [SerializeField] private float lineWidth = 0.05f;
+    [SerializeField] private Color lineColor = Color.white;
+    [SerializeField] private Material lineMaterial;
 
-    void Start()
+    [Header("Rendering Order")]
+    [SerializeField] private string sortingLayerName = "Default";
+    [SerializeField] private int sortingOrder = 0;
+
+    private LineRenderer lineRenderer;
+    private Material runtimeFallbackMaterial;
+
+    private void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    private void Start()
     {
         Draw();
     }
 
     [ContextMenu("Redraw")]
-    void Draw()
+    private void Draw()
     {
-        LineRenderer line = GetComponent<LineRenderer>();
-        line.useWorldSpace = true;
-        line.loop = true;
-        line.startWidth = lineWidth;
-        line.endWidth = lineWidth;
+        if(lineRenderer == null)
+        {
+            lineRenderer = GetComponent<LineRenderer>();
+        }
 
-        if(line.material == null)
-            line.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.useWorldSpace = false;
+        lineRenderer.loop = true;
+        lineRenderer.startWidth = lineWidth;
+        lineRenderer.endWidth = lineWidth;
+        lineRenderer.startColor = lineColor;
+        lineRenderer.endColor = lineColor;
 
-        Vector2[] points2D = KochMath.GenerateSnowflake(center, radius, recursionDepth);
-        Vector3[] points3D = new Vector3[points2D.Length];
+        lineRenderer.sortingLayerName = sortingLayerName;
+        lineRenderer.sortingOrder = sortingOrder;
+
+        Material material = GetLineMaterial();
+
+        if(material != null)
+        {
+            lineRenderer.sharedMaterial = material;
+        }
+
+        Vector2[] points2D =
+            KochMath.GenerateSnowflake(
+                center,
+                radius,
+                recursionDepth
+            );
+
+        Vector3[] points3D =
+            new Vector3[points2D.Length];
+
         for(int i = 0; i < points2D.Length; i++)
-            points3D[i] = new Vector3(points2D[i].x, points2D[i].y, 0);
+        {
+            points3D[i] = new Vector3(
+                points2D[i].x,
+                points2D[i].y,
+                0f
+            );
+        }
 
-        line.positionCount = points3D.Length;
-        line.SetPositions(points3D);
+        lineRenderer.positionCount = points3D.Length;
+        lineRenderer.SetPositions(points3D);
+    }
+
+    private Material GetLineMaterial()
+    {
+        if(lineMaterial != null)
+        {
+            return lineMaterial;
+        }
+
+        if(runtimeFallbackMaterial == null)
+        {
+            Shader shader =
+                Shader.Find("Sprites/Default");
+
+            if(shader != null)
+            {
+                runtimeFallbackMaterial =
+                    new Material(shader);
+
+                runtimeFallbackMaterial.name =
+                    "KochSnowflakeRootRuntimeMaterial";
+            }
+        }
+
+        return runtimeFallbackMaterial;
     }
 }
