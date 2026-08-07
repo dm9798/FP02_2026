@@ -12,12 +12,17 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     [Header("Hexagon Settings")]
     public Vector2 center = Vector2.zero;
-    public float radius = 3f;
+    public float radius = 5f;
 
-    [Header("Parent Edge Tuning")]
+    //[Header("Parent Edge Tuning")]
 
-    public float gap = 0.75f;
-    public float widen = 0.3f; 
+    //public float gap = 0.75f;
+    //public float widen = 0.3f; 
+
+    //so parent edge autoscales with radius
+    [Header("Parent Edge Tuning (as ratio of radius)")]
+    public float gapRatio = 0.15f;   // was gap = 0.75f at radius = 5f
+    public float widenRatio = -0.2f; // was widen = -2f at radius = 5f
 
     [Header("Zooms Transition Wiring")]
     public FractalZoomController zoomController;
@@ -63,6 +68,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
         }
 
         // Parent edge base points computed in SAME unrotated frame as Room A - baseline
+        float widen = widenRatio * (radius * 1.67f); // or radius + 2 
+        float gap = gapRatio * (radius * 1.67f); // or radius + 2
         Vector2 parentStartBase = new Vector2(baseHexPoints[3].x - widen, baseHexPoints[3].y - gap);
         Vector2 parentEndBase = new Vector2(baseHexPoints[0].x + widen, baseHexPoints[0].y - gap);
 

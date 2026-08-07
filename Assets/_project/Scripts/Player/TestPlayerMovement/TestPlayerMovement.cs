@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TestPlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 2f;
     Rigidbody2D rb;
 
     void Awake() => rb = GetComponent<Rigidbody2D>();

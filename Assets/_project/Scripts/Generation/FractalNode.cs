@@ -1,3 +1,5 @@
+//Rule system for parent-child relationships
+
 public class FractalNode
 {
     public int letter;

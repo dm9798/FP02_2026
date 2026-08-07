@@ -13,7 +13,7 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
 
     [Header("Hexagon Settings")]
     public Vector2 center = Vector2.zero;
-    public float radius = 5f;
+    public float radius = 3f;
 
     //[Header("Parent Edge Tuning")]
     //public float gap = 0.75f;
