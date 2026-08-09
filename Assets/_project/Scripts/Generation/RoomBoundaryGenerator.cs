@@ -29,6 +29,9 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [SerializeField] private Color normalEdgeColor = Color.white;
     [SerializeField] private Color parentEdgeColor = Color.red;
 
+    [Header("Traversal Wiring")]
+    [SerializeField] private FractalUniverseManager universeManager;
+
     private void Start()
     {
         
@@ -190,6 +193,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
         trigger.isReturnEdge = isReturnEdge;
         trigger.targetLetterIndex = targetLetterIndex;
         trigger.ownerNode = ownerNode;
+        trigger.universeManager = universeManager;
+
         trigger.zoomController = zoomController;
 
         LineRenderer line =

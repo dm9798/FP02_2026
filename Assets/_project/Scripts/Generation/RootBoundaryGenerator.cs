@@ -18,6 +18,9 @@ public class RootBoundaryGenerator : MonoBehaviour
     [SerializeField] private string sortingLayerName = "Default";
     [SerializeField] private int sortingOrder = 10;
 
+    [Header("Traversal Wiring")]
+    [SerializeField] private FractalUniverseManager universeManager;
+
     private void Start()
     {
         EnsureBoundaryContainer();
@@ -112,6 +115,7 @@ public class RootBoundaryGenerator : MonoBehaviour
         trigger.targetLetterIndex = targetLetterIndex;
         trigger.isReturnEdge = false;
         trigger.ownerNode = null;
+        trigger.universeManager = universeManager;
 
         LineRenderer line =
             edgeObject.AddComponent<LineRenderer>();

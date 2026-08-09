@@ -7,6 +7,7 @@ public class RoomZoneTrigger : MonoBehaviour
     public int targetLetterIndex = -1;
     public FractalNode ownerNode;
     public FractalZoomController zoomController;
+    public FractalUniverseManager universeManager;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,9 +15,32 @@ public class RoomZoneTrigger : MonoBehaviour
             return;
 
         Debug.Log(
-            $"Player triggered edge: {roomName}, " +
-            $"targetIndex={targetLetterIndex}, " +
-            $"isReturnEdge={isReturnEdge}"
+            "Player triggered edge: " +
+            roomName +
+            ", isReturnEdge=" +
+            isReturnEdge
         );
+
+        if(universeManager == null)
+        {
+            Debug.LogError(
+                "No FractalUniverseManager assigned to " +
+                name,
+                this
+            );
+
+            return;
+        }
+
+        if(isReturnEdge)
+        {
+            universeManager.RequestTraverseToParent();
+        }
+        else
+        {
+            universeManager.RequestTraverseToChild(
+                targetLetterIndex
+            );
+        }
     }
 }
