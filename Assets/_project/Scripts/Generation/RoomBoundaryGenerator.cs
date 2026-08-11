@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(RootKochLayoutSettings))]
 public class RoomBoundaryGenerator : MonoBehaviour
 {
     public enum RoomLetter
@@ -11,13 +12,13 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [Header("Room Identity")]
     [SerializeField] private RoomLetter roomLetter = RoomLetter.A;
 
-    [Header("Hexagon Settings")]
-    [SerializeField] private Vector2 center = Vector2.zero;
-    [SerializeField] private float radius = 3f;
+    //[Header("Hexagon Settings")]
+    //[SerializeField] private Vector2 center = Vector2.zero;
+    //[SerializeField] private float radius = 3f;
 
-    [Header("Parent Edge Tuning")]
-    [SerializeField] private float gapRatio = 0.15f;
-    [SerializeField] private float widenRatio = -0.2f;
+    //[Header("Parent Edge Tuning")]
+    //[SerializeField] private float gapRatio = 0.15f;
+    //[SerializeField] private float widenRatio = -0.2f;
 
     [Header("Zoom Transition Wiring")]
     [SerializeField] private FractalZoomController zoomController;
@@ -31,6 +32,13 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     [Header("Traversal Wiring")]
     [SerializeField] private FractalUniverseManager universeManager;
+
+    private RoomKochLayoutSettings layoutSettings;
+
+    private void Awake()
+    {
+        layoutSettings = GetComponent<RoomKochLayoutSettings>();
+    }
 
     private void Start()
     {
@@ -63,14 +71,14 @@ public class RoomBoundaryGenerator : MonoBehaviour
         float cos = Mathf.Cos(radians);
         float sin = Mathf.Sin(radians);
 
-        Vector2 offset = point - center;
+        Vector2 offset = point - layoutSettings.center;
 
         Vector2 rotated = new Vector2(
             offset.x * cos - offset.y * sin,
             offset.x * sin + offset.y * cos
         );
 
-        return center + rotated;
+        return layoutSettings.center + rotated;
     }
 
     private void GenerateEdges()
@@ -84,16 +92,16 @@ public class RoomBoundaryGenerator : MonoBehaviour
         {
             float angle = i * 60f;
 
-            baseHexPoints[i] = center + radius * new Vector2(
+            baseHexPoints[i] = layoutSettings.center + layoutSettings.boundaryRadius * new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
             );
         }
 
         // Parent edge points calculated in the unrotated Room A frame.
-        float scale = radius * 1.67f;
-        float widen = widenRatio * scale;
-        float gap = gapRatio * scale;
+        float scale = layoutSettings.boundaryRadius * 1.67f;
+        float widen = layoutSettings.widenRatio * scale;
+        float gap = layoutSettings.gapRatio * scale;
 
         Vector2 parentStartBase = new Vector2(
             baseHexPoints[3].x - widen,

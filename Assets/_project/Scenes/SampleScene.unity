@@ -208,7 +208,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -310,6 +310,9 @@ GameObject:
   - component: {fileID: 191326586}
   - component: {fileID: 191326588}
   - component: {fileID: 191326587}
+  - component: {fileID: 191326590}
+  - component: {fileID: 191326589}
+  - component: {fileID: 191326591}
   m_Layer: 0
   m_Name: SnowflakeRoom_A
   m_TagString: Untagged
@@ -345,10 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 0
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -368,10 +367,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 0
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -379,6 +374,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &191326589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191326585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &191326590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191326585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 0
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &191326591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191326585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +593,8 @@ GameObject:
   - component: {fileID: 570662202}
   - component: {fileID: 570662201}
   - component: {fileID: 570662204}
+  - component: {fileID: 570662205}
+  - component: {fileID: 570662206}
   m_Layer: 0
   m_Name: SnowflakeRoot
   m_TagString: Untagged
@@ -547,8 +614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee615bfacf9a3f42a83c098ebf74172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeRenderer
-  center: {x: 0, y: 0}
-  radius: 5
   recursionDepth: 5
   lineWidth: 0.05
   lineColor: {r: 1, g: 1, b: 1, a: 1}
@@ -692,8 +757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4802a99407e3ad64da1e85079a952ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RootBoundaryGenerator
-  center: {x: 0, y: 0}
-  radius: 3
   boundaryContainer: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -701,6 +764,74 @@ MonoBehaviour:
   sortingLayerName: Default
   sortingOrder: 10
   universeManager: {fileID: 1870460220}
+--- !u!114 &570662205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570662200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 0
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
+--- !u!114 &570662206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570662200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224accda48ec444439b23999c8c1ca10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
 --- !u!1 &618323285
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +843,8 @@ GameObject:
   - component: {fileID: 618323288}
   - component: {fileID: 618323287}
   - component: {fileID: 618323286}
+  - component: {fileID: 618323290}
+  - component: {fileID: 618323289}
   m_Layer: 0
   m_Name: SnowflakeRoom
   m_TagString: Untagged
@@ -732,10 +865,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 5
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -755,10 +884,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 5
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -781,6 +906,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &618323289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618323285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
+--- !u!114 &618323290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618323285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.15
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 0
+  childMotifRadiusRatio: 0.33333334
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +1040,9 @@ GameObject:
   - component: {fileID: 707536860}
   - component: {fileID: 707536862}
   - component: {fileID: 707536861}
+  - component: {fileID: 707536864}
+  - component: {fileID: 707536863}
+  - component: {fileID: 707536865}
   m_Layer: 0
   m_Name: SnowflakeRoom_C
   m_TagString: Untagged
@@ -911,10 +1078,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 2
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -934,10 +1097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 2
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -945,6 +1104,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &707536863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707536859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &707536864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707536859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 4
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &707536865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707536859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &760306959
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +1185,9 @@ GameObject:
   - component: {fileID: 760306960}
   - component: {fileID: 760306962}
   - component: {fileID: 760306961}
+  - component: {fileID: 760306964}
+  - component: {fileID: 760306963}
+  - component: {fileID: 760306965}
   m_Layer: 0
   m_Name: SnowflakeRoom_B
   m_TagString: Untagged
@@ -991,10 +1223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 1
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1014,10 +1242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 1
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1025,6 +1249,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &760306963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760306959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &760306964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760306959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 5
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &760306965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760306959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &996885980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1330,9 @@ GameObject:
   - component: {fileID: 996885981}
   - component: {fileID: 996885983}
   - component: {fileID: 996885982}
+  - component: {fileID: 996885985}
+  - component: {fileID: 996885984}
+  - component: {fileID: 996885986}
   m_Layer: 0
   m_Name: SnowflakeRoom_D
   m_TagString: Untagged
@@ -1071,10 +1368,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 3
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1094,10 +1387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 3
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1105,6 +1394,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &996885984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996885980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &996885985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996885980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 3
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &996885986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996885980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &1086229578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1475,9 @@ GameObject:
   - component: {fileID: 1086229579}
   - component: {fileID: 1086229581}
   - component: {fileID: 1086229580}
+  - component: {fileID: 1086229583}
+  - component: {fileID: 1086229582}
+  - component: {fileID: 1086229584}
   m_Layer: 0
   m_Name: SnowflakeRoom_F
   m_TagString: Untagged
@@ -1151,10 +1513,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 5
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1174,10 +1532,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 5
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1185,6 +1539,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &1086229582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086229578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1086229583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086229578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 1
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1086229584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086229578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &1102012957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1657,9 @@ GameObject:
   - component: {fileID: 1450745574}
   - component: {fileID: 1450745576}
   - component: {fileID: 1450745575}
+  - component: {fileID: 1450745578}
+  - component: {fileID: 1450745577}
+  - component: {fileID: 1450745579}
   m_Layer: 0
   m_Name: SnowflakeRoom_E
   m_TagString: Untagged
@@ -1268,10 +1695,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 4
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1291,10 +1714,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 4
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1302,6 +1721,257 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &1450745577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450745573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1450745578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450745573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 2
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1450745579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450745573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
+--- !u!1 &1571473078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571473082}
+  - component: {fileID: 1571473081}
+  - component: {fileID: 1571473080}
+  - component: {fileID: 1571473079}
+  m_Layer: 0
+  m_Name: SnowflakeRootTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1571473079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571473078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee615bfacf9a3f42a83c098ebf74172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeRootRenderer
+  recursionDepth: 5
+  lineWidth: 0.05
+  lineColor: {r: 0.15180486, g: 0.78113204, b: 0.22035424, a: 1}
+  lineMaterial: {fileID: 0}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!114 &1571473080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571473078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
+--- !u!120 &1571473081
+LineRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571473078}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
+  m_ApplyActiveColorSpace: 1
+--- !u!4 &1571473082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571473078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603984658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1983,9 @@ GameObject:
   - component: {fileID: 1603984659}
   - component: {fileID: 1603984661}
   - component: {fileID: 1603984660}
+  - component: {fileID: 1603984663}
+  - component: {fileID: 1603984662}
+  - component: {fileID: 1603984664}
   m_Layer: 0
   m_Name: SnowflakeRoom_C
   m_TagString: Untagged
@@ -1348,10 +2021,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 2
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1371,10 +2040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 2
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1382,6 +2047,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &1603984662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603984658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1603984663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603984658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 4
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1603984664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603984658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &1808471226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,6 +2128,9 @@ GameObject:
   - component: {fileID: 1808471227}
   - component: {fileID: 1808471229}
   - component: {fileID: 1808471228}
+  - component: {fileID: 1808471231}
+  - component: {fileID: 1808471230}
+  - component: {fileID: 1808471232}
   m_Layer: 0
   m_Name: SnowflakeRoom_B
   m_TagString: Untagged
@@ -1428,10 +2166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 1
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1451,10 +2185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 1
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1462,6 +2192,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &1808471230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808471226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1808471231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808471226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 5
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1808471232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808471226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &1820174077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,6 +2273,9 @@ GameObject:
   - component: {fileID: 1820174078}
   - component: {fileID: 1820174080}
   - component: {fileID: 1820174079}
+  - component: {fileID: 1820174082}
+  - component: {fileID: 1820174081}
+  - component: {fileID: 1820174083}
   m_Layer: 0
   m_Name: SnowflakeRoom_D
   m_TagString: Untagged
@@ -1508,10 +2311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 3
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1531,10 +2330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 3
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1542,6 +2337,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &1820174081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820174077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1820174082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820174077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 3
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1820174083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820174077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &1870460219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,6 +2437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractalUniverseManager
   rootVisual: {fileID: 570662200}
+  rootMotifLayout: {fileID: 570662206}
   oddRoomObjects:
   - {fileID: 191326585}
   - {fileID: 1086229578}
@@ -1587,6 +2453,7 @@ MonoBehaviour:
   - {fileID: 1603984658}
   - {fileID: 760306959}
   currentState: 0
+  traversalCooldown: 0.2
 --- !u!4 &1870460221
 Transform:
   m_ObjectHideFlags: 0
@@ -1613,6 +2480,9 @@ GameObject:
   - component: {fileID: 1910904833}
   - component: {fileID: 1910904835}
   - component: {fileID: 1910904834}
+  - component: {fileID: 1910904837}
+  - component: {fileID: 1910904836}
+  - component: {fileID: 1910904838}
   m_Layer: 0
   m_Name: SnowflakeRoom_F
   m_TagString: Untagged
@@ -1648,10 +2518,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 5
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1671,10 +2537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 5
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1682,6 +2544,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &1910904836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910904832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1910904837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910904832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 1
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1910904838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910904832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &1944266824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +2625,9 @@ GameObject:
   - component: {fileID: 1944266825}
   - component: {fileID: 1944266827}
   - component: {fileID: 1944266826}
+  - component: {fileID: 1944266829}
+  - component: {fileID: 1944266828}
+  - component: {fileID: 1944266830}
   m_Layer: 0
   m_Name: SnowflakeRoom_E
   m_TagString: Untagged
@@ -1728,10 +2663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 4
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1751,10 +2682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 4
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1762,6 +2689,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &1944266828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944266824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1944266829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944266824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 2
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1944266830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944266824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &2023569763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,6 +2770,9 @@ GameObject:
   - component: {fileID: 2023569764}
   - component: {fileID: 2023569766}
   - component: {fileID: 2023569765}
+  - component: {fileID: 2023569768}
+  - component: {fileID: 2023569767}
+  - component: {fileID: 2023569769}
   m_Layer: 0
   m_Name: SnowflakeRoom_A
   m_TagString: Untagged
@@ -1808,10 +2808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 0
-  center: {x: 0, y: 0}
-  radius: 3
-  gapRatio: 0.15
-  widenRatio: -0.2
   zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
@@ -1831,10 +2827,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 0
-  center: {x: 0, y: 0}
-  radius: 5
-  gapRatio: 0.15
-  widenRatio: -0.2
   recursionDepth: 5
   lineWidth: 0.05
   motifContainer: {fileID: 0}
@@ -1842,6 +2834,76 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
+--- !u!114 &2023569767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023569763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &2023569768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023569763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeRadius: 3
+  boundaryRadius: 5
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 0
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &2023569769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023569763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  center: {x: 0, y: 0}
+  snowflakeCircumradius: 5
+  motifAngleOffset: 90
+  motifRadiusRatio: 0.33333334
+  motifOrbitRadiusRatio: 0.6666667
+  boundaryRadius: 3
+  boundaryAngleOffset: 60
 --- !u!1 &2035688131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,3 +2953,4 @@ SceneRoots:
   - {fileID: 53977798}
   - {fileID: 2035688132}
   - {fileID: 1102012958}
+  - {fileID: 1571473082}

@@ -1,11 +1,8 @@
 using UnityEngine;
 
+[RequireComponent(typeof(RootKochLayoutSettings))]
 public class RootBoundaryGenerator : MonoBehaviour
 {
-    [Header("Root Hexagonal Edge Settings")]
-    [SerializeField] private Vector2 center = Vector2.zero;
-    [SerializeField] private float radius = 3f;
-
     [Header("Generated Boundary Objects")]
     [SerializeField] private Transform boundaryContainer;
 
@@ -21,16 +18,36 @@ public class RootBoundaryGenerator : MonoBehaviour
     [Header("Traversal Wiring")]
     [SerializeField] private FractalUniverseManager universeManager;
 
+    private RootKochLayoutSettings layoutSettings;
+
+    private void Awake()
+    {
+        layoutSettings =
+            GetComponent<RootKochLayoutSettings>();
+    }
+
     private void Start()
     {
+        EnsureReferences();
         EnsureBoundaryContainer();
         GenerateEdges();
+    }
+
+    private void EnsureReferences()
+    {
+        if(layoutSettings == null)
+        {
+            layoutSettings =
+                GetComponent<RootKochLayoutSettings>();
+        }
     }
 
     private void EnsureBoundaryContainer()
     {
         if(boundaryContainer != null)
+        {
             return;
+        }
 
         Transform existingContainer =
             transform.Find("RootBoundaries");
@@ -54,22 +71,41 @@ public class RootBoundaryGenerator : MonoBehaviour
 
     private void GenerateEdges()
     {
-        Vector2[] points = new Vector2[6];
+        if(layoutSettings == null)
+        {
+            Debug.LogError(
+                "RootKochLayoutSettings is missing.",
+                this
+            );
+
+            return;
+        }
+
+        Vector2[] points =
+            new Vector2[6];
 
         for(int i = 0; i < points.Length; i++)
         {
-            float angle = 60f + i * 60f;
+            float angle =
+                layoutSettings.boundaryAngleOffset
+                + i * 60f;
 
-            points[i] = center + radius * new Vector2(
-                Mathf.Cos(angle * Mathf.Deg2Rad),
-                Mathf.Sin(angle * Mathf.Deg2Rad)
-            );
+            points[i] =
+                layoutSettings.center
+                + layoutSettings.boundaryRadius
+                * new Vector2(
+                    Mathf.Cos(angle * Mathf.Deg2Rad),
+                    Mathf.Sin(angle * Mathf.Deg2Rad)
+                );
         }
 
         for(int i = 0; i < points.Length; i++)
         {
-            Vector2 start = points[i];
-            Vector2 end = points[(i + 1) % points.Length];
+            Vector2 start =
+                points[i];
+
+            Vector2 end =
+                points[(i + 1) % points.Length];
 
             string roomName =
                 FractalNode.LetterNames[i];
@@ -78,7 +114,7 @@ public class RootBoundaryGenerator : MonoBehaviour
                 start,
                 end,
                 roomName,
-                targetLetterIndex: i
+                i
             );
         }
     }
@@ -90,7 +126,9 @@ public class RootBoundaryGenerator : MonoBehaviour
         int targetLetterIndex)
     {
         GameObject edgeObject =
-            new GameObject($"Edge_{roomName}");
+            new GameObject(
+                "Edge_" + roomName
+            );
 
         edgeObject.transform.SetParent(
             boundaryContainer,
@@ -111,31 +149,62 @@ public class RootBoundaryGenerator : MonoBehaviour
         RoomZoneTrigger trigger =
             edgeObject.AddComponent<RoomZoneTrigger>();
 
-        trigger.roomName = roomName;
-        trigger.targetLetterIndex = targetLetterIndex;
-        trigger.isReturnEdge = false;
-        trigger.ownerNode = null;
-        trigger.universeManager = universeManager;
+        trigger.roomName =
+            roomName;
+
+        trigger.targetLetterIndex =
+            targetLetterIndex;
+
+        trigger.isReturnEdge =
+            false;
+
+        trigger.ownerNode =
+            null;
+
+        trigger.universeManager =
+            universeManager;
 
         LineRenderer line =
             edgeObject.AddComponent<LineRenderer>();
 
-        line.useWorldSpace = false;
-        line.positionCount = 2;
-        line.SetPosition(0, start);
-        line.SetPosition(1, end);
+        line.useWorldSpace =
+            false;
 
-        line.startWidth = edgeWidth;
-        line.endWidth = edgeWidth;
-        line.startColor = edgeColor;
-        line.endColor = edgeColor;
+        line.positionCount =
+            2;
 
-        line.sortingLayerName = sortingLayerName;
-        line.sortingOrder = sortingOrder;
+        line.SetPosition(
+            0,
+            start
+        );
+
+        line.SetPosition(
+            1,
+            end
+        );
+
+        line.startWidth =
+            edgeWidth;
+
+        line.endWidth =
+            edgeWidth;
+
+        line.startColor =
+            edgeColor;
+
+        line.endColor =
+            edgeColor;
+
+        line.sortingLayerName =
+            sortingLayerName;
+
+        line.sortingOrder =
+            sortingOrder;
 
         if(edgeMaterial != null)
         {
-            line.sharedMaterial = edgeMaterial;
+            line.sharedMaterial =
+                edgeMaterial;
         }
     }
 }

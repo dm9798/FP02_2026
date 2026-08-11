@@ -1,12 +1,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(RootKochLayoutSettings))]
 public class KochSnowflakeRootRenderer : MonoBehaviour
 {
     [Header("Snowflake Settings")]
-    [SerializeField] private Vector2 center = Vector2.zero;
-    [SerializeField] private float radius = 5f;
-
     [Range(0, 6)]
     [SerializeField] private int recursionDepth = 3;
 
@@ -20,11 +18,16 @@ public class KochSnowflakeRootRenderer : MonoBehaviour
     [SerializeField] private int sortingOrder = 0;
 
     private LineRenderer lineRenderer;
+    private RootKochLayoutSettings layoutSettings;
     private Material runtimeFallbackMaterial;
 
     private void Awake()
     {
-        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer =
+            GetComponent<LineRenderer>();
+
+        layoutSettings =
+            GetComponent<RootKochLayoutSettings>();
     }
 
     private void Start()
@@ -35,9 +38,16 @@ public class KochSnowflakeRootRenderer : MonoBehaviour
     [ContextMenu("Redraw")]
     private void Draw()
     {
-        if(lineRenderer == null)
+        EnsureReferences();
+
+        if(layoutSettings == null)
         {
-            lineRenderer = GetComponent<LineRenderer>();
+            Debug.LogError(
+                "RootKochLayoutSettings is missing.",
+                this
+            );
+
+            return;
         }
 
         lineRenderer.useWorldSpace = false;
@@ -47,20 +57,25 @@ public class KochSnowflakeRootRenderer : MonoBehaviour
         lineRenderer.startColor = lineColor;
         lineRenderer.endColor = lineColor;
 
-        lineRenderer.sortingLayerName = sortingLayerName;
-        lineRenderer.sortingOrder = sortingOrder;
+        lineRenderer.sortingLayerName =
+            sortingLayerName;
 
-        Material material = GetLineMaterial();
+        lineRenderer.sortingOrder =
+            sortingOrder;
+
+        Material material =
+            GetLineMaterial();
 
         if(material != null)
         {
-            lineRenderer.sharedMaterial = material;
+            lineRenderer.sharedMaterial =
+                material;
         }
 
         Vector2[] points2D =
             KochMath.GenerateSnowflake(
-                center,
-                radius,
+                layoutSettings.center,
+                layoutSettings.snowflakeCircumradius,
                 recursionDepth
             );
 
@@ -76,8 +91,25 @@ public class KochSnowflakeRootRenderer : MonoBehaviour
             );
         }
 
-        lineRenderer.positionCount = points3D.Length;
+        lineRenderer.positionCount =
+            points3D.Length;
+
         lineRenderer.SetPositions(points3D);
+    }
+
+    private void EnsureReferences()
+    {
+        if(lineRenderer == null)
+        {
+            lineRenderer =
+                GetComponent<LineRenderer>();
+        }
+
+        if(layoutSettings == null)
+        {
+            layoutSettings =
+                GetComponent<RootKochLayoutSettings>();
+        }
     }
 
     private Material GetLineMaterial()
@@ -98,7 +130,7 @@ public class KochSnowflakeRootRenderer : MonoBehaviour
                     new Material(shader);
 
                 runtimeFallbackMaterial.name =
-                    "KochSnowflakeRootRuntimeMaterial";
+                    "RootKochRuntimeMaterial";
             }
         }
 

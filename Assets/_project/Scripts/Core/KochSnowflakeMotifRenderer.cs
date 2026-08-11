@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(RoomKochLayoutSettings))]
 public class KochSnowflakeMotifRenderer : MonoBehaviour
 {
     public enum RoomLetter
@@ -12,13 +14,12 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
     [Header("Room Identity")]
     [SerializeField] private RoomLetter roomLetter = RoomLetter.A;
 
-    [Header("Hexagon Settings")]
-    [SerializeField] private Vector2 center = Vector2.zero;
-    [SerializeField] private float radius = 3f;
-
-    [Header("Parent Edge Tuning")]
-    [SerializeField] private float gapRatio = 0.15f;
-    [SerializeField] private float widenRatio = -0.2f;
+    //[Header("Hexagon Settings")]
+    //[SerializeField] private Vector2 center = Vector2.zero;
+    //[SerializeField] private float radius = 3f;
+    //[Header("Parent Edge Tuning")]
+    //[SerializeField] private float gapRatio = 0.15f;
+    //[SerializeField] private float widenRatio = -0.2f;
 
     [Header("Snowflake Settings")]
     [Range(0, 6)]
@@ -37,7 +38,14 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
     [SerializeField] private string sortingLayerName = "Default";
     [SerializeField] private int sortingOrder = 0;
 
+    private RoomKochLayoutSettings layoutSettings;
     private Material runtimeFallbackMaterial;
+
+    private void Awake()
+    {
+        layoutSettings =
+            GetComponent<RoomKochLayoutSettings>();
+    }
 
     private void Start()
     {
@@ -59,7 +67,7 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
         {
             float angle = i * 60f;
 
-            baseHexPoints[i] = center + radius * new Vector2(
+            baseHexPoints[i] = layoutSettings.center + layoutSettings.snowflakeRadius * new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
             );
@@ -72,12 +80,12 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
             hexPoints[i] = RotatePoint(
                 baseHexPoints[i],
                 rotationAngle,
-                center
+                layoutSettings.center
             );
         }
 
-        float gap = gapRatio * radius;
-        float widen = widenRatio * radius;
+        float gap = layoutSettings.gapRatio * layoutSettings.snowflakeRadius;
+        float widen = layoutSettings.widenRatio * layoutSettings.snowflakeRadius;
 
         Vector2 parentStartBase = new Vector2(
             baseHexPoints[3].x - widen,
@@ -92,20 +100,20 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
         Vector2 parentStart = RotatePoint(
             parentStartBase,
             rotationAngle,
-            center
+            layoutSettings.center
         );
 
         Vector2 parentEnd = RotatePoint(
             parentEndBase,
             rotationAngle,
-            center
+            layoutSettings.center
         );
 
         List<Vector2> snowflakePoints =
             new List<Vector2>(
                 KochMath.GenerateSnowflake(
-                    center,
-                    radius,
+                    layoutSettings.center,
+                    layoutSettings.snowflakeRadius,
                     recursionDepth
                 )
             );
@@ -122,21 +130,21 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
                     point,
                     hexPoints[0],
                     hexPoints[1],
-                    center
+                    layoutSettings.center
                 )
                 ||
                 IsOutsideEdge(
                     point,
                     hexPoints[1],
                     hexPoints[2],
-                    center
+                    layoutSettings.center
                 )
                 ||
                 IsOutsideEdge(
                     point,
                     hexPoints[2],
                     hexPoints[3],
-                    center
+                    layoutSettings.center
                 );
 
             bool insideParent =
@@ -144,7 +152,7 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
                     point,
                     parentStart,
                     parentEnd,
-                    center
+                    layoutSettings.center
                 );
 
             bool keep = outsideAnyRoof || insideParent;
