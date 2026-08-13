@@ -5,6 +5,9 @@ public class RoomKochLayoutSettings : MonoBehaviour
     [Header("Room Geometry")]
     public Vector2 center = Vector2.zero;
 
+    [Header("Room Scale")]
+    public Vector3 normalLocalScale = Vector3.one;
+
     [Header("Snowflake Geometry")]
     public float snowflakeRadius = 3f;
 

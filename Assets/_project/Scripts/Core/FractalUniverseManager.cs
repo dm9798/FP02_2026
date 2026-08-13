@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class FractalUniverseManager : MonoBehaviour
 {
@@ -57,6 +58,16 @@ public class FractalUniverseManager : MonoBehaviour
     [SerializeField] private float traversalCooldown = 0.2f;
 
     private float traversalBlockedUntil;
+
+    //[Header("Zoom Transition")]
+    //[SerializeField] private float zoomDuration = 0.8f;
+    //[SerializeField] private AnimationCurve zoomScaleCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    [Header("Zoom Transition In (Root -> Child)")]
+    [SerializeField] private float zoomInDuration = 0.8f;
+    [SerializeField] private AnimationCurve zoomInCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    [Header("Zoom Transition Out (Child -> Parent)")]
+    [SerializeField] private float zoomOutDuration = 0.6f;
+    [SerializeField] private AnimationCurve zoomOutCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
     //getters for traversal logic
     public TraversalState CurrentState
@@ -197,10 +208,16 @@ public class FractalUniverseManager : MonoBehaviour
             incomingBank
         );
 
-        // Temporary immediate transition - to be replcaed        
-        CompleteTransition(
-            targetPath,
-            incomingBank
+        bool isChildTransition =
+            targetPath.Count >
+            path.Count; // going deeper into the tree
+
+        StartCoroutine(
+            ZoomTransitionCoroutine(
+                targetPath,
+                incomingBank,
+                isChildTransition
+            )
         );
     }
 
@@ -213,10 +230,7 @@ public class FractalUniverseManager : MonoBehaviour
     {
         if(targetPath.Count == 0)
         {
-            SetBankActive(
-                incomingBank,
-                false
-            );
+            SetBankActive(incomingBank, false);
 
             if(rootVisual != null)
             {
@@ -249,30 +263,7 @@ public class FractalUniverseManager : MonoBehaviour
             return;
         }
 
-        bool isChildTransition =
-            targetPath.Count ==
-            path.Count + 1;
-
-        if(isChildTransition)
-        {
-            bool targetFound =
-                TryGetTargetMotif(
-                    targetPath,
-                    targetLetterIndex,
-                    out Vector3 targetPosition,
-                    out float targetRadius
-                );
-
-            if(targetFound)
-            {
-                AlignIncomingRoom(
-                    incomingRoom,
-                    targetPosition,
-                    targetRadius
-                );
-            }
-        }
-
+        // Do NOT align here - just ensure room is only active one in its bank
         SetBankActive(
             incomingBank,
             false
@@ -850,10 +841,165 @@ public class FractalUniverseManager : MonoBehaviour
         );
     }
 
-    //to be revisited - per-room config might be better solution
+    private IEnumerator ZoomTransitionCoroutine(
+       List<int> targetPath,
+       VisualBank incomingBank,
+       bool zoomIntoChild)
+    {
+        // If going back to root directly, no zoom, just complete
+        if(targetPath.Count == 0)
+        {
+            CompleteTransition(
+                targetPath,
+                incomingBank
+            );
+
+            yield break;
+        }
+
+        int targetLetterIndex =
+            targetPath[targetPath.Count - 1];
+
+        GameObject incomingRoom =
+            GetRoomObject(
+                incomingBank,
+                targetLetterIndex
+            );
+
+        if(incomingRoom == null)
+        {
+            Debug.LogError(
+                "ZoomTransitionCoroutine: " +
+                "Incoming room is null for letter index " +
+                targetLetterIndex +
+                " in bank " +
+                incomingBank,
+                this
+            );
+
+            // Fallback to instant complete, just in case
+            CompleteTransition(
+                targetPath,
+                incomingBank
+            );
+
+            yield break;
+        }
+
+        Transform roomTransform =
+            incomingRoom.transform;
+
+        // capture the normal scale BEFORE any fitting
+        Vector3 normalLocalScale =
+            GetRoomNormalLocalScale(
+                incomingRoom
+            );
+
+        // Resolve the target motif (pos + radius)
+        bool targetFound =
+            TryGetTargetMotif(
+                targetPath,
+                targetLetterIndex,
+                out Vector3 targetPosition,
+                out float targetRadius
+            );
+
+        if(!targetFound)
+        {
+            roomTransform.localScale =
+                normalLocalScale;
+
+            CompleteTransition(
+                targetPath,
+                incomingBank
+            );
+
+            yield break;
+        }
+
+        // Fit room to motif 
+        AlignIncomingRoom(
+            incomingRoom,
+            targetPosition,
+            targetRadius
+        );
+
+        // Capture fitted scale AFTER alignment
+        Vector3 fittedLocalScale =
+            roomTransform.localScale;
+
+        // Decide animation direction - in/out
+        Vector3 startScale;
+        Vector3 endScale;
+        float duration;
+        AnimationCurve curve;
+
+        if(zoomIntoChild)
+        {
+            // root -> child
+            // start small on motif, grow to normal room scale
+            startScale = fittedLocalScale;
+            endScale = normalLocalScale;
+            duration = zoomInDuration;
+            curve = zoomInCurve;
+        }
+        else
+        {
+            // child -> parent
+            //start at normal, shrink into the motif
+            startScale = normalLocalScale;
+            endScale = fittedLocalScale;
+            duration = zoomOutDuration;
+            curve = zoomOutCurve;
+        }
+
+        roomTransform.localScale =
+            startScale;
+
+        float elapsed = 0f;
+
+        while(elapsed < duration)
+        {
+            float t =
+                elapsed / duration;
+
+            float eased =
+                curve.Evaluate(t);
+
+            roomTransform.localScale =
+                Vector3.LerpUnclamped(
+                    startScale,
+                    endScale,
+                    eased
+                );
+
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        roomTransform.localScale =
+            endScale;
+
+        // Complete logical traversal 
+        CompleteTransition(
+            targetPath,
+            incomingBank
+        );
+    }
+
+    //Helper to read normal scale
     private Vector3 GetRoomNormalLocalScale(GameObject room)
     {
-      
+        
+        RoomKochLayoutSettings settings =
+            room.GetComponent<RoomKochLayoutSettings>();
+
+        if(settings != null)
+        {
+            return settings.normalLocalScale;
+        }
+
+        //Fallback to the game objs original scale
         return room.transform.localScale;
     }
 }

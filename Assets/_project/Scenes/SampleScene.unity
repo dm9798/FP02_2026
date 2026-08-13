@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -938,6 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.15
@@ -1148,6 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -1293,6 +1296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -1438,6 +1442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -1583,6 +1588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -1765,6 +1771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -1809,7 +1816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1571473079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2091,6 +2098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -2236,6 +2244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -2381,6 +2390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -2454,6 +2464,56 @@ MonoBehaviour:
   - {fileID: 760306959}
   currentState: 0
   traversalCooldown: 0.2
+  zoomInDuration: 0.8
+  zoomInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  zoomOutDuration: 0.6
+  zoomOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1870460221
 Transform:
   m_ObjectHideFlags: 0
@@ -2588,6 +2648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -2733,6 +2794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
@@ -2878,6 +2940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
   boundaryRadius: 5
   gapRatio: 0.45
