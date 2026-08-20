@@ -21,8 +21,7 @@ public class RoomKochLayoutSettings : MonoBehaviour
 
     [Header("Room Orientation")]
     [Tooltip(
-        "Rotation is calculated from the room letter " +
-        "by the room rendering scripts."
+        "Rotation is calculated from the room letter by the room rendering scripts."
     )]
     public float roomRotationOffset = 0f;
 
@@ -34,4 +33,9 @@ public class RoomKochLayoutSettings : MonoBehaviour
 
     [Header("Child Motif Layout")]
     public float childMotifRadiusRatio = 1f / 3f;
+
+    [Header("Child Motif Emerge Geometry")]
+    [Tooltip(
+    "Radius used ONLY to calculate where level-2+ child motifs visually emerge from on this room's edges (previous/self/next)" )]
+    public float childMotifEmergeRadius = 2.2f;
 }

@@ -6,7 +6,6 @@ public class RoomZoneTrigger : MonoBehaviour
     public bool isReturnEdge;
     public int targetLetterIndex = -1;
     public FractalNode ownerNode;
-    public FractalZoomController zoomController;
     public FractalUniverseManager universeManager;
 
     private void OnTriggerEnter2D(Collider2D other)

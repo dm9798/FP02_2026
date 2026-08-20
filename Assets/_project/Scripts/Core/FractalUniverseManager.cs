@@ -16,8 +16,15 @@ public class FractalUniverseManager : MonoBehaviour
     [Header("Root Visual")]
     [SerializeField] private GameObject rootVisual;
 
+    //Root's own visibility toggler. Assign the KochRoomVisibility component on root
+    [SerializeField] private KochRoomVisibility rootVisibility;
+
     [Header("Root Motif Layout")]
     [SerializeField] private RootMotifLayout rootMotifLayout;
+
+    //Direct reference to root's KochMotifNode, which holds the authoritative parent/child GameObject wiring (root -> 6 odd-bank rooms)
+    //performs the actual Unity reparent and local-transform alignment via KochMotifAligner
+    [SerializeField] private KochMotifNode rootMotifNode;
 
     [Header("Odd Room Bank")]
     [Tooltip(
@@ -37,7 +44,7 @@ public class FractalUniverseManager : MonoBehaviour
     private GameObject[] evenRoomObjects =
         new GameObject[6];
 
-   
+
 
     [Header("Traversal State")]
     [SerializeField]
@@ -51,6 +58,12 @@ public class FractalUniverseManager : MonoBehaviour
 
     private VisualBank activeRoomBank =
         VisualBank.None;
+
+    //tracks the KochMotifNode of whichever room is currently active
+    private KochMotifNode activeRoomNode;
+
+    //tracks the KochRoomVisibility of whichever room is currently visible
+    private KochRoomVisibility activeRoomVisibility;
 
     //temp vars to stop multiple edge collisions between room transitions
     //to be removed following zoom implementation
@@ -113,7 +126,7 @@ public class FractalUniverseManager : MonoBehaviour
         }
     }
 
-    
+
     public bool CanTraverse
     {
         get
@@ -137,7 +150,17 @@ public class FractalUniverseManager : MonoBehaviour
     //Public func request move from current node to specified child letter, if traversal allowed
     public void RequestTraverseToChild(
         int targetLetterIndex)
+
+
     {
+
+        Debug.Log(
+    "RequestTraverseToChild: targetLetterIndex=" + targetLetterIndex +
+    ", IsAtRoot=" + IsAtRoot +
+    ", CurrentPath=" + GetPathName(),
+    this
+        );
+
         if(!CanTraverse)
             return;
 
@@ -197,45 +220,58 @@ public class FractalUniverseManager : MonoBehaviour
     private void BeginTransitionToPath(
         List<int> targetPath)
     {
+        Debug.Log(
+    "BeginTransitionToPath: currentPath=" + GetPathName() +
+    ", targetPath length=" + targetPath.Count,
+    this
+);
+
         currentState =
             TraversalState.Transitioning;
-
-        VisualBank incomingBank =
-            GetIncomingBank();
-
-        PrepareIncomingVisual(
-            targetPath,
-            incomingBank
-        );
 
         bool isChildTransition =
             targetPath.Count >
             path.Count; // going deeper into the tree
 
-        StartCoroutine(
-            ZoomTransitionCoroutine(
+        if(isChildTransition)
+        {
+            VisualBank incomingBank =
+                GetIncomingBank();
+
+            PrepareIncomingVisual(
                 targetPath,
-                incomingBank,
-                isChildTransition
-            )
-        );
+                incomingBank
+            );
+
+            StartCoroutine(
+                ZoomIntoChildCoroutine(
+                    targetPath,
+                    incomingBank
+                )
+            );
+        }
+        else
+        {         
+            StartCoroutine(
+                ZoomOutToParentCoroutine(
+                    targetPath,
+                    activeRoomBank
+                )
+            );
+        }
     }
 
 
-    //Set up incoming visual (root/room),
-    //align child room to target motif, activate correct room game obj
+    //Set up incoming visual (root/room) - hides all OTHER rooms' visuals in the incoming bank    
     private void PrepareIncomingVisual(
         List<int> targetPath,
         VisualBank incomingBank)
     {
         if(targetPath.Count == 0)
         {
-            SetBankActive(incomingBank, false);
+            SetBankVisualsVisible(incomingBank, false);
 
-            if(rootVisual != null)
-            {
-                rootVisual.SetActive(true);
-            }
+            SetRootVisible(true);
 
             return;
         }
@@ -263,50 +299,62 @@ public class FractalUniverseManager : MonoBehaviour
             return;
         }
 
-        // Do NOT align here - just ensure room is only active one in its bank
-        SetBankActive(
+        // Hide every OTHER room's visual in the incoming bank 
+        SetBankVisualsVisible(
             incomingBank,
             false
         );
 
-        incomingRoom.SetActive(true);
+        KochRoomVisibility incomingVisibility =
+            incomingRoom.GetComponent<KochRoomVisibility>();
+
+        if(incomingVisibility != null)
+        {
+            incomingVisibility.SetVisualVisible(true);
+        }
+        else
+        {
+            Debug.LogWarning(
+                "PrepareIncomingVisual: " +
+                incomingRoom.name +
+                " has no KochRoomVisibility component.",
+                incomingRoom
+            );
+        }
     }
 
-    //Finalize traversal - deactivate old room, activate new visual
-    //update path & active bank
+    //Finalize traversal - hide the room we just left
+    //show new visual, update path & active bank/node/visibility tracking
     private void CompleteTransition(
         List<int> targetPath,
         VisualBank incomingBank)
     {
-        if(activeRoomBank != VisualBank.None)
+        if(activeRoomVisibility != null)
         {
-            SetBankActive(
-                activeRoomBank,
-                false
-            );
+            activeRoomVisibility.SetVisualVisible(false);
         }
 
         if(targetPath.Count == 0)
         {
-            SetBankActive(
+            SetBankVisualsVisible(
                 incomingBank,
                 false
             );
 
-            if(rootVisual != null)
-            {
-                rootVisual.SetActive(true);
-            }
+            SetRootVisible(true);
 
             activeRoomBank =
                 VisualBank.None;
+
+            activeRoomNode =
+                null;
+
+            activeRoomVisibility =
+                null;
         }
         else
         {
-            if(rootVisual != null)
-            {
-                rootVisual.SetActive(false);
-            }
+            SetRootVisible(false);
 
             int targetLetterIndex =
                 targetPath[targetPath.Count - 1];
@@ -319,7 +367,19 @@ public class FractalUniverseManager : MonoBehaviour
 
             if(targetRoom != null)
             {
-                targetRoom.SetActive(true);
+                KochRoomVisibility targetVisibility =
+                    targetRoom.GetComponent<KochRoomVisibility>();
+
+                if(targetVisibility != null)
+                {
+                    targetVisibility.SetVisualVisible(true);
+                }
+
+                activeRoomNode =
+                    targetRoom.GetComponent<KochMotifNode>();
+
+                activeRoomVisibility =
+                    targetVisibility;
             }
 
             activeRoomBank =
@@ -385,10 +445,11 @@ public class FractalUniverseManager : MonoBehaviour
         return roomObjects[letterIndex];
     }
 
-    //helper - activate/deactivate all room game objs in selected bank
-    private void SetBankActive(
+    //hides/shows every room's VISUAL in the given bank via KochRoomVisibility
+    //never touching GameObject.SetActive
+    private void SetBankVisualsVisible(
         VisualBank bank,
-        bool isActive)
+        bool isVisible)
     {
         GameObject[] roomObjects;
 
@@ -406,35 +467,62 @@ public class FractalUniverseManager : MonoBehaviour
 
         foreach(GameObject roomObject in roomObjects)
         {
-            if(roomObject != null)
+            if(roomObject == null)
             {
-                roomObject.SetActive(isActive);
+                continue;
+            }
+
+            KochRoomVisibility visibility =
+                roomObject.GetComponent<KochRoomVisibility>();
+
+            if(visibility != null)
+            {
+                visibility.SetVisualVisible(isVisible);
             }
         }
     }
 
-    //Helper - clear traversal path, disables all rooms, show root visual
+    //shows/hides the root's own visual. Uses rootVisibility if assigned
+    //otherwise falls back to GameObject.SetActive on rootVisual directly
+    private void SetRootVisible(bool isVisible)
+    {
+        if(rootVisibility != null)
+        {
+            rootVisibility.SetVisualVisible(isVisible);
+            return;
+        }
+
+        if(rootVisual != null)
+        {
+            rootVisual.SetActive(isVisible);
+        }
+    }
+
+    //Helper - clear traversal path, hides all room visuals, show root visual
     private void ResetToRoot()
     {
         path.Clear();
 
-        SetBankActive(
+        SetBankVisualsVisible(
             VisualBank.Odd,
             false
         );
 
-        SetBankActive(
+        SetBankVisualsVisible(
             VisualBank.Even,
             false
         );
 
-        if(rootVisual != null)
-        {
-            rootVisual.SetActive(true);
-        }
+        SetRootVisible(true);
 
         activeRoomBank =
             VisualBank.None;
+
+        activeRoomNode =
+            null;
+
+        activeRoomVisibility =
+            null;
 
         currentState =
             TraversalState.Exploration;
@@ -539,16 +627,34 @@ public class FractalUniverseManager : MonoBehaviour
             );
         }
 
+        if(rootVisibility == null)
+        {
+            Debug.LogWarning(
+                "No RootVisibility assigned - falling back to GameObject.SetActive on " +
+                "rootVisual.",
+                this
+            );
+        }
+
         if(rootMotifLayout == null)
         {
             Debug.LogWarning(
                 "RootMotifLayout has not been assigned.",
                 this
             );
-        }        
+        }
+
+        if(rootMotifNode == null)
+        {
+            Debug.LogWarning(
+                "RootMotifNode has not been assigned - child transitions will fail. " +
+                "Assign the root's KochMotifNode component.",
+                this
+            );
+        }
     }
 
-    //helper - validate selected roomank array of errors
+    //helper - validate selected room bank array of errors
     private void ValidateRoomBank(
         GameObject[] roomObjects,
         string bankName)
@@ -590,11 +696,54 @@ public class FractalUniverseManager : MonoBehaviour
                     ").",
                     this
                 );
+
+                continue;
+            }
+
+            if(roomObjects[i].GetComponent<KochMotifNode>() == null)
+            {
+                Debug.LogWarning(
+                    bankName +
+                    " room bank object at index " +
+                    i +
+                    " (" +
+                    GetLetterNameSafely(i) +
+                    ") has no KochMotifNode component.",
+                    this
+                );
+            }
+
+            if(roomObjects[i].GetComponent<KochRoomVisibility>() == null)
+            {
+                Debug.LogWarning(
+                    bankName +
+                    " room bank object at index " +
+                    i +
+                    " (" +
+                    GetLetterNameSafely(i) +
+                    ") has no KochRoomVisibility component.",
+                    this
+                );
+            }
+
+            if(roomObjects[i].GetComponentInChildren<RoomKochLayoutSettings>() == null)
+            {
+                Debug.LogWarning(
+                    bankName +
+                    " room bank object at index " +
+                    i +
+                    " (" +
+                    GetLetterNameSafely(i) +
+                    ") has no RoomKochLayoutSettings component " +
+                    "(searched self and children) - normal scale will fall back to " +
+                    "whatever localScale the object happens to have.",
+                    this
+                );
             }
         }
     }
 
-    //helper - return valid letter name for index or "unknown" if not in range.
+    //helper - return valid letter name for index or "unknown" if not in range
     private string GetLetterNameSafely(
         int letterIndex)
     {
@@ -610,243 +759,171 @@ public class FractalUniverseManager : MonoBehaviour
         ];
     }
 
-    //helper - solve world-space pos and radius target motif for given path & letter
-    //checks from the root or current room
-    private bool TryGetTargetMotif(
-    List<int> targetPath,
-    int targetLetterIndex,
-    out Vector3 targetPosition,
-    out float targetRadius)
+    //Helper to read normal scale. Uses GetComponentInChildren since RoomKochLayoutSettings may
+    //live on a child "RoomVisual" object rather than on the room's top-level container itself
+    private Vector3 GetRoomNormalLocalScale(GameObject room)
     {
-        targetPosition =
-            Vector3.zero;
 
-        targetRadius =
-            0f;
+        RoomKochLayoutSettings settings =
+            room.GetComponentInChildren<RoomKochLayoutSettings>();
 
-        if(targetPath.Count == 1)
+        if(settings != null)
         {
-            if(rootMotifLayout == null)
-            {
-                Debug.LogWarning(
-                    "RootMotifLayout is missing.",
-                    this
-                );
-
-                return false;
-            }
-
-            RootMotifData rootMotif =
-                rootMotifLayout.GetMotif(
-                    targetLetterIndex
-                );
-
-            if(rootMotif == null)
-            {
-                return false;
-            }
-
-            targetPosition =
-                rootMotifLayout.GetMotifWorldPosition(
-                    targetLetterIndex
-                );
-
-            targetRadius =
-                rootMotifLayout.GetMotifWorldRadius(
-                    targetLetterIndex
-                );
-
-            return true;
+            return settings.normalLocalScale;
         }
 
-        if(activeRoomBank == VisualBank.None)
+        //Fallback to the game objs original scale
+        return room.transform.localScale;
+    }
+
+    // Prepares incoming room for a CHILD transition by attaching it under the current node
+    // via KochMotifNode.AttachChild
+    private bool SetupRoomZoomIn(
+        List<int> targetPath,
+        VisualBank incomingBank,
+        out GameObject incomingRoom,
+        out Vector3 normalLocalScale,
+        out Vector3 fittedLocalScale)
+    {
+        incomingRoom = null;
+        normalLocalScale = Vector3.one;
+        fittedLocalScale = Vector3.one;
+
+        if(targetPath.Count == 0)
         {
+            Debug.LogWarning(
+                "SetupRoomZoomIn called with empty targetPath; " +
+                "no room to animate.",
+                this
+            );
+
             return false;
         }
 
-        if(CurrentLetterIndex < 0)
-        {
-            return false;
-        }
+        int targetLetterIndex =
+            targetPath[targetPath.Count - 1];
 
-        GameObject currentRoom =
+        incomingRoom =
             GetRoomObject(
-                activeRoomBank,
-                CurrentLetterIndex
-            );
-
-        if(currentRoom == null)
-        {
-            return false;
-        }
-
-        RoomMotifLayout currentLayout =
-            currentRoom.GetComponent<RoomMotifLayout>();
-
-        if(currentLayout == null)
-        {
-            Debug.LogWarning(
-                "Current room has no RoomMotifLayout.",
-                currentRoom
-            );
-
-            return false;
-        }
-
-        RoomMotifData roomMotif =
-            currentLayout.GetMotifForLetter(
+                incomingBank,
                 targetLetterIndex
             );
 
-        if(roomMotif == null)
+        if(incomingRoom == null)
         {
-            Debug.LogWarning(
-                "Target letter was not found in the " +
-                "current room motif layout.",
-                currentRoom
+            Debug.LogError(
+                "SetupRoomZoomIn: Incoming room is null for letter index " +
+                targetLetterIndex +
+                " in bank " +
+                incomingBank,
+                this
             );
 
             return false;
         }
 
-        targetPosition =
-            currentLayout.GetMotifWorldPositionForLetter(
-                targetLetterIndex
+        KochMotifNode incomingNode =
+            incomingRoom.GetComponent<KochMotifNode>();
+
+        if(incomingNode == null)
+        {
+            Debug.LogError(
+                "SetupRoomZoomIn: incoming room " +
+                incomingRoom.name +
+                " has no KochMotifNode.",
+                this
             );
 
-        targetRadius =
-            GetRoomMotifWorldRadius(
-                currentLayout,
-                roomMotif
+            return false;
+        }
+
+        // Determine which node we are attaching 
+        KochMotifNode parentNode =
+            targetPath.Count == 1
+                ? rootMotifNode
+                : activeRoomNode;
+
+        if(parentNode == null)
+        {
+            Debug.LogError(
+                "SetupRoomZoomIn: no parent KochMotifNode available " +
+                "(root node or active room node is missing).",
+                this
             );
+
+            return false;
+        }
+
+        // Root parents index children by letter (0..5). Room parents index children by slot
+        // (0=previous,1=self,2=next) - resolve the letter to the correct slot automatically
+        int slotOrLetterIndex =
+            targetPath.Count == 1
+                ? targetLetterIndex
+                : GetChildSlotForLetter(parentNode, targetLetterIndex);
+
+        if(slotOrLetterIndex < 0)
+        {
+            Debug.LogError(
+                "SetupRoomZoomIn: letter " +
+                GetLetterNameSafely(targetLetterIndex) +
+                " is not a valid child slot of the current parent node.",
+                this
+            );
+
+            return false;
+        }
+
+        // capture the normal (fully zoomed-in) scale BEFORE attaching/fitting
+        normalLocalScale =
+            GetRoomNormalLocalScale(
+                incomingRoom
+            );
+
+        // AttachChild performs the real SetParent + sets localPosition/localRotation/localScale
+        // to the CORRECT final values in one call
+        parentNode.AttachChild(
+            incomingNode,
+            slotOrLetterIndex
+        );
+
+        fittedLocalScale =
+            incomingRoom.transform.localScale;
 
         return true;
     }
 
-
-    //Helper - convert motif’s local target radius into world space using layout’s set scale
-    private float GetRoomMotifWorldRadius(
-    RoomMotifLayout layout,
-    RoomMotifData motif)
+    //Helper - given a room-mode parent node, find which child slot (0/1/2) a target letter
+    //occupies. Returns -1 if not found
+    private int GetChildSlotForLetter(
+        KochMotifNode parentNode,
+        int targetLetterIndex)
     {
-        float averageScale =
-            (
-                Mathf.Abs(layout.transform.lossyScale.x)
-                +
-                Mathf.Abs(layout.transform.lossyScale.y)
-            ) * 0.5f;
-
-        return motif.targetRadius *
-            averageScale;
-    }
-
-    //Helper - scales and pos incoming room so layout matches target motif’s world radius/pos
-    private void AlignIncomingRoom(
-      GameObject incomingRoom,
-      Vector3 targetPosition,
-      float targetRadius)
-    {
-        if(incomingRoom == null)
+        if(parentNode.IsRootNode)
         {
-            return;
+            return targetLetterIndex;
         }
 
-        RoomMotifLayout incomingLayout =
-            incomingRoom.GetComponent<RoomMotifLayout>();
-
-        if(incomingLayout == null)
-        {
-            Debug.LogWarning(
-                "Incoming room has no RoomMotifLayout.",
-                incomingRoom
+        int[] childLetters =
+            FractalNode.GetChildLetters(
+                parentNode.RoomLetterIndex
             );
 
-            return;
+        for(int slot = 0; slot < childLetters.Length; slot++)
+        {
+            if(childLetters[slot] == targetLetterIndex)
+            {
+                return slot;
+            }
         }
 
-        float incomingRadius =
-            incomingLayout.GetLocalRoomRadius();
-
-        if(incomingRadius <= 0f)
-        {
-            Debug.LogWarning(
-                "Incoming room radius is invalid.",
-                incomingRoom
-            );
-
-            return;
-        }
-
-        float parentScale =
-            GetAverageParentScale(
-                incomingRoom.transform
-            );
-
-        if(parentScale <= 0f)
-        {
-            parentScale = 1f;
-        }
-
-        float requiredLocalScale =
-            targetRadius /
-            (incomingRadius * parentScale);
-
-        incomingRoom.transform.localScale =
-            Vector3.one * requiredLocalScale;
-
-        Vector3 correctedTargetPosition =
-            RotateTargetPosition(
-                targetPosition
-            );
-
-        incomingRoom.transform.position =
-            correctedTargetPosition;
-
-        Vector3 roomCenterWorld =
-            incomingLayout.GetRoomWorldCenter();
-
-        Vector3 centerOffset =
-            roomCenterWorld -
-            incomingRoom.transform.position;
-
-        incomingRoom.transform.position -=
-            centerOffset;
+        return -1;
     }
 
-    //Helper - calculate avg XY scale factor for incoming room’s parent transform
-    private float GetAverageParentScale(
-    Transform roomTransform)
-    {
-        if(roomTransform.parent == null)
-            return 1f;
-
-        Vector3 parentScale =
-            roomTransform.parent.lossyScale;
-
-        return (
-            Mathf.Abs(parentScale.x)
-            +
-            Mathf.Abs(parentScale.y)
-        ) * 0.5f;
-    }
-
-    //Helper - apply specific XY rotation/flip required correct room target position offset bug
-    private Vector3 RotateTargetPosition(
-    Vector3 originalPosition)
-    {
-        return new Vector3(
-            -originalPosition.y,
-            originalPosition.x,
-            originalPosition.z
-        );
-    }
-
-    private IEnumerator ZoomTransitionCoroutine(
+    private IEnumerator ZoomIntoChildCoroutine(
        List<int> targetPath,
-       VisualBank incomingBank,
-       bool zoomIntoChild)
+       VisualBank incomingBank)
     {
-        // If going back to root directly, no zoom, just complete
+        // Root target has no child room to zoom into
         if(targetPath.Count == 0)
         {
             CompleteTransition(
@@ -857,27 +934,14 @@ public class FractalUniverseManager : MonoBehaviour
             yield break;
         }
 
-        int targetLetterIndex =
-            targetPath[targetPath.Count - 1];
-
-        GameObject incomingRoom =
-            GetRoomObject(
+        if(!SetupRoomZoomIn(
+                targetPath,
                 incomingBank,
-                targetLetterIndex
-            );
-
-        if(incomingRoom == null)
+                out GameObject incomingRoom,
+                out Vector3 normalLocalScale,
+                out Vector3 fittedLocalScale))
         {
-            Debug.LogError(
-                "ZoomTransitionCoroutine: " +
-                "Incoming room is null for letter index " +
-                targetLetterIndex +
-                " in bank " +
-                incomingBank,
-                this
-            );
-
-            // Fallback to instant complete, just in case
+            // Fallback: just complete instantly
             CompleteTransition(
                 targetPath,
                 incomingBank
@@ -889,69 +953,21 @@ public class FractalUniverseManager : MonoBehaviour
         Transform roomTransform =
             incomingRoom.transform;
 
-        // capture the normal scale BEFORE any fitting
-        Vector3 normalLocalScale =
-            GetRoomNormalLocalScale(
-                incomingRoom
-            );
+        // zoom in: start small on motif, grow to normal room scale
+        // Position/rotation ALREADY correct
+        // Only localScale is animated, relative to new parent
+        // Stops drift/compounding bugs with old manual world-space approach
+        Vector3 startScale =
+            fittedLocalScale;
 
-        // Resolve the target motif (pos + radius)
-        bool targetFound =
-            TryGetTargetMotif(
-                targetPath,
-                targetLetterIndex,
-                out Vector3 targetPosition,
-                out float targetRadius
-            );
+        Vector3 endScale =
+            normalLocalScale;
 
-        if(!targetFound)
-        {
-            roomTransform.localScale =
-                normalLocalScale;
+        float duration =
+            zoomInDuration;
 
-            CompleteTransition(
-                targetPath,
-                incomingBank
-            );
-
-            yield break;
-        }
-
-        // Fit room to motif 
-        AlignIncomingRoom(
-            incomingRoom,
-            targetPosition,
-            targetRadius
-        );
-
-        // Capture fitted scale AFTER alignment
-        Vector3 fittedLocalScale =
-            roomTransform.localScale;
-
-        // Decide animation direction - in/out
-        Vector3 startScale;
-        Vector3 endScale;
-        float duration;
-        AnimationCurve curve;
-
-        if(zoomIntoChild)
-        {
-            // root -> child
-            // start small on motif, grow to normal room scale
-            startScale = fittedLocalScale;
-            endScale = normalLocalScale;
-            duration = zoomInDuration;
-            curve = zoomInCurve;
-        }
-        else
-        {
-            // child -> parent
-            //start at normal, shrink into the motif
-            startScale = normalLocalScale;
-            endScale = fittedLocalScale;
-            duration = zoomOutDuration;
-            curve = zoomOutCurve;
-        }
+        AnimationCurve curve =
+            zoomInCurve;
 
         roomTransform.localScale =
             startScale;
@@ -980,26 +996,155 @@ public class FractalUniverseManager : MonoBehaviour
         roomTransform.localScale =
             endScale;
 
-        // Complete logical traversal 
+        Debug.Log(
+    "ZoomIntoChildCoroutine (before CompleteTransition): " +
+    incomingRoom.name +
+    " position=" + roomTransform.position +
+    ", localPosition=" + roomTransform.localPosition +
+    ", localScale=" + roomTransform.localScale,
+    this
+);
+
         CompleteTransition(
             targetPath,
             incomingBank
         );
     }
 
-    //Helper to read normal scale
-    private Vector3 GetRoomNormalLocalScale(GameObject room)
+    private IEnumerator ZoomOutToParentCoroutine(
+        List<int> targetPath,
+        VisualBank incomingBank)
     {
-        
-        RoomKochLayoutSettings settings =
-            room.GetComponent<RoomKochLayoutSettings>();
-
-        if(settings != null)
+        // For parent transitions, targetPath can be root (count == 0) or a higher-level room
+        if(path.Count == 0)
         {
-            return settings.normalLocalScale;
+            // Already at root, nothing to zoom out
+            CompleteTransition(
+                targetPath,
+                incomingBank
+            );
+
+            yield break;
         }
 
-        //Fallback to the game objs original scale
-        return room.transform.localScale;
+        // When going to root, we still need the current child room to zoom out
+        // Use current letter index to get the room we are zooming from
+        int currentLetterIndex =
+            CurrentLetterIndex;
+
+        if(currentLetterIndex < 0)
+        {
+            CompleteTransition(
+                targetPath,
+                incomingBank
+            );
+
+            yield break;
+        }
+
+        GameObject currentRoom =
+            GetRoomObject(
+                activeRoomBank,
+                currentLetterIndex
+            );
+
+        if(currentRoom == null)
+        {
+            CompleteTransition(
+                targetPath,
+                incomingBank
+            );
+
+            yield break;
+        }
+
+        Transform roomTransform =
+            currentRoom.transform;
+
+        Vector3 normalLocalScale =
+            GetRoomNormalLocalScale(
+                currentRoom
+            );
+
+        // FIX: fittedLocalScale can NO LONGER be read from roomTransform.localScale here      
+        Vector3 fittedLocalScale =
+            normalLocalScale;
+
+        if(activeRoomNode != null &&
+            activeRoomNode.CurrentParentNode != null)
+        {
+            KochMotifNode parentNode =
+                activeRoomNode.CurrentParentNode;
+
+            int slotOrLetterIndex =
+                GetChildSlotForLetter(
+                    parentNode,
+                    currentLetterIndex
+                );
+
+            if(slotOrLetterIndex >= 0 &&
+                parentNode.TryGetChildFittedLocalScale(
+                    activeRoomNode,
+                    slotOrLetterIndex,
+                    out float requiredScale))
+            {
+                fittedLocalScale =
+                    Vector3.one * requiredScale;
+            }
+            else
+            {
+                Debug.LogWarning(
+                    "ZoomOutToParentCoroutine: could not re-derive fitted scale for " +
+                    currentRoom.name +
+                    " - falling back to normalLocalScale (no shrink animation will be visible).",
+                    this
+                );
+            }
+        }
+
+        // zoom out - start at normal, shrink into motif.
+        Vector3 startScale =
+            normalLocalScale;
+
+        Vector3 endScale =
+            fittedLocalScale;
+
+        roomTransform.localScale =
+            startScale;
+
+        float duration =
+            zoomOutDuration;
+
+        AnimationCurve curve =
+            zoomOutCurve;
+
+        float elapsed = 0f;
+
+        while(elapsed < duration)
+        {
+            float t =
+                elapsed / duration;
+
+            float eased =
+                curve.Evaluate(t);
+
+            roomTransform.localScale =
+                Vector3.LerpUnclamped(
+                    startScale,
+                    endScale,
+                    eased
+                );
+
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        roomTransform.localScale =
+            endScale;
+
+        CompleteTransition(
+            targetPath,
+            incomingBank
+        );
     }
 }

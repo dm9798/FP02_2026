@@ -217,7 +217,7 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
         motifContainer = container.transform;
     }
 
-    
+    //and this one
     private void ClearMotifContainer()
     {
         for(int i = motifContainer.childCount - 1; i >= 0; i--)

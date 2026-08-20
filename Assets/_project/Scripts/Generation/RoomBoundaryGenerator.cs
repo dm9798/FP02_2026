@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(RootKochLayoutSettings))]
+//[RequireComponent(typeof(RootKochLayoutSettings))]
 public class RoomBoundaryGenerator : MonoBehaviour
 {
     public enum RoomLetter
@@ -12,16 +12,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [Header("Room Identity")]
     [SerializeField] private RoomLetter roomLetter = RoomLetter.A;
 
-    //[Header("Hexagon Settings")]
-    //[SerializeField] private Vector2 center = Vector2.zero;
-    //[SerializeField] private float radius = 3f;
-
-    //[Header("Parent Edge Tuning")]
-    //[SerializeField] private float gapRatio = 0.15f;
-    //[SerializeField] private float widenRatio = -0.2f;
-
     [Header("Zoom Transition Wiring")]
-    [SerializeField] private FractalZoomController zoomController;
     [SerializeField] private FractalNode ownerNode;
 
     [Header("Edge Visuals")]
@@ -35,6 +26,12 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     private RoomKochLayoutSettings layoutSettings;
 
+    
+    //public Vector2[] ChildAttachLocalPoints { get; private set; } = new Vector2[3];
+
+    public Vector2[] ChildEmergeLocalPoints { get; private set; } = new Vector2[3];
+
+
     private void Awake()
     {
         layoutSettings = GetComponent<RoomKochLayoutSettings>();
@@ -42,9 +39,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     private void Start()
     {
-        
         GenerateEdges();
-        //Debug.Log("room boundary starting...");
+        GenerateChildEmergePoints();
     }
 
     private int GetRotationSteps()
@@ -136,6 +132,13 @@ public class RoomBoundaryGenerator : MonoBehaviour
         int[] childLetters =
             FractalNode.GetChildLetters(rotationSteps);
 
+       
+        //TO BE DELETED - using ChildEmergePoints approach instead
+        //ChildAttachLocalPoints[0] = (hexPoints[0] + hexPoints[1]) / 2f;
+        //ChildAttachLocalPoints[1] = (hexPoints[1] + hexPoints[2]) / 2f;
+        //Debug.Log("ChildAttachLocalPoints[1] =" +ChildAttachLocalPoints[1] + gameObject.name);
+        //ChildAttachLocalPoints[2] = (hexPoints[2] + hexPoints[3]) / 2f;
+
         CreateEdge(
             hexPoints[0],
             hexPoints[1],
@@ -167,6 +170,41 @@ public class RoomBoundaryGenerator : MonoBehaviour
             isReturnEdge: true,
             targetLetterIndex: -1
         );
+    }
+
+    //function to set centre point where child motifs emerge from motif
+    //no collision behaviour and NOT related to boundary edge collisions!!!!
+    //level 1 and greater
+    private void GenerateChildEmergePoints()
+    {
+        int rotationSteps = GetRotationSteps();
+        float rotationAngle = rotationSteps * 60f;
+
+        Vector2[] baseEmergeHexPoints = new Vector2[4];
+
+        for(int i = 0; i < baseEmergeHexPoints.Length; i++)
+        {
+            float angle = i * 60f;
+
+            baseEmergeHexPoints[i] = layoutSettings.center + layoutSettings.childMotifEmergeRadius * new Vector2(
+                Mathf.Cos(angle * Mathf.Deg2Rad),
+                Mathf.Sin(angle * Mathf.Deg2Rad)
+            );
+        }
+
+        Vector2[] emergeHexPoints = new Vector2[4];
+
+        for(int i = 0; i < emergeHexPoints.Length; i++)
+        {
+            emergeHexPoints[i] = RotatePoint(
+                baseEmergeHexPoints[i],
+                rotationAngle
+            );
+        }
+
+        ChildEmergeLocalPoints[0] = (emergeHexPoints[0] + emergeHexPoints[1]) / 2f;
+        ChildEmergeLocalPoints[1] = (emergeHexPoints[1] + emergeHexPoints[2]) / 2f;
+        ChildEmergeLocalPoints[2] = (emergeHexPoints[2] + emergeHexPoints[3]) / 2f;
     }
 
     private void CreateEdge(
@@ -202,9 +240,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
         trigger.targetLetterIndex = targetLetterIndex;
         trigger.ownerNode = ownerNode;
         trigger.universeManager = universeManager;
-
-        trigger.zoomController = zoomController;
-
+                
         LineRenderer line =
             edgeObject.AddComponent<LineRenderer>();
 

@@ -119,6 +119,210 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &17617691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17617693}
+  - component: {fileID: 17617692}
+  - component: {fileID: 17617694}
+  m_Layer: 0
+  m_Name: TEST_RootAligner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &17617692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17617691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 1
+  ownRadius: 5
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 0
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!4 &17617693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17617691}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 603830095}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &17617694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17617691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 1
+  roomLetterIndex: 0
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!1 &27303152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 27303153}
+  - component: {fileID: 27303157}
+  - component: {fileID: 27303156}
+  - component: {fileID: 27303155}
+  - component: {fileID: 27303154}
+  m_Layer: 0
+  m_Name: Room_Visual_Even_E
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &27303153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27303152}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1795815087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &27303154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27303152}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &27303155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27303152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 2
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &27303156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27303152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 4
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &27303157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27303152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 4
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
 --- !u!1 &53977796
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +503,226 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestPlayerMovement
   speed: 5
+--- !u!1 &103234863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 103234867}
+  - component: {fileID: 103234866}
+  - component: {fileID: 103234865}
+  - component: {fileID: 103234864}
+  m_Layer: 0
+  m_Name: Room_Container_Even_B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &103234864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103234863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 5
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 700085901}
+  - {fileID: 1161751973}
+  - {fileID: 199000453}
+--- !u!114 &103234865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103234863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 5
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &103234866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103234863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 1870179802}
+  disableCollidersWhenHidden: 1
+--- !u!4 &103234867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103234863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1870179802}
+  m_Father: {fileID: 368676367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &127774539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 127774540}
+  - component: {fileID: 127774544}
+  - component: {fileID: 127774543}
+  - component: {fileID: 127774542}
+  - component: {fileID: 127774541}
+  m_Layer: 0
+  m_Name: Room_Visual_Odd_C
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &127774540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127774539}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 700085902}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &127774541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127774539}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &127774542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127774539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 4
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &127774543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127774539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 2
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &127774544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127774539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 2
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
 --- !u!1 &191326585
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,15 +735,13 @@ GameObject:
   - component: {fileID: 191326588}
   - component: {fileID: 191326587}
   - component: {fileID: 191326590}
-  - component: {fileID: 191326589}
-  - component: {fileID: 191326591}
   m_Layer: 0
-  m_Name: SnowflakeRoom_A
+  m_Name: Room_Visual_Odd_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &191326586
 Transform:
   m_ObjectHideFlags: 0
@@ -333,7 +755,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2035688132}
+  m_Father: {fileID: 199000451}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &191326587
 MonoBehaviour:
@@ -374,7 +796,7 @@ MonoBehaviour:
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
---- !u!114 &191326589
+--- !u!114 &191326590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,6 +804,345 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191326585}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 0
+  childMotifRadiusRatio: 0.33333334
+--- !u!1 &199000450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 199000451}
+  - component: {fileID: 199000452}
+  - component: {fileID: 199000454}
+  - component: {fileID: 199000453}
+  m_Layer: 0
+  m_Name: Room_Container_Odd_A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &199000451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199000450}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 191326586}
+  m_Father: {fileID: 2035688132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &199000452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199000450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 191326586}
+  disableCollidersWhenHidden: 1
+--- !u!114 &199000453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199000450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 0
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 103234864}
+  - {fileID: 1945783072}
+  - {fileID: 1377208695}
+--- !u!114 &199000454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199000450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 0
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!1 &302024616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 302024617}
+  - component: {fileID: 302024618}
+  - component: {fileID: 302024620}
+  - component: {fileID: 302024619}
+  m_Layer: 0
+  m_Name: Root_Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &302024617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302024616}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 570662203}
+  - {fileID: 1544101027}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &302024618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302024616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 570662203}
+  disableCollidersWhenHidden: 1
+--- !u!114 &302024619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302024616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 1
+  roomLetterIndex: 0
+  rootChildNodes:
+  - {fileID: 199000453}
+  - {fileID: 1871547238}
+  - {fileID: 389059100}
+  - {fileID: 2055701410}
+  - {fileID: 700085901}
+  - {fileID: 1161751973}
+  roomChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &302024620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302024616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 1
+  ownRadius: 5
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 0
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!1 &344302702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344302703}
+  - component: {fileID: 344302707}
+  - component: {fileID: 344302706}
+  - component: {fileID: 344302705}
+  m_Layer: 0
+  m_Name: Room_Visual_Even_A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344302703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344302702}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1945783073}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344302705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344302702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 0
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &344302706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344302702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 0
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &344302707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344302702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 0
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!1 &352269486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352269487}
+  - component: {fileID: 352269491}
+  - component: {fileID: 352269490}
+  - component: {fileID: 352269489}
+  - component: {fileID: 352269488}
+  m_Layer: 0
+  m_Name: Room_Visual_Odd_E
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &352269487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352269486}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 389059101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &352269488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352269486}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
   m_Name: 
@@ -405,13 +1166,13 @@ MonoBehaviour:
     localPosition: {x: 0, y: 0}
     targetRadius: 0
     scaleRatio: 0
---- !u!114 &191326590
+--- !u!114 &352269489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191326585}
+  m_GameObject: {fileID: 352269486}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
@@ -420,31 +1181,260 @@ MonoBehaviour:
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
-  boundaryRadius: 5
+  boundaryRadius: 1.8
   gapRatio: 0.45
   widenRatio: -0.2
   roomRotationOffset: 0
-  roomLetterIndex: 0
+  roomLetterIndex: 2
   childMotifRadiusRatio: 0.33333334
---- !u!114 &191326591
+--- !u!114 &352269490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191326585}
+  m_GameObject: {fileID: 352269486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RootKochLayoutSettings
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 4
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &352269491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352269486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 4
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!1 &368676366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368676367}
+  m_Layer: 0
+  m_Name: EvenRoomBank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &368676367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368676366}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1945783073}
+  - {fileID: 1377208696}
+  - {fileID: 1795815087}
+  - {fileID: 656550432}
+  - {fileID: 576742848}
+  - {fileID: 103234867}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &389059099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389059101}
+  - component: {fileID: 389059103}
+  - component: {fileID: 389059102}
+  - component: {fileID: 389059100}
+  m_Layer: 0
+  m_Name: Room_Container_Odd_E
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &389059100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389059099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 2
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1377208695}
+  - {fileID: 1795815086}
+  - {fileID: 656550431}
+--- !u!4 &389059101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389059099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 352269487}
+  m_Father: {fileID: 2035688132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &389059102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389059099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
   center: {x: 0, y: 0}
-  snowflakeCircumradius: 5
-  motifAngleOffset: 90
-  motifRadiusRatio: 0.33333334
-  motifOrbitRadiusRatio: 0.6666667
-  boundaryRadius: 3
-  boundaryAngleOffset: 60
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 2
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &389059103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389059099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 352269487}
+  disableCollidersWhenHidden: 1
+--- !u!1 &450271386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 450271388}
+  - component: {fileID: 450271387}
+  - component: {fileID: 450271389}
+  m_Layer: 0
+  m_Name: TEST_RoomAligner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &450271387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450271386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 0
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!4 &450271388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450271386}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 603830095}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &450271389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450271386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 0
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +1541,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -595,9 +1585,8 @@ GameObject:
   - component: {fileID: 570662201}
   - component: {fileID: 570662204}
   - component: {fileID: 570662205}
-  - component: {fileID: 570662206}
   m_Layer: 0
-  m_Name: SnowflakeRoot
+  m_Name: RootVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +1733,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 302024617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &570662204
 MonoBehaviour:
@@ -784,55 +1773,140 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
---- !u!114 &570662206
+--- !u!1 &576742846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576742848}
+  - component: {fileID: 576742850}
+  - component: {fileID: 576742849}
+  - component: {fileID: 576742847}
+  m_Layer: 0
+  m_Name: Room_Container_Even_C
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &576742847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570662200}
+  m_GameObject: {fileID: 576742846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 224accda48ec444439b23999c8c1ca10, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RootMotifLayout
-  motifs:
-  - letterIndex: 0
-    letterName: 
-    angle: 0
-    localPosition: {x: 0, y: 0}
-    targetRadius: 0
-    scaleRatio: 0
-  - letterIndex: 0
-    letterName: 
-    angle: 0
-    localPosition: {x: 0, y: 0}
-    targetRadius: 0
-    scaleRatio: 0
-  - letterIndex: 0
-    letterName: 
-    angle: 0
-    localPosition: {x: 0, y: 0}
-    targetRadius: 0
-    scaleRatio: 0
-  - letterIndex: 0
-    letterName: 
-    angle: 0
-    localPosition: {x: 0, y: 0}
-    targetRadius: 0
-    scaleRatio: 0
-  - letterIndex: 0
-    letterName: 
-    angle: 0
-    localPosition: {x: 0, y: 0}
-    targetRadius: 0
-    scaleRatio: 0
-  - letterIndex: 0
-    letterName: 
-    angle: 0
-    localPosition: {x: 0, y: 0}
-    targetRadius: 0
-    scaleRatio: 0
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 4
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 2055701410}
+  - {fileID: 700085901}
+  - {fileID: 1161751973}
+--- !u!4 &576742848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576742846}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 732070030}
+  m_Father: {fileID: 368676367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &576742849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576742846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 4
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &576742850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576742846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 732070030}
+  disableCollidersWhenHidden: 1
+--- !u!1 &603830094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 603830095}
+  m_Layer: 0
+  m_Name: Misc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &603830095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603830094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.67483, y: 1.3586, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 17617693}
+  - {fileID: 450271388}
+  - {fileID: 618323288}
+  - {fileID: 1086229579}
+  - {fileID: 1944266825}
+  - {fileID: 996885981}
+  - {fileID: 707536860}
+  - {fileID: 1808471227}
+  - {fileID: 1102012958}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618323285
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,12 +1974,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618323285}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &618323289
 MonoBehaviour:
@@ -1031,6 +2105,320 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &647933460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 647933461}
+  - component: {fileID: 647933465}
+  - component: {fileID: 647933464}
+  - component: {fileID: 647933463}
+  - component: {fileID: 647933462}
+  m_Layer: 0
+  m_Name: Room_Visual_Odd_D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &647933461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647933460}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2055701411}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &647933462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647933460}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &647933463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647933460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 3
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &647933464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647933460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 3
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &647933465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647933460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 3
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!1 &656550430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656550432}
+  - component: {fileID: 656550434}
+  - component: {fileID: 656550433}
+  - component: {fileID: 656550431}
+  m_Layer: 0
+  m_Name: Room_Container_Even_D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &656550431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656550430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 3
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 389059100}
+  - {fileID: 2055701410}
+  - {fileID: 700085901}
+--- !u!4 &656550432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656550430}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1053884481}
+  m_Father: {fileID: 368676367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &656550433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656550430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 3
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &656550434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656550430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 1053884481}
+  disableCollidersWhenHidden: 1
+--- !u!1 &700085900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700085902}
+  - component: {fileID: 700085904}
+  - component: {fileID: 700085903}
+  - component: {fileID: 700085901}
+  m_Layer: 0
+  m_Name: Room_Container_Odd_C
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &700085901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700085900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 4
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 656550431}
+  - {fileID: 576742847}
+  - {fileID: 103234864}
+--- !u!4 &700085902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700085900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 127774540}
+  m_Father: {fileID: 2035688132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &700085903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700085900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 4
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &700085904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700085900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 127774540}
+  disableCollidersWhenHidden: 1
 --- !u!1 &707536859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,8 +2433,10 @@ GameObject:
   - component: {fileID: 707536864}
   - component: {fileID: 707536863}
   - component: {fileID: 707536865}
+  - component: {fileID: 707536866}
+  - component: {fileID: 707536867}
   m_Layer: 0
-  m_Name: SnowflakeRoom_C
+  m_Name: Odd_Room_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1061,11 +2451,11 @@ Transform:
   m_GameObject: {fileID: 707536859}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2035688132}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &707536861
 MonoBehaviour:
@@ -1165,7 +2555,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707536859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -1177,6 +2567,303 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &707536866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707536859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 4
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &707536867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707536859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 4
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1820174084}
+  - {fileID: 1603984665}
+  - {fileID: 760306966}
+--- !u!1 &731705208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731705209}
+  - component: {fileID: 731705213}
+  - component: {fileID: 731705212}
+  - component: {fileID: 731705211}
+  - component: {fileID: 731705210}
+  m_Layer: 0
+  m_Name: Room_Visual_Even_F
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731705209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731705208}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1377208696}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731705210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731705208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &731705211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731705208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 1
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &731705212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731705208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 5
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &731705213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731705208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 5
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!1 &732070029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 732070030}
+  - component: {fileID: 732070034}
+  - component: {fileID: 732070033}
+  - component: {fileID: 732070032}
+  - component: {fileID: 732070031}
+  m_Layer: 0
+  m_Name: Room_Visual_Even_C
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &732070030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732070029}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 576742848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &732070031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732070029}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &732070032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732070029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 4
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &732070033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732070029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 2
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &732070034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732070029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 2
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
 --- !u!1 &760306959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,8 +2878,10 @@ GameObject:
   - component: {fileID: 760306964}
   - component: {fileID: 760306963}
   - component: {fileID: 760306965}
+  - component: {fileID: 760306967}
+  - component: {fileID: 760306966}
   m_Layer: 0
-  m_Name: SnowflakeRoom_B
+  m_Name: Even_Room_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1311,7 +3000,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760306959}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -1323,6 +3012,51 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &760306966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760306959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 5
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 707536867}
+  - {fileID: 1808471234}
+  - {fileID: 0}
+--- !u!114 &760306967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760306959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 5
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
 --- !u!1 &996885980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,8 +3071,10 @@ GameObject:
   - component: {fileID: 996885985}
   - component: {fileID: 996885984}
   - component: {fileID: 996885986}
+  - component: {fileID: 996885988}
+  - component: {fileID: 996885987}
   m_Layer: 0
-  m_Name: SnowflakeRoom_D
+  m_Name: Odd_Room_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1353,11 +3089,11 @@ Transform:
   m_GameObject: {fileID: 996885980}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2035688132}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &996885982
 MonoBehaviour:
@@ -1457,7 +3193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996885980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -1469,6 +3205,177 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &996885987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996885980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 3
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1450745581}
+  - {fileID: 1820174084}
+  - {fileID: 1603984665}
+--- !u!114 &996885988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996885980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 3
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!1 &1053884480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1053884481}
+  - component: {fileID: 1053884485}
+  - component: {fileID: 1053884484}
+  - component: {fileID: 1053884483}
+  - component: {fileID: 1053884482}
+  m_Layer: 0
+  m_Name: Room_Visual_Even_D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1053884481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053884480}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 656550432}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1053884482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053884480}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1053884483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053884480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 3
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1053884484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053884480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 3
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &1053884485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053884480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 3
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
 --- !u!1 &1086229578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,8 +3390,10 @@ GameObject:
   - component: {fileID: 1086229583}
   - component: {fileID: 1086229582}
   - component: {fileID: 1086229584}
+  - component: {fileID: 1086229585}
+  - component: {fileID: 1086229586}
   m_Layer: 0
-  m_Name: SnowflakeRoom_F
+  m_Name: Odd_Room_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,11 +3408,11 @@ Transform:
   m_GameObject: {fileID: 1086229578}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2035688132}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1086229580
 MonoBehaviour:
@@ -1603,7 +3512,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086229578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -1615,6 +3524,51 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &1086229585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086229578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 1
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &1086229586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086229578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 1
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 2023569771}
+  - {fileID: 1910904839}
+  - {fileID: 1450745581}
 --- !u!1 &1102012957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +3584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1102012958
 Transform:
   m_ObjectHideFlags: 0
@@ -1639,8 +3593,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102012957}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1650,8 +3604,322 @@ Transform:
   - {fileID: 1820174078}
   - {fileID: 1603984659}
   - {fileID: 760306960}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1127710294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1127710295}
+  - component: {fileID: 1127710299}
+  - component: {fileID: 1127710298}
+  - component: {fileID: 1127710297}
+  - component: {fileID: 1127710296}
+  m_Layer: 0
+  m_Name: Room_Visual_Odd_F
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1127710295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127710294}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1871547239}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1127710296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127710294}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1127710297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127710294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 1
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1127710298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127710294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 5
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &1127710299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127710294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 5
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!1 &1161751972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161751976}
+  - component: {fileID: 1161751975}
+  - component: {fileID: 1161751974}
+  - component: {fileID: 1161751973}
+  m_Layer: 0
+  m_Name: Room_Container_Odd_B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1161751973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161751972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 5
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 576742847}
+  - {fileID: 103234864}
+  - {fileID: 1945783072}
+--- !u!114 &1161751974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161751972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 5
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &1161751975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161751972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 1638324017}
+  disableCollidersWhenHidden: 1
+--- !u!4 &1161751976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161751972}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1638324017}
+  m_Father: {fileID: 2035688132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1377208694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1377208696}
+  - component: {fileID: 1377208698}
+  - component: {fileID: 1377208697}
+  - component: {fileID: 1377208695}
+  m_Layer: 0
+  m_Name: Room_Container_Even_F
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1377208695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377208694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 1
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 199000453}
+  - {fileID: 1871547238}
+  - {fileID: 389059100}
+--- !u!4 &1377208696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377208694}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 731705209}
+  m_Father: {fileID: 368676367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1377208697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377208694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 1
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &1377208698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377208694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 731705209}
+  disableCollidersWhenHidden: 1
 --- !u!1 &1450745573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,8 +3934,10 @@ GameObject:
   - component: {fileID: 1450745578}
   - component: {fileID: 1450745577}
   - component: {fileID: 1450745579}
+  - component: {fileID: 1450745580}
+  - component: {fileID: 1450745581}
   m_Layer: 0
-  m_Name: SnowflakeRoom_E
+  m_Name: Even_Room_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1786,7 +4056,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450745573}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -1798,6 +4068,82 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &1450745580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450745573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 2
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &1450745581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450745573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 2
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1086229586}
+  - {fileID: 1944266831}
+  - {fileID: 996885987}
+--- !u!1 &1544101024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544101027}
+  m_Layer: 0
+  m_Name: RootMotifNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1544101027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544101024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 302024617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1571473078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,7 +4162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1571473079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,7 +4318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571473078}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1993,8 +4339,10 @@ GameObject:
   - component: {fileID: 1603984663}
   - component: {fileID: 1603984662}
   - component: {fileID: 1603984664}
+  - component: {fileID: 1603984666}
+  - component: {fileID: 1603984665}
   m_Layer: 0
-  m_Name: SnowflakeRoom_C
+  m_Name: Even_Room_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2113,7 +4461,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603984658}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -2125,6 +4473,271 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &1603984665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603984658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 4
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 996885987}
+  - {fileID: 707536867}
+  - {fileID: 1808471234}
+--- !u!114 &1603984666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603984658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 4
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!1 &1638324016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1638324017}
+  - component: {fileID: 1638324021}
+  - component: {fileID: 1638324020}
+  - component: {fileID: 1638324019}
+  - component: {fileID: 1638324018}
+  m_Layer: 0
+  m_Name: Room_Visual_Odd_B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1638324017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638324016}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1161751976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1638324018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638324016}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1638324019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638324016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 5
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1638324020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638324016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 1
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &1638324021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638324016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 1
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
+--- !u!1 &1795815085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795815087}
+  - component: {fileID: 1795815089}
+  - component: {fileID: 1795815088}
+  - component: {fileID: 1795815086}
+  m_Layer: 0
+  m_Name: Room_Container_Even_E
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1795815086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795815085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 2
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1871547238}
+  - {fileID: 389059100}
+  - {fileID: 2055701410}
+--- !u!4 &1795815087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795815085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 27303153}
+  m_Father: {fileID: 368676367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1795815088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795815085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 2
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &1795815089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795815085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 27303153}
+  disableCollidersWhenHidden: 1
 --- !u!1 &1808471226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,8 +4752,10 @@ GameObject:
   - component: {fileID: 1808471231}
   - component: {fileID: 1808471230}
   - component: {fileID: 1808471232}
+  - component: {fileID: 1808471233}
+  - component: {fileID: 1808471234}
   m_Layer: 0
-  m_Name: SnowflakeRoom_B
+  m_Name: Odd_Room_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2155,11 +4770,11 @@ Transform:
   m_GameObject: {fileID: 1808471226}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2035688132}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1808471228
 MonoBehaviour:
@@ -2259,7 +4874,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808471226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -2271,6 +4886,51 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &1808471233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808471226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 5
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &1808471234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808471226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 5
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1603984665}
+  - {fileID: 760306966}
+  - {fileID: 2023569771}
 --- !u!1 &1820174077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,8 +4945,10 @@ GameObject:
   - component: {fileID: 1820174082}
   - component: {fileID: 1820174081}
   - component: {fileID: 1820174083}
+  - component: {fileID: 1820174085}
+  - component: {fileID: 1820174084}
   m_Layer: 0
-  m_Name: SnowflakeRoom_D
+  m_Name: Even_Room_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2405,7 +5067,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820174077}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -2417,6 +5079,177 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &1820174084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820174077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 3
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1944266831}
+  - {fileID: 996885987}
+  - {fileID: 707536867}
+--- !u!114 &1820174085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820174077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 3
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!1 &1870179801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1870179802}
+  - component: {fileID: 1870179806}
+  - component: {fileID: 1870179805}
+  - component: {fileID: 1870179804}
+  - component: {fileID: 1870179803}
+  m_Layer: 0
+  m_Name: Room_Visual_Even_B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1870179802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870179801}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 103234867}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1870179803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870179801}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e90ef2558734634086ca788622a237e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMotifLayout
+  motifs:
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+  - letterIndex: 0
+    letterName: 
+    angle: 0
+    localPosition: {x: 0, y: 0}
+    targetRadius: 0
+    scaleRatio: 0
+--- !u!114 &1870179804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870179801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e280d9c41f44fe0459ffceb4611d3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
+  center: {x: 0, y: 0}
+  normalLocalScale: {x: 1, y: 1, z: 1}
+  snowflakeRadius: 3
+  boundaryRadius: 1.8
+  gapRatio: 0.45
+  widenRatio: -0.2
+  roomRotationOffset: 0
+  roomLetterIndex: 5
+  childMotifRadiusRatio: 0.33333334
+--- !u!114 &1870179805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870179801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4725117c362c46a28bb416deee501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
+  roomLetter: 1
+  zoomController: {fileID: 0}
+  edgeMaterial: {fileID: 0}
+  edgeWidth: 0.05
+  normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+  parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  universeManager: {fileID: 1870460220}
+--- !u!114 &1870179806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870179801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dfefa57a1298408bc02fe440aaf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
+  roomLetter: 1
+  recursionDepth: 5
+  lineWidth: 0.05
+  motifContainer: {fileID: 0}
+  lineMaterial: {fileID: 0}
+  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  sortingLayerName: Default
+  sortingOrder: 0
 --- !u!1 &1870460219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,24 +5280,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractalUniverseManager
   rootVisual: {fileID: 570662200}
-  rootMotifLayout: {fileID: 570662206}
+  rootVisibility: {fileID: 302024618}
+  rootMotifLayout: {fileID: 0}
+  rootMotifNode: {fileID: 302024619}
   oddRoomObjects:
-  - {fileID: 191326585}
-  - {fileID: 1086229578}
-  - {fileID: 1944266824}
-  - {fileID: 996885980}
-  - {fileID: 707536859}
-  - {fileID: 1808471226}
+  - {fileID: 199000450}
+  - {fileID: 1871547237}
+  - {fileID: 389059099}
+  - {fileID: 2055701409}
+  - {fileID: 700085900}
+  - {fileID: 1161751972}
   evenRoomObjects:
-  - {fileID: 2023569763}
-  - {fileID: 1910904832}
-  - {fileID: 1450745573}
-  - {fileID: 1820174077}
-  - {fileID: 1603984658}
-  - {fileID: 760306959}
+  - {fileID: 1945783071}
+  - {fileID: 1377208694}
+  - {fileID: 1795815085}
+  - {fileID: 656550430}
+  - {fileID: 576742846}
+  - {fileID: 103234863}
   currentState: 0
   traversalCooldown: 0.2
-  zoomInDuration: 0.8
+  zoomInDuration: 2
   zoomInCurve:
     serializedVersion: 2
     m_Curve:
@@ -2529,6 +5364,100 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1871547237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871547239}
+  - component: {fileID: 1871547241}
+  - component: {fileID: 1871547240}
+  - component: {fileID: 1871547238}
+  m_Layer: 0
+  m_Name: Room_Container_Odd_F
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1871547238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871547237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 1
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1945783072}
+  - {fileID: 1377208695}
+  - {fileID: 1795815086}
+--- !u!4 &1871547239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871547237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1127710295}
+  m_Father: {fileID: 2035688132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1871547240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871547237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 1
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &1871547241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871547237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 1127710295}
+  disableCollidersWhenHidden: 1
 --- !u!1 &1910904832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,8 +5472,10 @@ GameObject:
   - component: {fileID: 1910904837}
   - component: {fileID: 1910904836}
   - component: {fileID: 1910904838}
+  - component: {fileID: 1910904840}
+  - component: {fileID: 1910904839}
   m_Layer: 0
-  m_Name: SnowflakeRoom_F
+  m_Name: Even_Room_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2663,7 +5594,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910904832}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -2675,6 +5606,51 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &1910904839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910904832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 1
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 0}
+  - {fileID: 1086229586}
+  - {fileID: 1944266831}
+--- !u!114 &1910904840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910904832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 1
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
 --- !u!1 &1944266824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,8 +5665,10 @@ GameObject:
   - component: {fileID: 1944266829}
   - component: {fileID: 1944266828}
   - component: {fileID: 1944266830}
+  - component: {fileID: 1944266832}
+  - component: {fileID: 1944266831}
   m_Layer: 0
-  m_Name: SnowflakeRoom_E
+  m_Name: Odd_Room_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2705,11 +5683,11 @@ Transform:
   m_GameObject: {fileID: 1944266824}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2035688132}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1944266826
 MonoBehaviour:
@@ -2809,7 +5787,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944266824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -2821,6 +5799,145 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &1944266831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944266824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 2
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1910904839}
+  - {fileID: 1450745581}
+  - {fileID: 1820174084}
+--- !u!114 &1944266832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944266824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 2
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!1 &1945783071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945783073}
+  - component: {fileID: 1945783075}
+  - component: {fileID: 1945783074}
+  - component: {fileID: 1945783072}
+  m_Layer: 0
+  m_Name: Room_Container_Even_A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1945783072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945783071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 0
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1161751973}
+  - {fileID: 199000453}
+  - {fileID: 1871547238}
+--- !u!4 &1945783073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945783071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 344302703}
+  m_Father: {fileID: 368676367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1945783074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945783071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 0
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &1945783075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945783071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 344302703}
+  disableCollidersWhenHidden: 1
 --- !u!1 &2023569763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,8 +5952,10 @@ GameObject:
   - component: {fileID: 2023569768}
   - component: {fileID: 2023569767}
   - component: {fileID: 2023569769}
+  - component: {fileID: 2023569770}
+  - component: {fileID: 2023569771}
   m_Layer: 0
-  m_Name: SnowflakeRoom_A
+  m_Name: Even_Room_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2955,7 +6074,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023569763}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ea69e4de45f6a4d8edc5bcca28ae40, type: 3}
   m_Name: 
@@ -2967,6 +6086,51 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &2023569770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023569763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 0
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &2023569771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023569763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 0
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1808471234}
+  - {fileID: 0}
+  - {fileID: 1086229586}
 --- !u!1 &2035688131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,14 +6160,108 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 191326586}
-  - {fileID: 1086229579}
-  - {fileID: 1944266825}
-  - {fileID: 996885981}
-  - {fileID: 707536860}
-  - {fileID: 1808471227}
+  - {fileID: 199000451}
+  - {fileID: 1871547239}
+  - {fileID: 389059101}
+  - {fileID: 2055701411}
+  - {fileID: 700085902}
+  - {fileID: 1161751976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2055701409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2055701411}
+  - component: {fileID: 2055701413}
+  - component: {fileID: 2055701412}
+  - component: {fileID: 2055701410}
+  m_Layer: 0
+  m_Name: Room_Container_Odd_D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2055701410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055701409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9e87ba35533b84b93f39263a341203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifNode
+  isRootNode: 0
+  roomLetterIndex: 3
+  rootChildNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomChildNodes:
+  - {fileID: 1795815086}
+  - {fileID: 656550431}
+  - {fileID: 576742847}
+--- !u!4 &2055701411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055701409}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 647933461}
+  m_Father: {fileID: 2035688132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2055701412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055701409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f11750572383e45a766d08a66c1ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
+  isRootMode: 0
+  ownRadius: 3
+  center: {x: 0, y: 0}
+  rootChildOrbitRadiusRatio: 0.6666667
+  rootChildTargetRadiusRatio: 0.33333334
+  roomLetterIndex: 3
+  roomChildTargetRadiusRatio: 0.33333334
+  extraRotationOffsetDegrees: 0
+--- !u!114 &2055701413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055701409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 647933461}
+  disableCollidersWhenHidden: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3011,9 +6269,9 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1870460221}
-  - {fileID: 570662203}
-  - {fileID: 618323288}
-  - {fileID: 53977798}
+  - {fileID: 302024617}
   - {fileID: 2035688132}
-  - {fileID: 1102012958}
+  - {fileID: 368676367}
+  - {fileID: 53977798}
   - {fileID: 1571473082}
+  - {fileID: 603830095}

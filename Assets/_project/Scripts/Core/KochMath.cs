@@ -1,3 +1,8 @@
+/* 
+ * Procedural generation logic for the Koch Snowflake, based on the recursive construction of the Koch curve by Helge von Koch (1904).
+ * Algorithm reference: https://en.wikipedia.org/wiki/Koch_snowflake
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 
