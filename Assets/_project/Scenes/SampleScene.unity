@@ -284,6 +284,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 2
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &27303156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +298,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 4
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -684,6 +684,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 4
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &127774543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,7 +698,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 2
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -770,7 +770,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 0
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -817,6 +816,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 0
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!1 &199000450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,6 +1061,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 0
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &344302706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,7 +1075,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 0
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1187,6 +1187,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 2
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &352269490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 4
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1940,7 +1940,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 5
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2021,6 +2020,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 0
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,6 +2192,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 3
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &647933464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,7 +2206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 3
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2470,7 +2470,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 2
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2548,6 +2547,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 4
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &707536865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2699,6 +2699,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 1
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &731705212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2712,7 +2713,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 5
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2825,6 +2825,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 4
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &732070033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2838,7 +2839,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 2
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2915,7 +2915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 1
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2993,6 +2992,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 5
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &760306965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3108,7 +3108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 3
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3186,6 +3185,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 3
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &996885986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,6 +3337,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 3
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1053884484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3350,7 +3351,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 3
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3427,7 +3427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 5
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3505,6 +3504,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 1
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1086229584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3693,6 +3693,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 1
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1127710298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3706,7 +3707,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 5
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3971,7 +3971,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 4
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4049,6 +4048,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 2
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1450745579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4162,7 +4162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1571473079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4376,7 +4376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 2
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4454,6 +4453,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 4
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1603984664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4605,6 +4605,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 5
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1638324020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4618,7 +4619,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 1
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4789,7 +4789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 1
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4867,6 +4866,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 5
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1808471232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4982,7 +4982,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 3
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5060,6 +5059,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 3
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1820174083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5211,6 +5211,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 5
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1870179805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5224,7 +5225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 1
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5509,7 +5509,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 5
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5587,6 +5586,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 1
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1910904838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5702,7 +5702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 4
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5780,6 +5779,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 2
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &1944266830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5989,7 +5989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 0
-  zoomController: {fileID: 0}
   edgeMaterial: {fileID: 0}
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -6067,6 +6066,7 @@ MonoBehaviour:
   roomRotationOffset: 0
   roomLetterIndex: 0
   childMotifRadiusRatio: 0.33333334
+  childMotifEmergeRadius: 2.2
 --- !u!114 &2023569769
 MonoBehaviour:
   m_ObjectHideFlags: 0

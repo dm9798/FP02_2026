@@ -203,8 +203,11 @@ public class RoomBoundaryGenerator : MonoBehaviour
         }
 
         ChildEmergeLocalPoints[0] = (emergeHexPoints[0] + emergeHexPoints[1]) / 2f;
+        //Debug.Log("ChildEmergeLocalPoints[0]" + ChildEmergeLocalPoints[0] + "from " + gameObject.name);
         ChildEmergeLocalPoints[1] = (emergeHexPoints[1] + emergeHexPoints[2]) / 2f;
+        //Debug.Log("ChildEmergeLocalPoints[1]" + ChildEmergeLocalPoints[1] + "from " + gameObject.name);
         ChildEmergeLocalPoints[2] = (emergeHexPoints[2] + emergeHexPoints[3]) / 2f;
+        //Debug.Log("ChildEmergeLocalPoints[2]" + ChildEmergeLocalPoints[2] + "from " + gameObject.name);
     }
 
     private void CreateEdge(

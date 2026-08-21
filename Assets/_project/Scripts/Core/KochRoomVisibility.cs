@@ -55,6 +55,9 @@ public class KochRoomVisibility : MonoBehaviour
     {
         EnsureCache();
 
+        //Debug.Log("Checking state or cached LineRenderer/EdgeCollider2D references..." + ", gameObject.name: " + gameObject.name + 
+        //    ", visible: " + visible + ",  cachedLineRenderers.Length: " + cachedLineRenderers.Length);
+
         if(cachedLineRenderers != null)
         {
             foreach(LineRenderer lineRenderer in cachedLineRenderers)

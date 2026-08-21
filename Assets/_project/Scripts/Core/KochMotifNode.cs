@@ -243,15 +243,15 @@ public class KochMotifNode : MonoBehaviour
             Vector3.one * requiredLocalScale;
 
         Debug.Log(
-    "AttachChild: parent=" + gameObject.name +
-    ", parentLossyScale=" + transform.lossyScale +
-    ", parentWorldPos=" + transform.position +
-    ", child=" + childNode.name +
-    ", childLocalPosition=" + resolvedLocalPosition +
-    ", childLocalScale=" + childNode.transform.localScale +
-    ", childWorldPosAfter=" + childNode.transform.position,
-    this
-);
+            "AttachChild rotation check: parent=" + gameObject.name +
+            ", parentLetterIndex=" + roomLetterIndex +
+            ", child=" + childNode.name +
+            ", childLetterIndex=" + childNode.RoomLetterIndex +
+            ", slot=" + childSlotOrLetterIndex +
+            ", childLocalEulerZ=" + childNode.transform.eulerAngles.z +
+            ", childLocalRotationZ=" + childNode.transform.localRotation.eulerAngles.z,
+            this
+        );
 
         childNode.currentParentNode = this;
     }

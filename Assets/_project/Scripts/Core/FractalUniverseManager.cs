@@ -243,6 +243,8 @@ public class FractalUniverseManager : MonoBehaviour
                 incomingBank
             );
 
+            Debug.Log("Checking transition fires at: " + Time.frameCount + ", with gameObject: " + gameObject.name);
+
             StartCoroutine(
                 ZoomIntoChildCoroutine(
                     targetPath,
