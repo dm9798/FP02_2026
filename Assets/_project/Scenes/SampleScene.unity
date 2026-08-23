@@ -579,8 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 1870179802}
-  disableCollidersWhenHidden: 1
 --- !u!4 &103234867
 Transform:
   m_ObjectHideFlags: 0
@@ -864,8 +862,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 191326586}
-  disableCollidersWhenHidden: 1
 --- !u!114 &199000453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,7 +916,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 302024617}
-  - component: {fileID: 302024618}
   - component: {fileID: 302024620}
   - component: {fileID: 302024619}
   m_Layer: 0
@@ -947,20 +942,6 @@ Transform:
   - {fileID: 1544101027}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &302024618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 302024616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 570662203}
-  disableCollidersWhenHidden: 1
 --- !u!114 &302024619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,8 +1231,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368676366}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1261,7 +1242,7 @@ Transform:
   - {fileID: 656550432}
   - {fileID: 576742848}
   - {fileID: 103234867}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &389059099
 GameObject:
@@ -1355,8 +1336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 352269487}
-  disableCollidersWhenHidden: 1
 --- !u!1 &450271386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,6 +1564,7 @@ GameObject:
   - component: {fileID: 570662201}
   - component: {fileID: 570662204}
   - component: {fileID: 570662205}
+  - component: {fileID: 570662206}
   m_Layer: 0
   m_Name: RootVisual
   m_TagString: Untagged
@@ -1773,6 +1753,18 @@ MonoBehaviour:
   motifOrbitRadiusRatio: 0.6666667
   boundaryRadius: 3
   boundaryAngleOffset: 60
+--- !u!114 &570662206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570662200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
 --- !u!1 &576742846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,8 +1857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 732070030}
-  disableCollidersWhenHidden: 1
 --- !u!1 &603830094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,7 +1882,7 @@ Transform:
   m_GameObject: {fileID: 603830094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.67483, y: 1.3586, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1905,6 +1895,8 @@ Transform:
   - {fileID: 707536860}
   - {fileID: 1808471227}
   - {fileID: 1102012958}
+  - {fileID: 2035688132}
+  - {fileID: 368676367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618323285
@@ -2323,8 +2315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 1053884481}
-  disableCollidersWhenHidden: 1
 --- !u!1 &700085900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,8 +2407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 127774540}
-  disableCollidersWhenHidden: 1
 --- !u!1 &707536859
 GameObject:
   m_ObjectHideFlags: 0
@@ -3808,8 +3796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 1638324017}
-  disableCollidersWhenHidden: 1
 --- !u!4 &1161751976
 Transform:
   m_ObjectHideFlags: 0
@@ -3918,8 +3904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 731705209}
-  disableCollidersWhenHidden: 1
 --- !u!1 &1450745573
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,8 +4720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 27303153}
-  disableCollidersWhenHidden: 1
 --- !u!1 &1808471226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5280,7 +5262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractalUniverseManager
   rootVisual: {fileID: 570662200}
-  rootVisibility: {fileID: 302024618}
+  rootVisibility: {fileID: 570662206}
   rootMotifLayout: {fileID: 0}
   rootMotifNode: {fileID: 302024619}
   letterPrefabs:
@@ -5449,8 +5431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 1127710295}
-  disableCollidersWhenHidden: 1
 --- !u!1 &1910904832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5929,8 +5909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 344302703}
-  disableCollidersWhenHidden: 1
 --- !u!1 &2023569763
 GameObject:
   m_ObjectHideFlags: 0
@@ -6148,8 +6126,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035688131}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.67483, y: -1.3586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6159,7 +6137,7 @@ Transform:
   - {fileID: 2055701411}
   - {fileID: 700085902}
   - {fileID: 1161751976}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 603830095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055701409
 GameObject:
@@ -6253,8 +6231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 647933461}
-  disableCollidersWhenHidden: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6263,8 +6239,6 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1870460221}
   - {fileID: 302024617}
-  - {fileID: 2035688132}
-  - {fileID: 368676367}
   - {fileID: 53977798}
   - {fileID: 1571473082}
   - {fileID: 603830095}

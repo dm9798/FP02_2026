@@ -221,8 +221,7 @@ public class KochMotifNode : MonoBehaviour
 
         if(!isRootNode)
         {
-            RoomBoundaryGenerator boundaryGenerator =
-                GetComponentInChildren<RoomBoundaryGenerator>();
+            RoomBoundaryGenerator boundaryGenerator = GetComponentInChildren<RoomBoundaryGenerator>(true);
 
             if(boundaryGenerator != null &&
                 childSlotOrLetterIndex >= 0 &&

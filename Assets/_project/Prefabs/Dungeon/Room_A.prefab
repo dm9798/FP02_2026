@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7587344877670157463}
   - component: {fileID: 8266614911984598943}
   - component: {fileID: 9221668896636802076}
+  - component: {fileID: 6335845340866232860}
   m_Layer: 0
   m_Name: Room_Visual_A
   m_TagString: Untagged
@@ -94,6 +95,19 @@ MonoBehaviour:
   roomLetterIndex: 0
   childMotifRadiusRatio: 0.33333334
   childMotifEmergeRadius: 2.2
+--- !u!114 &6335845340866232860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2579959071902494614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+  roomVisualRoot: {fileID: 9110261058652846957}
 --- !u!1 &7941801464762749171
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +117,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2490872957060889614}
-  - component: {fileID: 234223675735716450}
   - component: {fileID: 491362085750155822}
   - component: {fileID: 3706564271842151743}
   m_Layer: 0
@@ -129,20 +142,6 @@ Transform:
   - {fileID: 9110261058652846957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &234223675735716450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7941801464762749171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 9110261058652846957}
-  disableCollidersWhenHidden: 1
 --- !u!114 &491362085750155822
 MonoBehaviour:
   m_ObjectHideFlags: 0

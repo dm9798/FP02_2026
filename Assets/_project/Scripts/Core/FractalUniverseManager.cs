@@ -288,7 +288,8 @@ public class FractalUniverseManager : MonoBehaviour
 
         Vector3 fittedLocalScale = childNode.transform.localScale;
 
-        KochRoomVisibility incomingVisibility = childNode.GetComponent<KochRoomVisibility>();
+        //KochRoomVisibility incomingVisibility = childNode.GetComponent<KochRoomVisibility>();
+        KochRoomVisibility incomingVisibility = childNode.GetComponentInChildren<KochRoomVisibility>(true);
 
         if(incomingVisibility != null)
             incomingVisibility.SetVisualVisible(true);
@@ -383,7 +384,8 @@ public class FractalUniverseManager : MonoBehaviour
 
         roomTransform.localScale = fittedLocalScale;
 
-        KochRoomVisibility leavingVisibility = currentRoomNode.GetComponent<KochRoomVisibility>();
+        //KochRoomVisibility leavingVisibility = currentRoomNode.GetComponent<KochRoomVisibility>();
+        KochRoomVisibility leavingVisibility = currentRoomNode.GetComponentInChildren<KochRoomVisibility>(true);
 
         if(leavingVisibility != null)
             leavingVisibility.SetVisualVisible(false);
@@ -399,7 +401,8 @@ public class FractalUniverseManager : MonoBehaviour
         else
         {
             KochMotifNode newActive = activeChain[activeChain.Count - 1];
-            KochRoomVisibility newVisibility = newActive.GetComponent<KochRoomVisibility>();
+            //KochRoomVisibility newVisibility = newActive.GetComponent<KochRoomVisibility>();
+            KochRoomVisibility newVisibility = newActive.GetComponentInChildren<KochRoomVisibility>(true);
 
             if(newVisibility != null)
                 newVisibility.SetVisualVisible(true);
