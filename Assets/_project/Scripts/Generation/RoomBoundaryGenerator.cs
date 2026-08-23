@@ -26,11 +26,10 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     private RoomKochLayoutSettings layoutSettings;
 
-    
-    //public Vector2[] ChildAttachLocalPoints { get; private set; } = new Vector2[3];
+    // Guards against generating edges twice - once via Initialize() (instantiated path) and again via Start() 
+    private bool hasGeneratedEdges = false;
 
     public Vector2[] ChildEmergeLocalPoints { get; private set; } = new Vector2[3];
-
 
     private void Awake()
     {
@@ -39,6 +38,27 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     private void Start()
     {
+        // Fallback - pressing Play without going through FractalUniverseManager's instantiation path
+        // If Initialize() already ran this frame (normal runtime path), this doesn't run
+        if(!hasGeneratedEdges)
+        {
+            GenerateEdges();
+            GenerateChildEmergePoints();
+        }
+    }
+
+    // Called by FractalUniverseManager immediately after Instantiate(), BEFORE obj's own Start() has run.
+    // Guarantees FUManager is assigned before any RoomZoneTrigger is created instead of racing Awake/Start timing
+    public void Initialize(FractalUniverseManager manager)
+    {
+        universeManager = manager;
+
+        if(hasGeneratedEdges)
+            return;
+
+        if(layoutSettings == null)
+            layoutSettings = GetComponent<RoomKochLayoutSettings>();
+
         GenerateEdges();
         GenerateChildEmergePoints();
     }
@@ -79,6 +99,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     private void GenerateEdges()
     {
+        hasGeneratedEdges = true;
+
         int rotationSteps = GetRotationSteps();
         float rotationAngle = rotationSteps * 60f;
 
@@ -113,68 +135,46 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         for(int i = 0; i < hexPoints.Length; i++)
         {
-            hexPoints[i] = RotatePoint(
-                baseHexPoints[i],
-                rotationAngle
-            );
+            hexPoints[i] = RotatePoint(baseHexPoints[i], rotationAngle);
         }
 
-        Vector2 parentStart = RotatePoint(
-            parentStartBase,
-            rotationAngle
-        );
+        Vector2 parentStart = RotatePoint(parentStartBase, rotationAngle);
+        Vector2 parentEnd = RotatePoint(parentEndBase, rotationAngle);
 
-        Vector2 parentEnd = RotatePoint(
-            parentEndBase,
-            rotationAngle
-        );
-
-        int[] childLetters =
-            FractalNode.GetChildLetters(rotationSteps);
-
-       
-        //TO BE DELETED - using ChildEmergePoints approach instead
-        //ChildAttachLocalPoints[0] = (hexPoints[0] + hexPoints[1]) / 2f;
-        //ChildAttachLocalPoints[1] = (hexPoints[1] + hexPoints[2]) / 2f;
-        //Debug.Log("ChildAttachLocalPoints[1] =" +ChildAttachLocalPoints[1] + gameObject.name);
-        //ChildAttachLocalPoints[2] = (hexPoints[2] + hexPoints[3]) / 2f;
+        int[] childLetters = FractalNode.GetChildLetters(rotationSteps);
 
         CreateEdge(
-            hexPoints[0],
-            hexPoints[1],
+            hexPoints[0], hexPoints[1],
             FractalNode.LetterNames[childLetters[0]],
             isReturnEdge: false,
             targetLetterIndex: childLetters[0]
         );
 
         CreateEdge(
-            hexPoints[1],
-            hexPoints[2],
+            hexPoints[1], hexPoints[2],
             FractalNode.LetterNames[childLetters[1]],
             isReturnEdge: false,
             targetLetterIndex: childLetters[1]
         );
 
         CreateEdge(
-            hexPoints[2],
-            hexPoints[3],
+            hexPoints[2], hexPoints[3],
             FractalNode.LetterNames[childLetters[2]],
             isReturnEdge: false,
             targetLetterIndex: childLetters[2]
         );
 
         CreateEdge(
-            parentStart,
-            parentEnd,
+            parentStart, parentEnd,
             "Parent",
             isReturnEdge: true,
             targetLetterIndex: -1
         );
     }
 
-    //function to set centre point where child motifs emerge from motif
-    //no collision behaviour and NOT related to boundary edge collisions!!!!
-    //level 1 and greater
+    // function to set centre point where child motifs emerge from motif
+    // no collision behaviour and NOT related to boundary edge collisions!!!!
+    // level 1 and greater
     private void GenerateChildEmergePoints()
     {
         int rotationSteps = GetRotationSteps();
@@ -196,18 +196,12 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         for(int i = 0; i < emergeHexPoints.Length; i++)
         {
-            emergeHexPoints[i] = RotatePoint(
-                baseEmergeHexPoints[i],
-                rotationAngle
-            );
+            emergeHexPoints[i] = RotatePoint(baseEmergeHexPoints[i], rotationAngle);
         }
 
         ChildEmergeLocalPoints[0] = (emergeHexPoints[0] + emergeHexPoints[1]) / 2f;
-        //Debug.Log("ChildEmergeLocalPoints[0]" + ChildEmergeLocalPoints[0] + "from " + gameObject.name);
         ChildEmergeLocalPoints[1] = (emergeHexPoints[1] + emergeHexPoints[2]) / 2f;
-        //Debug.Log("ChildEmergeLocalPoints[1]" + ChildEmergeLocalPoints[1] + "from " + gameObject.name);
         ChildEmergeLocalPoints[2] = (emergeHexPoints[2] + emergeHexPoints[3]) / 2f;
-        //Debug.Log("ChildEmergeLocalPoints[2]" + ChildEmergeLocalPoints[2] + "from " + gameObject.name);
     }
 
     private void CreateEdge(
@@ -219,33 +213,25 @@ public class RoomBoundaryGenerator : MonoBehaviour
     {
         GameObject edgeObject = new GameObject($"Edge_{edgeName}");
 
-        edgeObject.transform.SetParent(
-            transform,
-            worldPositionStays: false
-        );
+        edgeObject.transform.SetParent(transform, worldPositionStays: false);
 
-        EdgeCollider2D edgeCollider =
-            edgeObject.AddComponent<EdgeCollider2D>();
+        EdgeCollider2D edgeCollider = edgeObject.AddComponent<EdgeCollider2D>();
 
-        edgeCollider.points = new[]
-        {
-            start,
-            end
-        };
-
+        edgeCollider.points = new[] { start, end };
         edgeCollider.isTrigger = true;
 
-        RoomZoneTrigger trigger =
-            edgeObject.AddComponent<RoomZoneTrigger>();
+        RoomZoneTrigger trigger = edgeObject.AddComponent<RoomZoneTrigger>();
 
         trigger.roomName = edgeName;
         trigger.isReturnEdge = isReturnEdge;
         trigger.targetLetterIndex = targetLetterIndex;
         trigger.ownerNode = ownerNode;
+
+        // Guaranteed non-null when GenerateEdges() is reached via Initialize
+        // may still be null on the Start() fallback approach if not assigned      
         trigger.universeManager = universeManager;
-                
-        LineRenderer line =
-            edgeObject.AddComponent<LineRenderer>();
+
+        LineRenderer line = edgeObject.AddComponent<LineRenderer>();
 
         line.useWorldSpace = false;
         line.positionCount = 2;
@@ -253,16 +239,10 @@ public class RoomBoundaryGenerator : MonoBehaviour
         line.SetPosition(1, end);
         line.startWidth = edgeWidth;
         line.endWidth = edgeWidth;
-        line.startColor = isReturnEdge
-            ? parentEdgeColor
-            : normalEdgeColor;
-        line.endColor = isReturnEdge
-            ? parentEdgeColor
-            : normalEdgeColor;
+        line.startColor = isReturnEdge ? parentEdgeColor : normalEdgeColor;
+        line.endColor = isReturnEdge ? parentEdgeColor : normalEdgeColor;
 
         if(edgeMaterial != null)
-        {
             line.sharedMaterial = edgeMaterial;
-        }
     }
 }

@@ -976,12 +976,12 @@ MonoBehaviour:
   isRootNode: 1
   roomLetterIndex: 0
   rootChildNodes:
-  - {fileID: 199000453}
-  - {fileID: 1871547238}
-  - {fileID: 389059100}
-  - {fileID: 2055701410}
-  - {fileID: 700085901}
-  - {fileID: 1161751973}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   roomChildNodes:
   - {fileID: 0}
   - {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &368676367
 Transform:
   m_ObjectHideFlags: 0
@@ -5283,20 +5283,13 @@ MonoBehaviour:
   rootVisibility: {fileID: 302024618}
   rootMotifLayout: {fileID: 0}
   rootMotifNode: {fileID: 302024619}
-  oddRoomObjects:
-  - {fileID: 199000450}
-  - {fileID: 1871547237}
-  - {fileID: 389059099}
-  - {fileID: 2055701409}
-  - {fileID: 700085900}
-  - {fileID: 1161751972}
-  evenRoomObjects:
-  - {fileID: 1945783071}
-  - {fileID: 1377208694}
-  - {fileID: 1795815085}
-  - {fileID: 656550430}
-  - {fileID: 576742846}
-  - {fileID: 103234863}
+  letterPrefabs:
+  - {fileID: 7941801464762749171, guid: 9bf3c2c519ab21a42be97429b4f42149, type: 3}
+  - {fileID: 5039542570643492626, guid: 01a33e30be7128549b22976f5eace29f, type: 3}
+  - {fileID: 5300431756904639418, guid: 1209004780240c24ab248da3c27148c6, type: 3}
+  - {fileID: 2940033735467692525, guid: ba22cbd2caa8e734badd61a4f17af8b4, type: 3}
+  - {fileID: 8109398612488774205, guid: d05c24a80f0234147bd567c70d8b3c0e, type: 3}
+  - {fileID: 5006602085823478778, guid: 7c593309f89e28b4f83fc3f5e1347747, type: 3}
   currentState: 0
   traversalCooldown: 0.2
   zoomInDuration: 2
@@ -6146,7 +6139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2035688132
 Transform:
   m_ObjectHideFlags: 0

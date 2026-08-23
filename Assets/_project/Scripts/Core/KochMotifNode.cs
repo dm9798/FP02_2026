@@ -1,9 +1,10 @@
 using UnityEngine;
 
-// KochMotifNode is "real parent/child references" that lives on the root snowflake GameObject AND  every room GameObject//
-// Constraint: a GameObject can only have ONE parent in Unity's transform hierarchy at any given moment.
-//Holds STATIC references to "which GameObject is which letter, in the opposite bank"
-//exposes AttachChild DetachFromParent methods that perform the Unity reparent & local transform alignment dynamically, at moment of traversal
+// KochMotifNode is "real parent/child references" that lives on the root snowflake gameobj & room gameobj/prefab instances
+// Constraint: gameobject can only have ONE parent in transform hierarchy at any given moment
+// Holds references to "which instance occupies which child slot", populated LAZILY at runtime
+// AttachChild/DetachFromParent methods perform reparent & local transform
+// alignment dynamically during traversal
 [RequireComponent(typeof(KochMotifAligner))]
 public class KochMotifNode : MonoBehaviour
 {
@@ -13,15 +14,16 @@ public class KochMotifNode : MonoBehaviour
     [Header("Room Identity (room nodes only)")]
     [SerializeField] private int roomLetterIndex = 0;
 
-    [Header("Root Mode Children (6, one per letter A,F,E,D,C,B)")]
+    // Root Mode: 6 slots, one per letter A,F,E,D,C,B - populated lazily as each is first visited
+    // Room Mode: 3 slots - previous, self, next - populated lazily as each is first visited
+    // NOTE: arrays are still sized appropriately based on isRootNode, but start EMPTY at run
+    // FractalUniverseManager method GetOrCreateChild is what populate thems    
     [SerializeField] private KochMotifNode[] rootChildNodes = new KochMotifNode[6];
-
-    [Header("Room Mode Children (3 - previous, self, next)")]
     [SerializeField] private KochMotifNode[] roomChildNodes = new KochMotifNode[3];
 
     private KochMotifAligner aligner;
 
-    // The node this node is CURRENTLY attached under, at runtime. Null when at root or detached.
+    // The node this node is CURRENTLY attached under, at runtime. Null when rootor detached
     private KochMotifNode currentParentNode;
 
     public int RoomLetterIndex
@@ -48,17 +50,15 @@ public class KochMotifNode : MonoBehaviour
         }
     }
 
-    // Exposes this node's own KochMotifAligner so callers (e.g. a parent's AttachChild call
-    // acting on THIS node as the child) can read its OwnRadius when converting a target radius
-    // into a correctly-scaled local scale
+    // Exposes this node own KochMotifAligner so callers
+    // can read OwnRadius when converting a target radius
+    // into correctly-scaled local scale
     public KochMotifAligner Aligner
     {
         get
         {
             if(aligner == null)
-            {
                 aligner = GetComponent<KochMotifAligner>();
-            }
 
             return aligner;
         }
@@ -69,18 +69,16 @@ public class KochMotifNode : MonoBehaviour
         aligner = GetComponent<KochMotifAligner>();
     }
 
-    // Root mode: get the child node for a given letter index (0..5).
-    // Room mode: get the child node for a given child slot (0=previous, 1=self, 2=next).
+    // Root mode - get child node for a given letter index (0-5) or null if not yet visited
+    // Room mode - get child node for a given child slot (0=previous, 1=self, 2=next) or null
     public KochMotifNode GetChildNode(int letterIndexOrChildSlot)
     {
         if(isRootNode)
         {
-            if(letterIndexOrChildSlot < 0 ||
-                letterIndexOrChildSlot >= rootChildNodes.Length)
+            if(letterIndexOrChildSlot < 0 || letterIndexOrChildSlot >= rootChildNodes.Length)
             {
                 Debug.LogError(
-                    "KochMotifNode (root): invalid letter index " +
-                    letterIndexOrChildSlot,
+                    "KochMotifNode (root): invalid letter index " + letterIndexOrChildSlot,
                     this
                 );
 
@@ -90,14 +88,11 @@ public class KochMotifNode : MonoBehaviour
             return rootChildNodes[letterIndexOrChildSlot];
         }
 
-        if(letterIndexOrChildSlot < 0 ||
-            letterIndexOrChildSlot >= roomChildNodes.Length)
+        if(letterIndexOrChildSlot < 0 || letterIndexOrChildSlot >= roomChildNodes.Length)
         {
             Debug.LogError(
-                "KochMotifNode (room " +
-                FractalNode.LetterNames[roomLetterIndex] +
-                "): invalid child slot " +
-                letterIndexOrChildSlot,
+                "KochMotifNode (room " + FractalNode.LetterNames[roomLetterIndex] +
+                "): invalid child slot " + letterIndexOrChildSlot,
                 this
             );
 
@@ -107,31 +102,24 @@ public class KochMotifNode : MonoBehaviour
         return roomChildNodes[letterIndexOrChildSlot];
     }
 
-    // Convenience for room mode: resolve a child node directly by its LETTER (not slot index),
-    // using FractalNode.GetChildLetters to find which slot that letter occupies for this room.
+    // room mode- resolve a child node directly by its LETTER (not slot index)
+    // FractalNode.GetChildLetters to find which slot that letter occupies for room
     public KochMotifNode GetChildNodeForLetter(int childLetterIndex)
     {
         if(isRootNode)
-        {
             return GetChildNode(childLetterIndex);
-        }
 
-        int[] childLetters =
-            FractalNode.GetChildLetters(roomLetterIndex);
+        int[] childLetters = FractalNode.GetChildLetters(roomLetterIndex);
 
         for(int slot = 0; slot < childLetters.Length; slot++)
         {
             if(childLetters[slot] == childLetterIndex)
-            {
                 return GetChildNode(slot);
-            }
         }
 
         Debug.LogWarning(
-            "KochMotifNode (room " +
-            FractalNode.LetterNames[roomLetterIndex] +
-            "): letter " +
-            FractalNode.LetterNames[childLetterIndex] +
+            "KochMotifNode (room " + FractalNode.LetterNames[roomLetterIndex] +
+            "): letter " + FractalNode.LetterNames[childLetterIndex] +
             " is not a valid child of this room.",
             this
         );
@@ -139,13 +127,44 @@ public class KochMotifNode : MonoBehaviour
         return null;
     }
 
-    // Performs the actual Unity re-parent (via transform.SetParent) and local position/scale,
-    // so child's world transform is correct per unity's own hierarchy composition.
-    // ROTATION FIX: each room's own drawn content (KochSnowflakeMotifRenderer / RoomBoundaryGenerator)
-    // Already bakes correct visual orientation for its own letter directly into geometry
-    // Applying extra letter-derived rotation here via transform.localRotation double-rotates the room on top of its own already-correct
-    // internal geometry, to fix visible extra rotation (exampple: F appearing upside down)
-    // SCALE FIX: correct required local scale is targetRadius / child's own radius, calculated using childNode.Aligner.OwnRadius.
+    // populate a child slot with an instantiated or cached node
+    // Via  FractalUniverseManager.GetOrCreateChild() ONLY
+    public void SetChildNode(int letterIndexOrChildSlot, KochMotifNode childNode)
+    {
+        if(isRootNode)
+        {
+            if(letterIndexOrChildSlot < 0 || letterIndexOrChildSlot >= rootChildNodes.Length)
+            {
+                Debug.LogError(
+                    "KochMotifNode (root): invalid letter index " + letterIndexOrChildSlot +
+                    " when setting child node.",
+                    this
+                );
+
+                return;
+            }
+
+            rootChildNodes[letterIndexOrChildSlot] = childNode;
+            return;
+        }
+
+        if(letterIndexOrChildSlot < 0 || letterIndexOrChildSlot >= roomChildNodes.Length)
+        {
+            Debug.LogError(
+                "KochMotifNode (room " + FractalNode.LetterNames[roomLetterIndex] +
+                "): invalid child slot " + letterIndexOrChildSlot +
+                " when setting child node.",
+                this
+            );
+
+            return;
+        }
+
+        roomChildNodes[letterIndexOrChildSlot] = childNode;
+    }
+
+    // Performs the actual Unity re-parent (via transform.SetParent) and local position/scale
+    // so child's world transform is correct per unity's own hierarchy in-built rules   
     public void AttachChild(
       KochMotifNode childNode,
       int childSlotOrLetterIndex)
@@ -195,8 +214,8 @@ public class KochMotifNode : MonoBehaviour
         float requiredLocalScale =
             data.targetRadius / childOwnRadius;
 
-        // Root-mode parents keep using aligner-derived data.localPosition
-        // Room-mode parents use more reliable RoomBoundaryGenerator attach point
+        // Root-mode parents keep using aligner-derived data.localPosition.
+        // Room-mode parents use the more reliable RoomBoundaryGenerator attach point 
         Vector3 resolvedLocalPosition =
             data.localPosition;
 
@@ -211,6 +230,19 @@ public class KochMotifNode : MonoBehaviour
             {
                 Vector2 attachPoint =
                     boundaryGenerator.ChildEmergeLocalPoints[childSlotOrLetterIndex];
+
+                // Check due to previous bug which would silently place child at this node's own centre instead of failing in a hard to detect way
+                // Flag rather than pass silently as mistaken for several other causes before real bug was found
+                if(attachPoint == Vector2.zero)
+                {
+                    Debug.LogWarning(
+                        gameObject.name + "'s ChildEmergeLocalPoints[" + childSlotOrLetterIndex +
+                        "] is exactly (0,0) - possibly uninitialized " +
+                        "(RoomBoundaryGenerator.Initialize() may not have been called yet " +
+                        "on this parent before this attach).",
+                        this
+                    );
+                }
 
                 resolvedLocalPosition =
                     new Vector3(attachPoint.x, attachPoint.y, 0f);
@@ -234,30 +266,19 @@ public class KochMotifNode : MonoBehaviour
 
         childNode.transform.localPosition = resolvedLocalPosition;
 
-        // Room's own internal geometry already accounts for its letter's correct orientation
-        // do not rotate it again here
+        // Room's own geometry already accounts for its correct orientation (per its letter config)
+        // do not rotate it again
         childNode.transform.localRotation =
             Quaternion.identity;
 
         childNode.transform.localScale =
             Vector3.one * requiredLocalScale;
 
-        Debug.Log(
-            "AttachChild rotation check: parent=" + gameObject.name +
-            ", parentLetterIndex=" + roomLetterIndex +
-            ", child=" + childNode.name +
-            ", childLetterIndex=" + childNode.RoomLetterIndex +
-            ", slot=" + childSlotOrLetterIndex +
-            ", childLocalEulerZ=" + childNode.transform.eulerAngles.z +
-            ", childLocalRotationZ=" + childNode.transform.localRotation.eulerAngles.z,
-            this
-        );
-
         childNode.currentParentNode = this;
     }
 
     // Calculate what child's "fitted into motif" local scale WOULD be, without actually
-    // attaching/moving anything. Used by FractalUniverseManager's zoom-out animation coroutine
+    // attaching/moving anything. Used by FractalUniverseManager's zoom-out animation coroutine.
     public bool TryGetChildFittedLocalScale(
         KochMotifNode childNode,
         int childSlotOrLetterIndex,
@@ -266,9 +287,7 @@ public class KochMotifNode : MonoBehaviour
         requiredLocalScale = 1f;
 
         if(childNode == null)
-        {
             return false;
-        }
 
         if(!Aligner.TryGetChildLocalTransform(
                 childSlotOrLetterIndex,
@@ -283,9 +302,7 @@ public class KochMotifNode : MonoBehaviour
                 : 0f;
 
         if(childOwnRadius <= 0f)
-        {
             return false;
-        }
 
         requiredLocalScale =
             data.targetRadius / childOwnRadius;
@@ -293,7 +310,7 @@ public class KochMotifNode : MonoBehaviour
         return true;
     }
 
-    // Detaches this node from whatever it is currently parented under
+    // Detaches this node from whatever it is currently parented under  
     public void DetachFromParent()
     {
         transform.SetParent(
@@ -303,5 +320,4 @@ public class KochMotifNode : MonoBehaviour
 
         currentParentNode = null;
     }
-
 }
