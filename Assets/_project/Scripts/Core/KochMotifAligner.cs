@@ -10,8 +10,9 @@ public class KochMotifAligner : MonoBehaviour
     [Header("Mode")]
     [SerializeField] private bool isRootMode = false;
 
-    [Header("This Snowflake's Own Geometry")]
-    [SerializeField] private float ownRadius = 3f;
+    private RootKochLayoutSettings rootLayoutSettings;
+    private RoomKochLayoutSettings roomLayoutSettings;
+
     [SerializeField] private Vector2 center = Vector2.zero;
 
     [Header("Root Mode Settings")]
@@ -24,12 +25,51 @@ public class KochMotifAligner : MonoBehaviour
     [SerializeField] private float roomChildTargetRadiusRatio = 1f / 3f;
     [SerializeField] private float extraRotationOffsetDegrees = 0f;
 
-    
+    private void Awake()
+    {
+        if(isRootMode)
+        {
+            rootLayoutSettings = GetComponentInChildren<RootKochLayoutSettings>(true);
+
+            if(rootLayoutSettings == null)
+            {
+                Debug.LogError(
+                    "KochMotifAligner (root mode): no RootKochLayoutSettings found on " +
+                    gameObject.name + " (searched self and children) - OwnRadius will be invalid.",
+                    this
+                );
+            }
+        }
+        else
+        {
+            roomLayoutSettings = GetComponentInChildren<RoomKochLayoutSettings>(true);
+
+            if(roomLayoutSettings == null)
+            {
+                Debug.LogError(
+                    "KochMotifAligner (room mode): no RoomKochLayoutSettings found on " +
+                    gameObject.name + " (searched self and children) - OwnRadius will be invalid.",
+                    this
+                );
+            }
+        }
+    }
+
+    // Now derived instead of a serialized field
     public float OwnRadius
     {
         get
         {
-            return ownRadius;
+            if(isRootMode)
+            {
+                return rootLayoutSettings != null
+                    ? rootLayoutSettings.snowflakeCircumradius
+                    : 0f;
+            }
+
+            return roomLayoutSettings != null
+                ? roomLayoutSettings.snowflakeRadius
+                : 0f;
         }
     }
 
@@ -116,10 +156,10 @@ public class KochMotifAligner : MonoBehaviour
             + extraRotationOffsetDegrees;
 
         float orbitRadius =
-            ownRadius * rootChildOrbitRadiusRatio;
+            OwnRadius * rootChildOrbitRadiusRatio;
 
         float targetRadius =
-            ownRadius * rootChildTargetRadiusRatio;
+            OwnRadius * rootChildTargetRadiusRatio;
 
         Vector2 direction =
             AngleToDirection(angleDegrees);
@@ -177,10 +217,10 @@ public class KochMotifAligner : MonoBehaviour
         // Edge-midpoint distance from center for a hexagon inscribed at radius `ownRadius`
          // perpendicular distance from the center to midpoint of a side, not full spike-tip radius
         float orbitRadius =
-            ownRadius * Mathf.Cos(30f * Mathf.Deg2Rad);
+            OwnRadius * Mathf.Cos(30f * Mathf.Deg2Rad);
 
         float targetRadius =
-            ownRadius * roomChildTargetRadiusRatio;
+            OwnRadius * roomChildTargetRadiusRatio;
 
         Vector2 direction =
             AngleToDirection(angleDegrees);

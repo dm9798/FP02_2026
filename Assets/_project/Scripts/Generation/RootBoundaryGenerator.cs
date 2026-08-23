@@ -92,7 +92,7 @@ public class RootBoundaryGenerator : MonoBehaviour
 
             points[i] =
                 layoutSettings.center
-                + layoutSettings.boundaryRadius
+                + layoutSettings.BoundaryRadius
                 * new Vector2(
                     Mathf.Cos(angle * Mathf.Deg2Rad),
                     Mathf.Sin(angle * Mathf.Deg2Rad)
