@@ -91,7 +91,7 @@ MonoBehaviour:
   snowflakeRadius: 3
   boundaryRadius: 1.8
   gapRatio: 0.45
-  widenRatio: -0.2
+  widenRatio: -0.1
   roomRotationOffset: 0
   roomLetterIndex: 4
   childMotifRadiusRatio: 0.33333334
@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
-  roomVisualRoot: {fileID: 3022205158830973566}
 --- !u!1 &8109398612488774205
 GameObject:
   m_ObjectHideFlags: 0

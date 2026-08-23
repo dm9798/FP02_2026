@@ -104,6 +104,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
         int rotationSteps = GetRotationSteps();
         float rotationAngle = rotationSteps * 60f;
 
+        // Used for the prev/self/next collision edges aka child edges
+        // based on root collision boundary hexagon shape
         Vector2[] baseHexPoints = new Vector2[4];
 
         for(int i = 0; i < baseHexPoints.Length; i++)
@@ -116,19 +118,32 @@ public class RoomBoundaryGenerator : MonoBehaviour
             );
         }
 
-        // Parent edge points calculated in the unrotated Room A frame.
-        float scale = layoutSettings.boundaryRadius * 1.67f;
-        float widen = layoutSettings.widenRatio * scale;
-        float gap = layoutSettings.gapRatio * scale;
+        // separate hex points based on snowflakeRadius, only for parent edge
+        // to match KochSnowflakeMotifRenderer's own parent-edge 
+        Vector2[] baseSnowflakeHexPoints = new Vector2[4];
+
+        for(int i = 0; i < baseSnowflakeHexPoints.Length; i++)
+        {
+            float angle = i * 60f;
+
+            baseSnowflakeHexPoints[i] = layoutSettings.center + layoutSettings.snowflakeRadius * new Vector2(
+                Mathf.Cos(angle * Mathf.Deg2Rad),
+                Mathf.Sin(angle * Mathf.Deg2Rad)
+            );
+        }
+      
+        // hex points to match KochSnowflakeMotifRenderers Draw
+        float widen = layoutSettings.widenRatio * layoutSettings.snowflakeRadius;
+        float gap = layoutSettings.gapRatio * layoutSettings.snowflakeRadius;
 
         Vector2 parentStartBase = new Vector2(
-            baseHexPoints[3].x - widen,
-            baseHexPoints[3].y - gap
+            baseSnowflakeHexPoints[3].x - widen,
+            baseSnowflakeHexPoints[3].y - gap
         );
 
         Vector2 parentEndBase = new Vector2(
-            baseHexPoints[0].x + widen,
-            baseHexPoints[0].y - gap
+            baseSnowflakeHexPoints[0].x + widen,
+            baseSnowflakeHexPoints[0].y - gap
         );
 
         Vector2[] hexPoints = new Vector2[4];
@@ -170,6 +185,37 @@ public class RoomBoundaryGenerator : MonoBehaviour
             isReturnEdge: true,
             targetLetterIndex: -1
         );
+
+        //blocking edge - physics        
+        CreateBlockingEdge(hexPoints[3], parentStart); // left side wall
+        CreateBlockingEdge(hexPoints[0], parentEnd);   // right side wall
+    }
+
+
+    // separate logic from CreateEdge(), this is a solid non-trigger collider
+    //prevent player from leaving motif
+    private void CreateBlockingEdge(Vector2 start, Vector2 end)
+    {
+        GameObject edgeObject = new GameObject("Edge_SideBlock");
+
+        edgeObject.transform.SetParent(transform, worldPositionStays: false);
+
+        EdgeCollider2D edgeCollider = edgeObject.AddComponent<EdgeCollider2D>();
+        edgeCollider.points = new[] { start, end };
+        edgeCollider.isTrigger = false; // solid - blocks movement via normal physics collision, not OnTriggerEnter2D
+
+        LineRenderer line = edgeObject.AddComponent<LineRenderer>();
+        line.useWorldSpace = false;
+        line.positionCount = 2;
+        line.SetPosition(0, start);
+        line.SetPosition(1, end);
+        line.startWidth = edgeWidth;
+        line.endWidth = edgeWidth;
+        line.startColor = normalEdgeColor;
+        line.endColor = normalEdgeColor;
+
+        if(edgeMaterial != null)
+            line.sharedMaterial = edgeMaterial;
     }
 
     // function to set centre point where child motifs emerge from motif

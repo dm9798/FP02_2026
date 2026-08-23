@@ -246,7 +246,7 @@ public class FractalUniverseManager : MonoBehaviour
 
     private Vector3 GetRoomNormalLocalScale(KochMotifNode node)
     {
-        RoomKochLayoutSettings settings = node.GetComponentInChildren<RoomKochLayoutSettings>();
+        RoomKochLayoutSettings settings = node.GetComponentInChildren<RoomKochLayoutSettings>(true);
 
         if(settings != null)
             return settings.normalLocalScale;
@@ -279,7 +279,7 @@ public class FractalUniverseManager : MonoBehaviour
             yield break;
         }
 
-        // capture normal (fully zoomed-in) scale BEFORE AttachChild changes localScale
+        // capture normal (fully zoomed-in) scale before AttachChild changes localScale
         Vector3 normalLocalScale = GetRoomNormalLocalScale(childNode);
 
         // AttachChild performs the real SetParent + sets localPosition/localRotation/localScale
@@ -288,7 +288,18 @@ public class FractalUniverseManager : MonoBehaviour
 
         Vector3 fittedLocalScale = childNode.transform.localScale;
 
-        //KochRoomVisibility incomingVisibility = childNode.GetComponent<KochRoomVisibility>();
+        // re-enable this room's edge colliders AS ZoomOutToParentCoroutine disables
+        // them directly (via GetComponentsInChildren<EdgeCollider2D>(true) on this same node) to prevent parent-edge collider from double-triggering
+        // re-enable explicitly here, match the disable call, using the same node + search scope
+        EdgeCollider2D[] roomEdgeColliders = childNode.GetComponentsInChildren<EdgeCollider2D>(true);
+        foreach(EdgeCollider2D edgeCollider in roomEdgeColliders)
+        {
+            if(edgeCollider != null)
+            {
+                edgeCollider.enabled = true;
+            }
+        }
+
         KochRoomVisibility incomingVisibility = childNode.GetComponentInChildren<KochRoomVisibility>(true);
 
         if(incomingVisibility != null)
@@ -367,6 +378,17 @@ public class FractalUniverseManager : MonoBehaviour
             );
         }
 
+        // disable this room's edge colliders immediately, before scale down animation starts
+        // to prevent scale down parent-edge collider to re-trigger on player
+        EdgeCollider2D[] roomEdgeColliders = currentRoomNode.GetComponentsInChildren<EdgeCollider2D>(true);
+        foreach(EdgeCollider2D edgeCollider in roomEdgeColliders)
+        {
+            if(edgeCollider != null)
+            {
+                edgeCollider.enabled = false;
+            }
+        }
+
         roomTransform.localScale = normalLocalScale;
 
         float elapsed = 0f;
@@ -384,7 +406,6 @@ public class FractalUniverseManager : MonoBehaviour
 
         roomTransform.localScale = fittedLocalScale;
 
-        //KochRoomVisibility leavingVisibility = currentRoomNode.GetComponent<KochRoomVisibility>();
         KochRoomVisibility leavingVisibility = currentRoomNode.GetComponentInChildren<KochRoomVisibility>(true);
 
         if(leavingVisibility != null)
