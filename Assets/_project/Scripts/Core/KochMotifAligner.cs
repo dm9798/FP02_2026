@@ -74,13 +74,13 @@ public class KochMotifAligner : MonoBehaviour
     }
 
     // Canonical spike-tip angle for a given letter index, matching TRUE koch N=1 snowflake geometry.
-    // Use for root mode (root's 6 children sit at true spike-tip directions).
+    // Use for root mode (root's 6 children sit at true spike-tip directions)
     public static float GetCanonicalSpikeAngleDegrees(int letterIndex)
     {
         return NormalizeAngle(90f + letterIndex * 60f);
     }
 
-    // Edge-midpoint angle for a room's child slot,
+    // Edge-midpoint angle for a room's child slot
     // matching KochSnowflakeMotifRenderer's/RoomBoundaryGenerator's actual drawn hexagon convention
     public static float GetCanonicalEdgeMidpointAngleDegrees(int roomLetterIndex, int childSlot)
     {

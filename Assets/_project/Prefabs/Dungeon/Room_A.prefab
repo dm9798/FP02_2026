@@ -88,13 +88,13 @@ MonoBehaviour:
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
   snowflakeRadius: 3
-  boundaryRadius: 1.8
+  boundaryRadiusRatio: 0.58
   gapRatio: 0.45
   widenRatio: -0.1
   roomRotationOffset: 0
   roomLetterIndex: 0
   childMotifRadiusRatio: 0.33333334
-  childMotifEmergeRadius: 2.2
+  childMotifEmergeRadiusRatio: 0.73333335
 --- !u!114 &6335845340866232860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochMotifAligner
   isRootMode: 0
-  ownRadius: 3
   center: {x: 0, y: 0}
   rootChildOrbitRadiusRatio: 0.6666667
   rootChildTargetRadiusRatio: 0.33333334

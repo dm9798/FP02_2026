@@ -112,7 +112,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
         {
             float angle = i * 60f;
 
-            baseHexPoints[i] = layoutSettings.center + layoutSettings.boundaryRadius * new Vector2(
+            baseHexPoints[i] = layoutSettings.center + layoutSettings.BoundaryRadius * new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
             );
@@ -232,7 +232,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
         {
             float angle = i * 60f;
 
-            baseEmergeHexPoints[i] = layoutSettings.center + layoutSettings.childMotifEmergeRadius * new Vector2(
+            baseEmergeHexPoints[i] = layoutSettings.center + layoutSettings.ChildMotifEmergeRadius * new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
             );
