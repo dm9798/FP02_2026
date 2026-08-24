@@ -279,18 +279,18 @@ public class FractalUniverseManager : MonoBehaviour
             yield break;
         }
 
-        // capture normal (fully zoomed-in) scale before AttachChild changes localScale
         Vector3 normalLocalScale = GetRoomNormalLocalScale(childNode);
 
-        // AttachChild performs the real SetParent + sets localPosition/localRotation/localScale
-        // to the correct fitted-into-motif values in one call
+        // Read a WORLD position from settings -> converts into equivalent local position relative to parentNode        
+        Vector3 normalWorldPosition = GetRoomNormalWorldPosition(childNode);
+        Vector3 normalLocalPosition = parentNode.transform.InverseTransformPoint(normalWorldPosition);
+
+        // Start point for the scale and position animation
         parentNode.AttachChild(childNode, slot);
 
         Vector3 fittedLocalScale = childNode.transform.localScale;
+        Vector3 fittedLocalPosition = childNode.transform.localPosition;
 
-        // re-enable this room's edge colliders AS ZoomOutToParentCoroutine disables
-        // them directly (via GetComponentsInChildren<EdgeCollider2D>(true) on this same node) to prevent parent-edge collider from double-triggering
-        // re-enable explicitly here, match the disable call, using the same node + search scope
         EdgeCollider2D[] roomEdgeColliders = childNode.GetComponentsInChildren<EdgeCollider2D>(true);
         foreach(EdgeCollider2D edgeCollider in roomEdgeColliders)
         {
@@ -307,6 +307,7 @@ public class FractalUniverseManager : MonoBehaviour
 
         Transform roomTransform = childNode.transform;
         roomTransform.localScale = fittedLocalScale;
+        roomTransform.localPosition = fittedLocalPosition;
 
         float elapsed = 0f;
 
@@ -316,14 +317,15 @@ public class FractalUniverseManager : MonoBehaviour
             float eased = zoomInCurve.Evaluate(t);
 
             roomTransform.localScale = Vector3.LerpUnclamped(fittedLocalScale, normalLocalScale, eased);
+            roomTransform.localPosition = Vector3.LerpUnclamped(fittedLocalPosition, normalLocalPosition, eased);
 
             elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
 
         roomTransform.localScale = normalLocalScale;
+        roomTransform.localPosition = normalLocalPosition;
 
-        // hide whatever was active before (or root, if this is the first hop)
         if(activeRoomVisibility != null)
             activeRoomVisibility.SetVisualVisible(false);
         else
@@ -352,7 +354,6 @@ public class FractalUniverseManager : MonoBehaviour
 
         KochMotifNode currentRoomNode = activeChain[activeChain.Count - 1];
 
-        // parent is the previous entry in the chain, or root if we're at depth 1
         KochMotifNode parentNode = activeChain.Count == 1
             ? rootMotifNode
             : activeChain[activeChain.Count - 2];
@@ -360,6 +361,13 @@ public class FractalUniverseManager : MonoBehaviour
         Transform roomTransform = currentRoomNode.transform;
         Vector3 normalLocalScale = GetRoomNormalLocalScale(currentRoomNode);
         Vector3 fittedLocalScale = normalLocalScale;
+
+        // change world target position into a local position relative to parent transform
+        Vector3 normalWorldPosition = GetRoomNormalWorldPosition(currentRoomNode);
+        Vector3 normalLocalPosition = currentRoomNode.transform.parent != null
+            ? currentRoomNode.transform.parent.InverseTransformPoint(normalWorldPosition)
+            : normalWorldPosition;
+        Vector3 fittedLocalPosition = normalLocalPosition;
 
         int slot = GetChildSlotForLetter(parentNode, currentRoomNode.RoomLetterIndex);
 
@@ -378,8 +386,21 @@ public class FractalUniverseManager : MonoBehaviour
             );
         }
 
-        // disable this room's edge colliders immediately, before scale down animation starts
-        // to prevent scale down parent-edge collider to re-trigger on player
+        if(slot >= 0 &&
+            parentNode.TryGetChildFittedLocalPosition(currentRoomNode, slot, out Vector3 requiredPosition))
+        {
+            fittedLocalPosition = requiredPosition;
+        }
+        else
+        {
+            Debug.LogWarning(
+                "ZoomOutToParentCoroutine: could not re-derive fitted position for " +
+                currentRoomNode.name +
+                " - falling back to normalLocalPosition (no shrink-position animation will be visible).",
+                this
+            );
+        }
+
         EdgeCollider2D[] roomEdgeColliders = currentRoomNode.GetComponentsInChildren<EdgeCollider2D>(true);
         foreach(EdgeCollider2D edgeCollider in roomEdgeColliders)
         {
@@ -390,6 +411,7 @@ public class FractalUniverseManager : MonoBehaviour
         }
 
         roomTransform.localScale = normalLocalScale;
+        roomTransform.localPosition = normalLocalPosition;
 
         float elapsed = 0f;
 
@@ -399,19 +421,20 @@ public class FractalUniverseManager : MonoBehaviour
             float eased = zoomOutCurve.Evaluate(t);
 
             roomTransform.localScale = Vector3.LerpUnclamped(normalLocalScale, fittedLocalScale, eased);
+            roomTransform.localPosition = Vector3.LerpUnclamped(normalLocalPosition, fittedLocalPosition, eased);
 
             elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
 
         roomTransform.localScale = fittedLocalScale;
+        roomTransform.localPosition = fittedLocalPosition;
 
         KochRoomVisibility leavingVisibility = currentRoomNode.GetComponentInChildren<KochRoomVisibility>(true);
 
         if(leavingVisibility != null)
             leavingVisibility.SetVisualVisible(false);
 
-        // Instance NOT destroyed - stays parented/cached in parentNode's child slot for reuse, just hidden
         activeChain.RemoveAt(activeChain.Count - 1);
 
         if(activeChain.Count == 0)
@@ -422,7 +445,6 @@ public class FractalUniverseManager : MonoBehaviour
         else
         {
             KochMotifNode newActive = activeChain[activeChain.Count - 1];
-            //KochRoomVisibility newVisibility = newActive.GetComponent<KochRoomVisibility>();
             KochRoomVisibility newVisibility = newActive.GetComponentInChildren<KochRoomVisibility>(true);
 
             if(newVisibility != null)
@@ -439,6 +461,18 @@ public class FractalUniverseManager : MonoBehaviour
             ", Letter: " + (IsAtRoot ? "Root" : FractalNode.LetterNames[CurrentLetterIndex]),
             this
         );
+    }
+
+    // Helper - return world position from settings.normalWorldPosition.
+    private Vector3 GetRoomNormalWorldPosition(KochMotifNode node)
+    {
+        RoomKochLayoutSettings settings = node.GetComponentInChildren<RoomKochLayoutSettings>(true);
+
+        if(settings != null)
+            return settings.normalWorldPosition;
+
+        // Fallback to game obj's current world position if no settings found
+        return node.transform.position;
     }
 
     private void SetRootVisible(bool isVisible)

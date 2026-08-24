@@ -163,6 +163,63 @@ public class KochMotifNode : MonoBehaviour
         roomChildNodes[letterIndexOrChildSlot] = childNode;
     }
 
+    // Helper - position-resolution logic that used to inside inside AttachChild
+    // Does not touch childNode.transform or any other state
+    // returns what he local position should be.
+    private Vector3 ResolveChildLocalPosition(
+        KochMotifNode childNode,
+        int childSlotOrLetterIndex,
+        KochMotifAligner.ChildTransformData data)
+    {
+        // Root-mode parents use aligner-derived data.localPosition
+        // Room-mode parents use RoomBoundaryGenerator attach point 
+        Vector3 resolvedLocalPosition =
+            data.localPosition;
+
+        if(isRootNode)
+        {
+            return resolvedLocalPosition;
+        }
+
+        RoomBoundaryGenerator boundaryGenerator = GetComponentInChildren<RoomBoundaryGenerator>(true);
+
+        if(boundaryGenerator != null &&
+            childSlotOrLetterIndex >= 0 &&
+            childSlotOrLetterIndex < boundaryGenerator.ChildEmergeLocalPoints.Length)
+        {
+            Vector2 attachPoint =
+                boundaryGenerator.ChildEmergeLocalPoints[childSlotOrLetterIndex];
+
+            // Check due to previous bug which would silently place child at this node's own centre instead of failing in a hard to detect way
+            // Flag rather than pass silently as mistaken for several other causes before real bug was found
+            if(attachPoint == Vector2.zero)
+            {
+                Debug.LogWarning(
+                    gameObject.name + "'s ChildEmergeLocalPoints[" + childSlotOrLetterIndex +
+                    "] is exactly (0,0) - possibly uninitialized " +
+                    "(RoomBoundaryGenerator.Initialize() may not have been called yet " +
+                    "on this parent before this attach).",
+                    this
+                );
+            }
+
+            resolvedLocalPosition =
+                new Vector3(attachPoint.x, attachPoint.y, 0f);
+        }
+        else
+        {
+            Debug.LogWarning(
+                "KochMotifNode.ResolveChildLocalPosition: " +
+                gameObject.name +
+                " has no RoomBoundaryGenerator (or invalid slot) - " +
+                "falling back to KochMotifAligner-derived position.",
+                this
+            );
+        }
+
+        return resolvedLocalPosition;
+    }
+
     // Performs the actual Unity re-parent (via transform.SetParent) and local position/scale
     // so child's world transform is correct per unity's own hierarchy in-built rules   
     public void AttachChild(
@@ -213,50 +270,13 @@ public class KochMotifNode : MonoBehaviour
 
         float requiredLocalScale =
             data.targetRadius / childOwnRadius;
-
-        // Root-mode parents keep using aligner-derived data.localPosition.
-        // Room-mode parents use the more reliable RoomBoundaryGenerator attach point 
+        
         Vector3 resolvedLocalPosition =
-            data.localPosition;
-
-        if(!isRootNode)
-        {
-            RoomBoundaryGenerator boundaryGenerator = GetComponentInChildren<RoomBoundaryGenerator>(true);
-
-            if(boundaryGenerator != null &&
-                childSlotOrLetterIndex >= 0 &&
-                childSlotOrLetterIndex < boundaryGenerator.ChildEmergeLocalPoints.Length)
-            {
-                Vector2 attachPoint =
-                    boundaryGenerator.ChildEmergeLocalPoints[childSlotOrLetterIndex];
-
-                // Check due to previous bug which would silently place child at this node's own centre instead of failing in a hard to detect way
-                // Flag rather than pass silently as mistaken for several other causes before real bug was found
-                if(attachPoint == Vector2.zero)
-                {
-                    Debug.LogWarning(
-                        gameObject.name + "'s ChildEmergeLocalPoints[" + childSlotOrLetterIndex +
-                        "] is exactly (0,0) - possibly uninitialized " +
-                        "(RoomBoundaryGenerator.Initialize() may not have been called yet " +
-                        "on this parent before this attach).",
-                        this
-                    );
-                }
-
-                resolvedLocalPosition =
-                    new Vector3(attachPoint.x, attachPoint.y, 0f);
-            }
-            else
-            {
-                Debug.LogWarning(
-                    "KochMotifNode.AttachChild: " +
-                    gameObject.name +
-                    " has no RoomBoundaryGenerator (or invalid slot) - " +
-                    "falling back to KochMotifAligner-derived position.",
-                    this
-                );
-            }
-        }
+            ResolveChildLocalPosition(
+                childNode,
+                childSlotOrLetterIndex,
+                data
+            );
 
         childNode.transform.SetParent(
             transform,
@@ -305,6 +325,36 @@ public class KochMotifNode : MonoBehaviour
 
         requiredLocalScale =
             data.targetRadius / childOwnRadius;
+
+        return true;
+    }
+
+    // Akin to TryGetChildFittedLocalScale exactly in shape and calling convention.
+    // Calculates child's "attach" local position
+    // Used by FUM zoom-out animation coroutine to know where to animate room's position back to scales down into parent motif
+    public bool TryGetChildFittedLocalPosition(
+        KochMotifNode childNode,
+        int childSlotOrLetterIndex,
+        out Vector3 fittedLocalPosition)
+    {
+        fittedLocalPosition = Vector3.zero;
+
+        if(childNode == null)
+            return false;
+
+        if(!Aligner.TryGetChildLocalTransform(
+                childSlotOrLetterIndex,
+                out KochMotifAligner.ChildTransformData data))
+        {
+            return false;
+        }
+
+        fittedLocalPosition =
+            ResolveChildLocalPosition(
+                childNode,
+                childSlotOrLetterIndex,
+                data
+            );
 
         return true;
     }
