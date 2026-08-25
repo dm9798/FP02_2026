@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -673,6 +674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -805,6 +807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -1031,6 +1034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -1157,6 +1161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -1514,7 +1519,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 14.03
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1998,6 +2003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.15
@@ -2170,6 +2176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -2519,6 +2526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -2670,6 +2678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -2796,6 +2805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -2963,6 +2973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -3155,6 +3166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -3306,6 +3318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -3473,6 +3486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -3661,6 +3675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -4010,6 +4025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -4414,6 +4430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -4565,6 +4582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -4823,6 +4841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -5015,6 +5034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -5166,6 +5186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -5254,7 +5275,7 @@ MonoBehaviour:
   - {fileID: 5006602085823478778, guid: 7c593309f89e28b4f83fc3f5e1347747, type: 3}
   currentState: 0
   traversalCooldown: 0.2
-  zoomInDuration: 2
+  zoomInDuration: 0.6
   zoomInCurve:
     serializedVersion: 2
     m_Curve:
@@ -5531,6 +5552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -5723,6 +5745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45
@@ -6006,6 +6029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
+  normalWorldPosition: {x: 0, y: 0, z: 0}
   snowflakeRadius: 3
   boundaryRadiusRatio: 1.6666666
   gapRatio: 0.45

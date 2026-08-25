@@ -89,7 +89,12 @@ public class FractalUniverseManager : MonoBehaviour
     }
 
     // Public func request move from current node to specified child letter, if traversal allowed
-    public void RequestTraverseToChild(int targetLetterIndex)
+    // added crossingT and playerTransform so room's parent edge can place player at equivalent position along it scaled up
+    // both params optional with safe defaults
+    public void RequestTraverseToChild(
+        int targetLetterIndex,
+        float crossingT = 0.5f,
+        Transform playerTransform = null)
     {
         if(!CanTraverse)
             return;
@@ -108,11 +113,11 @@ public class FractalUniverseManager : MonoBehaviour
                 return;
         }
 
-        BeginTransitionToChild(targetLetterIndex);
+        BeginTransitionToChild(targetLetterIndex, crossingT, playerTransform);
     }
-
+    
     // Public func request move from current node back to parent, if possible
-    public void RequestTraverseToParent()
+    public void RequestTraverseToParent(float crossingT = 0.5f, Transform playerTransform = null)
     {
         if(!CanTraverse)
             return;
@@ -123,7 +128,7 @@ public class FractalUniverseManager : MonoBehaviour
             return;
         }
 
-        BeginTransitionToParent();
+        BeginTransitionToParent(crossingT, playerTransform);
     }
 
     // Helper - the node currently occupied (root if chain is empty)
@@ -137,17 +142,19 @@ public class FractalUniverseManager : MonoBehaviour
         }
     }
 
-    private void BeginTransitionToChild(int targetLetterIndex)
+    private void BeginTransitionToChild(int targetLetterIndex, float crossingT, Transform playerTransform)
     {
         currentState = TraversalState.Transitioning;
-        StartCoroutine(ZoomIntoChildCoroutine(targetLetterIndex));
+        StartCoroutine(ZoomIntoChildCoroutine(targetLetterIndex, crossingT, playerTransform));
     }
 
-    private void BeginTransitionToParent()
+
+    private void BeginTransitionToParent(float crossingT, Transform playerTransform)
     {
         currentState = TraversalState.Transitioning;
-        StartCoroutine(ZoomOutToParentCoroutine());
+        StartCoroutine(ZoomOutToParentCoroutine(crossingT, playerTransform));
     }
+
 
     // Root obj indexes children by letter (0-5)
     // Room nodes index children by slot (0=prev,1=self,2=next) 
@@ -254,7 +261,11 @@ public class FractalUniverseManager : MonoBehaviour
         return node.transform.localScale;
     }
 
-    private IEnumerator ZoomIntoChildCoroutine(int targetLetterIndex)
+    // Coroutine child-edge (room scale/position lerp, collider enabling, visibility toggling, activeChain logging)   
+    private IEnumerator ZoomIntoChildCoroutine(
+        int targetLetterIndex,
+        float crossingT,
+        Transform playerTransform)
     {
         KochMotifNode parentNode = CurrentNode;
         int slot = GetSlotForTarget(parentNode, targetLetterIndex);
@@ -281,7 +292,7 @@ public class FractalUniverseManager : MonoBehaviour
 
         Vector3 normalLocalScale = GetRoomNormalLocalScale(childNode);
 
-        // Read a WORLD position from settings -> converts into equivalent local position relative to parentNode        
+        // Read world pos from settings -> converts into equivalent local pos relative to parentNode        
         Vector3 normalWorldPosition = GetRoomNormalWorldPosition(childNode);
         Vector3 normalLocalPosition = parentNode.transform.InverseTransformPoint(normalWorldPosition);
 
@@ -309,6 +320,23 @@ public class FractalUniverseManager : MonoBehaviour
         roomTransform.localScale = fittedLocalScale;
         roomTransform.localPosition = fittedLocalPosition;
 
+        // resolve new room's own RoomBoundaryGenerator to query its moving parent edge world endpoints every frame
+        // If missing, log warning
+        RoomBoundaryGenerator childBoundaryGenerator =
+            childNode.GetComponentInChildren<RoomBoundaryGenerator>(true);
+
+        bool canDriveCrossingPlayer =
+            playerTransform != null && childBoundaryGenerator != null;
+
+        if(playerTransform != null && childBoundaryGenerator == null)
+        {
+            Debug.LogWarning(
+                "ZoomIntoChildCoroutine: " + childNode.name +
+                " has no RoomBoundaryGenerator - skipping player-relative position transition.",
+                this
+            );
+        }
+
         float elapsed = 0f;
 
         while(elapsed < zoomInDuration)
@@ -319,12 +347,53 @@ public class FractalUniverseManager : MonoBehaviour
             roomTransform.localScale = Vector3.LerpUnclamped(fittedLocalScale, normalLocalScale, eased);
             roomTransform.localPosition = Vector3.LerpUnclamped(fittedLocalPosition, normalLocalPosition, eased);
 
+            // reread new room's (moving/scaling) parent edge world endpoints
+            // snap the player onto equivalent point along that edge every frame
+            // using same crossingT captured at the moment they originally crossed the old room's child edge
+            // Position only -does not touch rotation & scale
+            if(canDriveCrossingPlayer)
+            {
+                Vector2 currentParentEdgeStart = childBoundaryGenerator.GetParentEdgeWorldStart();
+                Vector2 currentParentEdgeEnd = childBoundaryGenerator.GetParentEdgeWorldEnd();
+
+                Vector2 targetPlayerPosition = Vector2.LerpUnclamped(
+                    currentParentEdgeStart,
+                    currentParentEdgeEnd,
+                    crossingT
+                );
+
+                playerTransform.position = new Vector3(
+                    targetPlayerPosition.x,
+                    targetPlayerPosition.y,
+                    playerTransform.position.z
+                );
+            }
+
             elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
 
         roomTransform.localScale = normalLocalScale;
         roomTransform.localPosition = normalLocalPosition;
+
+        // ensure the player ends up exactly on new room's final parent edge position
+        if(canDriveCrossingPlayer)
+        {
+            Vector2 finalParentEdgeStart = childBoundaryGenerator.GetParentEdgeWorldStart();
+            Vector2 finalParentEdgeEnd = childBoundaryGenerator.GetParentEdgeWorldEnd();
+
+            Vector2 finalPlayerPosition = Vector2.LerpUnclamped(
+                finalParentEdgeStart,
+                finalParentEdgeEnd,
+                crossingT
+            );
+
+            playerTransform.position = new Vector3(
+                finalPlayerPosition.x,
+                finalPlayerPosition.y,
+                playerTransform.position.z
+            );
+        }
 
         if(activeRoomVisibility != null)
             activeRoomVisibility.SetVisualVisible(false);
@@ -343,8 +412,8 @@ public class FractalUniverseManager : MonoBehaviour
             this
         );
     }
-
-    private IEnumerator ZoomOutToParentCoroutine()
+           
+    private IEnumerator ZoomOutToParentCoroutine(float crossingT, Transform playerTransform)
     {
         if(activeChain.Count == 0)
         {
@@ -362,7 +431,6 @@ public class FractalUniverseManager : MonoBehaviour
         Vector3 normalLocalScale = GetRoomNormalLocalScale(currentRoomNode);
         Vector3 fittedLocalScale = normalLocalScale;
 
-        // change world target position into a local position relative to parent transform
         Vector3 normalWorldPosition = GetRoomNormalWorldPosition(currentRoomNode);
         Vector3 normalLocalPosition = currentRoomNode.transform.parent != null
             ? currentRoomNode.transform.parent.InverseTransformPoint(normalWorldPosition)
@@ -410,6 +478,98 @@ public class FractalUniverseManager : MonoBehaviour
             }
         }
 
+        bool canDriveCrossingPlayer = false;
+        Vector2 parentChildEdgeLocalStart = Vector2.zero;
+        Vector2 parentChildEdgeLocalEnd = Vector2.zero;
+        Vector3 playerStartPosition = Vector3.zero;
+
+        if(parentNode.IsRootNode)
+        {
+            // Note - root doesn't rotate itself per-letter the way child rooms do
+            // no prev/self/next slot at root, and no letterIndex*60 rotation applied
+            // player position transform parent-edge case (root and rooms)
+            RootKochLayoutSettings rootLayoutSettings =
+                parentNode.GetComponentInChildren<RootKochLayoutSettings>(true);
+
+            if(playerTransform != null && rootLayoutSettings != null)
+            {
+                int letterIndex = currentRoomNode.RoomLetterIndex;
+
+                float angleA = rootLayoutSettings.boundaryAngleOffset + letterIndex * 60f;
+                float angleB = rootLayoutSettings.boundaryAngleOffset + ((letterIndex + 1) % 6) * 60f;
+
+                parentChildEdgeLocalStart = rootLayoutSettings.center + rootLayoutSettings.BoundaryRadius * new Vector2(
+                    Mathf.Cos(angleA * Mathf.Deg2Rad),
+                    Mathf.Sin(angleA * Mathf.Deg2Rad)
+                );
+
+                parentChildEdgeLocalEnd = rootLayoutSettings.center + rootLayoutSettings.BoundaryRadius * new Vector2(
+                    Mathf.Cos(angleB * Mathf.Deg2Rad),
+                    Mathf.Sin(angleB * Mathf.Deg2Rad)
+                );
+
+                playerStartPosition = playerTransform.position;
+                canDriveCrossingPlayer = true;
+            }
+            else if(playerTransform != null)
+            {
+                Debug.LogWarning(
+                    "ZoomOutToParentCoroutine: root parent " + parentNode.name +
+                    " has no RootKochLayoutSettings - skipping player-relative position transition.",
+                    this
+                );
+            }
+        }
+        else
+        {
+            RoomBoundaryGenerator parentBoundaryGenerator =
+                parentNode.GetComponentInChildren<RoomBoundaryGenerator>(true);
+
+            if(playerTransform != null && parentBoundaryGenerator != null && slot >= 0)
+            {
+                RoomKochLayoutSettings parentLayoutSettings =
+                    parentNode.GetComponentInChildren<RoomKochLayoutSettings>(true);
+
+                if(parentLayoutSettings != null)
+                {
+                    int parentRotationSteps = parentNode.RoomLetterIndex;
+                    float parentRotationAngle = parentRotationSteps * 60f;
+
+                    Vector2 cornerA = parentLayoutSettings.center + parentLayoutSettings.BoundaryRadius * new Vector2(
+                        Mathf.Cos(slot * 60f * Mathf.Deg2Rad),
+                        Mathf.Sin(slot * 60f * Mathf.Deg2Rad)
+                    );
+
+                    Vector2 cornerB = parentLayoutSettings.center + parentLayoutSettings.BoundaryRadius * new Vector2(
+                        Mathf.Cos((slot + 1) * 60f * Mathf.Deg2Rad),
+                        Mathf.Sin((slot + 1) * 60f * Mathf.Deg2Rad)
+                    );
+
+                    parentChildEdgeLocalStart = RotateAroundCenter(cornerA, parentRotationAngle, parentLayoutSettings.center);
+                    parentChildEdgeLocalEnd = RotateAroundCenter(cornerB, parentRotationAngle, parentLayoutSettings.center);
+
+                    playerStartPosition = playerTransform.position;
+                    canDriveCrossingPlayer = true;
+                }
+                else
+                {
+                    Debug.LogWarning(
+                        "ZoomOutToParentCoroutine: parent " + parentNode.name +
+                        " has no RoomKochLayoutSettings - skipping player-relative position transition.",
+                        this
+                    );
+                }
+            }
+            else if(playerTransform != null)
+            {
+                Debug.LogWarning(
+                    "ZoomOutToParentCoroutine: parent " + parentNode.name +
+                    " has no RoomBoundaryGenerator - skipping player-relative position transition.",
+                    this
+                );
+            }
+        }
+
         roomTransform.localScale = normalLocalScale;
         roomTransform.localPosition = normalLocalPosition;
 
@@ -423,12 +583,54 @@ public class FractalUniverseManager : MonoBehaviour
             roomTransform.localScale = Vector3.LerpUnclamped(normalLocalScale, fittedLocalScale, eased);
             roomTransform.localPosition = Vector3.LerpUnclamped(normalLocalPosition, fittedLocalPosition, eased);
 
+            if(canDriveCrossingPlayer)
+            {
+                Vector2 targetEdgeStart = parentNode.transform.TransformPoint(parentChildEdgeLocalStart);
+                Vector2 targetEdgeEnd = parentNode.transform.TransformPoint(parentChildEdgeLocalEnd);
+
+                Vector2 targetPlayerPosition = Vector2.LerpUnclamped(
+                    targetEdgeStart,
+                    targetEdgeEnd,
+                    crossingT
+                );
+
+                Vector3 targetPlayerPosition3D = new Vector3(
+                    targetPlayerPosition.x,
+                    targetPlayerPosition.y,
+                    playerStartPosition.z
+                );
+
+                playerTransform.position = Vector3.LerpUnclamped(
+                    playerStartPosition,
+                    targetPlayerPosition3D,
+                    eased
+                );
+            }
+
             elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
 
         roomTransform.localScale = fittedLocalScale;
         roomTransform.localPosition = fittedLocalPosition;
+
+        if(canDriveCrossingPlayer)
+        {
+            Vector2 finalEdgeStart = parentNode.transform.TransformPoint(parentChildEdgeLocalStart);
+            Vector2 finalEdgeEnd = parentNode.transform.TransformPoint(parentChildEdgeLocalEnd);
+
+            Vector2 finalPlayerPosition = Vector2.LerpUnclamped(
+                finalEdgeStart,
+                finalEdgeEnd,
+                crossingT
+            );
+
+            playerTransform.position = new Vector3(
+                finalPlayerPosition.x,
+                finalPlayerPosition.y,
+                playerStartPosition.z
+            );
+        }
 
         KochRoomVisibility leavingVisibility = currentRoomNode.GetComponentInChildren<KochRoomVisibility>(true);
 
@@ -463,7 +665,9 @@ public class FractalUniverseManager : MonoBehaviour
         );
     }
 
-    // Helper - return world position from settings.normalWorldPosition.
+
+
+    // Helper - return world position from settings.normalWorldPosition
     private Vector3 GetRoomNormalWorldPosition(KochMotifNode node)
     {
         RoomKochLayoutSettings settings = node.GetComponentInChildren<RoomKochLayoutSettings>(true);
@@ -471,7 +675,7 @@ public class FractalUniverseManager : MonoBehaviour
         if(settings != null)
             return settings.normalWorldPosition;
 
-        // Fallback to game obj's current world position if no settings found
+        // default to game obj's current world position if no settings found
         return node.transform.position;
     }
 
@@ -579,5 +783,24 @@ public class FractalUniverseManager : MonoBehaviour
                 this
             );
         }
+    }
+
+
+    // helper - rotate-around-a-center math
+    // compromise to mimic RoomBoundaryGenerator hex array logic which is private
+    private Vector2 RotateAroundCenter(Vector2 point, float angleDegrees, Vector2 center)
+    {
+        float radians = angleDegrees * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(radians);
+        float sin = Mathf.Sin(radians);
+
+        Vector2 offset = point - center;
+
+        Vector2 rotated = new Vector2(
+            offset.x * cos - offset.y * sin,
+            offset.x * sin + offset.y * cos
+        );
+
+        return center + rotated;
     }
 }

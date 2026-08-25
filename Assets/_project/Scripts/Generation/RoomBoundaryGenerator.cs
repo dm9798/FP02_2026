@@ -31,6 +31,28 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     public Vector2[] ChildEmergeLocalPoints { get; private set; } = new Vector2[3];
 
+    // room's own parent edge endpoints local space
+    // exposed for FractalUniverseManager's zoom-in coroutine to query parent edge every frame during room animation
+    public Vector2 ParentEdgeLocalStart
+    {
+        get; private set;
+    }
+    public Vector2 ParentEdgeLocalEnd
+    {
+        get; private set;
+    }
+
+    // helpers - return parent edge endpoints in WORLD space
+    public Vector2 GetParentEdgeWorldStart()
+    {
+        return transform.TransformPoint(ParentEdgeLocalStart);
+    }
+
+    public Vector2 GetParentEdgeWorldEnd()
+    {
+        return transform.TransformPoint(ParentEdgeLocalEnd);
+    }
+
     private void Awake()
     {
         layoutSettings = GetComponent<RoomKochLayoutSettings>();
@@ -38,8 +60,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     private void Start()
     {
-        // Fallback - pressing Play without going through FractalUniverseManager's instantiation path
-        // If Initialize() already ran this frame (normal runtime path), this doesn't run
+        // if Initialize already ran this frame during runtime path, this doesn't run
         if(!hasGeneratedEdges)
         {
             GenerateEdges();
@@ -47,8 +68,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
         }
     }
 
-    // Called by FractalUniverseManager immediately after Instantiate(), BEFORE obj's own Start() has run.
-    // Guarantees FUManager is assigned before any RoomZoneTrigger is created instead of racing Awake/Start timing
+    // Called by FractalUniverseManager immediately after Instantiate(), before obj's own Start() has run
+    // Guarantees FUManager assigned before any RoomZoneTrigger is created avoiding race Awake/Start condition
     public void Initialize(FractalUniverseManager manager)
     {
         universeManager = manager;
@@ -131,20 +152,20 @@ public class RoomBoundaryGenerator : MonoBehaviour
                 Mathf.Sin(angle * Mathf.Deg2Rad)
             );
         }
-      
+
         // hex points to match KochSnowflakeMotifRenderers Draw
         float widen = layoutSettings.widenRatio * layoutSettings.snowflakeRadius;
         float gap = layoutSettings.gapRatio * layoutSettings.snowflakeRadius;
-
+    
         Vector2 parentStartBase = new Vector2(
-            baseSnowflakeHexPoints[3].x - widen,
-            baseSnowflakeHexPoints[3].y - gap
-        );
-
-        Vector2 parentEndBase = new Vector2(
             baseSnowflakeHexPoints[0].x + widen,
             baseSnowflakeHexPoints[0].y - gap
         );
+
+        Vector2 parentEndBase = new Vector2(
+            baseSnowflakeHexPoints[3].x - widen,
+            baseSnowflakeHexPoints[3].y - gap
+        );   
 
         Vector2[] hexPoints = new Vector2[4];
 
@@ -155,6 +176,10 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         Vector2 parentStart = RotatePoint(parentStartBase, rotationAngle);
         Vector2 parentEnd = RotatePoint(parentEndBase, rotationAngle);
+
+        // store local space parent edge endpoints for other components to query later        
+        ParentEdgeLocalStart = parentStart;
+        ParentEdgeLocalEnd = parentEnd;
 
         int[] childLetters = FractalNode.GetChildLetters(rotationSteps);
 
@@ -187,8 +212,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
         );
 
         //blocking edge - physics        
-        CreateBlockingEdge(hexPoints[3], parentStart); // left side wall
-        CreateBlockingEdge(hexPoints[0], parentEnd);   // right side wall
+        CreateBlockingEdge(hexPoints[3], parentEnd);   // left side wall
+        CreateBlockingEdge(hexPoints[0], parentStart); // right side wall
     }
 
 
