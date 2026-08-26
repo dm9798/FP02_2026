@@ -72,6 +72,9 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 0
+  selfEdgeCollisionEnabled: 0
+  nextEdgeCollisionEnabled: 0
   universeManager: {fileID: 0}
 --- !u!114 &9221668896636802076
 MonoBehaviour:

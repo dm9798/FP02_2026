@@ -20,6 +20,16 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [SerializeField] private float edgeWidth = 0.05f;
     [SerializeField] private Color normalEdgeColor = Color.white;
     [SerializeField] private Color parentEdgeColor = Color.red;
+        
+    [Header("Child Edge Collision Toggles")]
+    [Tooltip("If off, the Prev child edge is still drawn but will not trigger traversal.")]
+    [SerializeField] private bool prevEdgeCollisionEnabled = true;
+
+    [Tooltip("If off, the Self child edge is still drawn but will not trigger traversal.")]
+    [SerializeField] private bool selfEdgeCollisionEnabled = true;
+
+    [Tooltip("If off, the Next child edge is still drawn but will not trigger traversal.")]
+    [SerializeField] private bool nextEdgeCollisionEnabled = true;
 
     [Header("Traversal Wiring")]
     [SerializeField] private FractalUniverseManager universeManager;
@@ -28,6 +38,11 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     // Guards against generating edges twice - once via Initialize() (instantiated path) and again via Start() 
     private bool hasGeneratedEdges = false;
+
+    // cached refs to 3 child edges' own colliders, caught when GenerateEdges() creates them 
+    private EdgeCollider2D prevEdgeCollider;
+    private EdgeCollider2D selfEdgeCollider;
+    private EdgeCollider2D nextEdgeCollider;
 
     public Vector2[] ChildEmergeLocalPoints { get; private set; } = new Vector2[3];
 
@@ -82,6 +97,32 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         GenerateEdges();
         GenerateChildEmergePoints();
+    }
+
+    // re-applies 3 serialized collision toggles to their respective cached colliders.
+    // To be called any time after GenerateEdges() run -  warn and return if called earlier
+    // For FUM.ZoomIntoChildCoroutine to force room's edge colliders back after KochRoomVisibility hide/show runs
+    public void ReapplyChildEdgeCollisionSettings()
+    {
+        if(!hasGeneratedEdges)
+        {
+            Debug.LogWarning(
+                "ReapplyChildEdgeCollisionSettings called on " + name +
+                " before GenerateEdges() has run - nothing to reapply yet.",
+                this
+            );
+
+            return;
+        }
+
+        if(prevEdgeCollider != null)
+            prevEdgeCollider.enabled = prevEdgeCollisionEnabled;
+
+        if(selfEdgeCollider != null)
+            selfEdgeCollider.enabled = selfEdgeCollisionEnabled;
+
+        if(nextEdgeCollider != null)
+            nextEdgeCollider.enabled = nextEdgeCollisionEnabled;
     }
 
     private int GetRotationSteps()
@@ -156,7 +197,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
         // hex points to match KochSnowflakeMotifRenderers Draw
         float widen = layoutSettings.widenRatio * layoutSettings.snowflakeRadius;
         float gap = layoutSettings.gapRatio * layoutSettings.snowflakeRadius;
-    
+
         Vector2 parentStartBase = new Vector2(
             baseSnowflakeHexPoints[0].x + widen,
             baseSnowflakeHexPoints[0].y - gap
@@ -165,7 +206,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
         Vector2 parentEndBase = new Vector2(
             baseSnowflakeHexPoints[3].x - widen,
             baseSnowflakeHexPoints[3].y - gap
-        );   
+        );
 
         Vector2[] hexPoints = new Vector2[4];
 
@@ -182,28 +223,31 @@ public class RoomBoundaryGenerator : MonoBehaviour
         ParentEdgeLocalEnd = parentEnd;
 
         int[] childLetters = FractalNode.GetChildLetters(rotationSteps);
-
-        CreateEdge(
+                
+        prevEdgeCollider = CreateEdge(
             hexPoints[0], hexPoints[1],
             FractalNode.LetterNames[childLetters[0]],
             isReturnEdge: false,
-            targetLetterIndex: childLetters[0]
+            targetLetterIndex: childLetters[0],
+            collisionEnabled: prevEdgeCollisionEnabled
         );
 
-        CreateEdge(
+        selfEdgeCollider = CreateEdge(
             hexPoints[1], hexPoints[2],
             FractalNode.LetterNames[childLetters[1]],
             isReturnEdge: false,
-            targetLetterIndex: childLetters[1]
+            targetLetterIndex: childLetters[1],
+            collisionEnabled: selfEdgeCollisionEnabled
         );
 
-        CreateEdge(
+        nextEdgeCollider = CreateEdge(
             hexPoints[2], hexPoints[3],
             FractalNode.LetterNames[childLetters[2]],
             isReturnEdge: false,
-            targetLetterIndex: childLetters[2]
+            targetLetterIndex: childLetters[2],
+            collisionEnabled: nextEdgeCollisionEnabled
         );
-
+               
         CreateEdge(
             parentStart, parentEnd,
             "Parent",
@@ -275,12 +319,15 @@ public class RoomBoundaryGenerator : MonoBehaviour
         ChildEmergeLocalPoints[2] = (emergeHexPoints[2] + emergeHexPoints[3]) / 2f;
     }
 
-    private void CreateEdge(
+    // optional collisionEnabled parameter (default true)
+    // returns the created EdgeCollider2D so GenerateEdges() can cache child-edge colliders for later use
+    private EdgeCollider2D CreateEdge(
         Vector2 start,
         Vector2 end,
         string edgeName,
         bool isReturnEdge,
-        int targetLetterIndex)
+        int targetLetterIndex,
+        bool collisionEnabled = true)
     {
         GameObject edgeObject = new GameObject($"Edge_{edgeName}");
 
@@ -290,6 +337,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         edgeCollider.points = new[] { start, end };
         edgeCollider.isTrigger = true;
+
+        edgeCollider.enabled = collisionEnabled;
 
         RoomZoneTrigger trigger = edgeObject.AddComponent<RoomZoneTrigger>();
 
@@ -315,5 +364,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         if(edgeMaterial != null)
             line.sharedMaterial = edgeMaterial;
+
+        return edgeCollider;
     }
 }

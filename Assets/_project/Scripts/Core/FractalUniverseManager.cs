@@ -306,12 +306,29 @@ public class FractalUniverseManager : MonoBehaviour
         Vector3 fittedLocalScale = childNode.transform.localScale;
         Vector3 fittedLocalPosition = childNode.transform.localPosition;
 
-        EdgeCollider2D[] roomEdgeColliders = childNode.GetComponentsInChildren<EdgeCollider2D>(true);
-        foreach(EdgeCollider2D edgeCollider in roomEdgeColliders)
+        RoomBoundaryGenerator childBoundaryGenerator =
+            childNode.GetComponentInChildren<RoomBoundaryGenerator>(true);
+
+        if(childBoundaryGenerator != null)
         {
-            if(edgeCollider != null)
+            childBoundaryGenerator.ReapplyChildEdgeCollisionSettings();
+        }
+        else
+        {
+            Debug.LogWarning(
+                "ZoomIntoChildCoroutine: " + childNode.name +
+                " has no RoomBoundaryGenerator - cannot reapply child edge collision settings; " +
+                "falling back to enabling all EdgeCollider2D components (old behaviour).",
+                this
+            );
+
+            EdgeCollider2D[] roomEdgeColliders = childNode.GetComponentsInChildren<EdgeCollider2D>(true);
+            foreach(EdgeCollider2D edgeCollider in roomEdgeColliders)
             {
-                edgeCollider.enabled = true;
+                if(edgeCollider != null)
+                {
+                    edgeCollider.enabled = true;
+                }
             }
         }
 
@@ -323,11 +340,6 @@ public class FractalUniverseManager : MonoBehaviour
         Transform roomTransform = childNode.transform;
         roomTransform.localScale = fittedLocalScale;
         roomTransform.localPosition = fittedLocalPosition;
-
-        // resolve new room's own RoomBoundaryGenerator to query its moving parent edge world endpoints every frame
-        // If missing, log warning
-        RoomBoundaryGenerator childBoundaryGenerator =
-            childNode.GetComponentInChildren<RoomBoundaryGenerator>(true);
 
         bool canDriveCrossingPlayer =
             playerTransform != null && childBoundaryGenerator != null;
@@ -414,7 +426,8 @@ public class FractalUniverseManager : MonoBehaviour
             this
         );
     }
-           
+
+
     private IEnumerator ZoomOutToParentCoroutine(float crossingT, Transform playerTransform)
     {
         if(activeChain.Count == 0)
