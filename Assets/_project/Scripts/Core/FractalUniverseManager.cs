@@ -39,6 +39,10 @@ public class FractalUniverseManager : MonoBehaviour
     [SerializeField] private float zoomOutDuration = 0.6f;
     [SerializeField] private AnimationCurve zoomOutCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
+    [Header("Traversal Safety")]
+    [Tooltip("World-space distance the player is nudged into the destination room/root at the end")]
+    [SerializeField] private float traversalPushDistance = 0.15f;
+
     public TraversalState CurrentState
     {
         get
@@ -379,18 +383,16 @@ public class FractalUniverseManager : MonoBehaviour
         // ensure the player ends up exactly on new room's final parent edge position
         if(canDriveCrossingPlayer)
         {
-            Vector2 finalParentEdgeStart = childBoundaryGenerator.GetParentEdgeWorldStart();
-            Vector2 finalParentEdgeEnd = childBoundaryGenerator.GetParentEdgeWorldEnd();
+            Vector2 finalEdgeStart = childBoundaryGenerator.GetParentEdgeWorldStart();
+            Vector2 finalEdgeEnd = childBoundaryGenerator.GetParentEdgeWorldEnd();
 
-            Vector2 finalPlayerPosition = Vector2.LerpUnclamped(
-                finalParentEdgeStart,
-                finalParentEdgeEnd,
-                crossingT
-            );
+            Vector2 finalPlayerPosition = Vector2.LerpUnclamped(finalEdgeStart, finalEdgeEnd, crossingT);
 
-            playerTransform.position = new Vector3(
-                finalPlayerPosition.x,
-                finalPlayerPosition.y,
+            playerTransform.position = PushPointInward(
+                finalEdgeStart,
+                finalEdgeEnd,
+                childNode.transform,
+                finalPlayerPosition,
                 playerTransform.position.z
             );
         }
@@ -619,18 +621,17 @@ public class FractalUniverseManager : MonoBehaviour
             Vector2 finalEdgeStart = parentNode.transform.TransformPoint(parentChildEdgeLocalStart);
             Vector2 finalEdgeEnd = parentNode.transform.TransformPoint(parentChildEdgeLocalEnd);
 
-            Vector2 finalPlayerPosition = Vector2.LerpUnclamped(
+            Vector2 finalPlayerPosition = Vector2.LerpUnclamped(finalEdgeStart, finalEdgeEnd, crossingT);
+
+            playerTransform.position = PushPointInward(
                 finalEdgeStart,
                 finalEdgeEnd,
-                crossingT
-            );
-
-            playerTransform.position = new Vector3(
-                finalPlayerPosition.x,
-                finalPlayerPosition.y,
+                parentNode.transform,
+                finalPlayerPosition,
                 playerStartPosition.z
             );
         }
+
 
         KochRoomVisibility leavingVisibility = currentRoomNode.GetComponentInChildren<KochRoomVisibility>(true);
 
@@ -802,5 +803,41 @@ public class FractalUniverseManager : MonoBehaviour
         );
 
         return center + rotated;
+    }
+
+    // helper - point on an edge + edge's two endpoints (all world space)
+    // return 1st point + nudged inward into the room/root entered
+    // child room - parent room - root cases
+    private Vector3 PushPointInward(
+        Vector2 edgeWorldStart,
+        Vector2 edgeWorldEnd,
+        Transform destinationTransform,
+        Vector2 pointOnEdge,
+        float zPosition)
+    {
+        Vector2 edgeVector = edgeWorldEnd - edgeWorldStart;
+        float edgeLength = edgeVector.magnitude;
+
+        if(edgeLength < 0.0001f || destinationTransform == null)
+        {
+            return new Vector3(pointOnEdge.x, pointOnEdge.y, zPosition);
+        }
+
+        Vector2 edgeDirection = edgeVector / edgeLength;
+
+        // work out which 1 of 2 perpendiculars points toward entered destination
+        Vector2 normalA = new Vector2(-edgeDirection.y, edgeDirection.x);
+        Vector2 normalB = new Vector2(edgeDirection.y, -edgeDirection.x);
+
+        Vector2 edgeMidpoint = (edgeWorldStart + edgeWorldEnd) * 0.5f;
+        Vector2 towardDestination = (Vector2)destinationTransform.position - edgeMidpoint;
+
+        Vector2 inwardNormal = Vector2.Dot(normalA, towardDestination) >= Vector2.Dot(normalB, towardDestination)
+            ? normalA
+            : normalB;
+
+        Vector2 pushedPoint = pointOnEdge + inwardNormal * traversalPushDistance;
+
+        return new Vector3(pushedPoint.x, pushedPoint.y, zPosition);
     }
 }
