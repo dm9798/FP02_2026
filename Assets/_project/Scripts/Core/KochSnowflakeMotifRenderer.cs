@@ -14,13 +14,6 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
     [Header("Room Identity")]
     [SerializeField] private RoomLetter roomLetter = RoomLetter.A;
 
-    //[Header("Hexagon Settings")]
-    //[SerializeField] private Vector2 center = Vector2.zero;
-    //[SerializeField] private float radius = 3f;
-    //[Header("Parent Edge Tuning")]
-    //[SerializeField] private float gapRatio = 0.15f;
-    //[SerializeField] private float widenRatio = -0.2f;
-
     [Header("Snowflake Settings")]
     [Range(0, 6)]
     [SerializeField] private int recursionDepth = 5;
@@ -109,69 +102,16 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
             layoutSettings.center
         );
 
-        List<Vector2> snowflakePoints =
-            new List<Vector2>(
-                KochMath.GenerateSnowflake(
-                    layoutSettings.center,
-                    layoutSettings.snowflakeRadius,
-                    recursionDepth
-                )
-            );
-
+       //clustering logic from KochMath.cs
         List<List<Vector2>> clusters =
-            new List<List<Vector2>>();
-
-        List<Vector2> currentCluster = null;
-
-        foreach(Vector2 point in snowflakePoints)
-        {
-            bool outsideAnyRoof =
-                IsOutsideEdge(
-                    point,
-                    hexPoints[0],
-                    hexPoints[1],
-                    layoutSettings.center
-                )
-                ||
-                IsOutsideEdge(
-                    point,
-                    hexPoints[1],
-                    hexPoints[2],
-                    layoutSettings.center
-                )
-                ||
-                IsOutsideEdge(
-                    point,
-                    hexPoints[2],
-                    hexPoints[3],
-                    layoutSettings.center
-                );
-
-            bool insideParent =
-                !IsOutsideEdge(
-                    point,
-                    parentStart,
-                    parentEnd,
-                    layoutSettings.center
-                );
-
-            bool keep = outsideAnyRoof || insideParent;
-
-            if(keep)
-            {
-                if(currentCluster == null)
-                {
-                    currentCluster = new List<Vector2>();
-                    clusters.Add(currentCluster);
-                }
-
-                currentCluster.Add(point);
-            }
-            else
-            {
-                currentCluster = null;
-            }
-        }
+            KochMath.GetFilteredSnowflakeClusters(
+                layoutSettings.center,
+                layoutSettings.snowflakeRadius,
+                recursionDepth,
+                hexPoints,
+                parentStart,
+                parentEnd
+            );
 
         foreach(List<Vector2> cluster in clusters)
         {
@@ -347,32 +287,5 @@ public class KochSnowflakeMotifRenderer : MonoBehaviour
         );
 
         return pivot + rotated;
-    }
-
-    private bool IsOutsideEdge(
-        Vector2 point,
-        Vector2 edgeStart,
-        Vector2 edgeEnd,
-        Vector2 referenceCenter)
-    {
-        Vector2 edgeDirection =
-            edgeEnd - edgeStart;
-
-        Vector2 toPoint =
-            point - edgeStart;
-
-        Vector2 toCenter =
-            referenceCenter - edgeStart;
-
-        float crossPoint =
-            edgeDirection.x * toPoint.y
-            - edgeDirection.y * toPoint.x;
-
-        float crossCenter =
-            edgeDirection.x * toCenter.y
-            - edgeDirection.y * toCenter.x;
-
-        return Mathf.Sign(crossPoint)
-            != Mathf.Sign(crossCenter);
-    }
+    }    
 }

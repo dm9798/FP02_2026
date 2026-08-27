@@ -302,6 +302,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &27303157
 MonoBehaviour:
@@ -336,7 +343,7 @@ GameObject:
   - component: {fileID: 53977801}
   - component: {fileID: 53977800}
   - component: {fileID: 53977799}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestPlayerMovement
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -700,6 +707,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &127774544
 MonoBehaviour:
@@ -772,6 +786,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &191326588
 MonoBehaviour:
@@ -1060,6 +1081,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &344302707
 MonoBehaviour:
@@ -1187,6 +1215,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &352269491
 MonoBehaviour:
@@ -1934,6 +1969,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 0}
 --- !u!114 &618323287
 MonoBehaviour:
@@ -2202,6 +2244,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &647933465
 MonoBehaviour:
@@ -2460,6 +2509,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &707536862
 MonoBehaviour:
@@ -2704,6 +2760,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &731705213
 MonoBehaviour:
@@ -2831,6 +2894,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &732070034
 MonoBehaviour:
@@ -2907,6 +2977,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &760306962
 MonoBehaviour:
@@ -3100,6 +3177,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &996885983
 MonoBehaviour:
@@ -3344,6 +3428,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1053884485
 MonoBehaviour:
@@ -3420,6 +3511,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1086229581
 MonoBehaviour:
@@ -3701,6 +3799,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1127710299
 MonoBehaviour:
@@ -3812,6 +3917,37 @@ Transform:
   m_Children:
   - {fileID: 1638324017}
   m_Father: {fileID: 2035688132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1299079035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299079036}
+  m_Layer: 8
+  m_Name: TestEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1299079036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299079035}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377208694
 GameObject:
@@ -3959,6 +4095,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1450745576
 MonoBehaviour:
@@ -4364,6 +4507,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1603984661
 MonoBehaviour:
@@ -4608,6 +4758,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1638324021
 MonoBehaviour:
@@ -4775,6 +4932,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1808471229
 MonoBehaviour:
@@ -4968,6 +5132,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1820174080
 MonoBehaviour:
@@ -5212,6 +5383,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1870179806
 MonoBehaviour:
@@ -5487,6 +5665,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1910904835
 MonoBehaviour:
@@ -5680,6 +5865,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &1944266827
 MonoBehaviour:
@@ -5964,6 +6156,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 1
+  blockingLayerName: Default
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: Default
   universeManager: {fileID: 1870460220}
 --- !u!114 &2023569766
 MonoBehaviour:
@@ -6241,3 +6440,4 @@ SceneRoots:
   - {fileID: 53977798}
   - {fileID: 1571473082}
   - {fileID: 603830095}
+  - {fileID: 1299079036}

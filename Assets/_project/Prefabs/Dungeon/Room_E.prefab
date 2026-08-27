@@ -73,6 +73,13 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  prevEdgeCollisionEnabled: 1
+  selfEdgeCollisionEnabled: 1
+  nextEdgeCollisionEnabled: 1
+  blockingEdgeRecursionDepth: 2
+  blockingLayerName: RoomBlocker
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: PlayerBlocker
   universeManager: {fileID: 0}
 --- !u!114 &5525014447503729779
 MonoBehaviour:

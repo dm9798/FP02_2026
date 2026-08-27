@@ -309,15 +309,16 @@ public class FractalUniverseManager : MonoBehaviour
         RoomBoundaryGenerator childBoundaryGenerator =
             childNode.GetComponentInChildren<RoomBoundaryGenerator>(true);
 
+        // Reenabling all triggers/colliders        
         if(childBoundaryGenerator != null)
         {
-            childBoundaryGenerator.ReapplyChildEdgeCollisionSettings();
+            childBoundaryGenerator.RestoreAllEdgeCollisionSettings();
         }
         else
         {
             Debug.LogWarning(
                 "ZoomIntoChildCoroutine: " + childNode.name +
-                " has no RoomBoundaryGenerator - cannot reapply child edge collision settings; " +
+                " has no RoomBoundaryGenerator - cannot restore edge collision settings; " +
                 "falling back to enabling all EdgeCollider2D components (old behaviour).",
                 this
             );
@@ -340,6 +341,9 @@ public class FractalUniverseManager : MonoBehaviour
         Transform roomTransform = childNode.transform;
         roomTransform.localScale = fittedLocalScale;
         roomTransform.localPosition = fittedLocalPosition;
+
+
+
 
         bool canDriveCrossingPlayer =
             playerTransform != null && childBoundaryGenerator != null;
@@ -426,6 +430,7 @@ public class FractalUniverseManager : MonoBehaviour
             this
         );
     }
+
 
 
     private IEnumerator ZoomOutToParentCoroutine(float crossingT, Transform playerTransform)

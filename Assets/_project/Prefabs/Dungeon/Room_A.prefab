@@ -75,6 +75,10 @@ MonoBehaviour:
   prevEdgeCollisionEnabled: 0
   selfEdgeCollisionEnabled: 0
   nextEdgeCollisionEnabled: 0
+  blockingEdgeRecursionDepth: 2
+  blockingLayerName: RoomBlocker
+  parentEdgeBlocksPlayer: 0
+  playerBlockingLayerName: PlayerBlocker
   universeManager: {fileID: 0}
 --- !u!114 &9221668896636802076
 MonoBehaviour:

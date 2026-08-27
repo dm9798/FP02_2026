@@ -1,6 +1,6 @@
 /* 
  * Procedural generation logic for the Koch Snowflake, based on the recursive construction of the Koch curve by Helge von Koch (1904).
- * Algorithm reference: https://en.wikipedia.org/wiki/Koch_snowflake
+ * Algorithm reference: [https://en.wikipedia.org/wiki/Koch_snowflake](https://en.wikipedia.org/wiki/Koch_snowflake)
  */
 
 using System.Collections.Generic;
@@ -51,5 +51,85 @@ public static class KochMath
 
         points.Add(points[0]); // Close the loop back to start
         return points.ToArray();
+    }
+
+    // shared point-classification test - extracted out of KochSnowflakeMotifRenderer
+    // now shared with KochSnowflakeMotifRenderer and RoomBoundaryGenerator
+    public static bool IsOutsideEdge(
+        Vector2 point,
+        Vector2 edgeStart,
+        Vector2 edgeEnd,
+        Vector2 referenceCenter)
+    {
+        Vector2 edgeDirection =
+            edgeEnd - edgeStart;
+
+        Vector2 toPoint =
+            point - edgeStart;
+
+        Vector2 toCenter =
+            referenceCenter - edgeStart;
+
+        float crossPoint =
+            edgeDirection.x * toPoint.y
+            - edgeDirection.y * toPoint.x;
+
+        float crossCenter =
+            edgeDirection.x * toCenter.y
+            - edgeDirection.y * toCenter.x;
+
+        return Mathf.Sign(crossPoint)
+            != Mathf.Sign(crossCenter);
+    }
+
+    // clustering logic, refactored out of KochSnowflakeMotifRenderer.Draw().
+    // Generates snowflake raw fractal points at provided depth   
+    public static List<List<Vector2>> GetFilteredSnowflakeClusters(
+        Vector2 center,
+        float snowflakeRadius,
+        int depth,
+        Vector2[] hexPoints,
+        Vector2 parentStart,
+        Vector2 parentEnd)
+    {
+        List<Vector2> snowflakePoints =
+            new List<Vector2>(GenerateSnowflake(center, snowflakeRadius, depth));
+
+        List<List<Vector2>> clusters =
+            new List<List<Vector2>>();
+
+        List<Vector2> currentCluster = null;
+
+        foreach(Vector2 point in snowflakePoints)
+        {
+            bool outsideAnyRoof =
+                IsOutsideEdge(point, hexPoints[0], hexPoints[1], center)
+                ||
+                IsOutsideEdge(point, hexPoints[1], hexPoints[2], center)
+                ||
+                IsOutsideEdge(point, hexPoints[2], hexPoints[3], center);
+
+            bool insideParent =
+                !IsOutsideEdge(point, parentStart, parentEnd, center);
+
+            bool keep = outsideAnyRoof || insideParent;
+
+            if(keep)
+            {
+                if(currentCluster == null)
+                {
+                    currentCluster = new List<Vector2>();
+                    clusters.Add(currentCluster);
+                }
+
+                currentCluster.Add(point);
+            }
+            else
+            {
+                currentCluster = null;
+            }
+        }
+
+        return clusters;
     }
 }

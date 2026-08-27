@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 //[RequireComponent(typeof(RootKochLayoutSettings))]
@@ -20,16 +21,37 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [SerializeField] private float edgeWidth = 0.05f;
     [SerializeField] private Color normalEdgeColor = Color.white;
     [SerializeField] private Color parentEdgeColor = Color.red;
-        
+
     [Header("Child Edge Collision Toggles")]
-    [Tooltip("If off, the Prev child edge is still drawn but will not trigger traversal.")]
     [SerializeField] private bool prevEdgeCollisionEnabled = true;
-
-    [Tooltip("If off, the Self child edge is still drawn but will not trigger traversal.")]
     [SerializeField] private bool selfEdgeCollisionEnabled = true;
-
-    [Tooltip("If off, the Next child edge is still drawn but will not trigger traversal.")]
     [SerializeField] private bool nextEdgeCollisionEnabled = true;
+
+    // perimeter blocking edge - player and enemy bounds
+    // Deliberately kept low for collider performance    
+    [Header("Perimeter Blocking Edge Pattern Detail")]
+    [SerializeField] private int blockingEdgeRecursionDepth = 2;  
+
+    // anchor point bug fix (parentStart/parentEnd)
+    private const float PerimeterAnchorToleranceRatio = 0.75f;
+
+    // note - two colliders on parent edge - 1 for enemy, 1 for player
+    [Header("Parent Edge Physical Blocking")]  
+    [SerializeField] private string blockingLayerName = "RoomBlocker";   
+    [SerializeField] private bool parentEdgeBlocksPlayer = false;
+
+    [SerializeField] private string playerBlockingLayerName = "PlayerBlocker";
+
+    //cached references to parent-edge blocker colliders
+    //so can toggled at runtime without rederiving
+    private EdgeCollider2D parentEdgePlayerBlockerCollider;  
+    private EdgeCollider2D parentEdgeEnemyBlockerCollider;
+
+    // cached references to every perimeter blocking edge collider created 
+    private readonly List<EdgeCollider2D> perimeterBlockingColliders = new List<EdgeCollider2D>();
+
+    // cached reference to the parent TRIGGER edge's own collider
+    private EdgeCollider2D parentTriggerEdgeCollider;
 
     [Header("Traversal Wiring")]
     [SerializeField] private FractalUniverseManager universeManager;
@@ -39,7 +61,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
     // Guards against generating edges twice - once via Initialize() (instantiated path) and again via Start() 
     private bool hasGeneratedEdges = false;
 
-    // cached refs to 3 child edges' own colliders, caught when GenerateEdges() creates them 
+    // Cached references to the three child edges colliders
     private EdgeCollider2D prevEdgeCollider;
     private EdgeCollider2D selfEdgeCollider;
     private EdgeCollider2D nextEdgeCollider;
@@ -99,9 +121,9 @@ public class RoomBoundaryGenerator : MonoBehaviour
         GenerateChildEmergePoints();
     }
 
-    // re-applies 3 serialized collision toggles to their respective cached colliders.
-    // To be called any time after GenerateEdges() run -  warn and return if called earlier
-    // For FUM.ZoomIntoChildCoroutine to force room's edge colliders back after KochRoomVisibility hide/show runs
+    // Repply 3 collision toggles to their cached colliders
+    // Works after GenerateEdges() has run
+    // Intended for FUM.ZoomIntoChildCoroutine
     public void ReapplyChildEdgeCollisionSettings()
     {
         if(!hasGeneratedEdges)
@@ -123,6 +145,56 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         if(nextEdgeCollider != null)
             nextEdgeCollider.enabled = nextEdgeCollisionEnabled;
+    }
+
+    public void RestoreAllEdgeCollisionSettings()
+    {
+        if(!hasGeneratedEdges)
+        {
+            Debug.LogWarning(
+                "RestoreAllEdgeCollisionSettings called on " + name +
+                " before GenerateEdges() has run - nothing to restore yet.",
+                this
+            );
+
+            return;
+        }
+
+        ReapplyChildEdgeCollisionSettings();
+
+        if(parentTriggerEdgeCollider != null)
+            parentTriggerEdgeCollider.enabled = true;
+
+        foreach(EdgeCollider2D perimeterCollider in perimeterBlockingColliders)
+        {
+            if(perimeterCollider != null)
+                perimeterCollider.enabled = true;
+        }
+
+        if(parentEdgeEnemyBlockerCollider != null)
+            parentEdgeEnemyBlockerCollider.enabled = true;
+
+        if(parentEdgePlayerBlockerCollider != null)
+            parentEdgePlayerBlockerCollider.enabled = parentEdgeBlocksPlayer;
+    }
+
+    //  runtime toggle for the parent edge's player-blocking collider
+    public void SetParentEdgeBlocksPlayer(bool blocksPlayer)
+    {
+        parentEdgeBlocksPlayer = blocksPlayer;
+
+        if(parentEdgePlayerBlockerCollider != null)
+        {
+            parentEdgePlayerBlockerCollider.enabled = parentEdgeBlocksPlayer;
+        }
+        else
+        {
+            Debug.LogWarning(
+                "SetParentEdgeBlocksPlayer called on " + name +
+                " before its parent-edge player blocker collider has been created.",
+                this
+            );
+        }
     }
 
     private int GetRotationSteps()
@@ -215,15 +287,23 @@ public class RoomBoundaryGenerator : MonoBehaviour
             hexPoints[i] = RotatePoint(baseHexPoints[i], rotationAngle);
         }
 
+        // rotated snowflakeRadius-based hex points, matching KochSnowflakeMotifRenderer's
+        // own hexPoints exactly (same radius, same rotation)        
+        Vector2[] snowflakeHexPoints = new Vector2[4];
+
+        for(int i = 0; i < snowflakeHexPoints.Length; i++)
+        {
+            snowflakeHexPoints[i] = RotatePoint(baseSnowflakeHexPoints[i], rotationAngle);
+        }
+
         Vector2 parentStart = RotatePoint(parentStartBase, rotationAngle);
         Vector2 parentEnd = RotatePoint(parentEndBase, rotationAngle);
 
-        // store local space parent edge endpoints for other components to query later        
         ParentEdgeLocalStart = parentStart;
         ParentEdgeLocalEnd = parentEnd;
 
         int[] childLetters = FractalNode.GetChildLetters(rotationSteps);
-                
+
         prevEdgeCollider = CreateEdge(
             hexPoints[0], hexPoints[1],
             FractalNode.LetterNames[childLetters[0]],
@@ -247,37 +327,137 @@ public class RoomBoundaryGenerator : MonoBehaviour
             targetLetterIndex: childLetters[2],
             collisionEnabled: nextEdgeCollisionEnabled
         );
-               
-        CreateEdge(
+
+        parentTriggerEdgeCollider = CreateEdge(
             parentStart, parentEnd,
             "Parent",
             isReturnEdge: true,
             targetLetterIndex: -1
         );
 
-        //blocking edge - physics        
-        CreateBlockingEdge(hexPoints[3], parentEnd);   // left side wall
-        CreateBlockingEdge(hexPoints[0], parentStart); // right side wall
+      
+        CreatePerimeterBlockingEdges(
+            snowflakeHexPoints,
+            parentStart,
+            parentEnd
+        );
+
+        // parent edge physical blocking (enemy always, player toggleable)
+        // Separate from parent trigger edge above - not linked by code
+        CreateParentEdgeBlockers(parentStart, parentEnd);
     }
 
-
-    // separate logic from CreateEdge(), this is a solid non-trigger collider
-    //prevent player from leaving motif
-    private void CreateBlockingEdge(Vector2 start, Vector2 end)
+    // builds two perimeter blocking edges (left/prev right/next) until they meet
+    // Uses KochMath.GetFilteredSnowflakeClusters() logic   
+    private void CreatePerimeterBlockingEdges(
+        Vector2[] snowflakeHexPoints,
+        Vector2 parentStart,
+        Vector2 parentEnd)
     {
-        GameObject edgeObject = new GameObject("Edge_SideBlock");
+        List<List<Vector2>> clusters = KochMath.GetFilteredSnowflakeClusters(
+            layoutSettings.center,
+            layoutSettings.snowflakeRadius,
+            blockingEdgeRecursionDepth,
+            snowflakeHexPoints,
+            parentStart,
+            parentEnd
+        );
+
+        // warning if tuning variables produce unusual results - clusters != 2
+        if(clusters.Count != 2)
+        {
+            Debug.LogWarning(
+                name + ": expected exactly 2 perimeter blocking clusters (prev/next sides) " +
+                "at blockingEdgeRecursionDepth " + blockingEdgeRecursionDepth +
+                ", but got " + clusters.Count +
+                ". Building a blocking edge for each cluster found anyway.",
+                this
+            );
+        }
+
+        // bug fix to stop anchor not attaching approx to cluster near parentStart & parentEnd    
+        float anchorTolerance = layoutSettings.snowflakeRadius * PerimeterAnchorToleranceRatio;
+
+        foreach(List<Vector2> cluster in clusters)
+        {
+            if(cluster.Count == 0)
+                continue;
+
+            Vector2 clusterStart = cluster[0];
+            Vector2 clusterEnd = cluster[cluster.Count - 1];
+
+            List<Vector2> perimeterPoints = new List<Vector2>();
+
+            if(TryGetCloserAnchor(clusterStart, parentStart, parentEnd, anchorTolerance, out Vector2 anchorNearStart))
+            {
+                perimeterPoints.Add(anchorNearStart);
+            }
+
+            perimeterPoints.AddRange(cluster);
+
+            if(TryGetCloserAnchor(clusterEnd, parentStart, parentEnd, anchorTolerance, out Vector2 anchorNearEnd))
+            {
+                perimeterPoints.Add(anchorNearEnd);
+            }
+
+            CreatePerimeterBlockingEdge(perimeterPoints.ToArray());
+        }
+    }
+
+   
+    // return true (and output chosen anchor) if the nearer candidate is within tolerance
+    private bool TryGetCloserAnchor(
+        Vector2 clusterPoint,
+        Vector2 parentStart,
+        Vector2 parentEnd,
+        float tolerance,
+        out Vector2 anchor)
+    {
+        float distToStart = Vector2.Distance(clusterPoint, parentStart);
+        float distToEnd = Vector2.Distance(clusterPoint, parentEnd);
+
+        if(distToStart <= distToEnd)
+        {
+            anchor = parentStart;
+            return distToStart <= tolerance;
+        }
+
+        anchor = parentEnd;
+        return distToEnd <= tolerance;
+    }
+
+    // create one solid (non-trigger), always-blocking EdgeCollider2D following the given point chain
+    // No RoomZoneTrigger - this is physical blocking only, not a traversal trigger
+    private EdgeCollider2D CreatePerimeterBlockingEdge(Vector2[] points)
+    {
+        GameObject edgeObject = new GameObject("Edge_PerimeterBlock");
 
         edgeObject.transform.SetParent(transform, worldPositionStays: false);
 
+        int blockingLayer = LayerMask.NameToLayer(blockingLayerName);
+
+        if(blockingLayer >= 0)
+        {
+            edgeObject.layer = blockingLayer;
+        }
+        else
+        {
+            Debug.LogWarning(
+                name + ": blockingLayerName \"" + blockingLayerName +
+                "\" is not a valid layer - " + edgeObject.name +
+                " will remain on the Default layer.",
+                this
+            );
+        }
+
         EdgeCollider2D edgeCollider = edgeObject.AddComponent<EdgeCollider2D>();
-        edgeCollider.points = new[] { start, end };
-        edgeCollider.isTrigger = false; // solid - blocks movement via normal physics collision, not OnTriggerEnter2D
+        edgeCollider.points = points;
+        edgeCollider.isTrigger = false; // solid - always blocks via normal physics collision
 
         LineRenderer line = edgeObject.AddComponent<LineRenderer>();
         line.useWorldSpace = false;
-        line.positionCount = 2;
-        line.SetPosition(0, start);
-        line.SetPosition(1, end);
+        line.positionCount = points.Length;
+        line.SetPositions(Array.ConvertAll(points, p => new Vector3(p.x, p.y, 0f)));
         line.startWidth = edgeWidth;
         line.endWidth = edgeWidth;
         line.startColor = normalEdgeColor;
@@ -285,7 +465,67 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         if(edgeMaterial != null)
             line.sharedMaterial = edgeMaterial;
+
+        perimeterBlockingColliders.Add(edgeCollider);
+
+        return edgeCollider;
     }
+
+    // create two separate, always-existing parent-edge blocking colliders:
+    // one always blocks for enemies
+    // one may block the player via boolean toggle
+    // both sit on exact same line as  existing parent TRIGGER edge, but are separate colliders 
+    private void CreateParentEdgeBlockers(Vector2 parentStart, Vector2 parentEnd)
+    {
+        GameObject enemyBlockerObject = new GameObject("Edge_ParentBlock_Enemy");
+        enemyBlockerObject.transform.SetParent(transform, worldPositionStays: false);
+
+        int blockingLayer = LayerMask.NameToLayer(blockingLayerName);
+
+        if(blockingLayer >= 0)
+        {
+            enemyBlockerObject.layer = blockingLayer;
+        }
+        else
+        {
+            Debug.LogWarning(
+                name + ": blockingLayerName \"" + blockingLayerName +
+                "\" is not a valid layer - " + enemyBlockerObject.name +
+                " will remain on the Default layer.",
+                this
+            );
+        }
+
+        parentEdgeEnemyBlockerCollider = enemyBlockerObject.AddComponent<EdgeCollider2D>();
+        parentEdgeEnemyBlockerCollider.points = new[] { parentStart, parentEnd };
+        parentEdgeEnemyBlockerCollider.isTrigger = false;
+       
+        GameObject playerBlockerObject = new GameObject("Edge_ParentBlock_Player");
+        playerBlockerObject.transform.SetParent(transform, worldPositionStays: false);
+
+        int playerBlockingLayer = LayerMask.NameToLayer(playerBlockingLayerName);
+
+        if(playerBlockingLayer >= 0)
+        {
+            playerBlockerObject.layer = playerBlockingLayer;
+        }
+        else
+        {
+            Debug.LogWarning(
+                name + ": playerBlockingLayerName \"" + playerBlockingLayerName +
+                "\" is not a valid layer - " + playerBlockerObject.name +
+                " will remain on the Default layer.",
+                this
+            );
+        }
+
+        parentEdgePlayerBlockerCollider = playerBlockerObject.AddComponent<EdgeCollider2D>();
+        parentEdgePlayerBlockerCollider.points = new[] { parentStart, parentEnd };
+        parentEdgePlayerBlockerCollider.isTrigger = false;
+   
+        parentEdgePlayerBlockerCollider.enabled = parentEdgeBlocksPlayer;
+    }
+
 
     // function to set centre point where child motifs emerge from motif
     // no collision behaviour and NOT related to boundary edge collisions!!!!
@@ -319,8 +559,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
         ChildEmergeLocalPoints[2] = (emergeHexPoints[2] + emergeHexPoints[3]) / 2f;
     }
 
-    // optional collisionEnabled parameter (default true)
-    // returns the created EdgeCollider2D so GenerateEdges() can cache child-edge colliders for later use
+    // includes optional collisionEnabled parameter
+    // return created EdgeCollider2D for caching 3 child-edge colliders for later use
     private EdgeCollider2D CreateEdge(
         Vector2 start,
         Vector2 end,
