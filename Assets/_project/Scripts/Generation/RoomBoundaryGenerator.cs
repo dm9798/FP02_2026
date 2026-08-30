@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(RootKochLayoutSettings))]
 public class RoomBoundaryGenerator : MonoBehaviour
 {
     public enum RoomLetter
@@ -28,23 +27,23 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [SerializeField] private bool nextEdgeCollisionEnabled = true;
 
     // perimeter blocking edge - player and enemy bounds
-    // Deliberately kept low for collider performance    
+    // Depth deliberately kept low for collider performance    
     [Header("Perimeter Blocking Edge Pattern Detail")]
-    [SerializeField] private int blockingEdgeRecursionDepth = 2;  
+    [SerializeField] private int blockingEdgeRecursionDepth = 2;
 
     // anchor point bug fix (parentStart/parentEnd)
     private const float PerimeterAnchorToleranceRatio = 0.75f;
 
     // note - two colliders on parent edge - 1 for enemy, 1 for player
-    [Header("Parent Edge Physical Blocking")]  
-    [SerializeField] private string blockingLayerName = "RoomBlocker";   
+    [Header("Parent Edge Physical Blocking")]
+    [SerializeField] private string blockingLayerName = "RoomBlocker";
     [SerializeField] private bool parentEdgeBlocksPlayer = false;
 
     [SerializeField] private string playerBlockingLayerName = "PlayerBlocker";
 
     //cached references to parent-edge blocker colliders
     //so can toggled at runtime without rederiving
-    private EdgeCollider2D parentEdgePlayerBlockerCollider;  
+    private EdgeCollider2D parentEdgePlayerBlockerCollider;
     private EdgeCollider2D parentEdgeEnemyBlockerCollider;
 
     // cached references to every perimeter blocking edge collider created 
@@ -68,6 +67,16 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     public Vector2[] ChildEmergeLocalPoints { get; private set; } = new Vector2[3];
 
+    [Header("Enemy Spawning")]
+    [Tooltip("The rogues gallery of enemy prefabs this room can spawn from")]
+    [SerializeField] private EnemySpawnTable enemySpawnTable;
+
+    //Reference to the player's Transform, passed to the spawned enemy for detection/chase
+    [SerializeField] private Transform playerTransform;
+
+    // Cached reference to the spawned enemy, if any future systems query whether this room's enemy is still alive
+    private EnemyController spawnedEnemy;
+
     // room's own parent edge endpoints local space
     // exposed for FractalUniverseManager's zoom-in coroutine to query parent edge every frame during room animation
     public Vector2 ParentEdgeLocalStart
@@ -88,6 +97,16 @@ public class RoomBoundaryGenerator : MonoBehaviour
     public Vector2 GetParentEdgeWorldEnd()
     {
         return transform.TransformPoint(ParentEdgeLocalEnd);
+    }
+
+    // cached closed polygon (local space), built once in GenerateEdges() alongside the
+    // perimeter blocking colliders, reusing same cluster points
+    private Vector2[] walkablePolygon;
+
+    //public accessor for enemycontroller script to sample points from
+    public Vector2[] GetWalkablePolygonLocalPoints()
+    {
+        return walkablePolygon;
     }
 
     private void Awake()
@@ -335,7 +354,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
             targetLetterIndex: -1
         );
 
-      
+
         CreatePerimeterBlockingEdges(
             snowflakeHexPoints,
             parentStart,
@@ -345,6 +364,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
         // parent edge physical blocking (enemy always, player toggleable)
         // Separate from parent trigger edge above - not linked by code
         CreateParentEdgeBlockers(parentStart, parentEnd);
+
+        SpawnEnemyIfConfigured();
     }
 
     // builds two perimeter blocking edges (left/prev right/next) until they meet
@@ -378,6 +399,11 @@ public class RoomBoundaryGenerator : MonoBehaviour
         // bug fix to stop anchor not attaching approx to cluster near parentStart & parentEnd    
         float anchorTolerance = layoutSettings.snowflakeRadius * PerimeterAnchorToleranceRatio;
 
+        // collects each cluster's fully-anchored point chain (the same array passed to
+        // CreatePerimeterBlockingEdge), so BuildWalkablePolygon() can assemble them into one
+        // closed polygon afterward, no need to recalculate
+        List<List<Vector2>> perimeterChains = new List<List<Vector2>>();
+
         foreach(List<Vector2> cluster in clusters)
         {
             if(cluster.Count == 0)
@@ -401,10 +427,17 @@ public class RoomBoundaryGenerator : MonoBehaviour
             }
 
             CreatePerimeterBlockingEdge(perimeterPoints.ToArray());
+
+            // NEW
+            perimeterChains.Add(perimeterPoints);
         }
+
+        //build the walkable polygon from the exact same chains just used for the
+        // colliders, so enemy patrol sampling stays consistent with physical perimeter bounds
+        BuildWalkablePolygon(perimeterChains, parentStart, parentEnd);
     }
 
-   
+
     // return true (and output chosen anchor) if the nearer candidate is within tolerance
     private bool TryGetCloserAnchor(
         Vector2 clusterPoint,
@@ -499,7 +532,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
         parentEdgeEnemyBlockerCollider = enemyBlockerObject.AddComponent<EdgeCollider2D>();
         parentEdgeEnemyBlockerCollider.points = new[] { parentStart, parentEnd };
         parentEdgeEnemyBlockerCollider.isTrigger = false;
-       
+
         GameObject playerBlockerObject = new GameObject("Edge_ParentBlock_Player");
         playerBlockerObject.transform.SetParent(transform, worldPositionStays: false);
 
@@ -522,7 +555,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
         parentEdgePlayerBlockerCollider = playerBlockerObject.AddComponent<EdgeCollider2D>();
         parentEdgePlayerBlockerCollider.points = new[] { parentStart, parentEnd };
         parentEdgePlayerBlockerCollider.isTrigger = false;
-   
+
         parentEdgePlayerBlockerCollider.enabled = parentEdgeBlocksPlayer;
     }
 
@@ -607,4 +640,160 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         return edgeCollider;
     }
+
+    // called from CreatePerimeterBlockingEdges(), immediately after building the two
+    // perimeter chains, s reuses same exact point data (including anchors).
+    // perimeterChains[0] and [1] are expected to share their apex point (both chains meet at the self-spike tip)
+    private void BuildWalkablePolygon(List<List<Vector2>> perimeterChains, Vector2 parentStart, Vector2 parentEnd)
+    {
+        if(perimeterChains.Count != 2)
+        {
+            Debug.LogWarning(
+                name + ": BuildWalkablePolygon expected exactly 2 perimeter chains, got " +
+                perimeterChains.Count + " - walkable polygon will not be built for this room. " +
+                "Patrol sampling will be unavailable.",
+                this
+            );
+
+            walkablePolygon = null;
+            return;
+        }
+
+        List<Vector2> polygon = new List<Vector2>();
+        polygon.AddRange(perimeterChains[1]);
+
+        // Skip perimeterChains[0]'s first point if it duplicates chain[1]'s last point (the shared
+        // apex), to avoid redundant/zero-length edge in the polygon
+        for(int i = 0; i < perimeterChains[0].Count; i++)
+        {
+            if(i == 0 && polygon.Count > 0 &&
+                Vector2.Distance(polygon[polygon.Count - 1], perimeterChains[0][0]) < 0.0001f)
+            {
+                continue;
+            }
+
+            polygon.Add(perimeterChains[0][i]);
+        }
+
+        walkablePolygon = polygon.ToArray();
+    }
+
+    // Point-in-polygon ray-casting algorithm.
+    // Inspired by W. Randolph Franklin's PNPOLY algorithm:
+    // https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
+    public static bool IsPointInPolygon(Vector2 point, Vector2[] polygon)
+    {
+        bool inside = false;
+        int j = polygon.Length - 1;
+
+        for(int i = 0; i < polygon.Length; i++)
+        {
+            Vector2 pi = polygon[i];
+            Vector2 pj = polygon[j];
+
+            if((pi.y > point.y) != (pj.y > point.y) &&
+                point.x < (pj.x - pi.x) * (point.y - pi.y) / (pj.y - pi.y) + pi.x)
+            {
+                inside = !inside;
+            }
+
+            j = i;
+        }
+
+        return inside;
+    }
+
+    // rejection-sampling helper: picksa random point within the polygon's bounding box, keeps it only if it's actually inside the polygon
+    // retries up to maxAttempts times - maxAttempts=30 gives very low chance of failure
+    // Returns false if no valid point was found within maxAttempts -
+    // enemycontroller caller to treat that as "stay where you are" - rather than somewhere potentially unsafe/illegal
+    public bool TryGetRandomWalkablePoint(out Vector2 localPoint, int maxAttempts = 30)
+    {
+        localPoint = layoutSettings != null ? layoutSettings.center : Vector2.zero;
+
+        if(walkablePolygon == null || walkablePolygon.Length < 3)
+            return false;
+
+        float minX = walkablePolygon[0].x;
+        float maxX = walkablePolygon[0].x;
+        float minY = walkablePolygon[0].y;
+        float maxY = walkablePolygon[0].y;
+
+        for(int i = 1; i < walkablePolygon.Length; i++)
+        {
+            minX = Mathf.Min(minX, walkablePolygon[i].x);
+            maxX = Mathf.Max(maxX, walkablePolygon[i].x);
+            minY = Mathf.Min(minY, walkablePolygon[i].y);
+            maxY = Mathf.Max(maxY, walkablePolygon[i].y);
+        }
+
+        for(int attempt = 0; attempt < maxAttempts; attempt++)
+        {
+            Vector2 candidate = new Vector2(
+                UnityEngine.Random.Range(minX, maxX),
+                UnityEngine.Random.Range(minY, maxY)
+            );
+
+            if(IsPointInPolygon(candidate, walkablePolygon))
+            {
+                localPoint = candidate;
+                return true;
+            }
+        }
+
+        Debug.LogWarning(
+            name + ": TryGetRandomWalkablePoint failed to find a valid point after " +
+            maxAttempts + " attempts - falling back to room center.",
+            this
+        );
+
+        return false;
+    }
+
+    // world-space wrapper, for callers (enemycontroller) as they use world space
+    public bool TryGetRandomWalkableWorldPoint(out Vector2 worldPoint, int maxAttempts = 30)
+    {
+        bool found = TryGetRandomWalkablePoint(out Vector2 localPoint, maxAttempts);
+        worldPoint = transform.TransformPoint(localPoint);
+        return found;
+    }
+
+    // called once from GenerateEdges(), after all the boundary/blocking geometry for this room has been built
+    private void SpawnEnemyIfConfigured()
+    {
+        if(enemySpawnTable == null)
+            return;
+
+        GameObject enemyPrefab = enemySpawnTable.GetEnemyPrefab();
+
+        if(enemyPrefab == null)
+            return;
+
+        GameObject enemyInstance = Instantiate(enemyPrefab, transform);
+
+        EnemyController enemyController = enemyInstance.GetComponent<EnemyController>();
+
+        if(enemyController == null)
+        {
+            Debug.LogError(
+                name + ": spawned enemy prefab \"" + enemyPrefab.name +
+                "\" has no EnemyController component - destroying it.",
+                this
+            );
+
+            Destroy(enemyInstance);
+            return;
+        }
+
+        enemyController.Initialize(this, playerTransform);
+        spawnedEnemy = enemyController;
+    }
+
+    // public helper for future cross-room/manager-level checks (example: "has this room been cleared")
+    // Returns false once the enemy has been destroyed (Die() -> Destroy(gameObject))
+    public bool IsEnemyAlive()
+    {
+        return spawnedEnemy != null;
+    }
+
 }

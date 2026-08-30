@@ -81,6 +81,8 @@ MonoBehaviour:
   parentEdgeBlocksPlayer: 0
   playerBlockingLayerName: PlayerBlocker
   universeManager: {fileID: 0}
+  enemySpawnTable: {fileID: 0}
+  playerTransform: {fileID: 0}
 --- !u!114 &7803736448453866716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +98,7 @@ MonoBehaviour:
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
   normalWorldPosition: {x: 0, y: 0, z: 0}
-  snowflakeRadius: 9
+  snowflakeRadius: 10
   boundaryRadiusRatio: 0.58
   gapRatio: 0.45
   widenRatio: -0.1

@@ -80,6 +80,8 @@ MonoBehaviour:
   parentEdgeBlocksPlayer: 0
   playerBlockingLayerName: PlayerBlocker
   universeManager: {fileID: 0}
+  enemySpawnTable: {fileID: 11400000, guid: 509d3bb2bd02b7044949a5a79866d81f, type: 2}
+  playerTransform: {fileID: 0}
 --- !u!114 &9221668896636802076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,8 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomKochLayoutSettings
   center: {x: 0, y: 0}
   normalLocalScale: {x: 1, y: 1, z: 1}
-  normalWorldPosition: {x: 0, y: 0, z: 0}
-  snowflakeRadius: 9
+  normalWorldPosition: {x: 0, y: -3, z: 0}
+  snowflakeRadius: 13
   boundaryRadiusRatio: 0.58
   gapRatio: 0.45
   widenRatio: -0.1
