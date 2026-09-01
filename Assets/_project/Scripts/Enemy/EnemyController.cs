@@ -199,7 +199,7 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        
+
         if(movement != null)
         {
             movement.MoveTowards(rb, playerTransform.position, chaseSpeed);

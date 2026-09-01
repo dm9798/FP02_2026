@@ -109,6 +109,16 @@ public class RoomBoundaryGenerator : MonoBehaviour
         return walkablePolygon;
     }
 
+    // For EnemyController's patrol logic to sample random points within the room's bounding radius
+    public float BoundaryRadius
+    {
+        get
+        {
+            return layoutSettings.BoundaryRadius;
+        }
+    }
+
+
     private void Awake()
     {
         layoutSettings = GetComponent<RoomKochLayoutSettings>();
@@ -121,6 +131,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
         {
             GenerateEdges();
             GenerateChildEmergePoints();
+            //GenerateSolidPerimeterWalls();
         }
     }
 
@@ -331,6 +342,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
             collisionEnabled: prevEdgeCollisionEnabled
         );
 
+
         selfEdgeCollider = CreateEdge(
             hexPoints[1], hexPoints[2],
             FractalNode.LetterNames[childLetters[1]],
@@ -339,6 +351,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
             collisionEnabled: selfEdgeCollisionEnabled
         );
 
+
         nextEdgeCollider = CreateEdge(
             hexPoints[2], hexPoints[3],
             FractalNode.LetterNames[childLetters[2]],
@@ -346,6 +359,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
             targetLetterIndex: childLetters[2],
             collisionEnabled: nextEdgeCollisionEnabled
         );
+
 
         parentTriggerEdgeCollider = CreateEdge(
             parentStart, parentEnd,

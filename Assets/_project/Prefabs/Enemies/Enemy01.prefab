@@ -45,7 +45,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7844229960732277928}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -62,7 +62,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &6257369196178683588
 SpriteRenderer:
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bf03ea52950374b9cc1a5a69ebf20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StraightLineMovement
+  solidWallLayerName: RoomBlocker
 --- !u!114 &-4041090492411726406
 MonoBehaviour:
   m_ObjectHideFlags: 0

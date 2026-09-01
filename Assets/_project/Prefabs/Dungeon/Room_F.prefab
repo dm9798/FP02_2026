@@ -81,6 +81,7 @@ MonoBehaviour:
   parentEdgeBlocksPlayer: 0
   playerBlockingLayerName: PlayerBlocker
   universeManager: {fileID: 0}
+  containmentSettings: {fileID: 11400000, guid: d438e439ca6cedc41a8471f97923b508, type: 2}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
 --- !u!114 &5093040201214573367
