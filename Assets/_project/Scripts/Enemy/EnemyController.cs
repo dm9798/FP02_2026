@@ -42,6 +42,14 @@ public class EnemyController : MonoBehaviour
     [Tooltip("Max seconds to wait at a patrol target - or pursue unreachable one - before picking a new target")]
     [SerializeField] private float maxPatrolWaitTime = 4f;
 
+
+    // NEW NEW NEW
+    [Header("Health")]
+    [Tooltip("Total hit points - the enemy dies once currentHealth reaches zero.")]
+    [SerializeField] private float maxHealth = 30f;
+
+    private float currentHealth;
+
     private Rigidbody2D rb;
     private Transform playerTransform;
     private RoomBoundaryGenerator ownerRoom;
@@ -55,6 +63,7 @@ public class EnemyController : MonoBehaviour
     private float patrolWaitTimer;
     private float attackCooldownTimer;
     private bool isDead;
+
 
     // Called by component that spawns this enemy (RoomBoundaryGenerator) immediately after
     // Instantiate(), mirroring same "Initialize() before Start()" pattern already used vy that component
@@ -71,6 +80,7 @@ public class EnemyController : MonoBehaviour
         // resolve movement/attack components. Both are required!!!
         movement = GetComponent<IEnemyMovement>();
         attack = GetComponent<IEnemyAttack>();
+        currentHealth = maxHealth;
 
         if(movement == null)
         {
@@ -89,6 +99,8 @@ public class EnemyController : MonoBehaviour
                 this
             );
         }
+
+        
     }
 
     private void Start()
@@ -250,6 +262,23 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //NEW NEW NEW 
+    // Applies damage to this enemy. Once currentHealth reaches zero or below, triggers Die() -
+    // callers should call THIS method, not Die() directly, so health is always respected
+    // consistently regardless of what's dealing the damage (projectiles today, anything else later).
+    public void TakeDamage(float amount)
+    {
+        if(isDead)
+            return;
+
+        currentHealth -= amount;
+
+        if(currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
     // Public method to destroy gameObject outright
     // since the OWNING room instance is never destroyed (only hidden/reused across revisits), this permanently
     // removes the enemy from that room's hierarchy
@@ -276,4 +305,6 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(currentPatrolTarget, 0.2f);
     }
+
+ 
 }

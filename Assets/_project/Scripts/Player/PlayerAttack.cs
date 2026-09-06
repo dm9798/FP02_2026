@@ -1,0 +1,123 @@
+using System;
+using UnityEngine;
+
+// PlayerAttack - fire a projectile in one of 8 directions (N/NE/E/SE/S/SW/W/NW) on Space
+// aimed toward the player's CURRENT FACING (last non-zero movement direction, exposed PlayerMovement)
+[RequireComponent(typeof(TestPlayerMovement))]
+public class PlayerAttack : MonoBehaviour
+{
+    // Event raised right after a shot successfully fires (prefab assigned, cooldown elapsed)
+    // PlayerAnimationController subscribes to this to trigger the Attack blend tree  
+    public event Action OnAttack;
+
+    [Header("Projectile")]
+    [SerializeField] private GameObject projectilePrefab;
+
+    [Tooltip("World-space offset from the player's position where projectiles spawn")]
+    [SerializeField] private float spawnDistanceFromPlayer = 0.5f;
+
+    [SerializeField] private float projectileSpeed = 8f;
+    [SerializeField] private float projectileDamage = 10f;
+
+    [Header("Firing")]
+    [Tooltip("Seconds between shots - prevents holding Space from firing every single frame")]
+    [SerializeField] private float fireCooldown = 0.3f;
+
+    private TestPlayerMovement playerMovement;
+    private float cooldownTimer;
+
+    private static readonly Vector2[] CompassDirections =
+    {
+        new Vector2(1f, 0f),
+        new Vector2(0.7071f, 0.7071f),
+        new Vector2(0f, 1f),
+        new Vector2(-0.7071f, 0.7071f),
+        new Vector2(-1f, 0f),
+        new Vector2(-0.7071f, -0.7071f),
+        new Vector2(0f, -1f),
+        new Vector2(0.7071f, -0.7071f)
+    };
+
+    private void Awake()
+    {
+        playerMovement = GetComponent<TestPlayerMovement>();
+    }
+
+    private void Update()
+    {
+        cooldownTimer -= Time.deltaTime;
+
+        if(Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0f)
+        {
+            Fire();
+            cooldownTimer = fireCooldown;
+        }
+    }
+
+    private void Fire()
+    {
+        if(projectilePrefab == null)
+        {
+            Debug.LogError(
+                name + ": PlayerAttack has no projectilePrefab assigned - cannot fire.",
+                this
+            );
+
+            return;
+        }
+
+        Vector2 fireDirection = SnapToNearestCompassDirection(
+            playerMovement.CurrentFacingDirection
+        );
+
+        Vector2 spawnPosition = (Vector2)transform.position + fireDirection * spawnDistanceFromPlayer;
+
+        GameObject projectileInstance = Instantiate(
+            projectilePrefab,
+            spawnPosition,
+            Quaternion.identity
+        );
+
+        ProjectileController projectileController =
+            projectileInstance.GetComponent<ProjectileController>();
+
+        if(projectileController == null)
+        {
+            Debug.LogError(
+                name + ": projectilePrefab \"" + projectilePrefab.name +
+                "\" has no ProjectileController component - destroying it.",
+                this
+            );
+
+            Destroy(projectileInstance);
+            return;
+        }
+
+        projectileController.Initialize(fireDirection, projectileSpeed, projectileDamage);
+
+        OnAttack?.Invoke();
+    }
+
+    // Finds whichever of the 8 compass directions has the smallest angle to rawDirection
+    // (equivalent to largest dot product, since all vectors are unit length)
+    private Vector2 SnapToNearestCompassDirection(Vector2 rawDirection)
+    {
+        Vector2 normalizedRaw = rawDirection.normalized;
+
+        Vector2 bestDirection = CompassDirections[0];
+        float bestDot = Vector2.Dot(normalizedRaw, CompassDirections[0]);
+
+        for(int i = 1; i < CompassDirections.Length; i++)
+        {
+            float dot = Vector2.Dot(normalizedRaw, CompassDirections[i]);
+
+            if(dot > bestDot)
+            {
+                bestDot = dot;
+                bestDirection = CompassDirections[i];
+            }
+        }
+
+        return bestDirection;
+    }
+}

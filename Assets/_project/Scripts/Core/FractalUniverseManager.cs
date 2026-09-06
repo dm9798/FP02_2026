@@ -593,6 +593,32 @@ public class FractalUniverseManager : MonoBehaviour
         roomTransform.localScale = normalLocalScale;
         roomTransform.localPosition = normalLocalPosition;
 
+        //fix for enemy travelling throurgh parentEdge collider bug
+        RoomBoundaryGenerator currentRoomBoundaryGenerator =
+    currentRoomNode.GetComponentInChildren<RoomBoundaryGenerator>(true);
+
+        if(currentRoomBoundaryGenerator != null)
+        {
+            currentRoomBoundaryGenerator.RestoreAllEdgeCollisionSettings();
+        }
+        else
+        {
+            Debug.LogWarning(
+                currentRoomNode.name + " has no RoomBoundaryGenerator - cannot restore its edge " +
+                "collision settings after zooming out. Falling back to re-enabling all " +
+                "EdgeCollider2D components (old behaviour).",
+                currentRoomNode
+            );
+
+            EdgeCollider2D[] fallbackColliders = currentRoomNode.GetComponentsInChildren<EdgeCollider2D>(true);
+
+            foreach(EdgeCollider2D fallbackCollider in fallbackColliders)
+            {
+                if(fallbackCollider != null)
+                    fallbackCollider.enabled = true;
+            }
+        }
+
         float elapsed = 0f;
 
         while(elapsed < zoomOutDuration)
