@@ -21,6 +21,10 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [SerializeField] private Color normalEdgeColor = Color.white;
     [SerializeField] private Color parentEdgeColor = Color.red;
 
+    //
+    [SerializeField] private string edgeSortingLayerName = "Default";
+    [SerializeField] private int edgeSortingOrder = -1;
+
     // RoomDirector-facing traversal edge colors. Kept separate from normalEdgeColor/parentEdgeColor
     // RoomDirector needs to repaint ALL traversal edges (parent + 3 children) to the same "sealed" or "open" color at runtime, regardless of
     // their original per-edge default
@@ -673,19 +677,20 @@ public class RoomBoundaryGenerator : MonoBehaviour
         edgeCollider.points = points;
         edgeCollider.isTrigger = false; // solid - always blocks via normal physics collision
 
-        LineRenderer line = edgeObject.AddComponent<LineRenderer>();
-        line.useWorldSpace = false;
-        line.positionCount = points.Length;
-        line.SetPositions(Array.ConvertAll(points, p => new Vector3(p.x, p.y, 0f)));
-        line.startWidth = edgeWidth;
-        line.endWidth = edgeWidth;
-        line.startColor = normalEdgeColor;
-        line.endColor = normalEdgeColor;
-        //line.startColor = new Color(0, 0, 1, 1f);
-        //line.endColor = new Color(0, 0, 1, 1f);
+        //UNCOMMENT FOR DEBUGGING TO SEE PERIMETER BLOCKING COLLIDERS
+        //LineRenderer line = edgeObject.AddComponent<LineRenderer>();
+        //line.useWorldSpace = false;
+        //line.positionCount = points.Length;
+        //line.SetPositions(Array.ConvertAll(points, p => new Vector3(p.x, p.y, 0f)));
+        //line.startWidth = edgeWidth;
+        //line.endWidth = edgeWidth;
+        //line.startColor = normalEdgeColor;
+        //line.endColor = normalEdgeColor;
+        ////line.startColor = new Color(0, 0, 1, 1f);
+        ////line.endColor = new Color(0, 0, 1, 1f);
 
-        if(edgeMaterial != null)
-            line.sharedMaterial = edgeMaterial;
+        //if(edgeMaterial != null)
+        //    line.sharedMaterial = edgeMaterial;
 
         perimeterBlockingColliders.Add(edgeCollider);
 
@@ -825,6 +830,9 @@ public class RoomBoundaryGenerator : MonoBehaviour
         line.endWidth = edgeWidth;
         line.startColor = isReturnEdge ? parentEdgeColor : normalEdgeColor;
         line.endColor = isReturnEdge ? parentEdgeColor : normalEdgeColor;
+
+        line.sortingLayerName = edgeSortingLayerName;
+        line.sortingOrder = edgeSortingOrder;
 
         if(edgeMaterial != null)
             line.sharedMaterial = edgeMaterial;

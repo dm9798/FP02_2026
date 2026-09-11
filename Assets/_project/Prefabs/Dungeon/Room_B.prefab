@@ -54,10 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeMotifRenderer
   roomLetter: 1
   recursionDepth: 5
-  lineWidth: 0.05
+  lineWidth: 0.1
   motifContainer: {fileID: 0}
-  lineMaterial: {fileID: 0}
-  lineColor: {r: 1, g: 1, b: 1, a: 1}
+  lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  lineColor: {r: 0, g: 0, b: 0, a: 1}
   sortingLayerName: Default
   sortingOrder: 0
 --- !u!114 &4253340811209489051
@@ -73,10 +73,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryGenerator
   roomLetter: 1
-  edgeMaterial: {fileID: 0}
-  edgeWidth: 0.05
+  edgeMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  edgeWidth: 0.2
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  edgeSortingLayerName: Default
+  edgeSortingOrder: -1
   sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
   openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
