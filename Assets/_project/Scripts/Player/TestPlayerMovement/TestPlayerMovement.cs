@@ -19,6 +19,15 @@ public class TestPlayerMovement : MonoBehaviour
 
     void Awake() => rb = GetComponent<Rigidbody2D>();
 
+    //JUST TO TEST DAMAGE ON PLAYER
+    //private void Update()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        GetComponent<PlayerHealth>().TakeDamage(25f);
+    //    }
+    //}
+
     void FixedUpdate()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -29,6 +38,6 @@ public class TestPlayerMovement : MonoBehaviour
         if(input.sqrMagnitude > 0.0001f)
         {
             currentFacingDirection = input.normalized;
-        }
+        }        
     }
 }

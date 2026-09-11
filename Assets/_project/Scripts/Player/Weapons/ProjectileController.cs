@@ -2,8 +2,8 @@ using UnityEngine;
 
 // ProjectileController - fully autonomous once fired
 // PlayerAttack.cs instantiates a projectile prefab and calls Initialize() once
-// from that point on, this script owns the projectile's entire lifecycle (movement, collision, self-destruction) with no further involvement from
-// PlayerAttack.
+// from that point on, this script owns the projectile's entire lifecycle (movement, collision, self-destruction)
+// with no further involvement from PlayerAttack.cs
 // Explicit two-branch collision handling (perimeter vs. enemy)
 [RequireComponent(typeof(Rigidbody2D))]
 public class ProjectileController : MonoBehaviour
@@ -35,7 +35,7 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    // Called once by PlayerAttack immediately after Instantiate().
+    // Called once by PlayerAttack immediately after Instantiate()
     // Sets the projectile flying in a fixed direction at a fixed speed - no per-frame targeting, just travels straigh
     public void Initialize(Vector2 direction, float speed, float damage)
     {

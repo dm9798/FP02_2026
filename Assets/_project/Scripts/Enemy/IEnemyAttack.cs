@@ -6,7 +6,7 @@ using UnityEngine;
 // Different enemy prefabs attach different concrete implementations
 public interface IEnemyAttack
 {
-    // Called once each time the Attack state's cooldown fires.
+    // Called once each time the Attack state's cooldown fires
     // Implementations decide what actually happens:
     // dealing contact damage directly, spawning a projectile, playing an animation/VFX ...
     void Attack(Transform self, Transform player);

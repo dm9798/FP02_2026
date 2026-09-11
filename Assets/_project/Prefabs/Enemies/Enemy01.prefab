@@ -52,7 +52,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -63,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &6257369196178683588
 SpriteRenderer:
   serializedVersion: 2
@@ -185,10 +185,17 @@ MonoBehaviour:
   loseInterestRadius: 6
   attackRange: 1
   attackCooldown: 1
-  patrolSpeed: 1.5
-  chaseSpeed: 3
+  patrolSpeed: 2.5
+  chaseSpeed: 4
   patrolArrivalTolerance: 0.3
   maxPatrolWaitTime: 4
+  maxHealth: 30
+  hitFlashColor: {r: 1, g: 1, b: 1, a: 1}
+  hitFlashDuration: 0.12
+  deathFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  deathFlashCount: 3
+  deathFlashInterval: 0.08
+  deathFadeDuration: 0.6
 --- !u!114 &7666657811329295223
 MonoBehaviour:
   m_ObjectHideFlags: 0

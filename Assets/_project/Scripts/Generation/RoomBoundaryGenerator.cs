@@ -21,6 +21,13 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [SerializeField] private Color normalEdgeColor = Color.white;
     [SerializeField] private Color parentEdgeColor = Color.red;
 
+    // RoomDirector-facing traversal edge colors. Kept separate from normalEdgeColor/parentEdgeColor
+    // RoomDirector needs to repaint ALL traversal edges (parent + 3 children) to the same "sealed" or "open" color at runtime, regardless of
+    // their original per-edge default
+    [Header("Room Director Traversal Colors")]
+    [SerializeField] private Color sealedTraversalColor = Color.red;
+    [SerializeField] private Color openTraversalColor = Color.green;
+
     [Header("Child Edge Collision Toggles")]
     [SerializeField] private bool prevEdgeCollisionEnabled = true;
     [SerializeField] private bool selfEdgeCollisionEnabled = true;
@@ -65,6 +72,13 @@ public class RoomBoundaryGenerator : MonoBehaviour
     private EdgeCollider2D selfEdgeCollider;
     private EdgeCollider2D nextEdgeCollider;
 
+    // cached LineRenderer references, mirroring the collider caching above, so
+    // RoomDirector can repaint traversal edge colors at runtime
+    private LineRenderer prevEdgeLine;
+    private LineRenderer selfEdgeLine;
+    private LineRenderer nextEdgeLine;
+    private LineRenderer parentEdgeLine;
+
     public Vector2[] ChildEmergeLocalPoints { get; private set; } = new Vector2[3];
 
     [Header("Enemy Spawning")]
@@ -75,7 +89,13 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [SerializeField] private Transform playerTransform;
 
     // Cached reference to the spawned enemy, if any future systems query whether this room's enemy is still alive
-    private EnemyController spawnedEnemy;
+    //to be deleted - shifted to RoomDirector.cs
+    //private EnemyController spawnedEnemy;
+
+    // optional designer-placed marker for where the post-clear key should spawn
+    // Falls back to a random walkable point if left unassigned.
+    [Header("Room Director Wiring")]   
+    [SerializeField] private Transform keySpawnPoint;
 
     // room's own parent edge endpoints local space
     // exposed for FractalUniverseManager's zoom-in coroutine to query parent edge every frame during room animation
@@ -116,6 +136,87 @@ public class RoomBoundaryGenerator : MonoBehaviour
         {
             return layoutSettings.BoundaryRadius;
         }
+    }
+
+    // public accessor for RoomDirector to know where to spawn the key (within non-child interior of room)
+    // RRestrict the key's candidate points to the ParentEdgeLocalStart, ParentEdgeLocalEnd, center triangle
+    // AND requiring they also satisfy the existing walkablePolygon check, so a key never spawns outside physical bounds
+    public bool TryGetKeySpawnWorldPoint(out Vector2 worldPoint)
+    {
+        if(keySpawnPoint != null)
+        {
+            worldPoint = keySpawnPoint.position;
+            return true;
+        }
+
+        if(TryGetRandomPointInNonChildTriangle(out Vector2 localPoint))
+        {
+            worldPoint = transform.TransformPoint(localPoint);
+            return true;
+        }
+
+        // Fallback - if the triangle sampling fails fallback to the old room-wide random point rather than leaving key unspawned
+        Debug.LogWarning(
+            name + ": could not find a valid key spawn point inside the non-child triangle - " +
+            "falling back to a random point anywhere in the room's walkable area.",
+            this
+        );
+
+        return TryGetRandomWalkableWorldPoint(out worldPoint);
+    }
+
+    // Rejection-samples a point inside the triangle formed by the parent edge's two endpoints and the room's center - this is the "Non-Child" interior/area
+    // deliberately excluding the three child wedges that surround each fractal spike.
+    // Also must pass the existing walkablePolygon check, so a key can never spawn outside the room's actual geometry
+    private bool TryGetRandomPointInNonChildTriangle(out Vector2 localPoint, int maxAttempts = 30)
+    {
+        localPoint = layoutSettings != null ? layoutSettings.center : Vector2.zero;
+
+        Vector2 a = ParentEdgeLocalStart;
+        Vector2 b = ParentEdgeLocalEnd;
+        Vector2 c = layoutSettings.center;
+
+        float minX = Mathf.Min(a.x, Mathf.Min(b.x, c.x));
+        float maxX = Mathf.Max(a.x, Mathf.Max(b.x, c.x));
+        float minY = Mathf.Min(a.y, Mathf.Min(b.y, c.y));
+        float maxY = Mathf.Max(a.y, Mathf.Max(b.y, c.y));
+
+        for(int attempt = 0; attempt < maxAttempts; attempt++)
+        {
+            Vector2 candidate = new Vector2(
+                UnityEngine.Random.Range(minX, maxX),
+                UnityEngine.Random.Range(minY, maxY)
+            );
+
+            bool insideTriangle = IsPointInTriangle(candidate, a, b, c);
+            bool insideWalkableArea = walkablePolygon == null || walkablePolygon.Length < 3
+                || IsPointInPolygon(candidate, walkablePolygon);
+
+            if(insideTriangle && insideWalkableArea)
+            {
+                localPoint = candidate;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static bool IsPointInTriangle(Vector2 p, Vector2 a, Vector2 b, Vector2 c)
+    {
+        float d1 = Cross(p, a, b);
+        float d2 = Cross(p, b, c);
+        float d3 = Cross(p, c, a);
+
+        bool hasNegative = (d1 < 0f) || (d2 < 0f) || (d3 < 0f);
+        bool hasPositive = (d1 > 0f) || (d2 > 0f) || (d3 > 0f);
+
+        return !(hasNegative && hasPositive);
+    }
+
+    private static float Cross(Vector2 a, Vector2 b, Vector2 c)
+    {
+        return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
     }
 
 
@@ -206,6 +307,73 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         if(parentEdgePlayerBlockerCollider != null)
             parentEdgePlayerBlockerCollider.enabled = parentEdgeBlocksPlayer;
+    }
+
+    // Sets ALL child edges' collision (prev/self/next) to the same value in one call
+    // Used by RoomDirector when sealing a room
+    // false - freely re-enterable at child motif level) and when opening it
+    // true - restore normal blocking
+    public void SetAllChildEdgeCollisions(bool enabled)
+    {
+        if(!hasGeneratedEdges)
+        {
+            Debug.LogWarning(
+                "SetAllChildEdgeCollisions called on " + name +
+                " before GenerateEdges() has run - nothing to set yet.",
+                this
+            );
+
+            return;
+        }
+
+        if(prevEdgeCollider != null)
+            prevEdgeCollider.enabled = enabled;
+
+        if(selfEdgeCollider != null)
+            selfEdgeCollider.enabled = enabled;
+
+        if(nextEdgeCollider != null)
+            nextEdgeCollider.enabled = enabled;
+    }
+
+    // Repaints all 4 traversal edges (parent + 3 children) to a single color, used by
+    // RoomDirector to flip the room between "sealed" (red) and "open" (green) at runtime
+    public void SetTraversalEdgeColors(Color color)
+    {
+        if(prevEdgeLine != null)
+        {
+            prevEdgeLine.startColor = color;
+            prevEdgeLine.endColor = color;
+        }
+
+        if(selfEdgeLine != null)
+        {
+            selfEdgeLine.startColor = color;
+            selfEdgeLine.endColor = color;
+        }
+
+        if(nextEdgeLine != null)
+        {
+            nextEdgeLine.startColor = color;
+            nextEdgeLine.endColor = color;
+        }
+
+        if(parentEdgeLine != null)
+        {
+            parentEdgeLine.startColor = color;
+            parentEdgeLine.endColor = color;
+        }
+    }
+
+    // convenience wrappers using the two Inspector-configured RoomDirector colors.
+    public void PaintTraversalEdgesSealed()
+    {
+        SetTraversalEdgeColors(sealedTraversalColor);
+    }
+
+    public void PaintTraversalEdgesOpen()
+    {
+        SetTraversalEdgeColors(openTraversalColor);
     }
 
     //  runtime toggle for the parent edge's player-blocking collider
@@ -339,7 +507,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
             FractalNode.LetterNames[childLetters[0]],
             isReturnEdge: false,
             targetLetterIndex: childLetters[0],
-            collisionEnabled: prevEdgeCollisionEnabled
+            collisionEnabled: prevEdgeCollisionEnabled,
+            createdLine: out prevEdgeLine
         );
 
 
@@ -348,7 +517,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
             FractalNode.LetterNames[childLetters[1]],
             isReturnEdge: false,
             targetLetterIndex: childLetters[1],
-            collisionEnabled: selfEdgeCollisionEnabled
+            collisionEnabled: selfEdgeCollisionEnabled,
+            createdLine: out selfEdgeLine
         );
 
 
@@ -357,15 +527,17 @@ public class RoomBoundaryGenerator : MonoBehaviour
             FractalNode.LetterNames[childLetters[2]],
             isReturnEdge: false,
             targetLetterIndex: childLetters[2],
-            collisionEnabled: nextEdgeCollisionEnabled
+            collisionEnabled: nextEdgeCollisionEnabled,
+            createdLine: out nextEdgeLine
         );
 
-
+        //parent edge TRIGGER collider
         parentTriggerEdgeCollider = CreateEdge(
             parentStart, parentEnd,
             "Parent",
             isReturnEdge: true,
-            targetLetterIndex: -1
+            targetLetterIndex: -1,
+            createdLine: out parentEdgeLine
         );
 
 
@@ -375,7 +547,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
             parentEnd
         );
 
-        // parent edge physical blocking (enemy always, player toggleable)
+        // parent edge NON-TRIGGER physical blocking (enemy always, player toggleable)
         // Separate from parent trigger edge above - not linked by code
         CreateParentEdgeBlockers(parentStart, parentEnd);
 
@@ -509,6 +681,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
         line.endWidth = edgeWidth;
         line.startColor = normalEdgeColor;
         line.endColor = normalEdgeColor;
+        //line.startColor = new Color(0, 0, 1, 1f);
+        //line.endColor = new Color(0, 0, 1, 1f);
 
         if(edgeMaterial != null)
             line.sharedMaterial = edgeMaterial;
@@ -518,10 +692,10 @@ public class RoomBoundaryGenerator : MonoBehaviour
         return edgeCollider;
     }
 
-    // create two separate, always-existing parent-edge blocking colliders:
+    // create two separate, always-existing parent-edge NON-TRIGGER blocking colliders:
     // one always blocks for enemies
     // one may block the player via boolean toggle
-    // both sit on exact same line as  existing parent TRIGGER edge, but are separate colliders 
+    // both sit on exact same line as existing parent TRIGGER edge, but are separate colliders 
     private void CreateParentEdgeBlockers(Vector2 parentStart, Vector2 parentEnd)
     {
         GameObject enemyBlockerObject = new GameObject("Edge_ParentBlock_Enemy");
@@ -608,12 +782,15 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
     // includes optional collisionEnabled parameter
     // return created EdgeCollider2D for caching 3 child-edge colliders for later use
+    // Outputs the created LineRenderer via createdLine, so callers can cache it
+    // for later color repainting (RoomDirector), mirroring the existing collider caching
     private EdgeCollider2D CreateEdge(
         Vector2 start,
         Vector2 end,
         string edgeName,
         bool isReturnEdge,
         int targetLetterIndex,
+        out LineRenderer createdLine,
         bool collisionEnabled = true)
     {
         GameObject edgeObject = new GameObject($"Edge_{edgeName}");
@@ -651,6 +828,8 @@ public class RoomBoundaryGenerator : MonoBehaviour
 
         if(edgeMaterial != null)
             line.sharedMaterial = edgeMaterial;
+
+        createdLine = line;
 
         return edgeCollider;
     }
@@ -800,14 +979,39 @@ public class RoomBoundaryGenerator : MonoBehaviour
         }
 
         enemyController.Initialize(this, playerTransform);
-        spawnedEnemy = enemyController;
+
+        // notify RoomDirector (if present on this same GameObject) that an enemy now
+        // exists to track, so room-cleared detection works without RoomBoundaryGenerator
+        // needing to know anything about room-level state itself.
+        RoomDirector director = GetComponent<RoomDirector>();
+
+        if(director != null)
+        {
+            director.RegisterSpawnedEnemy(enemyController);
+        }
     }
 
-    // public helper for future cross-room/manager-level checks (example: "has this room been cleared")
-    // Returns false once the enemy has been destroyed (Die() -> Destroy(gameObject))
-    public bool IsEnemyAlive()
+    // toggles the PARENT TRIGGER edge's collider (parentTriggerEdgeCollider) - the one carrying
+    // RoomZoneTrigger that drives FractalUniverseManager's traversal/zoom logic - separately
+    // from parentEdgePlayerBlockerCollider (the physical, non-trigger blocker)
+    // Bug fix as SealRoom() was only ever calling SetParentEdgeBlocksPlayer(true),
+    // which enables the PHYSICAL blocker collider, but never touched parentTriggerEdgeCollider
+    // Since both colliders sit on (approximately) the same line, the trigger kept firing
+    // RoomZoneTrigger's OnTriggerEnter2D and initiating a transition regardless of whether the
+    // physical blocker was stopping normal movement
+    public void SetParentTriggerEdgeEnabled(bool enabled)
     {
-        return spawnedEnemy != null;
+        if(parentTriggerEdgeCollider != null)
+        {
+            parentTriggerEdgeCollider.enabled = enabled;
+        }
+        else
+        {
+            Debug.LogWarning(
+                "SetParentTriggerEdgeEnabled called on " + name +
+                " before its parent trigger edge collider has been created.",
+                this
+            );
+        }
     }
-
 }

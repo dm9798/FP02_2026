@@ -302,6 +302,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -312,6 +314,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &27303157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +351,7 @@ GameObject:
   - component: {fileID: 53977802}
   - component: {fileID: 53977803}
   - component: {fileID: 53977804}
+  - component: {fileID: 53977805}
   m_Layer: 7
   m_Name: TestPlayerMovement
   m_TagString: Player
@@ -424,7 +428,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -500,7 +504,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.25, y: 0.4}
+  m_Size: {x: 0.2, y: 0.32}
   m_EdgeRadius: 0
 --- !u!114 &53977801
 MonoBehaviour:
@@ -566,6 +570,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e63fb71c0a1174fa2c330199504195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationController
+--- !u!114 &53977805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53977796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd956c1131d3dd48baaa04113fa1abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 200
+  hitFlashColor: {r: 0, g: 0, b: 1, a: 1}
+  hitFlashDuration: 0.08
+  deathFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  deathFlashCount: 3
+  deathFlashInterval: 0.08
+  deathFadeDuration: 0.6
 --- !u!1 &103234863
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +786,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -773,6 +798,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &127774544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,6 +870,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -854,6 +882,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &191326588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,6 +1170,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -1151,6 +1182,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &344302707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1277,6 +1309,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -1287,6 +1321,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &352269491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1663,6 +1698,9 @@ GameObject:
   - component: {fileID: 570662204}
   - component: {fileID: 570662205}
   - component: {fileID: 570662206}
+  - component: {fileID: 570662209}
+  - component: {fileID: 570662208}
+  - component: {fileID: 570662207}
   m_Layer: 0
   m_Name: RootVisual
   m_TagString: Untagged
@@ -1863,6 +1901,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0695b3325ca79a54088a1ecb24038f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KochRoomVisibility
+--- !u!114 &570662207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570662200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d180efb25af93e44abaf965206be5772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KochSnowflakeRootMeshFill
+  recursionDepth: 5
+  bakedMesh: {fileID: 4300000, guid: 75ff36634260cdc4d81ca47465b19c24, type: 2}
+  bakedMeshFolder: Assets/_project/GeneratedMeshes/KochFills
+  fillMaterial: {fileID: 0}
+  fillColor: {r: 0.2, g: 0.4, b: 0.8, a: 0.5}
+  sortingLayerName: Default
+  sortingOrder: -1
+--- !u!23 &570662208
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570662200}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 1778286923}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &570662209
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570662200}
+  m_Mesh: {fileID: 4300000, guid: 75ff36634260cdc4d81ca47465b19c24, type: 2}
 --- !u!1 &576742846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,6 +2147,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -2043,6 +2159,7 @@ MonoBehaviour:
   universeManager: {fileID: 0}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &618323287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2310,6 +2427,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -2320,6 +2439,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &647933465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2577,6 +2697,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -2587,6 +2709,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &707536862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2830,6 +2953,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -2840,6 +2965,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &731705213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2966,6 +3092,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -2976,6 +3104,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &732070034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3051,6 +3180,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -3061,6 +3192,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &760306962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3253,6 +3385,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -3263,6 +3397,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &996885983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,6 +3641,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -3516,6 +3653,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1053884485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,6 +3729,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -3601,6 +3741,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1086229581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3881,6 +4022,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -3891,6 +4034,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1127710299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4148,6 +4292,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -4158,6 +4304,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1450745576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4562,6 +4709,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -4572,6 +4721,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1603984661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4815,6 +4965,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -4825,6 +4977,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1638324021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4936,6 +5089,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1778286923
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KochSnowflakeRootFillRuntimeMaterial
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 0.2, g: 0.4, b: 0.8, a: 0.5}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &1795815085
 GameObject:
   m_ObjectHideFlags: 0
@@ -5082,6 +5276,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -5092,6 +5288,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1808471229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5284,6 +5481,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -5294,6 +5493,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1820174080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5537,6 +5737,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -5547,6 +5749,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1870179806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5821,6 +6024,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -5831,6 +6036,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1910904835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6023,6 +6229,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -6033,6 +6241,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &1944266827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6316,6 +6525,8 @@ MonoBehaviour:
   edgeWidth: 0.05
   normalEdgeColor: {r: 1, g: 1, b: 1, a: 1}
   parentEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+  sealedTraversalColor: {r: 1, g: 0, b: 0, a: 1}
+  openTraversalColor: {r: 0, g: 1, b: 0, a: 1}
   prevEdgeCollisionEnabled: 1
   selfEdgeCollisionEnabled: 1
   nextEdgeCollisionEnabled: 1
@@ -6326,6 +6537,7 @@ MonoBehaviour:
   universeManager: {fileID: 1870460220}
   enemySpawnTable: {fileID: 0}
   playerTransform: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
 --- !u!114 &2023569766
 MonoBehaviour:
   m_ObjectHideFlags: 0

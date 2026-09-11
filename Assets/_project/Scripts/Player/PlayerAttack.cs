@@ -47,7 +47,15 @@ public class PlayerAttack : MonoBehaviour
     {
         cooldownTimer -= Time.deltaTime;
 
-        if(Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0f)
+        //if(Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0f)
+        //{
+        //    Fire();
+        //    cooldownTimer = fireCooldown;
+        //} 
+        
+        // left mouse button attack
+        // switched from space as not all keyboard works (up-left arrow key movement while pressing space shoot)
+        if(Input.GetMouseButtonDown(0) && cooldownTimer <= 0f)
         {
             Fire();
             cooldownTimer = fireCooldown;

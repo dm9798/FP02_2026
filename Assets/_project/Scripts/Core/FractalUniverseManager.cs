@@ -41,7 +41,7 @@ public class FractalUniverseManager : MonoBehaviour
 
     [Header("Traversal Safety")]
     [Tooltip("World-space distance the player is nudged into the destination room/root at the end")]
-    [SerializeField] private float traversalPushDistance = 0.15f;
+    [SerializeField] private float traversalPushDistance = 0.25f;
 
     public TraversalState CurrentState
     {
@@ -420,6 +420,21 @@ public class FractalUniverseManager : MonoBehaviour
 
         activeChain.Add(childNode);
         activeRoomVisibility = incomingVisibility;
+
+        // notify the destination room's RoomDirector (if present) that the player has
+        // now fully arrived, so it can seal the room (child edges unblocked, parent edge blocked, traversal edges painted red)
+        // Reuses childBoundaryGenerator, Deliberately only wired here (not
+        // in ZoomOutToParentCoroutine), since sealing only makes sense when moving deeper into a room for the first time
+        // not when retreating back through an already-opened parent edge
+        if(childBoundaryGenerator != null)
+        {
+            RoomDirector roomDirector = childBoundaryGenerator.GetComponent<RoomDirector>();
+
+            if(roomDirector != null)
+            {
+                roomDirector.NotifyPlayerEntered();
+            }
+        }
 
         traversalBlockedUntil = Time.unscaledTime + traversalCooldown;
         currentState = TraversalState.Exploration;

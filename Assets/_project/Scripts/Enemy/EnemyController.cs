@@ -1,11 +1,12 @@
 // EnemyController: FSM for single robot enemy contained within one room prefab's physical bounds
-// perimeter/parent-edge blocking colliders RoomBoundaryGenerator component already builds
+// that perimeter/parent-edge blocking colliders RoomBoundaryGenerator component already builds (RoomBlocker layer)
 // States: Patrol, Chase, Attack
 // Lifecycle: spawned once by its room prefab (RoomBoundaryGenerator, via Initialize()) and
-// persists as a child of that room's permanent instance. Die() destroys this GameObject - since
-// the room instance itself is never destroyed (only hidden/reused, per FUM's GetOrCreateChild),
+// persists as a child of that room's permanent instance.
+// Die() destroys this GameObject - since the room instance itself is never destroyed (only hidden/reused, per FUM's GetOrCreateChild)
 // the room's own hierarchy is the sole record of "this enemy is dead" - no external tracking needed
 
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -43,10 +44,20 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float maxPatrolWaitTime = 4f;
 
 
-    // NEW NEW NEW
     [Header("Health")]
     [Tooltip("Total hit points - the enemy dies once currentHealth reaches zero.")]
     [SerializeField] private float maxHealth = 30f;
+
+    [Header("Hit Flash")]
+    [Tooltip("Color the sprite flashes to when taking damage.")]
+    [SerializeField] private Color hitFlashColor = Color.white;
+    [SerializeField] private float hitFlashDuration = 0.12f;
+
+    [Header("Death Flash + Fade")]
+    [SerializeField] private Color deathFlashColor = Color.red;
+    [SerializeField] private int deathFlashCount = 3;
+    [SerializeField] private float deathFlashInterval = 0.08f;
+    [SerializeField] private float deathFadeDuration = 0.6f;
 
     private float currentHealth;
 
@@ -63,6 +74,11 @@ public class EnemyController : MonoBehaviour
     private float patrolWaitTimer;
     private float attackCooldownTimer;
     private bool isDead;
+
+    private SpriteRenderer spriteRenderer;
+    private Color baseColor;
+    private Coroutine hitFlashRoutine;
+    private Collider2D[] colliders;
 
 
     // Called by component that spawns this enemy (RoomBoundaryGenerator) immediately after
@@ -82,6 +98,14 @@ public class EnemyController : MonoBehaviour
         attack = GetComponent<IEnemyAttack>();
         currentHealth = maxHealth;
 
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        colliders = GetComponentsInChildren<Collider2D>();
+
+        if(spriteRenderer != null)
+        {
+            baseColor = spriteRenderer.color;
+        }
+
         if(movement == null)
         {
             Debug.LogError(
@@ -100,7 +124,7 @@ public class EnemyController : MonoBehaviour
             );
         }
 
-        
+
     }
 
     private void Start()
@@ -262,13 +286,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //NEW NEW NEW 
-    // Applies damage to this enemy. Once currentHealth reaches zero or below, triggers Die() -
-    // callers should call THIS method, not Die() directly, so health is always respected
-    // consistently regardless of what's dealing the damage (projectiles today, anything else later).
+    // Applies damage to this enemy. Once currentHealth reaches zero or below, triggers Die()
+    // callers should call THIS method, not Die() directly, so health is always respected consistently
     public void TakeDamage(float amount)
     {
-        if(isDead)
+        if(isDead || amount <= 0f)
             return;
 
         currentHealth -= amount;
@@ -276,12 +298,25 @@ public class EnemyController : MonoBehaviour
         if(currentHealth <= 0f)
         {
             Die();
+            return;
         }
+
+        if(spriteRenderer == null)
+        {
+            return;
+        }
+
+        if(hitFlashRoutine != null)
+        {
+            StopCoroutine(hitFlashRoutine);
+            spriteRenderer.color = baseColor;
+        }
+
+        hitFlashRoutine = StartCoroutine(HitFlashCoroutine());
     }
 
-    // Public method to destroy gameObject outright
-    // since the OWNING room instance is never destroyed (only hidden/reused across revisits), this permanently
-    // removes the enemy from that room's hierarchy
+    // Public method to destroy gameObject outright since the OWNING room instance is never destroyed (only hidden/reused across revisits)
+    // this permanently removes the enemy from that room's hierarchy
     public void Die()
     {
         if(isDead)
@@ -289,8 +324,83 @@ public class EnemyController : MonoBehaviour
 
         isDead = true;
 
-        // May need to trigger death VFX/loot as independent objects here if/when needed
-        // designed so NOT dependent on this GameObject surviving past this point
+        // tell RoomDirector this enemy is gone, before Destroy() runs, so the room-cleared
+        // check always sees a consistent state.
+        // if(ownerRoom != null)
+        {
+            RoomDirector director = ownerRoom.GetComponent<RoomDirector>();
+
+            if(director != null)
+            {
+                director.NotifyEnemyDefeated(this);
+            }
+        }
+
+        // FOR LATER.. code block to trigger death VFX/loot as independent objects here if/when needed
+        if(hitFlashRoutine != null)
+        {
+            StopCoroutine(hitFlashRoutine);
+            hitFlashRoutine = null;
+        }
+
+        // Stop the enemy acting like a physical/dangerous obstacle immediately, while the flash+fade plays out       
+        rb.linearVelocity = UnityEngine.Vector2.zero;
+        rb.gravityScale = 0f;
+        rb.angularVelocity = 0f;
+
+        foreach(var collider in colliders)
+        {
+            if(collider != null)
+            {
+                collider.enabled = false;
+            }
+        }
+
+        if(spriteRenderer == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        StartCoroutine(DeathFlashThenFadeCoroutine());
+    }
+
+    private IEnumerator HitFlashCoroutine()
+    {
+        spriteRenderer.color = hitFlashColor;
+
+        yield return new WaitForSeconds(hitFlashDuration);
+
+        spriteRenderer.color = baseColor;
+        hitFlashRoutine = null;
+    }
+
+    private IEnumerator DeathFlashThenFadeCoroutine()
+    {
+        for(int i = 0; i < deathFlashCount; i++)
+        {
+            spriteRenderer.color = deathFlashColor;
+            yield return new WaitForSeconds(deathFlashInterval);
+
+            spriteRenderer.color = baseColor;
+            yield return new WaitForSeconds(deathFlashInterval);
+        }
+
+        float elapsed = 0f;
+        Color fadeStartColor = baseColor;
+
+        while(elapsed < deathFadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / deathFadeDuration;
+
+            Color faded = fadeStartColor;
+            faded.a = Mathf.Lerp(1f, 0f, t);
+            spriteRenderer.color = faded;
+
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 
@@ -306,5 +416,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(currentPatrolTarget, 0.2f);
     }
 
- 
+
 }
+
+
