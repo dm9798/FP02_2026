@@ -1,0 +1,3122 @@
+fileFormatVersion: 2
+guid: 7870bfc10b976894a9978f6e2d011827
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3350546113702846135
+    second: Male_Armored_Weapons_0
+  - first:
+      213: 9172737073364639791
+    second: Male_Armored_Weapons_1
+  - first:
+      213: 5959655175901598228
+    second: Male_Armored_Weapons_2
+  - first:
+      213: -4756461783273843900
+    second: Male_Armored_Weapons_3
+  - first:
+      213: -8333740240632301776
+    second: Male_Armored_Weapons_4
+  - first:
+      213: -8496099084767854069
+    second: Male_Armored_Weapons_5
+  - first:
+      213: 6632471488007530405
+    second: Male_Armored_Weapons_6
+  - first:
+      213: -8459005330213055457
+    second: Male_Armored_Weapons_7
+  - first:
+      213: -8352957513369382493
+    second: Male_Armored_Weapons_8
+  - first:
+      213: 1002360603372766857
+    second: Male_Armored_Weapons_9
+  - first:
+      213: 9086766976745237962
+    second: Male_Armored_Weapons_10
+  - first:
+      213: 6961156541526039510
+    second: Male_Armored_Weapons_11
+  - first:
+      213: -4016268266473316933
+    second: Male_Armored_Weapons_12
+  - first:
+      213: -1793597438158605213
+    second: Male_Armored_Weapons_13
+  - first:
+      213: -4056101091893627705
+    second: Male_Armored_Weapons_14
+  - first:
+      213: 3016556386184603564
+    second: Male_Armored_Weapons_15
+  - first:
+      213: -627593309458723056
+    second: Male_Armored_Weapons_16
+  - first:
+      213: -6088340499368801908
+    second: Male_Armored_Weapons_17
+  - first:
+      213: 7628629183952081301
+    second: Male_Armored_Weapons_18
+  - first:
+      213: -4256606166197773064
+    second: Male_Armored_Weapons_19
+  - first:
+      213: 7752466948787349078
+    second: Male_Armored_Weapons_20
+  - first:
+      213: -1948548653730261659
+    second: Male_Armored_Weapons_21
+  - first:
+      213: -25726268278837905
+    second: Male_Armored_Weapons_22
+  - first:
+      213: 6929152875527915474
+    second: Male_Armored_Weapons_23
+  - first:
+      213: 6594619294844409921
+    second: Male_Armored_Weapons_24
+  - first:
+      213: -2978961792080898604
+    second: Male_Armored_Weapons_25
+  - first:
+      213: 8337856324974236501
+    second: Male_Armored_Weapons_26
+  - first:
+      213: -3438549642273256610
+    second: Male_Armored_Weapons_27
+  - first:
+      213: -7694815492183008967
+    second: Male_Armored_Weapons_28
+  - first:
+      213: -2357864451710207938
+    second: Male_Armored_Weapons_29
+  - first:
+      213: -4156004575919974438
+    second: Male_Armored_Weapons_30
+  - first:
+      213: 3072665858555293490
+    second: Male_Armored_Weapons_31
+  - first:
+      213: 4210179859190959914
+    second: Male_Armored_Weapons_32
+  - first:
+      213: -2941640407584063726
+    second: Male_Armored_Weapons_33
+  - first:
+      213: 6281889912293337196
+    second: Male_Armored_Weapons_34
+  - first:
+      213: 5244591410553597993
+    second: Male_Armored_Weapons_35
+  - first:
+      213: 4405689243264362097
+    second: Male_Armored_Weapons_36
+  - first:
+      213: -7123639575195350265
+    second: Male_Armored_Weapons_37
+  - first:
+      213: -6625919905167981498
+    second: Male_Armored_Weapons_38
+  - first:
+      213: -7423739836182416907
+    second: Male_Armored_Weapons_39
+  - first:
+      213: -9019273154072959534
+    second: Male_Armored_Weapons_40
+  - first:
+      213: 4911690671754871490
+    second: Male_Armored_Weapons_41
+  - first:
+      213: 5816903556115436550
+    second: Male_Armored_Weapons_42
+  - first:
+      213: 7373842241343968496
+    second: Male_Armored_Weapons_43
+  - first:
+      213: 275987985792882620
+    second: Male_Armored_Weapons_44
+  - first:
+      213: -3450419705845937671
+    second: Male_Armored_Weapons_45
+  - first:
+      213: -4900157623913800895
+    second: Male_Armored_Weapons_46
+  - first:
+      213: 4450078095268529605
+    second: Male_Armored_Weapons_47
+  - first:
+      213: 5479667180398243628
+    second: Male_Armored_Weapons_48
+  - first:
+      213: -4357122869884396130
+    second: Male_Armored_Weapons_49
+  - first:
+      213: -5441997224398168731
+    second: Male_Armored_Weapons_50
+  - first:
+      213: 1232029844796905117
+    second: Male_Armored_Weapons_51
+  - first:
+      213: 8422300165638973740
+    second: Male_Armored_Weapons_52
+  - first:
+      213: -3651877100776511864
+    second: Male_Armored_Weapons_53
+  - first:
+      213: 4013453778968807982
+    second: Male_Armored_Weapons_54
+  - first:
+      213: 800440197664352970
+    second: Male_Armored_Weapons_55
+  - first:
+      213: -6604159529482911958
+    second: Male_Armored_Weapons_56
+  - first:
+      213: -2769107997701678589
+    second: Male_Armored_Weapons_57
+  - first:
+      213: 7898448434788057174
+    second: Male_Armored_Weapons_58
+  - first:
+      213: 8570373130299740952
+    second: Male_Armored_Weapons_59
+  - first:
+      213: 6678989891185450732
+    second: Male_Armored_Weapons_60
+  - first:
+      213: -5753251217345784133
+    second: Male_Armored_Weapons_61
+  - first:
+      213: -3949795494524734961
+    second: Male_Armored_Weapons_62
+  - first:
+      213: 6078262346696404969
+    second: Male_Armored_Weapons_63
+  - first:
+      213: -4896078263996056754
+    second: Male_Armored_Weapons_64
+  - first:
+      213: 933998622558590208
+    second: Male_Armored_Weapons_65
+  - first:
+      213: 8376817265808371342
+    second: Male_Armored_Weapons_66
+  - first:
+      213: 8151631663367606783
+    second: Male_Armored_Weapons_67
+  - first:
+      213: -4260578174694449659
+    second: Male_Armored_Weapons_68
+  - first:
+      213: -4359911835726478887
+    second: Male_Armored_Weapons_69
+  - first:
+      213: 2046370360809797418
+    second: Male_Armored_Weapons_70
+  - first:
+      213: -6067681490253143023
+    second: Male_Armored_Weapons_71
+  - first:
+      213: -3494453778941059495
+    second: Male_Armored_Weapons_72
+  - first:
+      213: -2207073447874285758
+    second: Male_Armored_Weapons_73
+  - first:
+      213: 8100717720721190358
+    second: Male_Armored_Weapons_74
+  - first:
+      213: -2616095287186825885
+    second: Male_Armored_Weapons_75
+  - first:
+      213: 2468683117159821571
+    second: Male_Armored_Weapons_76
+  - first:
+      213: 2994602244705456295
+    second: Male_Armored_Weapons_77
+  - first:
+      213: 334846986088800132
+    second: Male_Armored_Weapons_78
+  - first:
+      213: 4477063147516906171
+    second: Male_Armored_Weapons_79
+  - first:
+      213: 2070038588595448772
+    second: Male_Armored_Weapons_80
+  - first:
+      213: 2090957160770188584
+    second: Male_Armored_Weapons_81
+  - first:
+      213: -7688556667011990694
+    second: Male_Armored_Weapons_82
+  - first:
+      213: 5834327238370574870
+    second: Male_Armored_Weapons_83
+  - first:
+      213: 1941741217755922175
+    second: Male_Armored_Weapons_84
+  - first:
+      213: 3922023173187787920
+    second: Male_Armored_Weapons_85
+  - first:
+      213: -1244066791912906070
+    second: Male_Armored_Weapons_86
+  - first:
+      213: -8259406040989311149
+    second: Male_Armored_Weapons_87
+  - first:
+      213: 3462603633600025776
+    second: Male_Armored_Weapons_88
+  - first:
+      213: -4101017325940107183
+    second: Male_Armored_Weapons_89
+  - first:
+      213: -4308513487315463362
+    second: Male_Armored_Weapons_90
+  - first:
+      213: -3653355817480431102
+    second: Male_Armored_Weapons_91
+  - first:
+      213: 1780298531677493841
+    second: Male_Armored_Weapons_92
+  - first:
+      213: -5387799331965420209
+    second: Male_Armored_Weapons_93
+  - first:
+      213: -2596193586742655694
+    second: Male_Armored_Weapons_94
+  - first:
+      213: -7266503375742597856
+    second: Male_Armored_Weapons_95
+  - first:
+      213: -198693725762068680
+    second: Male_Armored_Weapons_96
+  - first:
+      213: -4770598176241170989
+    second: Male_Armored_Weapons_97
+  - first:
+      213: 2054033432739155555
+    second: Male_Armored_Weapons_98
+  - first:
+      213: -7413974712532642212
+    second: Male_Armored_Weapons_99
+  - first:
+      213: -40249444069999847
+    second: Male_Armored_Weapons_100
+  - first:
+      213: -543651145179068993
+    second: Male_Armored_Weapons_101
+  - first:
+      213: -6591065004443681126
+    second: Male_Armored_Weapons_102
+  - first:
+      213: -5241576147975358120
+    second: Male_Armored_Weapons_103
+  - first:
+      213: 7102168803691921423
+    second: Male_Armored_Weapons_104
+  - first:
+      213: -6279003334642715104
+    second: Male_Armored_Weapons_105
+  - first:
+      213: 4940081225075757715
+    second: Male_Armored_Weapons_106
+  - first:
+      213: -2446677533949930969
+    second: Male_Armored_Weapons_107
+  - first:
+      213: 6083441798937999196
+    second: Male_Armored_Weapons_108
+  - first:
+      213: 5786132673840797967
+    second: Male_Armored_Weapons_109
+  - first:
+      213: 5023586290453749983
+    second: Male_Armored_Weapons_110
+  - first:
+      213: -3586319597095019951
+    second: Male_Armored_Weapons_111
+  - first:
+      213: -2276292243150526399
+    second: Male_Armored_Weapons_112
+  - first:
+      213: 212417672687960938
+    second: Male_Armored_Weapons_113
+  - first:
+      213: 4836423789346978414
+    second: Male_Armored_Weapons_114
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9412d21cf087081d0800000000000000
+      internalID: -3350546113702846135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1152
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f20a4fbd4cb1c4f70800000000000000
+      internalID: 9172737073364639791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1152
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 412de6f8ec2f4b250800000000000000
+      internalID: 5959655175901598228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1104
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 443dd3c7537adfdb0800000000000000
+      internalID: -4756461783273843900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_4
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1104
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 037bbbab76b985c80800000000000000
+      internalID: -8333740240632301776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1104
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0204eb85eac71a80800000000000000
+      internalID: -8496099084767854069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1104
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a768919da54b0c50800000000000000
+      internalID: 6632471488007530405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1056
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f14d38b48739b9a80800000000000000
+      internalID: -8459005330213055457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1056
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a110bfb565541c80800000000000000
+      internalID: -8352957513369382493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1056
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98641e478a919ed00800000000000000
+      internalID: 1002360603372766857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_10
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1056
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acd66adeb6eaa1e70800000000000000
+      internalID: 9086766976745237962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1056
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbdb832efefa9060800000000000000
+      internalID: 6961156541526039510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1008
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbd1f2e6a495348c0800000000000000
+      internalID: -4016268266473316933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_13
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1008
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 364718402acdb17e0800000000000000
+      internalID: -1793597438158605213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1008
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c43b9c0c85d5b7c0800000000000000
+      internalID: -4056101091893627705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_15
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1008
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca728730d06fcd920800000000000000
+      internalID: 3016556386184603564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1008
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01f0d4ec5375a47f0800000000000000
+      internalID: -627593309458723056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c898f7fb29ed18ba0800000000000000
+      internalID: -6088340499368801908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_18
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 960
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59154a813d55ed960800000000000000
+      internalID: 7628629183952081301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 960
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fc5b0b8e3f7de4c0800000000000000
+      internalID: -4256606166197773064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_20
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 960
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6562d679d9b469b60800000000000000
+      internalID: 7752466948787349078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 960
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56597d2c25d55f4e0800000000000000
+      internalID: -1948548653730261659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_22
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 960
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6de7d5681a94aff0800000000000000
+      internalID: -25726268278837905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 912
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d7c73cf3db492060800000000000000
+      internalID: 6929152875527915474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_24
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 912
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14853221f4bc48b50800000000000000
+      internalID: 6594619294844409921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_25
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 912
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d59e87880a98a6d0800000000000000
+      internalID: -2978961792080898604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 864
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5535556d62406b370800000000000000
+      internalID: 8337856324974236501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_27
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 864
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b81cd8151d740d0800000000000000
+      internalID: -3438549642273256610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 864
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93952482416863590800000000000000
+      internalID: -7694815492183008967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_29
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 864
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e38ba4f06ce274fd0800000000000000
+      internalID: -2357864451710207938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 816
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad7546f8bd7e256c0800000000000000
+      internalID: -4156004575919974438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_31
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 816
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23fa8a4915d44aa20800000000000000
+      internalID: 3072665858555293490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_32
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 816
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2fc49386409d6a30800000000000000
+      internalID: 4210179859190959914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_33
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 816
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21f340182a13d27d0800000000000000
+      internalID: -2941640407584063726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_34
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 816
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c68aa54a791cd2750800000000000000
+      internalID: 6281889912293337196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 920bc12d91888c840800000000000000
+      internalID: 5244591410553597993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_36
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 768
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 176288f3607242d30800000000000000
+      internalID: 4405689243264362097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_37
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 768
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70b019c8c8fb32d90800000000000000
+      internalID: -7123639575195350265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_38
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 768
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 644c54ea3f00c04a0800000000000000
+      internalID: -6625919905167981498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_39
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f13e6f93f399f890800000000000000
+      internalID: -7423739836182416907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d5a34f3ada15d280800000000000000
+      internalID: -9019273154072959534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_41
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 720
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c28c8884a4d92440800000000000000
+      internalID: 4911690671754871490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_42
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 720
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60497fa07fac9b050800000000000000
+      internalID: 5816903556115436550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 720
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f4d3114376255660800000000000000
+      internalID: 7373842241343968496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_44
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 720
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb7d57f5c9184d300800000000000000
+      internalID: 275987985792882620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_45
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 720
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f98b030f85ad10d0800000000000000
+      internalID: -3450419705845937671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14b123b6a942ffbb0800000000000000
+      internalID: -4900157623913800895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_47
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 672
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c54a3b337ad1cd30800000000000000
+      internalID: 4450078095268529605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_48
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 672
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2fe00f9440bb0c40800000000000000
+      internalID: 5479667180398243628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 624
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9d5fc9b5d36883c0800000000000000
+      internalID: -4357122869884396130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_50
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 624
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56dd51b7b542a74b0800000000000000
+      internalID: -5441997224398168731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_51
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 624
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d969cc3cd9c091110800000000000000
+      internalID: 1232029844796905117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_52
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 624
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c29ef9c906502e470800000000000000
+      internalID: 8422300165638973740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88625d4102de15dc0800000000000000
+      internalID: -3651877100776511864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_54
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 576
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2a82e1a2f6a2b730800000000000000
+      internalID: 4013453778968807982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_55
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aca2abd6e1cbb1b00800000000000000
+      internalID: 800440197664352970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_56
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 576
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2ff825f5ef4954a0800000000000000
+      internalID: -6604159529482911958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_57
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30a5c4c82f62299d0800000000000000
+      internalID: -2769107997701678589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_58
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6504840f00dec9d60800000000000000
+      internalID: 7898448434788057174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_59
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 528
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 813911844f410f670800000000000000
+      internalID: 8570373130299740952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_60
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 528
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee98825be980bc50800000000000000
+      internalID: 6678989891185450732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_61
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 528
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb65586ff785820b0800000000000000
+      internalID: -5753251217345784133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_62
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 528
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f023a65bce18f29c0800000000000000
+      internalID: -3949795494524734961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9efa87a76635a5450800000000000000
+      internalID: 6078262346696404969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_64
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 480
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4bf00a62c2ad0cb0800000000000000
+      internalID: -4896078263996056754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_65
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0051f467cca36fc00800000000000000
+      internalID: 933998622558590208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_66
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 480
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8eedd4cbee604470800000000000000
+      internalID: 8376817265808371342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_67
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 480
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff15ad20fc9602170800000000000000
+      internalID: 8151631663367606783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_68
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 480
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e1e8f39b26fd4c0800000000000000
+      internalID: -4260578174694449659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_69
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d18083094b7e73c0800000000000000
+      internalID: -4359911835726478887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_70
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 432
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a27b4f2400b266c10800000000000000
+      internalID: 2046370360809797418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_71
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 432
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 114af3325d34bcba0800000000000000
+      internalID: -6067681490253143023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95e523e6dc4318fc0800000000000000
+      internalID: -3494453778941059495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_73
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 384
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24fa14a8466ee51e0800000000000000
+      internalID: -2207073447874285758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_74
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dd6c49f8d78b6070800000000000000
+      internalID: 8100717720721190358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_75
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 384
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36dd7ac6233c1bbd0800000000000000
+      internalID: -2616095287186825885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_76
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 301b0552736824220800000000000000
+      internalID: 2468683117159821571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_77
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 336
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a0914f10e6fe8920800000000000000
+      internalID: 2994602244705456295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_78
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 336
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48fdeeb4f8d95a400800000000000000
+      internalID: 334846986088800132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_79
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 336
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbaccb05639b12e30800000000000000
+      internalID: 4477063147516906171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_80
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 336
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cb2598f0214abc10800000000000000
+      internalID: 2070038588595448772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_81
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82534489572940d10800000000000000
+      internalID: 2090957160770188584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_82
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5bf9437272cc4590800000000000000
+      internalID: -7688556667011990694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_83
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 612c67236b1b7f050800000000000000
+      internalID: 5834327238370574870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_84
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffe731a895372fa10800000000000000
+      internalID: 1941741217755922175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_85
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09c55b6db43dd6630800000000000000
+      internalID: 3922023173187787920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_86
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa2eb2718df2cbee0800000000000000
+      internalID: -1244066791912906070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_87
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35fdd1747f1b06d80800000000000000
+      internalID: -8259406040989311149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_88
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b4d4bab8a3ad0030800000000000000
+      internalID: 3462603633600025776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_89
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1581e9d58724617c0800000000000000
+      internalID: -4101017325940107183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_90
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e33159e8fc51534c0800000000000000
+      internalID: -4308513487315463362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_91
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ad8f48d3cac4dc0800000000000000
+      internalID: -3653355817480431102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_92
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15a59c60514e4b810800000000000000
+      internalID: 1780298531677493841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_93
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4d3d19ad01ba35b0800000000000000
+      internalID: -5387799331965420209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_94
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2358e0620b778fbd0800000000000000
+      internalID: -2596193586742655694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_95
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0258fa9eda1382b90800000000000000
+      internalID: -7266503375742597856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_96
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f5ad0fb191e3df0800000000000000
+      internalID: -198693725762068680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_97
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d5c4030c3e6bcdb0800000000000000
+      internalID: -4770598176241170989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_98
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36e813b3684618c10800000000000000
+      internalID: 2054033432739155555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_99
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5653c5a7454c1990800000000000000
+      internalID: -7413974712532642212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_100
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91bfcc70851017ff0800000000000000
+      internalID: -40249444069999847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_101
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb50ed1f9209478f0800000000000000
+      internalID: -543651145179068993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_102
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9e30a6ac45d784a0800000000000000
+      internalID: -6591065004443681126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_103
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 859b4c4b34e2247b0800000000000000
+      internalID: -5241576147975358120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_104
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f000be6e5e8ff8260800000000000000
+      internalID: 7102168803691921423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_105
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 026b0271cbf7cd8a0800000000000000
+      internalID: -6279003334642715104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_106
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 392973653b1be8440800000000000000
+      internalID: 4940081225075757715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_107
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7225cf4feb7ab0ed0800000000000000
+      internalID: -2446677533949930969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_108
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c57767da51abc6450800000000000000
+      internalID: 6083441798937999196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_109
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f09df87b2097c4050800000000000000
+      internalID: 5786132673840797967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_110
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd0a4057d1d57b540800000000000000
+      internalID: 5023586290453749983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_111
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15a112cd355da3ec0800000000000000
+      internalID: -3586319597095019951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_112
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1482902e34cf860e0800000000000000
+      internalID: -2276292243150526399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_113
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a63c4947fb8a2f200800000000000000
+      internalID: 212417672687960938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Male_Armored_Weapons_114
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a764bdfcd6e1340800000000000000
+      internalID: 4836423789346978414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f979f894df1154a44807f09624545521
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":25.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Male_Armored_Weapons_0: -3350546113702846135
+      Male_Armored_Weapons_1: 9172737073364639791
+      Male_Armored_Weapons_10: 9086766976745237962
+      Male_Armored_Weapons_100: -40249444069999847
+      Male_Armored_Weapons_101: -543651145179068993
+      Male_Armored_Weapons_102: -6591065004443681126
+      Male_Armored_Weapons_103: -5241576147975358120
+      Male_Armored_Weapons_104: 7102168803691921423
+      Male_Armored_Weapons_105: -6279003334642715104
+      Male_Armored_Weapons_106: 4940081225075757715
+      Male_Armored_Weapons_107: -2446677533949930969
+      Male_Armored_Weapons_108: 6083441798937999196
+      Male_Armored_Weapons_109: 5786132673840797967
+      Male_Armored_Weapons_11: 6961156541526039510
+      Male_Armored_Weapons_110: 5023586290453749983
+      Male_Armored_Weapons_111: -3586319597095019951
+      Male_Armored_Weapons_112: -2276292243150526399
+      Male_Armored_Weapons_113: 212417672687960938
+      Male_Armored_Weapons_114: 4836423789346978414
+      Male_Armored_Weapons_12: -4016268266473316933
+      Male_Armored_Weapons_13: -1793597438158605213
+      Male_Armored_Weapons_14: -4056101091893627705
+      Male_Armored_Weapons_15: 3016556386184603564
+      Male_Armored_Weapons_16: -627593309458723056
+      Male_Armored_Weapons_17: -6088340499368801908
+      Male_Armored_Weapons_18: 7628629183952081301
+      Male_Armored_Weapons_19: -4256606166197773064
+      Male_Armored_Weapons_2: 5959655175901598228
+      Male_Armored_Weapons_20: 7752466948787349078
+      Male_Armored_Weapons_21: -1948548653730261659
+      Male_Armored_Weapons_22: -25726268278837905
+      Male_Armored_Weapons_23: 6929152875527915474
+      Male_Armored_Weapons_24: 6594619294844409921
+      Male_Armored_Weapons_25: -2978961792080898604
+      Male_Armored_Weapons_26: 8337856324974236501
+      Male_Armored_Weapons_27: -3438549642273256610
+      Male_Armored_Weapons_28: -7694815492183008967
+      Male_Armored_Weapons_29: -2357864451710207938
+      Male_Armored_Weapons_3: -4756461783273843900
+      Male_Armored_Weapons_30: -4156004575919974438
+      Male_Armored_Weapons_31: 3072665858555293490
+      Male_Armored_Weapons_32: 4210179859190959914
+      Male_Armored_Weapons_33: -2941640407584063726
+      Male_Armored_Weapons_34: 6281889912293337196
+      Male_Armored_Weapons_35: 5244591410553597993
+      Male_Armored_Weapons_36: 4405689243264362097
+      Male_Armored_Weapons_37: -7123639575195350265
+      Male_Armored_Weapons_38: -6625919905167981498
+      Male_Armored_Weapons_39: -7423739836182416907
+      Male_Armored_Weapons_4: -8333740240632301776
+      Male_Armored_Weapons_40: -9019273154072959534
+      Male_Armored_Weapons_41: 4911690671754871490
+      Male_Armored_Weapons_42: 5816903556115436550
+      Male_Armored_Weapons_43: 7373842241343968496
+      Male_Armored_Weapons_44: 275987985792882620
+      Male_Armored_Weapons_45: -3450419705845937671
+      Male_Armored_Weapons_46: -4900157623913800895
+      Male_Armored_Weapons_47: 4450078095268529605
+      Male_Armored_Weapons_48: 5479667180398243628
+      Male_Armored_Weapons_49: -4357122869884396130
+      Male_Armored_Weapons_5: -8496099084767854069
+      Male_Armored_Weapons_50: -5441997224398168731
+      Male_Armored_Weapons_51: 1232029844796905117
+      Male_Armored_Weapons_52: 8422300165638973740
+      Male_Armored_Weapons_53: -3651877100776511864
+      Male_Armored_Weapons_54: 4013453778968807982
+      Male_Armored_Weapons_55: 800440197664352970
+      Male_Armored_Weapons_56: -6604159529482911958
+      Male_Armored_Weapons_57: -2769107997701678589
+      Male_Armored_Weapons_58: 7898448434788057174
+      Male_Armored_Weapons_59: 8570373130299740952
+      Male_Armored_Weapons_6: 6632471488007530405
+      Male_Armored_Weapons_60: 6678989891185450732
+      Male_Armored_Weapons_61: -5753251217345784133
+      Male_Armored_Weapons_62: -3949795494524734961
+      Male_Armored_Weapons_63: 6078262346696404969
+      Male_Armored_Weapons_64: -4896078263996056754
+      Male_Armored_Weapons_65: 933998622558590208
+      Male_Armored_Weapons_66: 8376817265808371342
+      Male_Armored_Weapons_67: 8151631663367606783
+      Male_Armored_Weapons_68: -4260578174694449659
+      Male_Armored_Weapons_69: -4359911835726478887
+      Male_Armored_Weapons_7: -8459005330213055457
+      Male_Armored_Weapons_70: 2046370360809797418
+      Male_Armored_Weapons_71: -6067681490253143023
+      Male_Armored_Weapons_72: -3494453778941059495
+      Male_Armored_Weapons_73: -2207073447874285758
+      Male_Armored_Weapons_74: 8100717720721190358
+      Male_Armored_Weapons_75: -2616095287186825885
+      Male_Armored_Weapons_76: 2468683117159821571
+      Male_Armored_Weapons_77: 2994602244705456295
+      Male_Armored_Weapons_78: 334846986088800132
+      Male_Armored_Weapons_79: 4477063147516906171
+      Male_Armored_Weapons_8: -8352957513369382493
+      Male_Armored_Weapons_80: 2070038588595448772
+      Male_Armored_Weapons_81: 2090957160770188584
+      Male_Armored_Weapons_82: -7688556667011990694
+      Male_Armored_Weapons_83: 5834327238370574870
+      Male_Armored_Weapons_84: 1941741217755922175
+      Male_Armored_Weapons_85: 3922023173187787920
+      Male_Armored_Weapons_86: -1244066791912906070
+      Male_Armored_Weapons_87: -8259406040989311149
+      Male_Armored_Weapons_88: 3462603633600025776
+      Male_Armored_Weapons_89: -4101017325940107183
+      Male_Armored_Weapons_9: 1002360603372766857
+      Male_Armored_Weapons_90: -4308513487315463362
+      Male_Armored_Weapons_91: -3653355817480431102
+      Male_Armored_Weapons_92: 1780298531677493841
+      Male_Armored_Weapons_93: -5387799331965420209
+      Male_Armored_Weapons_94: -2596193586742655694
+      Male_Armored_Weapons_95: -7266503375742597856
+      Male_Armored_Weapons_96: -198693725762068680
+      Male_Armored_Weapons_97: -4770598176241170989
+      Male_Armored_Weapons_98: 2054033432739155555
+      Male_Armored_Weapons_99: -7413974712532642212
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,7 +1,7 @@
-/* 
- * Procedural generation logic for the Koch Snowflake, based on the recursive construction of the Koch curve by Helge von Koch (1904).
- * Algorithm reference: [https://en.wikipedia.org/wiki/Koch_snowflake](https://en.wikipedia.org/wiki/Koch_snowflake)
- */
+/*Procedural generation logic for the Koch Snowflake, based on the recursive construction of the Koch curve by Helge von Koch (1904).
+*Algorithm reference:
+https://en.wikipedia.org/wiki/Koch_snowflake
+*/
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,8 +22,8 @@ public static class KochMath
 
         float angleRad = -60f * Mathf.Deg2Rad;
         Vector2 rotated = new Vector2(
-            delta.x * Mathf.Cos(angleRad) - delta.y * Mathf.Sin(angleRad),
-            delta.x * Mathf.Sin(angleRad) + delta.y * Mathf.Cos(angleRad)
+        delta.x * Mathf.Cos(angleRad) - delta.y * Mathf.Sin(angleRad),
+        delta.x * Mathf.Sin(angleRad) + delta.y * Mathf.Cos(angleRad)
         );
         Vector2 peak = p1 + rotated;
 
@@ -41,8 +41,8 @@ public static class KochMath
         {
             float angle = 90f + i * 120f;
             triangle[i] = center + radius * new Vector2(
-                Mathf.Cos(angle * Mathf.Deg2Rad),
-                Mathf.Sin(angle * Mathf.Deg2Rad)
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad)
             );
         }
 
@@ -56,34 +56,34 @@ public static class KochMath
     // shared point-classification test - extracted out of KochSnowflakeMotifRenderer
     // now shared with KochSnowflakeMotifRenderer and RoomBoundaryGenerator
     public static bool IsOutsideEdge(
-        Vector2 point,
-        Vector2 edgeStart,
-        Vector2 edgeEnd,
-        Vector2 referenceCenter)
+    Vector2 point,
+    Vector2 edgeStart,
+    Vector2 edgeEnd,
+    Vector2 referenceCenter)
     {
         Vector2 edgeDirection =
-            edgeEnd - edgeStart;
+        edgeEnd - edgeStart;
 
         Vector2 toPoint =
-            point - edgeStart;
+        point - edgeStart;
 
         Vector2 toCenter =
-            referenceCenter - edgeStart;
+        referenceCenter - edgeStart;
 
         float crossPoint =
-            edgeDirection.x * toPoint.y
-            - edgeDirection.y * toPoint.x;
+        edgeDirection.x * toPoint.y
+        - edgeDirection.y * toPoint.x;
 
         float crossCenter =
-            edgeDirection.x * toCenter.y
-            - edgeDirection.y * toCenter.x;
+        edgeDirection.x * toCenter.y
+        - edgeDirection.y * toCenter.x;
 
         return Mathf.Sign(crossPoint)
-            != Mathf.Sign(crossCenter);
+        != Mathf.Sign(crossCenter);
     }
 
     // clustering logic, refactored out of KochSnowflakeMotifRenderer.Draw().
-    // Generates snowflake raw fractal points at provided depth   
+    // Generates snowflake raw fractal points at provided depth
     public static List<List<Vector2>> GetFilteredSnowflakeClusters(
         Vector2 center,
         float snowflakeRadius,
@@ -92,16 +92,15 @@ public static class KochMath
         Vector2 parentStart,
         Vector2 parentEnd)
     {
-        List<Vector2> snowflakePoints =
-            new List<Vector2>(GenerateSnowflake(center, snowflakeRadius, depth));
+        Vector2[] snowflakePoints = GenerateSnowflake(center, snowflakeRadius, depth);
+        int rawCount = snowflakePoints.Length - 1; // drop GenerateSnowflake's closing duplicate
 
-        List<List<Vector2>> clusters =
-            new List<List<Vector2>>();
+        bool[] keep = new bool[rawCount];
 
-        List<Vector2> currentCluster = null;
-
-        foreach(Vector2 point in snowflakePoints)
+        for(int i = 0; i < rawCount; i++)
         {
+            Vector2 point = snowflakePoints[i];
+
             bool outsideAnyRoof =
                 IsOutsideEdge(point, hexPoints[0], hexPoints[1], center)
                 ||
@@ -112,24 +111,64 @@ public static class KochMath
             bool insideParent =
                 !IsOutsideEdge(point, parentStart, parentEnd, center);
 
-            bool keep = outsideAnyRoof || insideParent;
+            keep[i] = outsideAnyRoof || insideParent;
+        }
 
-            if(keep)
-            {
-                if(currentCluster == null)
-                {
-                    currentCluster = new List<Vector2>();
-                    clusters.Add(currentCluster);
-                }
+        List<List<Vector2>> clusters = new List<List<Vector2>>();
 
-                currentCluster.Add(point);
-            }
+        bool anyKept = false;
+        bool anyDiscarded = false;
+
+        for(int i = 0; i < rawCount; i++)
+        {
+            if(keep[i])
+                anyKept = true;
             else
+                anyDiscarded = true;
+        }
+
+        if(!anyKept)
+        {
+            return clusters;
+        }
+
+        if(!anyDiscarded)
+        {
+            // Every point kept - the whole loop is one cluster
+            clusters.Add(new List<Vector2>(snowflakePoints));
+            return clusters;
+        }
+
+        // Find the TRUE start of the one continuous kept run in correct cyclic order, regardless
+        // of whether it happens to straddle the array's arbitrary index 0/last boundary
+        int runStart = -1;
+
+        for(int i = 0; i < rawCount; i++)
+        {
+            int previous = (i - 1 + rawCount) % rawCount;
+
+            if(!keep[previous] && keep[i])
             {
-                currentCluster = null;
+                runStart = i;
+                break; // there is only ever one true run - first one found IS the only one
             }
         }
 
+        List<Vector2> cluster = new List<Vector2>();
+        int cursor = runStart;
+
+        while(keep[cursor])
+        {
+            cluster.Add(snowflakePoints[cursor]);
+            cursor = (cursor + 1) % rawCount;
+
+            if(cursor == runStart)
+            {
+                break;
+            }
+        }
+
+        clusters.Add(cluster);
         return clusters;
     }
 }

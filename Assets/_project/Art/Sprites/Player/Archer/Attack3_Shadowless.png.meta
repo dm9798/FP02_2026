@@ -1,352 +1,367 @@
 fileFormatVersion: 2
-guid: 7870bfc10b976894a9978f6e2d011827
+guid: c2eb19e0019768145b8981eaf8cef0d2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3350546113702846135
-    second: Male_Armored_Weapons_0
+      213: 7169348728478263992
+    second: Attack3_Shadowless_0
   - first:
-      213: 9172737073364639791
-    second: Male_Armored_Weapons_1
+      213: 17089555702910866
+    second: Attack3_Shadowless_1
   - first:
-      213: 5959655175901598228
-    second: Male_Armored_Weapons_2
+      213: 1509429061443519006
+    second: Attack3_Shadowless_2
   - first:
-      213: -4756461783273843900
-    second: Male_Armored_Weapons_3
+      213: 2915643991967699283
+    second: Attack3_Shadowless_3
   - first:
-      213: -8333740240632301776
-    second: Male_Armored_Weapons_4
+      213: 1660816861152786527
+    second: Attack3_Shadowless_4
   - first:
-      213: -8496099084767854069
-    second: Male_Armored_Weapons_5
+      213: 2360373256962808706
+    second: Attack3_Shadowless_5
   - first:
-      213: 6632471488007530405
-    second: Male_Armored_Weapons_6
+      213: -706816018947046657
+    second: Attack3_Shadowless_6
   - first:
-      213: -8459005330213055457
-    second: Male_Armored_Weapons_7
+      213: 3419867344388210034
+    second: Attack3_Shadowless_7
   - first:
-      213: -8352957513369382493
-    second: Male_Armored_Weapons_8
+      213: 545484342026454204
+    second: Attack3_Shadowless_8
   - first:
-      213: 1002360603372766857
-    second: Male_Armored_Weapons_9
+      213: -3145048792310790549
+    second: Attack3_Shadowless_9
   - first:
-      213: 9086766976745237962
-    second: Male_Armored_Weapons_10
+      213: 2149102258943419285
+    second: Attack3_Shadowless_10
   - first:
-      213: 6961156541526039510
-    second: Male_Armored_Weapons_11
+      213: 5803056047450435583
+    second: Attack3_Shadowless_11
   - first:
-      213: -4016268266473316933
-    second: Male_Armored_Weapons_12
+      213: -4353820841033336799
+    second: Attack3_Shadowless_12
   - first:
-      213: -1793597438158605213
-    second: Male_Armored_Weapons_13
+      213: 2612129193761521999
+    second: Attack3_Shadowless_13
   - first:
-      213: -4056101091893627705
-    second: Male_Armored_Weapons_14
+      213: -4901469026182485752
+    second: Attack3_Shadowless_14
   - first:
-      213: 3016556386184603564
-    second: Male_Armored_Weapons_15
+      213: -6500748358473957114
+    second: Attack3_Shadowless_15
   - first:
-      213: -627593309458723056
-    second: Male_Armored_Weapons_16
+      213: -6960426861202713644
+    second: Attack3_Shadowless_16
   - first:
-      213: -6088340499368801908
-    second: Male_Armored_Weapons_17
+      213: -937448323320055697
+    second: Attack3_Shadowless_17
   - first:
-      213: 7628629183952081301
-    second: Male_Armored_Weapons_18
+      213: 7227415838050407324
+    second: Attack3_Shadowless_18
   - first:
-      213: -4256606166197773064
-    second: Male_Armored_Weapons_19
+      213: 7412107562577665558
+    second: Attack3_Shadowless_19
   - first:
-      213: 7752466948787349078
-    second: Male_Armored_Weapons_20
+      213: 1506416815310536549
+    second: Attack3_Shadowless_20
   - first:
-      213: -1948548653730261659
-    second: Male_Armored_Weapons_21
+      213: -4217486090878529919
+    second: Attack3_Shadowless_21
   - first:
-      213: -25726268278837905
-    second: Male_Armored_Weapons_22
+      213: -5906536065612637721
+    second: Attack3_Shadowless_22
   - first:
-      213: 6929152875527915474
-    second: Male_Armored_Weapons_23
+      213: 2328170297494724143
+    second: Attack3_Shadowless_23
   - first:
-      213: 6594619294844409921
-    second: Male_Armored_Weapons_24
+      213: -4078593325526982521
+    second: Attack3_Shadowless_24
   - first:
-      213: -2978961792080898604
-    second: Male_Armored_Weapons_25
+      213: -7460759776524967020
+    second: Attack3_Shadowless_25
   - first:
-      213: 8337856324974236501
-    second: Male_Armored_Weapons_26
+      213: 1664828628640787607
+    second: Attack3_Shadowless_26
   - first:
-      213: -3438549642273256610
-    second: Male_Armored_Weapons_27
+      213: -3928938283078404001
+    second: Attack3_Shadowless_27
   - first:
-      213: -7694815492183008967
-    second: Male_Armored_Weapons_28
+      213: -5725647163833955458
+    second: Attack3_Shadowless_28
   - first:
-      213: -2357864451710207938
-    second: Male_Armored_Weapons_29
+      213: -2516258766710629009
+    second: Attack3_Shadowless_29
   - first:
-      213: -4156004575919974438
-    second: Male_Armored_Weapons_30
+      213: -1774981715640878905
+    second: Attack3_Shadowless_30
   - first:
-      213: 3072665858555293490
-    second: Male_Armored_Weapons_31
+      213: 5529780633298627227
+    second: Attack3_Shadowless_31
   - first:
-      213: 4210179859190959914
-    second: Male_Armored_Weapons_32
+      213: -6257557264224540324
+    second: Attack3_Shadowless_32
   - first:
-      213: -2941640407584063726
-    second: Male_Armored_Weapons_33
+      213: -4848063788205689071
+    second: Attack3_Shadowless_33
   - first:
-      213: 6281889912293337196
-    second: Male_Armored_Weapons_34
+      213: -4786568045290887086
+    second: Attack3_Shadowless_34
   - first:
-      213: 5244591410553597993
-    second: Male_Armored_Weapons_35
+      213: -3551245461617858380
+    second: Attack3_Shadowless_35
   - first:
-      213: 4405689243264362097
-    second: Male_Armored_Weapons_36
+      213: -2373636630480120562
+    second: Attack3_Shadowless_36
   - first:
-      213: -7123639575195350265
-    second: Male_Armored_Weapons_37
+      213: -7861950903681860370
+    second: Attack3_Shadowless_37
   - first:
-      213: -6625919905167981498
-    second: Male_Armored_Weapons_38
+      213: 282571354229337158
+    second: Attack3_Shadowless_38
   - first:
-      213: -7423739836182416907
-    second: Male_Armored_Weapons_39
+      213: -734231507700755721
+    second: Attack3_Shadowless_39
   - first:
-      213: -9019273154072959534
-    second: Male_Armored_Weapons_40
+      213: 1905215509444759597
+    second: Attack3_Shadowless_40
   - first:
-      213: 4911690671754871490
-    second: Male_Armored_Weapons_41
+      213: -5579514515151193213
+    second: Attack3_Shadowless_41
   - first:
-      213: 5816903556115436550
-    second: Male_Armored_Weapons_42
+      213: 2537851034401592553
+    second: Attack3_Shadowless_42
   - first:
-      213: 7373842241343968496
-    second: Male_Armored_Weapons_43
+      213: -856330593746636022
+    second: Attack3_Shadowless_43
   - first:
-      213: 275987985792882620
-    second: Male_Armored_Weapons_44
+      213: -5885523110123015914
+    second: Attack3_Shadowless_44
   - first:
-      213: -3450419705845937671
-    second: Male_Armored_Weapons_45
+      213: -1267235099673559253
+    second: Attack3_Shadowless_45
   - first:
-      213: -4900157623913800895
-    second: Male_Armored_Weapons_46
+      213: -23842038633707124
+    second: Attack3_Shadowless_46
   - first:
-      213: 4450078095268529605
-    second: Male_Armored_Weapons_47
+      213: -8273354834612840605
+    second: Attack3_Shadowless_47
   - first:
-      213: 5479667180398243628
-    second: Male_Armored_Weapons_48
+      213: 7753299004625294196
+    second: Attack3_Shadowless_48
   - first:
-      213: -4357122869884396130
-    second: Male_Armored_Weapons_49
+      213: -3667042202999629608
+    second: Attack3_Shadowless_49
   - first:
-      213: -5441997224398168731
-    second: Male_Armored_Weapons_50
+      213: -8383364580777677310
+    second: Attack3_Shadowless_50
   - first:
-      213: 1232029844796905117
-    second: Male_Armored_Weapons_51
+      213: -52961903514991481
+    second: Attack3_Shadowless_51
   - first:
-      213: 8422300165638973740
-    second: Male_Armored_Weapons_52
+      213: -1538973609189517590
+    second: Attack3_Shadowless_52
   - first:
-      213: -3651877100776511864
-    second: Male_Armored_Weapons_53
+      213: 3893246606116033366
+    second: Attack3_Shadowless_53
   - first:
-      213: 4013453778968807982
-    second: Male_Armored_Weapons_54
+      213: 3602263400238019464
+    second: Attack3_Shadowless_54
   - first:
-      213: 800440197664352970
-    second: Male_Armored_Weapons_55
+      213: 6253569040094560028
+    second: Attack3_Shadowless_55
   - first:
-      213: -6604159529482911958
-    second: Male_Armored_Weapons_56
+      213: 7865107381862950827
+    second: Attack3_Shadowless_56
   - first:
-      213: -2769107997701678589
-    second: Male_Armored_Weapons_57
+      213: 6985065775983317564
+    second: Attack3_Shadowless_57
   - first:
-      213: 7898448434788057174
-    second: Male_Armored_Weapons_58
+      213: 382054135346143015
+    second: Attack3_Shadowless_58
   - first:
-      213: 8570373130299740952
-    second: Male_Armored_Weapons_59
+      213: 1975400525857154807
+    second: Attack3_Shadowless_59
   - first:
-      213: 6678989891185450732
-    second: Male_Armored_Weapons_60
+      213: -8196377323492457101
+    second: Attack3_Shadowless_60
   - first:
-      213: -5753251217345784133
-    second: Male_Armored_Weapons_61
+      213: -6917130570316710596
+    second: Attack3_Shadowless_61
   - first:
-      213: -3949795494524734961
-    second: Male_Armored_Weapons_62
+      213: -7936293935895954571
+    second: Attack3_Shadowless_62
   - first:
-      213: 6078262346696404969
-    second: Male_Armored_Weapons_63
+      213: -2761446670873666725
+    second: Attack3_Shadowless_63
   - first:
-      213: -4896078263996056754
-    second: Male_Armored_Weapons_64
+      213: -2835562108908740972
+    second: Attack3_Shadowless_64
   - first:
-      213: 933998622558590208
-    second: Male_Armored_Weapons_65
+      213: -2657846793633345652
+    second: Attack3_Shadowless_65
   - first:
-      213: 8376817265808371342
-    second: Male_Armored_Weapons_66
+      213: -2213149329214473846
+    second: Attack3_Shadowless_66
   - first:
-      213: 8151631663367606783
-    second: Male_Armored_Weapons_67
+      213: 2073791031689354651
+    second: Attack3_Shadowless_67
   - first:
-      213: -4260578174694449659
-    second: Male_Armored_Weapons_68
+      213: -5081985627590600245
+    second: Attack3_Shadowless_68
   - first:
-      213: -4359911835726478887
-    second: Male_Armored_Weapons_69
+      213: 7700982818558856559
+    second: Attack3_Shadowless_69
   - first:
-      213: 2046370360809797418
-    second: Male_Armored_Weapons_70
+      213: -6058573312542855106
+    second: Attack3_Shadowless_70
   - first:
-      213: -6067681490253143023
-    second: Male_Armored_Weapons_71
+      213: -4945743773679772919
+    second: Attack3_Shadowless_71
   - first:
-      213: -3494453778941059495
-    second: Male_Armored_Weapons_72
+      213: 8190961730205703472
+    second: Attack3_Shadowless_72
   - first:
-      213: -2207073447874285758
-    second: Male_Armored_Weapons_73
+      213: -7684101896666491417
+    second: Attack3_Shadowless_73
   - first:
-      213: 8100717720721190358
-    second: Male_Armored_Weapons_74
+      213: 6384527519085988442
+    second: Attack3_Shadowless_74
   - first:
-      213: -2616095287186825885
-    second: Male_Armored_Weapons_75
+      213: 6603712093529427027
+    second: Attack3_Shadowless_75
   - first:
-      213: 2468683117159821571
-    second: Male_Armored_Weapons_76
+      213: -7555760144079284706
+    second: Attack3_Shadowless_76
   - first:
-      213: 2994602244705456295
-    second: Male_Armored_Weapons_77
+      213: 6037011187960970295
+    second: Attack3_Shadowless_77
   - first:
-      213: 334846986088800132
-    second: Male_Armored_Weapons_78
+      213: 6445456497471404280
+    second: Attack3_Shadowless_78
   - first:
-      213: 4477063147516906171
-    second: Male_Armored_Weapons_79
+      213: -5844674633858591049
+    second: Attack3_Shadowless_79
   - first:
-      213: 2070038588595448772
-    second: Male_Armored_Weapons_80
+      213: 6307334634095883898
+    second: Attack3_Shadowless_80
   - first:
-      213: 2090957160770188584
-    second: Male_Armored_Weapons_81
+      213: -117308880195388202
+    second: Attack3_Shadowless_81
   - first:
-      213: -7688556667011990694
-    second: Male_Armored_Weapons_82
+      213: -2081083056450695952
+    second: Attack3_Shadowless_82
   - first:
-      213: 5834327238370574870
-    second: Male_Armored_Weapons_83
+      213: 8268193136595765207
+    second: Attack3_Shadowless_83
   - first:
-      213: 1941741217755922175
-    second: Male_Armored_Weapons_84
+      213: -7747156853177737741
+    second: Attack3_Shadowless_84
   - first:
-      213: 3922023173187787920
-    second: Male_Armored_Weapons_85
+      213: -2904684240807666608
+    second: Attack3_Shadowless_85
   - first:
-      213: -1244066791912906070
-    second: Male_Armored_Weapons_86
+      213: 7361050660039341964
+    second: Attack3_Shadowless_86
   - first:
-      213: -8259406040989311149
-    second: Male_Armored_Weapons_87
+      213: 4578837213655431615
+    second: Attack3_Shadowless_87
   - first:
-      213: 3462603633600025776
-    second: Male_Armored_Weapons_88
+      213: 1126268635408089867
+    second: Attack3_Shadowless_88
   - first:
-      213: -4101017325940107183
-    second: Male_Armored_Weapons_89
+      213: 685880766962223672
+    second: Attack3_Shadowless_89
   - first:
-      213: -4308513487315463362
-    second: Male_Armored_Weapons_90
+      213: 4388466576937997348
+    second: Attack3_Shadowless_90
   - first:
-      213: -3653355817480431102
-    second: Male_Armored_Weapons_91
+      213: 531095433700520208
+    second: Attack3_Shadowless_91
   - first:
-      213: 1780298531677493841
-    second: Male_Armored_Weapons_92
+      213: -5725146589718250317
+    second: Attack3_Shadowless_92
   - first:
-      213: -5387799331965420209
-    second: Male_Armored_Weapons_93
+      213: -5454973529276341181
+    second: Attack3_Shadowless_93
   - first:
-      213: -2596193586742655694
-    second: Male_Armored_Weapons_94
+      213: 8803761217346873857
+    second: Attack3_Shadowless_94
   - first:
-      213: -7266503375742597856
-    second: Male_Armored_Weapons_95
+      213: 702415470366283385
+    second: Attack3_Shadowless_95
   - first:
-      213: -198693725762068680
-    second: Male_Armored_Weapons_96
+      213: 5805960404334804151
+    second: Attack3_Shadowless_96
   - first:
-      213: -4770598176241170989
-    second: Male_Armored_Weapons_97
+      213: 729162387605455827
+    second: Attack3_Shadowless_97
   - first:
-      213: 2054033432739155555
-    second: Male_Armored_Weapons_98
+      213: -4438080907608806238
+    second: Attack3_Shadowless_98
   - first:
-      213: -7413974712532642212
-    second: Male_Armored_Weapons_99
+      213: 9162361451660529374
+    second: Attack3_Shadowless_99
   - first:
-      213: -40249444069999847
-    second: Male_Armored_Weapons_100
+      213: -726525883508474798
+    second: Attack3_Shadowless_100
   - first:
-      213: -543651145179068993
-    second: Male_Armored_Weapons_101
+      213: -1828085812014553825
+    second: Attack3_Shadowless_101
   - first:
-      213: -6591065004443681126
-    second: Male_Armored_Weapons_102
+      213: -8096734731833278172
+    second: Attack3_Shadowless_102
   - first:
-      213: -5241576147975358120
-    second: Male_Armored_Weapons_103
+      213: 6446855172881679502
+    second: Attack3_Shadowless_103
   - first:
-      213: 7102168803691921423
-    second: Male_Armored_Weapons_104
+      213: -5825451550183408648
+    second: Attack3_Shadowless_104
   - first:
-      213: -6279003334642715104
-    second: Male_Armored_Weapons_105
+      213: 9096557174077942519
+    second: Attack3_Shadowless_105
   - first:
-      213: 4940081225075757715
-    second: Male_Armored_Weapons_106
+      213: -7830351737380277766
+    second: Attack3_Shadowless_106
   - first:
-      213: -2446677533949930969
-    second: Male_Armored_Weapons_107
+      213: 6737966403573601324
+    second: Attack3_Shadowless_107
   - first:
-      213: 6083441798937999196
-    second: Male_Armored_Weapons_108
+      213: 7977949559943020010
+    second: Attack3_Shadowless_108
   - first:
-      213: 5786132673840797967
-    second: Male_Armored_Weapons_109
+      213: 7984389094395082602
+    second: Attack3_Shadowless_109
   - first:
-      213: 5023586290453749983
-    second: Male_Armored_Weapons_110
+      213: -2278598498570326508
+    second: Attack3_Shadowless_110
   - first:
-      213: -3586319597095019951
-    second: Male_Armored_Weapons_111
+      213: -2235388601581312366
+    second: Attack3_Shadowless_111
   - first:
-      213: -2276292243150526399
-    second: Male_Armored_Weapons_112
+      213: 9008274872834569451
+    second: Attack3_Shadowless_112
   - first:
-      213: 212417672687960938
-    second: Male_Armored_Weapons_113
+      213: 4288609189118017992
+    second: Attack3_Shadowless_113
   - first:
-      213: 4836423789346978414
-    second: Male_Armored_Weapons_114
+      213: 1458297133396954828
+    second: Attack3_Shadowless_114
+  - first:
+      213: 3374281856291594154
+    second: Attack3_Shadowless_115
+  - first:
+      213: -7477113240797755643
+    second: Attack3_Shadowless_116
+  - first:
+      213: 6747187965154742758
+    second: Attack3_Shadowless_117
+  - first:
+      213: -7038426625637909637
+    second: Attack3_Shadowless_118
+  - first:
+      213: 1553790291143119987
+    second: Attack3_Shadowless_119
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -438,17 +453,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Male_Armored_Weapons_0
+      name: Attack3_Shadowless_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1152
-        width: 48
-        height: 48
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,20 +485,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9412d21cf087081d0800000000000000
-      internalID: -3350546113702846135
+      spriteID: 8ba68d70fa4ae7360800000000000000
+      internalID: 7169348728478263992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_1
+      name: Attack3_Shadowless_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 1152
-        width: 48
-        height: 48
+        x: 128
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -479,20 +507,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f20a4fbd4cb1c4f70800000000000000
-      internalID: 9172737073364639791
+      spriteID: 29f8a014cd6bc3000800000000000000
+      internalID: 17089555702910866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_2
+      name: Attack3_Shadowless_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 1152
-        width: 48
-        height: 48
+        x: 256
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -501,20 +529,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 412de6f8ec2f4b250800000000000000
-      internalID: 5959655175901598228
+      spriteID: e120efcebb192f410800000000000000
+      internalID: 1509429061443519006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_3
+      name: Attack3_Shadowless_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1104
-        width: 48
-        height: 48
+        x: 384
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,20 +551,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 443dd3c7537adfdb0800000000000000
-      internalID: -4756461783273843900
+      spriteID: 3519cb053c2767820800000000000000
+      internalID: 2915643991967699283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_4
+      name: Attack3_Shadowless_4
       rect:
         serializedVersion: 2
-        x: 48
-        y: 1104
-        width: 48
-        height: 48
+        x: 512
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -545,20 +573,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 037bbbab76b985c80800000000000000
-      internalID: -8333740240632301776
+      spriteID: f58bdf5c2286c0710800000000000000
+      internalID: 1660816861152786527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_5
+      name: Attack3_Shadowless_5
       rect:
         serializedVersion: 2
-        x: 96
-        y: 1104
-        width: 48
-        height: 48
+        x: 640
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -567,20 +595,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0204eb85eac71a80800000000000000
-      internalID: -8496099084767854069
+      spriteID: 28b999ea8fab1c020800000000000000
+      internalID: 2360373256962808706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_6
+      name: Attack3_Shadowless_6
       rect:
         serializedVersion: 2
-        x: 144
-        y: 1104
-        width: 48
-        height: 48
+        x: 768
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -589,20 +617,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5a768919da54b0c50800000000000000
-      internalID: 6632471488007530405
+      spriteID: ff20b1d5392e036f0800000000000000
+      internalID: -706816018947046657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_7
+      name: Attack3_Shadowless_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1056
-        width: 48
-        height: 48
+        x: 896
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -611,20 +639,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f14d38b48739b9a80800000000000000
-      internalID: -8459005330213055457
+      spriteID: 27db7310b3fc57f20800000000000000
+      internalID: 3419867344388210034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_8
+      name: Attack3_Shadowless_8
       rect:
         serializedVersion: 2
-        x: 48
-        y: 1056
-        width: 48
-        height: 48
+        x: 1024
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -633,20 +661,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a110bfb565541c80800000000000000
-      internalID: -8352957513369382493
+      spriteID: cb446057e13f19700800000000000000
+      internalID: 545484342026454204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_9
+      name: Attack3_Shadowless_9
       rect:
         serializedVersion: 2
-        x: 96
-        y: 1056
-        width: 48
-        height: 48
+        x: 1152
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -655,20 +683,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 98641e478a919ed00800000000000000
-      internalID: 1002360603372766857
+      spriteID: b664b0d59ca8a54d0800000000000000
+      internalID: -3145048792310790549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_10
+      name: Attack3_Shadowless_10
       rect:
         serializedVersion: 2
-        x: 144
-        y: 1056
-        width: 48
-        height: 48
+        x: 1280
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -677,20 +705,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: acd66adeb6eaa1e70800000000000000
-      internalID: 9086766976745237962
+      spriteID: 593ef4a3e1523dd10800000000000000
+      internalID: 2149102258943419285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_11
+      name: Attack3_Shadowless_11
       rect:
         serializedVersion: 2
-        x: 192
-        y: 1056
-        width: 48
-        height: 48
+        x: 1408
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -699,20 +727,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6dbdb832efefa9060800000000000000
-      internalID: 6961156541526039510
+      spriteID: fff27ffaab8988050800000000000000
+      internalID: 5803056047450435583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_12
+      name: Attack3_Shadowless_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1008
-        width: 48
-        height: 48
+        x: 1536
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -721,20 +749,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbd1f2e6a495348c0800000000000000
-      internalID: -4016268266473316933
+      spriteID: 128f38a330f1493c0800000000000000
+      internalID: -4353820841033336799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_13
+      name: Attack3_Shadowless_13
       rect:
         serializedVersion: 2
-        x: 48
-        y: 1008
-        width: 48
-        height: 48
+        x: 1664
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -743,20 +771,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 364718402acdb17e0800000000000000
-      internalID: -1793597438158605213
+      spriteID: f41459d79a5204420800000000000000
+      internalID: 2612129193761521999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_14
+      name: Attack3_Shadowless_14
       rect:
         serializedVersion: 2
-        x: 96
-        y: 1008
-        width: 48
-        height: 48
+        x: 1792
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -765,460 +793,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c43b9c0c85d5b7c0800000000000000
-      internalID: -4056101091893627705
+      spriteID: 80920d8c3eb7afbb0800000000000000
+      internalID: -4901469026182485752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_15
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 1008
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca728730d06fcd920800000000000000
-      internalID: 3016556386184603564
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_16
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 1008
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 01f0d4ec5375a47f0800000000000000
-      internalID: -627593309458723056
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_17
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 960
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c898f7fb29ed18ba0800000000000000
-      internalID: -6088340499368801908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_18
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 960
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 59154a813d55ed960800000000000000
-      internalID: 7628629183952081301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_19
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 960
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fc5b0b8e3f7de4c0800000000000000
-      internalID: -4256606166197773064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_20
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 960
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6562d679d9b469b60800000000000000
-      internalID: 7752466948787349078
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_21
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 960
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 56597d2c25d55f4e0800000000000000
-      internalID: -1948548653730261659
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_22
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 960
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f6de7d5681a94aff0800000000000000
-      internalID: -25726268278837905
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_23
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 912
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d7c73cf3db492060800000000000000
-      internalID: 6929152875527915474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_24
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 912
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14853221f4bc48b50800000000000000
-      internalID: 6594619294844409921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_25
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 912
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4d59e87880a98a6d0800000000000000
-      internalID: -2978961792080898604
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_26
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 864
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5535556d62406b370800000000000000
-      internalID: 8337856324974236501
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_27
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 864
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e5b81cd8151d740d0800000000000000
-      internalID: -3438549642273256610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_28
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 864
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93952482416863590800000000000000
-      internalID: -7694815492183008967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_29
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 864
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e38ba4f06ce274fd0800000000000000
-      internalID: -2357864451710207938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_30
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 816
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad7546f8bd7e256c0800000000000000
-      internalID: -4156004575919974438
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_31
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 816
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 23fa8a4915d44aa20800000000000000
-      internalID: 3072665858555293490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_32
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 816
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a2fc49386409d6a30800000000000000
-      internalID: 4210179859190959914
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_33
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 816
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 21f340182a13d27d0800000000000000
-      internalID: -2941640407584063726
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_34
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 816
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c68aa54a791cd2750800000000000000
-      internalID: 6281889912293337196
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_35
+      name: Attack3_Shadowless_15
       rect:
         serializedVersion: 2
         x: 0
         y: 768
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1227,20 +815,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 920bc12d91888c840800000000000000
-      internalID: 5244591410553597993
+      spriteID: 601c4f67fc3b8c5a0800000000000000
+      internalID: -6500748358473957114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_36
+      name: Attack3_Shadowless_16
       rect:
         serializedVersion: 2
-        x: 48
+        x: 128
         y: 768
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1249,20 +837,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 176288f3607242d30800000000000000
-      internalID: 4405689243264362097
+      spriteID: 4d3dcecc5a8976f90800000000000000
+      internalID: -6960426861202713644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_37
+      name: Attack3_Shadowless_17
       rect:
         serializedVersion: 2
-        x: 96
+        x: 256
         y: 768
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1271,20 +859,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70b019c8c8fb32d90800000000000000
-      internalID: -7123639575195350265
+      spriteID: f68f83d77b38df2f0800000000000000
+      internalID: -937448323320055697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_38
+      name: Attack3_Shadowless_18
       rect:
         serializedVersion: 2
-        x: 144
+        x: 384
         y: 768
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1293,20 +881,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 644c54ea3f00c04a0800000000000000
-      internalID: -6625919905167981498
+      spriteID: c93d6078960fc4460800000000000000
+      internalID: 7227415838050407324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_39
+      name: Attack3_Shadowless_19
       rect:
         serializedVersion: 2
-        x: 192
+        x: 512
         y: 768
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1315,20 +903,240 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f13e6f93f399f890800000000000000
-      internalID: -7423739836182416907
+      spriteID: 61e9d60ae881dd660800000000000000
+      internalID: 7412107562577665558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_40
+      name: Attack3_Shadowless_20
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56f7248bc1ed7e410800000000000000
+      internalID: 1506416815310536549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_21
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18ec80cdeba7875c0800000000000000
+      internalID: -4217486090878529919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_22
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e910241eb4c70ea0800000000000000
+      internalID: -5906536065612637721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_23
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2ed9c6ec825f4020800000000000000
+      internalID: 2328170297494724143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_24
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7806fa0dafce567c0800000000000000
+      internalID: -4078593325526982521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_25
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 493e4b5138e067890800000000000000
+      internalID: -7460759776524967020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_26
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79ce80e21d8aa1710800000000000000
+      internalID: 1664828628640787607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f58bdaca27b9979c0800000000000000
+      internalID: -3928938283078404001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_28
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7b44728d3a6a80b0800000000000000
+      internalID: -5725647163833955458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_29
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6d104fbbf3741dd0800000000000000
+      internalID: -2516258766710629009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_30
       rect:
         serializedVersion: 2
         x: 0
-        y: 720
-        width: 48
-        height: 48
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1337,20 +1145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d5a34f3ada15d280800000000000000
-      internalID: -9019273154072959534
+      spriteID: 7c8796ca88ffd57e0800000000000000
+      internalID: -1774981715640878905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_41
+      name: Attack3_Shadowless_31
       rect:
         serializedVersion: 2
-        x: 48
-        y: 720
-        width: 48
-        height: 48
+        x: 128
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1359,20 +1167,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c28c8884a4d92440800000000000000
-      internalID: 4911690671754871490
+      spriteID: b9a699d103abdbc40800000000000000
+      internalID: 5529780633298627227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_42
+      name: Attack3_Shadowless_32
       rect:
         serializedVersion: 2
-        x: 96
-        y: 720
-        width: 48
-        height: 48
+        x: 256
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1381,20 +1189,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60497fa07fac9b050800000000000000
-      internalID: 5816903556115436550
+      spriteID: c592b3872d0b829a0800000000000000
+      internalID: -6257557264224540324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_43
+      name: Attack3_Shadowless_33
       rect:
         serializedVersion: 2
-        x: 144
-        y: 720
-        width: 48
-        height: 48
+        x: 384
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1403,20 +1211,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0f4d3114376255660800000000000000
-      internalID: 7373842241343968496
+      spriteID: 117b097bba738bcb0800000000000000
+      internalID: -4848063788205689071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_44
+      name: Attack3_Shadowless_34
       rect:
         serializedVersion: 2
-        x: 192
-        y: 720
-        width: 48
-        height: 48
+        x: 512
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1425,20 +1233,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb7d57f5c9184d300800000000000000
-      internalID: 275987985792882620
+      spriteID: 258633f19b1b29db0800000000000000
+      internalID: -4786568045290887086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_45
+      name: Attack3_Shadowless_35
       rect:
         serializedVersion: 2
-        x: 240
-        y: 720
-        width: 48
-        height: 48
+        x: 640
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1447,20 +1255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f98b030f85ad10d0800000000000000
-      internalID: -3450419705845937671
+      spriteID: 4b8ac06611177bec0800000000000000
+      internalID: -3551245461617858380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_46
+      name: Attack3_Shadowless_36
       rect:
         serializedVersion: 2
-        x: 0
-        y: 672
-        width: 48
-        height: 48
+        x: 768
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1469,20 +1277,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14b123b6a942ffbb0800000000000000
-      internalID: -4900157623913800895
+      spriteID: e0590668f062f0fd0800000000000000
+      internalID: -2373636630480120562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_47
+      name: Attack3_Shadowless_37
       rect:
         serializedVersion: 2
-        x: 48
-        y: 672
-        width: 48
-        height: 48
+        x: 896
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1491,20 +1299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c54a3b337ad1cd30800000000000000
-      internalID: 4450078095268529605
+      spriteID: eec3b78be4db4e290800000000000000
+      internalID: -7861950903681860370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_48
+      name: Attack3_Shadowless_38
       rect:
         serializedVersion: 2
-        x: 96
-        y: 672
-        width: 48
-        height: 48
+        x: 1024
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1513,20 +1321,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2fe00f9440bb0c40800000000000000
-      internalID: 5479667180398243628
+      spriteID: 64c6a884625ebe300800000000000000
+      internalID: 282571354229337158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_49
+      name: Attack3_Shadowless_39
       rect:
         serializedVersion: 2
-        x: 0
-        y: 624
-        width: 48
-        height: 48
+        x: 1152
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1535,20 +1343,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9d5fc9b5d36883c0800000000000000
-      internalID: -4357122869884396130
+      spriteID: 7f2d898755c7fc5f0800000000000000
+      internalID: -734231507700755721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_50
+      name: Attack3_Shadowless_40
       rect:
         serializedVersion: 2
-        x: 48
-        y: 624
-        width: 48
-        height: 48
+        x: 1280
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1557,20 +1365,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56dd51b7b542a74b0800000000000000
-      internalID: -5441997224398168731
+      spriteID: d20150d596fa07a10800000000000000
+      internalID: 1905215509444759597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_51
+      name: Attack3_Shadowless_41
       rect:
         serializedVersion: 2
-        x: 96
-        y: 624
-        width: 48
-        height: 48
+        x: 1408
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1579,20 +1387,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d969cc3cd9c091110800000000000000
-      internalID: 1232029844796905117
+      spriteID: 38bf6492c159192b0800000000000000
+      internalID: -5579514515151193213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_52
+      name: Attack3_Shadowless_42
       rect:
         serializedVersion: 2
-        x: 144
-        y: 624
-        width: 48
-        height: 48
+        x: 1536
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1601,20 +1409,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c29ef9c906502e470800000000000000
-      internalID: 8422300165638973740
+      spriteID: 9e45d56d112483320800000000000000
+      internalID: 2537851034401592553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_53
+      name: Attack3_Shadowless_43
       rect:
         serializedVersion: 2
-        x: 0
-        y: 576
-        width: 48
-        height: 48
+        x: 1664
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1623,20 +1431,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88625d4102de15dc0800000000000000
-      internalID: -3651877100776511864
+      spriteID: a03be6dacd3bd14f0800000000000000
+      internalID: -856330593746636022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_54
+      name: Attack3_Shadowless_44
       rect:
         serializedVersion: 2
-        x: 48
-        y: 576
-        width: 48
-        height: 48
+        x: 1792
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1645,86 +1453,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2a82e1a2f6a2b730800000000000000
-      internalID: 4013453778968807982
+      spriteID: 611f3c70aeb625ea0800000000000000
+      internalID: -5885523110123015914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_55
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 576
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aca2abd6e1cbb1b00800000000000000
-      internalID: 800440197664352970
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_56
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 576
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a2ff825f5ef4954a0800000000000000
-      internalID: -6604159529482911958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_57
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 576
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 30a5c4c82f62299d0800000000000000
-      internalID: -2769107997701678589
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_58
+      name: Attack3_Shadowless_45
       rect:
         serializedVersion: 2
         x: 0
-        y: 528
-        width: 48
-        height: 48
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1733,20 +1475,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6504840f00dec9d60800000000000000
-      internalID: 7898448434788057174
+      spriteID: b2ffc051460e96ee0800000000000000
+      internalID: -1267235099673559253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_59
+      name: Attack3_Shadowless_46
       rect:
         serializedVersion: 2
-        x: 48
-        y: 528
-        width: 48
-        height: 48
+        x: 128
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1755,20 +1497,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 813911844f410f670800000000000000
-      internalID: 8570373130299740952
+      spriteID: c89448ccacb4baff0800000000000000
+      internalID: -23842038633707124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_60
+      name: Attack3_Shadowless_47
       rect:
         serializedVersion: 2
-        x: 96
-        y: 528
-        width: 48
-        height: 48
+        x: 256
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1777,20 +1519,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cee98825be980bc50800000000000000
-      internalID: 6678989891185450732
+      spriteID: 367142eac932f2d80800000000000000
+      internalID: -8273354834612840605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_61
+      name: Attack3_Shadowless_48
       rect:
         serializedVersion: 2
-        x: 144
-        y: 528
-        width: 48
-        height: 48
+        x: 384
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1799,20 +1541,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb65586ff785820b0800000000000000
-      internalID: -5753251217345784133
+      spriteID: 4739410bd50499b60800000000000000
+      internalID: 7753299004625294196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_62
+      name: Attack3_Shadowless_49
       rect:
         serializedVersion: 2
-        x: 192
-        y: 528
-        width: 48
-        height: 48
+        x: 512
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1821,20 +1563,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f023a65bce18f29c0800000000000000
-      internalID: -3949795494524734961
+      spriteID: 8d857d19b8c0c1dc0800000000000000
+      internalID: -3667042202999629608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_63
+      name: Attack3_Shadowless_50
       rect:
         serializedVersion: 2
-        x: 0
-        y: 480
-        width: 48
-        height: 48
+        x: 640
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1843,20 +1585,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9efa87a76635a5450800000000000000
-      internalID: 6078262346696404969
+      spriteID: 20ea72ca45e48ab80800000000000000
+      internalID: -8383364580777677310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_64
+      name: Attack3_Shadowless_51
       rect:
         serializedVersion: 2
-        x: 48
-        y: 480
-        width: 48
-        height: 48
+        x: 768
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1865,20 +1607,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4bf00a62c2ad0cb0800000000000000
-      internalID: -4896078263996056754
+      spriteID: 7844c5aed67d34ff0800000000000000
+      internalID: -52961903514991481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_65
+      name: Attack3_Shadowless_52
       rect:
         serializedVersion: 2
-        x: 96
-        y: 480
-        width: 48
-        height: 48
+        x: 896
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1887,20 +1629,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0051f467cca36fc00800000000000000
-      internalID: 933998622558590208
+      spriteID: ae6de8108a774aae0800000000000000
+      internalID: -1538973609189517590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_66
+      name: Attack3_Shadowless_53
       rect:
         serializedVersion: 2
-        x: 144
-        y: 480
-        width: 48
-        height: 48
+        x: 1024
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1909,20 +1651,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8eedd4cbee604470800000000000000
-      internalID: 8376817265808371342
+      spriteID: 6539a843927970630800000000000000
+      internalID: 3893246606116033366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_67
+      name: Attack3_Shadowless_54
       rect:
         serializedVersion: 2
-        x: 192
-        y: 480
-        width: 48
-        height: 48
+        x: 1152
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1931,20 +1673,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff15ad20fc9602170800000000000000
-      internalID: 8151631663367606783
+      spriteID: 883f3961a7fcdf130800000000000000
+      internalID: 3602263400238019464
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_68
+      name: Attack3_Shadowless_55
       rect:
         serializedVersion: 2
-        x: 240
-        y: 480
-        width: 48
-        height: 48
+        x: 1280
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1953,20 +1695,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 50e1e8f39b26fd4c0800000000000000
-      internalID: -4260578174694449659
+      spriteID: c1f773db8e329c650800000000000000
+      internalID: 6253569040094560028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_69
+      name: Attack3_Shadowless_56
       rect:
         serializedVersion: 2
-        x: 0
-        y: 432
-        width: 48
-        height: 48
+        x: 1408
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1975,20 +1717,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d18083094b7e73c0800000000000000
-      internalID: -4359911835726478887
+      spriteID: ba76e302e79762d60800000000000000
+      internalID: 7865107381862950827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_70
+      name: Attack3_Shadowless_57
       rect:
         serializedVersion: 2
-        x: 48
-        y: 432
-        width: 48
-        height: 48
+        x: 1536
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1997,20 +1739,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a27b4f2400b266c10800000000000000
-      internalID: 2046370360809797418
+      spriteID: c3259369050ffe060800000000000000
+      internalID: 6985065775983317564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_71
+      name: Attack3_Shadowless_58
       rect:
         serializedVersion: 2
-        x: 96
-        y: 432
-        width: 48
-        height: 48
+        x: 1664
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2019,20 +1761,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 114af3325d34bcba0800000000000000
-      internalID: -6067681490253143023
+      spriteID: 72f964e36345d4500800000000000000
+      internalID: 382054135346143015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_72
+      name: Attack3_Shadowless_59
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f6e5d8ef480a6b10800000000000000
+      internalID: 1975400525857154807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_60
       rect:
         serializedVersion: 2
         x: 0
         y: 384
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2041,20 +1805,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 95e523e6dc4318fc0800000000000000
-      internalID: -3494453778941059495
+      spriteID: 3754a24204e904e80800000000000000
+      internalID: -8196377323492457101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_73
+      name: Attack3_Shadowless_61
       rect:
         serializedVersion: 2
-        x: 48
+        x: 128
         y: 384
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2063,20 +1827,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24fa14a8466ee51e0800000000000000
-      internalID: -2207073447874285758
+      spriteID: c3df643156a6100a0800000000000000
+      internalID: -6917130570316710596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_74
+      name: Attack3_Shadowless_62
       rect:
         serializedVersion: 2
-        x: 96
+        x: 256
         y: 384
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2085,20 +1849,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6dd6c49f8d78b6070800000000000000
-      internalID: 8100717720721190358
+      spriteID: 57bb5dda6be9cd190800000000000000
+      internalID: -7936293935895954571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_75
+      name: Attack3_Shadowless_63
       rect:
         serializedVersion: 2
-        x: 144
+        x: 384
         y: 384
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2107,20 +1871,262 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36dd7ac6233c1bbd0800000000000000
-      internalID: -2616095287186825885
+      spriteID: b5bd36432ee5da9d0800000000000000
+      internalID: -2761446670873666725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_76
+      name: Attack3_Shadowless_64
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49edfef094f06a8d0800000000000000
+      internalID: -2835562108908740972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_65
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8fc21e4c6e6d1bd0800000000000000
+      internalID: -2657846793633345652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_66
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a89f64d29605941e0800000000000000
+      internalID: -2213149329214473846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_67
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d1c36b4f597cc10800000000000000
+      internalID: 2073791031689354651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_68
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc952d94ff82979b0800000000000000
+      internalID: -5081985627590600245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_69
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6d469962136fda60800000000000000
+      internalID: 7700982818558856559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_70
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e30b8340caf9beba0800000000000000
+      internalID: -6058573312542855106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_71
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90b97b3dd303d5bb0800000000000000
+      internalID: -4945743773679772919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_72
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03ddab9cb442ca170800000000000000
+      internalID: 8190961730205703472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_73
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e5d94f79069c5590800000000000000
+      internalID: -7684101896666491417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_74
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a83d1b3f56a9850800000000000000
+      internalID: 6384527519085988442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_75
       rect:
         serializedVersion: 2
         x: 0
-        y: 336
-        width: 48
-        height: 48
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2129,20 +2135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 301b0552736824220800000000000000
-      internalID: 2468683117159821571
+      spriteID: 35cc5cd392915ab50800000000000000
+      internalID: 6603712093529427027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_77
+      name: Attack3_Shadowless_76
       rect:
         serializedVersion: 2
-        x: 48
-        y: 336
-        width: 48
-        height: 48
+        x: 128
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2151,20 +2157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a0914f10e6fe8920800000000000000
-      internalID: 2994602244705456295
+      spriteID: e16991c5e2c842790800000000000000
+      internalID: -7555760144079284706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_78
+      name: Attack3_Shadowless_77
       rect:
         serializedVersion: 2
-        x: 96
-        y: 336
-        width: 48
-        height: 48
+        x: 256
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2173,20 +2179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48fdeeb4f8d95a400800000000000000
-      internalID: 334846986088800132
+      spriteID: 73cf873a0b5c7c350800000000000000
+      internalID: 6037011187960970295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_79
+      name: Attack3_Shadowless_78
       rect:
         serializedVersion: 2
-        x: 144
-        y: 336
-        width: 48
-        height: 48
+        x: 384
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2195,20 +2201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbaccb05639b12e30800000000000000
-      internalID: 4477063147516906171
+      spriteID: 8f83403f88cd27950800000000000000
+      internalID: 6445456497471404280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_80
+      name: Attack3_Shadowless_79
       rect:
         serializedVersion: 2
-        x: 192
-        y: 336
-        width: 48
-        height: 48
+        x: 512
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2217,20 +2223,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4cb2598f0214abc10800000000000000
-      internalID: 2070038588595448772
+      spriteID: 7b65f1d036b83eea0800000000000000
+      internalID: -5844674633858591049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_81
+      name: Attack3_Shadowless_80
       rect:
         serializedVersion: 2
-        x: 0
-        y: 288
-        width: 48
-        height: 48
+        x: 640
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2239,20 +2245,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82534489572940d10800000000000000
-      internalID: 2090957160770188584
+      spriteID: a76bdc89e67288750800000000000000
+      internalID: 6307334634095883898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_82
+      name: Attack3_Shadowless_81
       rect:
         serializedVersion: 2
-        x: 48
-        y: 288
-        width: 48
-        height: 48
+        x: 768
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2261,20 +2267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a5bf9437272cc4590800000000000000
-      internalID: -7688556667011990694
+      spriteID: 6dc74fae13c3f5ef0800000000000000
+      internalID: -117308880195388202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_83
+      name: Attack3_Shadowless_82
       rect:
         serializedVersion: 2
-        x: 96
-        y: 288
-        width: 48
-        height: 48
+        x: 896
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2283,20 +2289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 612c67236b1b7f050800000000000000
-      internalID: 5834327238370574870
+      spriteID: 0fc0c287cf18e13e0800000000000000
+      internalID: -2081083056450695952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_84
+      name: Attack3_Shadowless_83
       rect:
         serializedVersion: 2
-        x: 144
-        y: 288
-        width: 48
-        height: 48
+        x: 1024
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2305,20 +2311,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ffe731a895372fa10800000000000000
-      internalID: 1941741217755922175
+      spriteID: 7d70d19d9d58eb270800000000000000
+      internalID: 8268193136595765207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_85
+      name: Attack3_Shadowless_84
       rect:
         serializedVersion: 2
-        x: 192
-        y: 288
-        width: 48
-        height: 48
+        x: 1152
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2327,20 +2333,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09c55b6db43dd6630800000000000000
-      internalID: 3922023173187787920
+      spriteID: 3fd9b1363e19c7490800000000000000
+      internalID: -7747156853177737741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_86
+      name: Attack3_Shadowless_85
       rect:
         serializedVersion: 2
-        x: 0
-        y: 240
-        width: 48
-        height: 48
+        x: 1280
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2349,20 +2355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa2eb2718df2cbee0800000000000000
-      internalID: -1244066791912906070
+      spriteID: 05cdbf9921d70b7d0800000000000000
+      internalID: -2904684240807666608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_87
+      name: Attack3_Shadowless_86
       rect:
         serializedVersion: 2
-        x: 48
-        y: 240
-        width: 48
-        height: 48
+        x: 1408
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2371,20 +2377,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 35fdd1747f1b06d80800000000000000
-      internalID: -8259406040989311149
+      spriteID: c87bc452394b72660800000000000000
+      internalID: 7361050660039341964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_88
+      name: Attack3_Shadowless_87
       rect:
         serializedVersion: 2
-        x: 96
-        y: 240
-        width: 48
-        height: 48
+        x: 1536
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2393,20 +2399,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b4d4bab8a3ad0030800000000000000
-      internalID: 3462603633600025776
+      spriteID: fb97544af2c4b8f30800000000000000
+      internalID: 4578837213655431615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_89
+      name: Attack3_Shadowless_88
       rect:
         serializedVersion: 2
-        x: 144
-        y: 240
-        width: 48
-        height: 48
+        x: 1664
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2415,20 +2421,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1581e9d58724617c0800000000000000
-      internalID: -4101017325940107183
+      spriteID: b03c92f4b5f41af00800000000000000
+      internalID: 1126268635408089867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_90
+      name: Attack3_Shadowless_89
       rect:
         serializedVersion: 2
-        x: 192
-        y: 240
-        width: 48
-        height: 48
+        x: 1792
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2437,42 +2443,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e33159e8fc51534c0800000000000000
-      internalID: -4308513487315463362
+      spriteID: 83a4e017cecb48900800000000000000
+      internalID: 685880766962223672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_91
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 240
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 20ad8f48d3cac4dc0800000000000000
-      internalID: -3653355817480431102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_92
+      name: Attack3_Shadowless_90
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 48
-        height: 48
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2481,20 +2465,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15a59c60514e4b810800000000000000
-      internalID: 1780298531677493841
+      spriteID: 4245013c917f6ec30800000000000000
+      internalID: 4388466576937997348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_93
+      name: Attack3_Shadowless_91
       rect:
         serializedVersion: 2
-        x: 48
-        y: 192
-        width: 48
-        height: 48
+        x: 128
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2503,20 +2487,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f4d3d19ad01ba35b0800000000000000
-      internalID: -5387799331965420209
+      spriteID: 0113d8bab74de5700800000000000000
+      internalID: 531095433700520208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_94
+      name: Attack3_Shadowless_92
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
-        width: 48
-        height: 48
+        x: 256
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2525,20 +2509,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2358e0620b778fbd0800000000000000
-      internalID: -2596193586742655694
+      spriteID: 3bcfdc082813c80b0800000000000000
+      internalID: -5725146589718250317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_95
+      name: Attack3_Shadowless_93
       rect:
         serializedVersion: 2
-        x: 0
-        y: 144
-        width: 48
-        height: 48
+        x: 384
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2547,20 +2531,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0258fa9eda1382b90800000000000000
-      internalID: -7266503375742597856
+      spriteID: 34423501a7a0c44b0800000000000000
+      internalID: -5454973529276341181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_96
+      name: Attack3_Shadowless_94
       rect:
         serializedVersion: 2
-        x: 48
-        y: 144
-        width: 48
-        height: 48
+        x: 512
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2569,20 +2553,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 83f5ad0fb191e3df0800000000000000
-      internalID: -198693725762068680
+      spriteID: 10a225fce2e3d2a70800000000000000
+      internalID: 8803761217346873857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_97
+      name: Attack3_Shadowless_95
       rect:
         serializedVersion: 2
-        x: 96
-        y: 144
-        width: 48
-        height: 48
+        x: 640
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2591,20 +2575,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d5c4030c3e6bcdb0800000000000000
-      internalID: -4770598176241170989
+      spriteID: 976dbe3162b7fb900800000000000000
+      internalID: 702415470366283385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_98
+      name: Attack3_Shadowless_96
       rect:
         serializedVersion: 2
-        x: 144
-        y: 144
-        width: 48
-        height: 48
+        x: 768
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2613,20 +2597,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36e813b3684618c10800000000000000
-      internalID: 2054033432739155555
+      spriteID: 7bcfb58f93ae29050800000000000000
+      internalID: 5805960404334804151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_99
+      name: Attack3_Shadowless_97
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 48
-        height: 48
+        x: 896
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2635,20 +2619,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5653c5a7454c1990800000000000000
-      internalID: -7413974712532642212
+      spriteID: 3d38cc804518e1a00800000000000000
+      internalID: 729162387605455827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_100
+      name: Attack3_Shadowless_98
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
-        width: 48
-        height: 48
+        x: 1024
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2657,20 +2641,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91bfcc70851017ff0800000000000000
-      internalID: -40249444069999847
+      spriteID: 2aca881bde4c862c0800000000000000
+      internalID: -4438080907608806238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_101
+      name: Attack3_Shadowless_99
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 48
-        height: 48
+        x: 1152
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2679,20 +2663,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb50ed1f9209478f0800000000000000
-      internalID: -543651145179068993
+      spriteID: ede45fd223f372f70800000000000000
+      internalID: 9162361451660529374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_102
+      name: Attack3_Shadowless_100
       rect:
         serializedVersion: 2
-        x: 144
-        y: 96
-        width: 48
-        height: 48
+        x: 1280
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2701,20 +2685,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9e30a6ac45d784a0800000000000000
-      internalID: -6591065004443681126
+      spriteID: 25cb959ee8cdae5f0800000000000000
+      internalID: -726525883508474798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_103
+      name: Attack3_Shadowless_101
       rect:
         serializedVersion: 2
-        x: 192
-        y: 96
-        width: 48
-        height: 48
+        x: 1408
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2723,20 +2707,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 859b4c4b34e2247b0800000000000000
-      internalID: -5241576147975358120
+      spriteID: f15e0fbb3a551a6e0800000000000000
+      internalID: -1828085812014553825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_104
+      name: Attack3_Shadowless_102
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 48
-        height: 48
+        x: 1536
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2745,20 +2729,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f000be6e5e8ff8260800000000000000
-      internalID: 7102168803691921423
+      spriteID: 4218284e8ae92af80800000000000000
+      internalID: -8096734731833278172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_105
+      name: Attack3_Shadowless_103
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
-        width: 48
-        height: 48
+        x: 1664
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2767,20 +2751,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 026b0271cbf7cd8a0800000000000000
-      internalID: -6279003334642715104
+      spriteID: e8480027f94d77950800000000000000
+      internalID: 6446855172881679502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_106
+      name: Attack3_Shadowless_104
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 48
-        height: 48
+        x: 1792
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2789,64 +2773,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 392973653b1be8440800000000000000
-      internalID: 4940081225075757715
+      spriteID: 8fbb11ffda6d72fa0800000000000000
+      internalID: -5825451550183408648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_107
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 48
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7225cf4feb7ab0ed0800000000000000
-      internalID: -2446677533949930969
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_108
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 48
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c57767da51abc6450800000000000000
-      internalID: 6083441798937999196
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Male_Armored_Weapons_109
+      name: Attack3_Shadowless_105
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2855,20 +2795,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f09df87b2097c4050800000000000000
-      internalID: 5786132673840797967
+      spriteID: 7fa62ffdd867d3e70800000000000000
+      internalID: 9096557174077942519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_110
+      name: Attack3_Shadowless_106
       rect:
         serializedVersion: 2
-        x: 48
+        x: 128
         y: 0
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2877,20 +2817,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd0a4057d1d57b540800000000000000
-      internalID: 5023586290453749983
+      spriteID: af1f513f490055390800000000000000
+      internalID: -7830351737380277766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_111
+      name: Attack3_Shadowless_107
       rect:
         serializedVersion: 2
-        x: 96
+        x: 256
         y: 0
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2899,20 +2839,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15a112cd355da3ec0800000000000000
-      internalID: -3586319597095019951
+      spriteID: c245589aeb0128d50800000000000000
+      internalID: 6737966403573601324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_112
+      name: Attack3_Shadowless_108
       rect:
         serializedVersion: 2
-        x: 144
+        x: 384
         y: 0
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2921,20 +2861,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1482902e34cf860e0800000000000000
-      internalID: -2276292243150526399
+      spriteID: aed33641bde57be60800000000000000
+      internalID: 7977949559943020010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_113
+      name: Attack3_Shadowless_109
       rect:
         serializedVersion: 2
-        x: 192
+        x: 512
         y: 0
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2943,20 +2883,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a63c4947fb8a2f200800000000000000
-      internalID: 212417672687960938
+      spriteID: a67fbe7049f3ece60800000000000000
+      internalID: 7984389094395082602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Male_Armored_Weapons_114
+      name: Attack3_Shadowless_110
       rect:
         serializedVersion: 2
-        x: 240
+        x: 640
         y: 0
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2965,8 +2905,206 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6a764bdfcd6e1340800000000000000
-      internalID: 4836423789346978414
+      spriteID: 41e2af2fcbac060e0800000000000000
+      internalID: -2278598498570326508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_111
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 296e9c319ed4af0e0800000000000000
+      internalID: -2235388601581312366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_112
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be4b16ad442d30d70800000000000000
+      internalID: 9008274872834569451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_113
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c10bd1e553348b30800000000000000
+      internalID: 4288609189118017992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_114
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cce88153489ec3410800000000000000
+      internalID: 1458297133396954828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_115
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaf5e48787bd3de20800000000000000
+      internalID: 3374281856291594154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_116
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50741e87f15fb3890800000000000000
+      internalID: -7477113240797755643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_117
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e1d6d7c4b3d2ad50800000000000000
+      internalID: 6747187965154742758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_118
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7b7331764c725e90800000000000000
+      internalID: -7038426625637909637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3_Shadowless_119
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3745907990c209510800000000000000
+      internalID: 1553790291143119987
       vertices: []
       indices: 
       edges: []
@@ -2975,7 +3113,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f979f894df1154a44807f09624545521
+    spriteID: 8560751e37ca5054997e46f1883e6f23
     internalID: 0
     vertices: []
     indices: 
@@ -2985,123 +3123,128 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":25.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":15.0,"y":8.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Male_Armored_Weapons_0: -3350546113702846135
-      Male_Armored_Weapons_1: 9172737073364639791
-      Male_Armored_Weapons_10: 9086766976745237962
-      Male_Armored_Weapons_100: -40249444069999847
-      Male_Armored_Weapons_101: -543651145179068993
-      Male_Armored_Weapons_102: -6591065004443681126
-      Male_Armored_Weapons_103: -5241576147975358120
-      Male_Armored_Weapons_104: 7102168803691921423
-      Male_Armored_Weapons_105: -6279003334642715104
-      Male_Armored_Weapons_106: 4940081225075757715
-      Male_Armored_Weapons_107: -2446677533949930969
-      Male_Armored_Weapons_108: 6083441798937999196
-      Male_Armored_Weapons_109: 5786132673840797967
-      Male_Armored_Weapons_11: 6961156541526039510
-      Male_Armored_Weapons_110: 5023586290453749983
-      Male_Armored_Weapons_111: -3586319597095019951
-      Male_Armored_Weapons_112: -2276292243150526399
-      Male_Armored_Weapons_113: 212417672687960938
-      Male_Armored_Weapons_114: 4836423789346978414
-      Male_Armored_Weapons_12: -4016268266473316933
-      Male_Armored_Weapons_13: -1793597438158605213
-      Male_Armored_Weapons_14: -4056101091893627705
-      Male_Armored_Weapons_15: 3016556386184603564
-      Male_Armored_Weapons_16: -627593309458723056
-      Male_Armored_Weapons_17: -6088340499368801908
-      Male_Armored_Weapons_18: 7628629183952081301
-      Male_Armored_Weapons_19: -4256606166197773064
-      Male_Armored_Weapons_2: 5959655175901598228
-      Male_Armored_Weapons_20: 7752466948787349078
-      Male_Armored_Weapons_21: -1948548653730261659
-      Male_Armored_Weapons_22: -25726268278837905
-      Male_Armored_Weapons_23: 6929152875527915474
-      Male_Armored_Weapons_24: 6594619294844409921
-      Male_Armored_Weapons_25: -2978961792080898604
-      Male_Armored_Weapons_26: 8337856324974236501
-      Male_Armored_Weapons_27: -3438549642273256610
-      Male_Armored_Weapons_28: -7694815492183008967
-      Male_Armored_Weapons_29: -2357864451710207938
-      Male_Armored_Weapons_3: -4756461783273843900
-      Male_Armored_Weapons_30: -4156004575919974438
-      Male_Armored_Weapons_31: 3072665858555293490
-      Male_Armored_Weapons_32: 4210179859190959914
-      Male_Armored_Weapons_33: -2941640407584063726
-      Male_Armored_Weapons_34: 6281889912293337196
-      Male_Armored_Weapons_35: 5244591410553597993
-      Male_Armored_Weapons_36: 4405689243264362097
-      Male_Armored_Weapons_37: -7123639575195350265
-      Male_Armored_Weapons_38: -6625919905167981498
-      Male_Armored_Weapons_39: -7423739836182416907
-      Male_Armored_Weapons_4: -8333740240632301776
-      Male_Armored_Weapons_40: -9019273154072959534
-      Male_Armored_Weapons_41: 4911690671754871490
-      Male_Armored_Weapons_42: 5816903556115436550
-      Male_Armored_Weapons_43: 7373842241343968496
-      Male_Armored_Weapons_44: 275987985792882620
-      Male_Armored_Weapons_45: -3450419705845937671
-      Male_Armored_Weapons_46: -4900157623913800895
-      Male_Armored_Weapons_47: 4450078095268529605
-      Male_Armored_Weapons_48: 5479667180398243628
-      Male_Armored_Weapons_49: -4357122869884396130
-      Male_Armored_Weapons_5: -8496099084767854069
-      Male_Armored_Weapons_50: -5441997224398168731
-      Male_Armored_Weapons_51: 1232029844796905117
-      Male_Armored_Weapons_52: 8422300165638973740
-      Male_Armored_Weapons_53: -3651877100776511864
-      Male_Armored_Weapons_54: 4013453778968807982
-      Male_Armored_Weapons_55: 800440197664352970
-      Male_Armored_Weapons_56: -6604159529482911958
-      Male_Armored_Weapons_57: -2769107997701678589
-      Male_Armored_Weapons_58: 7898448434788057174
-      Male_Armored_Weapons_59: 8570373130299740952
-      Male_Armored_Weapons_6: 6632471488007530405
-      Male_Armored_Weapons_60: 6678989891185450732
-      Male_Armored_Weapons_61: -5753251217345784133
-      Male_Armored_Weapons_62: -3949795494524734961
-      Male_Armored_Weapons_63: 6078262346696404969
-      Male_Armored_Weapons_64: -4896078263996056754
-      Male_Armored_Weapons_65: 933998622558590208
-      Male_Armored_Weapons_66: 8376817265808371342
-      Male_Armored_Weapons_67: 8151631663367606783
-      Male_Armored_Weapons_68: -4260578174694449659
-      Male_Armored_Weapons_69: -4359911835726478887
-      Male_Armored_Weapons_7: -8459005330213055457
-      Male_Armored_Weapons_70: 2046370360809797418
-      Male_Armored_Weapons_71: -6067681490253143023
-      Male_Armored_Weapons_72: -3494453778941059495
-      Male_Armored_Weapons_73: -2207073447874285758
-      Male_Armored_Weapons_74: 8100717720721190358
-      Male_Armored_Weapons_75: -2616095287186825885
-      Male_Armored_Weapons_76: 2468683117159821571
-      Male_Armored_Weapons_77: 2994602244705456295
-      Male_Armored_Weapons_78: 334846986088800132
-      Male_Armored_Weapons_79: 4477063147516906171
-      Male_Armored_Weapons_8: -8352957513369382493
-      Male_Armored_Weapons_80: 2070038588595448772
-      Male_Armored_Weapons_81: 2090957160770188584
-      Male_Armored_Weapons_82: -7688556667011990694
-      Male_Armored_Weapons_83: 5834327238370574870
-      Male_Armored_Weapons_84: 1941741217755922175
-      Male_Armored_Weapons_85: 3922023173187787920
-      Male_Armored_Weapons_86: -1244066791912906070
-      Male_Armored_Weapons_87: -8259406040989311149
-      Male_Armored_Weapons_88: 3462603633600025776
-      Male_Armored_Weapons_89: -4101017325940107183
-      Male_Armored_Weapons_9: 1002360603372766857
-      Male_Armored_Weapons_90: -4308513487315463362
-      Male_Armored_Weapons_91: -3653355817480431102
-      Male_Armored_Weapons_92: 1780298531677493841
-      Male_Armored_Weapons_93: -5387799331965420209
-      Male_Armored_Weapons_94: -2596193586742655694
-      Male_Armored_Weapons_95: -7266503375742597856
-      Male_Armored_Weapons_96: -198693725762068680
-      Male_Armored_Weapons_97: -4770598176241170989
-      Male_Armored_Weapons_98: 2054033432739155555
-      Male_Armored_Weapons_99: -7413974712532642212
+      Attack3_Shadowless_0: 7169348728478263992
+      Attack3_Shadowless_1: 17089555702910866
+      Attack3_Shadowless_10: 2149102258943419285
+      Attack3_Shadowless_100: -726525883508474798
+      Attack3_Shadowless_101: -1828085812014553825
+      Attack3_Shadowless_102: -8096734731833278172
+      Attack3_Shadowless_103: 6446855172881679502
+      Attack3_Shadowless_104: -5825451550183408648
+      Attack3_Shadowless_105: 9096557174077942519
+      Attack3_Shadowless_106: -7830351737380277766
+      Attack3_Shadowless_107: 6737966403573601324
+      Attack3_Shadowless_108: 7977949559943020010
+      Attack3_Shadowless_109: 7984389094395082602
+      Attack3_Shadowless_11: 5803056047450435583
+      Attack3_Shadowless_110: -2278598498570326508
+      Attack3_Shadowless_111: -2235388601581312366
+      Attack3_Shadowless_112: 9008274872834569451
+      Attack3_Shadowless_113: 4288609189118017992
+      Attack3_Shadowless_114: 1458297133396954828
+      Attack3_Shadowless_115: 3374281856291594154
+      Attack3_Shadowless_116: -7477113240797755643
+      Attack3_Shadowless_117: 6747187965154742758
+      Attack3_Shadowless_118: -7038426625637909637
+      Attack3_Shadowless_119: 1553790291143119987
+      Attack3_Shadowless_12: -4353820841033336799
+      Attack3_Shadowless_13: 2612129193761521999
+      Attack3_Shadowless_14: -4901469026182485752
+      Attack3_Shadowless_15: -6500748358473957114
+      Attack3_Shadowless_16: -6960426861202713644
+      Attack3_Shadowless_17: -937448323320055697
+      Attack3_Shadowless_18: 7227415838050407324
+      Attack3_Shadowless_19: 7412107562577665558
+      Attack3_Shadowless_2: 1509429061443519006
+      Attack3_Shadowless_20: 1506416815310536549
+      Attack3_Shadowless_21: -4217486090878529919
+      Attack3_Shadowless_22: -5906536065612637721
+      Attack3_Shadowless_23: 2328170297494724143
+      Attack3_Shadowless_24: -4078593325526982521
+      Attack3_Shadowless_25: -7460759776524967020
+      Attack3_Shadowless_26: 1664828628640787607
+      Attack3_Shadowless_27: -3928938283078404001
+      Attack3_Shadowless_28: -5725647163833955458
+      Attack3_Shadowless_29: -2516258766710629009
+      Attack3_Shadowless_3: 2915643991967699283
+      Attack3_Shadowless_30: -1774981715640878905
+      Attack3_Shadowless_31: 5529780633298627227
+      Attack3_Shadowless_32: -6257557264224540324
+      Attack3_Shadowless_33: -4848063788205689071
+      Attack3_Shadowless_34: -4786568045290887086
+      Attack3_Shadowless_35: -3551245461617858380
+      Attack3_Shadowless_36: -2373636630480120562
+      Attack3_Shadowless_37: -7861950903681860370
+      Attack3_Shadowless_38: 282571354229337158
+      Attack3_Shadowless_39: -734231507700755721
+      Attack3_Shadowless_4: 1660816861152786527
+      Attack3_Shadowless_40: 1905215509444759597
+      Attack3_Shadowless_41: -5579514515151193213
+      Attack3_Shadowless_42: 2537851034401592553
+      Attack3_Shadowless_43: -856330593746636022
+      Attack3_Shadowless_44: -5885523110123015914
+      Attack3_Shadowless_45: -1267235099673559253
+      Attack3_Shadowless_46: -23842038633707124
+      Attack3_Shadowless_47: -8273354834612840605
+      Attack3_Shadowless_48: 7753299004625294196
+      Attack3_Shadowless_49: -3667042202999629608
+      Attack3_Shadowless_5: 2360373256962808706
+      Attack3_Shadowless_50: -8383364580777677310
+      Attack3_Shadowless_51: -52961903514991481
+      Attack3_Shadowless_52: -1538973609189517590
+      Attack3_Shadowless_53: 3893246606116033366
+      Attack3_Shadowless_54: 3602263400238019464
+      Attack3_Shadowless_55: 6253569040094560028
+      Attack3_Shadowless_56: 7865107381862950827
+      Attack3_Shadowless_57: 6985065775983317564
+      Attack3_Shadowless_58: 382054135346143015
+      Attack3_Shadowless_59: 1975400525857154807
+      Attack3_Shadowless_6: -706816018947046657
+      Attack3_Shadowless_60: -8196377323492457101
+      Attack3_Shadowless_61: -6917130570316710596
+      Attack3_Shadowless_62: -7936293935895954571
+      Attack3_Shadowless_63: -2761446670873666725
+      Attack3_Shadowless_64: -2835562108908740972
+      Attack3_Shadowless_65: -2657846793633345652
+      Attack3_Shadowless_66: -2213149329214473846
+      Attack3_Shadowless_67: 2073791031689354651
+      Attack3_Shadowless_68: -5081985627590600245
+      Attack3_Shadowless_69: 7700982818558856559
+      Attack3_Shadowless_7: 3419867344388210034
+      Attack3_Shadowless_70: -6058573312542855106
+      Attack3_Shadowless_71: -4945743773679772919
+      Attack3_Shadowless_72: 8190961730205703472
+      Attack3_Shadowless_73: -7684101896666491417
+      Attack3_Shadowless_74: 6384527519085988442
+      Attack3_Shadowless_75: 6603712093529427027
+      Attack3_Shadowless_76: -7555760144079284706
+      Attack3_Shadowless_77: 6037011187960970295
+      Attack3_Shadowless_78: 6445456497471404280
+      Attack3_Shadowless_79: -5844674633858591049
+      Attack3_Shadowless_8: 545484342026454204
+      Attack3_Shadowless_80: 6307334634095883898
+      Attack3_Shadowless_81: -117308880195388202
+      Attack3_Shadowless_82: -2081083056450695952
+      Attack3_Shadowless_83: 8268193136595765207
+      Attack3_Shadowless_84: -7747156853177737741
+      Attack3_Shadowless_85: -2904684240807666608
+      Attack3_Shadowless_86: 7361050660039341964
+      Attack3_Shadowless_87: 4578837213655431615
+      Attack3_Shadowless_88: 1126268635408089867
+      Attack3_Shadowless_89: 685880766962223672
+      Attack3_Shadowless_9: -3145048792310790549
+      Attack3_Shadowless_90: 4388466576937997348
+      Attack3_Shadowless_91: 531095433700520208
+      Attack3_Shadowless_92: -5725146589718250317
+      Attack3_Shadowless_93: -5454973529276341181
+      Attack3_Shadowless_94: 8803761217346873857
+      Attack3_Shadowless_95: 702415470366283385
+      Attack3_Shadowless_96: 5805960404334804151
+      Attack3_Shadowless_97: 729162387605455827
+      Attack3_Shadowless_98: -4438080907608806238
+      Attack3_Shadowless_99: 9162361451660529374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

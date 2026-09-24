@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // PlayerHealth - tracks current/max HP and exposes TakeDamage/Die for other scripts
-// (enemy attacks, projectiles, hazards) to call into.
+// (enemy attacks, projectiles, hazards) to call into
 //
-// Handles two purely visual, code-driven feedback effects as sprite sheet has no dedicated hit/death frames:
-// Hit reaction: brief color flash on the SpriteRenderer
-// Death: a few rapid flashes, then a fade-out, then the GameObject is disabled
-// Both run as coroutines layered on top -only touch spriteRenderer.color, never the Animator
+// NOTE: Death is now driven by PlayerAnimationController via the OnDeath event
+//
+// The session-reset-then-reload flow (SessionResetMessageUI, reloadDelayAfterDeath) has it own coroutine so it
+// runs on a fixed delay after death rather than waiting on flash/fade timing - to also give
+// the new Death animation clip time to actually play before the scene reloads
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health")]
@@ -18,11 +21,12 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private float hitFlashDuration = 0.08f;
 
-    [Header("Death Flash + Fade")]
-    [SerializeField] private Color deathFlashColor = Color.red;
-    [SerializeField] private int deathFlashCount = 3;
-    [SerializeField] private float deathFlashInterval = 0.08f;
-    [SerializeField] private float deathFadeDuration = 0.6f;
+    [Header("Session Reset")]
+    [SerializeField] private float reloadDelayAfterDeath = 1.5f;
+
+    [Header("Session Reset UI")]
+    [Tooltip("Shows a brief message before reloading after the player dies")]
+    [SerializeField] private SessionResetMessageUI sessionResetMessageUI;
 
     private SpriteRenderer spriteRenderer;
     private Color baseColor;
@@ -33,6 +37,16 @@ public class PlayerHealth : MonoBehaviour
     public float CurrentHealth => currentHealth;
     public float MaxHealth => maxHealth;
     public bool IsDead => isDead;
+
+    // NEW - subscribed to by PlayerAnimationController.HandleDamaged() to fire the DamageTrigger
+    // animation. Raised once per TakeDamage() call that does not result in death (Die() raises
+    // OnDeath instead, not OnDamaged, so the two are mutually exclusive per hit).
+    public event Action OnDamaged;
+
+    // NEW - subscribed to by PlayerAnimationController.HandleDeath() to fire the DeathTrigger
+    // animation and disable movement/attack input. Raised exactly once, the first time Die() is
+    // called - isDead guards against it firing more than once.
+    public event Action OnDeath;
 
     void Awake()
     {
@@ -63,6 +77,8 @@ public class PlayerHealth : MonoBehaviour
         }
 
         hitFlashRoutine = StartCoroutine(HitFlashCoroutine());
+
+        OnDamaged?.Invoke();
     }
 
     public void Die()
@@ -81,7 +97,14 @@ public class PlayerHealth : MonoBehaviour
             hitFlashRoutine = null;
         }
 
-        StartCoroutine(DeathFlashThenFadeCoroutine());
+        // Ensure sprite is left at its normal colour - the Death animation clip now handles all
+        // death visual feedback, so we no longer want a stray hit-flash colour left applied
+        // underneath it.
+        spriteRenderer.color = baseColor;
+
+        OnDeath?.Invoke();
+
+        StartCoroutine(ReloadAfterDeathCoroutine());
     }
 
     private IEnumerator HitFlashCoroutine()
@@ -94,32 +117,26 @@ public class PlayerHealth : MonoBehaviour
         hitFlashRoutine = null;
     }
 
-    private IEnumerator DeathFlashThenFadeCoroutine()
+    // Replaces the old DeathFlashThenFadeCoroutine. Waits reloadDelayAfterDeath seconds - giving
+    // the Death animation clip (triggered via OnDeath, above) time to actually play out - then
+    // shows the session-reset message and reloads, exactly as before.
+    private IEnumerator ReloadAfterDeathCoroutine()
     {
-        for(int i = 0; i < deathFlashCount; i++)
+        yield return new WaitForSeconds(reloadDelayAfterDeath);
+
+        if(sessionResetMessageUI != null)
         {
-            spriteRenderer.color = deathFlashColor;
-            yield return new WaitForSeconds(deathFlashInterval);
-
-            spriteRenderer.color = baseColor;
-            yield return new WaitForSeconds(deathFlashInterval);
+            sessionResetMessageUI.ShowMessageThenReload("You died.\n\nResetting...");
         }
-
-        float elapsed = 0f;
-        Color fadeStartColor = baseColor;
-
-        while(elapsed < deathFadeDuration)
+        else
         {
-            elapsed += Time.deltaTime;
-            float t = elapsed / deathFadeDuration;
+            Debug.LogWarning(
+                name + ": no SessionResetMessageUI assigned - reloading immediately with no message.",
+                this
+            );
 
-            Color faded = fadeStartColor;
-            faded.a = Mathf.Lerp(1f, 0f, t);
-            spriteRenderer.color = faded;
-
-            yield return null;
+            Scene activeScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(activeScene.name);
         }
-
-        gameObject.SetActive(false);
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class FractalUniverseManager : MonoBehaviour
 {
@@ -42,6 +44,22 @@ public class FractalUniverseManager : MonoBehaviour
     [Header("Traversal Safety")]
     [Tooltip("World-space distance the player is nudged into the destination room/root at the end")]
     [SerializeField] private float traversalPushDistance = 0.25f;
+
+    //TESTING PURPOSES only
+    [Header("Session Room Limit")]
+    [Tooltip("Number of DISTINCT new rooms (first-time visits only, not re-entries) the " +
+    "player may explore before the scene reloads and the run resets from the start")]
+    [SerializeField] private int maxNewRoomsPerSession = 20;
+
+    private int newRoomsVisitedThisSession = 0;
+
+    private bool sessionLimitReachedThisFrame = false;
+
+    [Header("Session Reset UI")]
+    [Tooltip("Shows a brief message before reloading once the room limit is reached.")]
+    [SerializeField] private SessionResetMessageUI sessionResetMessageUI;
+
+
 
     public TraversalState CurrentState
     {
@@ -233,6 +251,24 @@ public class FractalUniverseManager : MonoBehaviour
         WireRoomZoneTriggers(childNode);
         parentNode.SetChildNode(slot, childNode);
 
+        // new room (first time it has ever been instantiated this). Increment the session counter here, and only here
+        newRoomsVisitedThisSession++;
+
+      //  Debug.Log("[ROOM COUNTER] New room #" + newRoomsVisitedThisSession +
+      //" instantiated: " + instance.name +
+      //" | limit is " + maxNewRoomsPerSession);
+
+
+
+        // if the newly-entered room is the max size room per maxNewRoomsPerSession,
+        // reload the scene once the current traversal finishes
+        if(newRoomsVisitedThisSession >= maxNewRoomsPerSession)
+        {
+            sessionLimitReachedThisFrame = true;
+            Debug.Log("[ROOM COUNTER] LIMIT REACHED - sessionLimitReachedThisFrame set to true.");
+        }
+
+
         return childNode;
     }
 
@@ -252,6 +288,16 @@ public class FractalUniverseManager : MonoBehaviour
                 "WireRoomZoneTriggers: " + childNode.name + " has no RoomBoundaryGenerator.",
                 childNode
             );
+        }
+
+       
+        // same pattern, for consistency, even though RefreshParentSegmentVariant doesn't
+        // currently need universeManager internally (it's called with an explicit bool instead)
+        // Kept for future-proofing in case the switcher ever needs to query manager state itself
+        ParentSegmentVariantSwitcher variantSwitcher = childNode.GetComponentInChildren<ParentSegmentVariantSwitcher>(true);
+        if(variantSwitcher != null)
+        {
+            variantSwitcher.Initialize(this);
         }
     }
 
@@ -338,12 +384,30 @@ public class FractalUniverseManager : MonoBehaviour
         if(incomingVisibility != null)
             incomingVisibility.SetVisualVisible(true);
 
-        Transform roomTransform = childNode.transform;
-        roomTransform.localScale = fittedLocalScale;
-        roomTransform.localPosition = fittedLocalPosition;
+        // Hide the outgoing room NOW, before the animation runs, not after
+        if(activeRoomVisibility != null)
+        {
+            activeRoomVisibility.SetVisualVisible(false);
+        }
+        else
+        {
+            SetRootVisible(false);
+        }
 
+        ParentSegmentVariantSwitcher variantSwitcher = childNode.GetComponentInChildren<ParentSegmentVariantSwitcher>(true);
+        if(variantSwitcher != null)
+        {
+            if(parentNode.IsRootNode)
+            {
+                variantSwitcher.RefreshParentSegmentVariant(cameFromRoot: true);
+            }
+            else
+            {
+                variantSwitcher.RefreshParentSegmentVariant(cameFromRoot: false, parentNode.RoomLetterIndex);
+            }
+        }
 
-
+        Transform roomTransform = childNode.transform;  
 
         bool canDriveCrossingPlayer =
             playerTransform != null && childBoundaryGenerator != null;
@@ -413,10 +477,7 @@ public class FractalUniverseManager : MonoBehaviour
             );
         }
 
-        if(activeRoomVisibility != null)
-            activeRoomVisibility.SetVisualVisible(false);
-        else
-            SetRootVisible(false);
+     
 
         activeChain.Add(childNode);
         activeRoomVisibility = incomingVisibility;
@@ -444,6 +505,19 @@ public class FractalUniverseManager : MonoBehaviour
             ", Letter: " + FractalNode.LetterNames[CurrentLetterIndex],
             this
         );
+
+       // Debug.Log("[ZOOM COROUTINE END] Reached end of ZoomIntoChildCoroutine. " +
+       //"sessionLimitReachedThisFrame = " + sessionLimitReachedThisFrame);
+
+
+
+        // if this room's instantiation just hit the session room limit, reload the
+        // scene now that the transition has fully completed
+        if(sessionLimitReachedThisFrame)
+        {
+            Debug.Log("[ZOOM COROUTINE END] Calling ReloadSessionScene() now.");
+            ReloadSessionScene();
+        }
     }
 
 
@@ -703,16 +777,48 @@ public class FractalUniverseManager : MonoBehaviour
         {
             SetRootVisible(true);
             activeRoomVisibility = null;
+            // No ParentSegmentVariantSwitcher call here - the root itself has no Parent_Seg variants.
         }
         else
         {
             KochMotifNode newActive = activeChain[activeChain.Count - 1];
+
             KochRoomVisibility newVisibility = newActive.GetComponentInChildren<KochRoomVisibility>(true);
-
             if(newVisibility != null)
+            {
                 newVisibility.SetVisualVisible(true);
-
+            }
             activeRoomVisibility = newVisibility;
+
+        
+            // refresh newActive's own Parent_Seg variant, since newActive is now the active room.
+            // newActive's real parent is whichever node sits one slot further back in activeChain,
+            // or the root if newActive is now the FIRST entry
+            KochMotifNode newActiveParent = activeChain.Count >= 2
+                ? activeChain[activeChain.Count - 2]
+                : rootMotifNode;
+
+            
+            ParentSegmentVariantSwitcher newActiveVariantSwitcher =
+                newActive.GetComponentInChildren<ParentSegmentVariantSwitcher>(true);
+
+            if(newActiveVariantSwitcher != null)
+            {
+                bool newActiveParentIsRoot = newActiveParent == null || newActiveParent.IsRootNode;
+
+                if(newActiveParentIsRoot)
+                {
+                    newActiveVariantSwitcher.RefreshParentSegmentVariant(cameFromRoot: true);
+                }
+                else
+                {
+                    newActiveVariantSwitcher.RefreshParentSegmentVariant(
+                        cameFromRoot: false,
+                        newActiveParent.RoomLetterIndex
+                    );
+                }
+            }
+
         }
 
         traversalBlockedUntil = Time.unscaledTime + traversalCooldown;
@@ -899,4 +1005,27 @@ public class FractalUniverseManager : MonoBehaviour
 
         return new Vector3(pushedPoint.x, pushedPoint.y, zPosition);
     }
+
+    // Reloads the currently active scene, resetting the entire game session
+    // since nothing in this project persists data across a scene load 
+    private void ReloadSessionScene()
+    {
+        if(sessionResetMessageUI != null)
+        {
+            sessionResetMessageUI.ShowMessageThenReload(
+                "Run complete!\nYou explored " + newRoomsVisitedThisSession + " rooms.\n\nResetting..."
+            );
+        }
+        else
+        {
+            Debug.LogWarning(
+                name + ": no SessionResetMessageUI assigned - reloading immediately with no message.",
+                this
+            );
+
+            Scene activeScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(activeScene.name);
+        }
+    }
+
 }

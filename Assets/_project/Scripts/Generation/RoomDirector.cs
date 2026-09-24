@@ -33,7 +33,7 @@ public class RoomDirector : MonoBehaviour
     // Tracks every enemy spawned into this room that RoomDirector still considers "alive"
     // Populated via RegisterSpawnedEnemy() (called by RoomBoundaryGenerator right after
     // Instantiate()), and shrunk via NotifyEnemyDefeated() (called by EnemyController.Die())
-    // Using a list (not a single reference) so as to deliberate support multi-enemy rooms later,
+    // Using a list (not a single reference) to support multi-enemy rooms later,
     private readonly List<EnemyController> activeEnemies = new List<EnemyController>();
 
     private GameObject spawnedKeyInstance;
@@ -77,7 +77,7 @@ public class RoomDirector : MonoBehaviour
         activeEnemies.Add(enemy);
     }
 
-    // Called by EnemyController.Die() (via the small additive hook in the Die() patch) the
+    // Called by EnemyController.Die() (via hook in the Die()) the
     // moment an enemy in this room dies. Checks whether that was the LAST tracked enemy, and
     // if so, transitions Sealed -> Cleared
     public void NotifyEnemyDefeated(EnemyController enemy)

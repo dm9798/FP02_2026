@@ -44,7 +44,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.2, g: 0.4, b: 0.8, a: 0.5}
     - _FloorColor: {r: 0.049999982, g: 0.049999982, b: 0.049999982, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _WallColor: {r: 1, g: 1, b: 1, a: 1}

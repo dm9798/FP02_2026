@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// SSOT for where does neighbour/child letter X relative to koch snowflake and how big should it be
+// Single Source of Truth for where does neighbour/child letter X relative to koch snowflake and how big should it be
 // does NOT render anything or move any GameObject by itself
 // pure calculator: given a letter index returns canonical local position, local rotation, and TARGET RADIUS
 // for that neighbour/child, in the local space of whichever transform this component is attached to

@@ -1,13 +1,15 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-// PlayerAttack - fire a projectile in one of 8 directions (N/NE/E/SE/S/SW/W/NW) on Space
-// aimed toward the player's CURRENT FACING (last non-zero movement direction, exposed PlayerMovement)
+
+// PlayerAttack - fire a projectile in one of 8 directions (N/NE/E/SE/S/SW/W/NW) on Left-Mouse-Click
+// aimed toward the player's CURRENT FACING (last non-zero movement direction, exposed via PlayerMovement)
 [RequireComponent(typeof(TestPlayerMovement))]
 public class PlayerAttack : MonoBehaviour
 {
     // Event raised right after a shot successfully fires (prefab assigned, cooldown elapsed)
-    // PlayerAnimationController subscribes to this to trigger the Attack blend tree  
+    // PlayerAnimationController subscribes to this to trigger the Attack animator blend tree  
     public event Action OnAttack;
 
     [Header("Projectile")]
@@ -19,9 +21,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float projectileSpeed = 8f;
     [SerializeField] private float projectileDamage = 10f;
 
-    [Header("Firing")]
-    [Tooltip("Seconds between shots - prevents holding Space from firing every single frame")]
-    [SerializeField] private float fireCooldown = 0.3f;
+    //[Header("Firing")]
+    //[SerializeField] private float fireCooldown = 0.05f;
+
+    [Header("Attack Lock")]
+    [Tooltip("How long movement is locked while the attack animation plays. Should match Attack clip's length.")]
+    [SerializeField] private float attackLockDuration = 0.25f;
 
     private TestPlayerMovement playerMovement;
     private float cooldownTimer;
@@ -52,13 +57,12 @@ public class PlayerAttack : MonoBehaviour
         //    Fire();
         //    cooldownTimer = fireCooldown;
         //} 
-        
+
         // left mouse button attack
         // switched from space as not all keyboard works (up-left arrow key movement while pressing space shoot)
-        if(Input.GetMouseButtonDown(0) && cooldownTimer <= 0f)
+        if(Input.GetMouseButtonDown(0))
         {
             Fire();
-            cooldownTimer = fireCooldown;
         }
     }
 
@@ -73,6 +77,11 @@ public class PlayerAttack : MonoBehaviour
 
             return;
         }
+
+        OnAttack?.Invoke();
+
+        StopAllCoroutines();
+        StartCoroutine(LockMovementDuringAttack());
 
         Vector2 fireDirection = SnapToNearestCompassDirection(
             playerMovement.CurrentFacingDirection
@@ -103,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
 
         projectileController.Initialize(fireDirection, projectileSpeed, projectileDamage);
 
-        OnAttack?.Invoke();
+        
     }
 
     // Finds whichever of the 8 compass directions has the smallest angle to rawDirection
@@ -127,5 +136,12 @@ public class PlayerAttack : MonoBehaviour
         }
 
         return bestDirection;
+    }
+
+    private IEnumerator LockMovementDuringAttack()
+    {
+        playerMovement.SetMovementLocked(true);
+        yield return new WaitForSeconds(attackLockDuration);
+        playerMovement.SetMovementLocked(false);
     }
 }

@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// PlayerHealthBarUI - screen-space UI health bar from existing PlayerHealth component.
-// Does not modify PlayerHealth in any way - just reads its public CurrentHealth/
-// MaxHealth/IsDead properties only
+// PlayerHealthBarUI - screen-space UI health bar from existing PlayerHealth component
+// reads PlayerHealth.cs public CurrentHealth MaxHealth/IsDead properties only
 //
 // Must be attached to to the HealthBar_Fill Image GameObject -  UI.
 public class PlayerHealthBarUI : MonoBehaviour
@@ -13,7 +12,7 @@ public class PlayerHealthBarUI : MonoBehaviour
 
     [SerializeField] private Image fillImage;
 
-    [Header("Optional Colour Feedback")]
+    [Header("Colour Feedback")]
     [SerializeField] private bool useColorGradient = true;
     [SerializeField] private Color fullHealthColor = Color.green;
     [SerializeField] private Color lowHealthColor = Color.red;

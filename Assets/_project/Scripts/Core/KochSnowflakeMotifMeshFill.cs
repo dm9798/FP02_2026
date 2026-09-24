@@ -1,5 +1,5 @@
 
-// KochSnowflakeMotifMeshFill - generates a filled Mesh for the same closed outline that KochSnowflakeMotifRenderer draws with LineRenderer segments.
+// KochSnowflakeMotifMeshFill - generates a filled Mesh for the same closed outline that KochSnowflakeMotifRenderer draws with LineRenderer segments
 // this reconstructs one continuous boundary loop from the same clusters as KochSnowflakeMotifRenderer
 // plus the closing parentStart/parentEnd segment) and triangulates it via ear clipping
 //

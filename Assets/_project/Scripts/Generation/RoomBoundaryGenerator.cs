@@ -92,14 +92,17 @@ public class RoomBoundaryGenerator : MonoBehaviour
     //Reference to the player's Transform, passed to the spawned enemy for detection/chase
     [SerializeField] private Transform playerTransform;
 
-    // Cached reference to the spawned enemy, if any future systems query whether this room's enemy is still alive
-    //to be deleted - shifted to RoomDirector.cs
-    //private EnemyController spawnedEnemy;
-
     // optional designer-placed marker for where the post-clear key should spawn
     // Falls back to a random walkable point if left unassigned.
     [Header("Room Director Wiring")]   
     [SerializeField] private Transform keySpawnPoint;
+
+    //[Header("Stealth Walls")]
+    //[SerializeField] private GameObject[] stealthWallPrefabs;
+    //[SerializeField] private Vector2[] stealthWallLocalPositions;
+
+    // cached reference to this room's pathfinding grid, built after stealth walls are placed
+    private RoomPathGrid pathGrid;
 
     // room's own parent edge endpoints local space
     // exposed for FractalUniverseManager's zoom-in coroutine to query parent edge every frame during room animation
@@ -131,6 +134,19 @@ public class RoomBoundaryGenerator : MonoBehaviour
     public Vector2[] GetWalkablePolygonLocalPoints()
     {
         return walkablePolygon;
+    }
+
+    // exposes this room's local-space center point (layoutSettings.center)
+           public Vector2 GetRoomCenterLocal()
+            {
+                return layoutSettings.center;
+            }
+
+    // exposes this room's rotation angle in degrees (rotationSteps * 60f), so
+    // PartialFractalWallPlacer can orient each ring's own parent-edge notch same direction as room's parent edge
+    public float GetRoomRotationAngleDegrees()
+    {
+        return GetRotationSteps() * 60f;
     }
 
     // For EnemyController's patrol logic to sample random points within the room's bounding radius
@@ -555,15 +571,20 @@ public class RoomBoundaryGenerator : MonoBehaviour
         // Separate from parent trigger edge above - not linked by code
         CreateParentEdgeBlockers(parentStart, parentEnd);
 
+        // place any configured stealth walls, then build the pathfinding grid against
+        // the finished room geometry (walkablePolygon + stealth walls), BEFORE any enemy spawns        
+                SpawnStealthWalls();
+                BuildPathGrid();
+
         SpawnEnemyIfConfigured();
     }
 
     // builds two perimeter blocking edges (left/prev right/next) until they meet
     // Uses KochMath.GetFilteredSnowflakeClusters() logic   
     private void CreatePerimeterBlockingEdges(
-        Vector2[] snowflakeHexPoints,
-        Vector2 parentStart,
-        Vector2 parentEnd)
+    Vector2[] snowflakeHexPoints,
+    Vector2 parentStart,
+    Vector2 parentEnd)
     {
         List<List<Vector2>> clusters = KochMath.GetFilteredSnowflakeClusters(
             layoutSettings.center,
@@ -574,59 +595,53 @@ public class RoomBoundaryGenerator : MonoBehaviour
             parentEnd
         );
 
-        // warning if tuning variables produce unusual results - clusters != 2
-        if(clusters.Count != 2)
+        // warning if tuning variables produce unusual results - clusters != 1
+        if(clusters.Count != 1)
         {
             Debug.LogWarning(
-                name + ": expected exactly 2 perimeter blocking clusters (prev/next sides) " +
-                "at blockingEdgeRecursionDepth " + blockingEdgeRecursionDepth +
+                name + ": expected exactly 1 perimeter cluster (the room's single continuous " +
+                "boundary arc) at blockingEdgeRecursionDepth " + blockingEdgeRecursionDepth +
                 ", but got " + clusters.Count +
-                ". Building a blocking edge for each cluster found anyway.",
+                ". Perimeter/walkable polygon generation may be incomplete for this room.",
                 this
             );
+        }
+
+        if(clusters.Count == 0)
+        {
+            walkablePolygon = null;
+            return;
         }
 
         // bug fix to stop anchor not attaching approx to cluster near parentStart & parentEnd    
         float anchorTolerance = layoutSettings.snowflakeRadius * PerimeterAnchorToleranceRatio;
 
-        // collects each cluster's fully-anchored point chain (the same array passed to
-        // CreatePerimeterBlockingEdge), so BuildWalkablePolygon() can assemble them into one
-        // closed polygon afterward, no need to recalculate
-        List<List<Vector2>> perimeterChains = new List<List<Vector2>>();
+        List<Vector2> cluster = clusters[0];
 
-        foreach(List<Vector2> cluster in clusters)
+        Vector2 clusterStart = cluster[0];
+        Vector2 clusterEnd = cluster[cluster.Count - 1];
+
+        List<Vector2> perimeterPoints = new List<Vector2>();
+
+        if(TryGetCloserAnchor(clusterStart, parentStart, parentEnd, anchorTolerance, out Vector2 anchorNearStart))
         {
-            if(cluster.Count == 0)
-                continue;
-
-            Vector2 clusterStart = cluster[0];
-            Vector2 clusterEnd = cluster[cluster.Count - 1];
-
-            List<Vector2> perimeterPoints = new List<Vector2>();
-
-            if(TryGetCloserAnchor(clusterStart, parentStart, parentEnd, anchorTolerance, out Vector2 anchorNearStart))
-            {
-                perimeterPoints.Add(anchorNearStart);
-            }
-
-            perimeterPoints.AddRange(cluster);
-
-            if(TryGetCloserAnchor(clusterEnd, parentStart, parentEnd, anchorTolerance, out Vector2 anchorNearEnd))
-            {
-                perimeterPoints.Add(anchorNearEnd);
-            }
-
-            CreatePerimeterBlockingEdge(perimeterPoints.ToArray());
-
-            // NEW
-            perimeterChains.Add(perimeterPoints);
+            perimeterPoints.Add(anchorNearStart);
         }
 
-        //build the walkable polygon from the exact same chains just used for the
-        // colliders, so enemy patrol sampling stays consistent with physical perimeter bounds
-        BuildWalkablePolygon(perimeterChains, parentStart, parentEnd);
-    }
+        perimeterPoints.AddRange(cluster);
 
+        if(TryGetCloserAnchor(clusterEnd, parentStart, parentEnd, anchorTolerance, out Vector2 anchorNearEnd))
+        {
+            perimeterPoints.Add(anchorNearEnd);
+        }
+
+        CreatePerimeterBlockingEdge(perimeterPoints.ToArray());
+
+        // build the walkable polygon from this single anchored chain directly - it already
+        // forms a complete loop once both ends are anchored to the parent edge, so no second
+        // chain needs to be concatenated onto it anymore.
+        BuildWalkablePolygon(perimeterPoints);
+    }
 
     // return true (and output chosen anchor) if the nearer candidate is within tolerance
     private bool TryGetCloserAnchor(
@@ -845,13 +860,14 @@ public class RoomBoundaryGenerator : MonoBehaviour
     // called from CreatePerimeterBlockingEdges(), immediately after building the two
     // perimeter chains, s reuses same exact point data (including anchors).
     // perimeterChains[0] and [1] are expected to share their apex point (both chains meet at the self-spike tip)
-    private void BuildWalkablePolygon(List<List<Vector2>> perimeterChains, Vector2 parentStart, Vector2 parentEnd)
+    private void BuildWalkablePolygon(List<Vector2> perimeterChain)
     {
-        if(perimeterChains.Count != 2)
+        if(perimeterChain == null || perimeterChain.Count < 3)
         {
             Debug.LogWarning(
-                name + ": BuildWalkablePolygon expected exactly 2 perimeter chains, got " +
-                perimeterChains.Count + " - walkable polygon will not be built for this room. " +
+                name + ": BuildWalkablePolygon received an invalid perimeter chain (" +
+                (perimeterChain == null ? "null" : perimeterChain.Count.ToString()) +
+                " points) - walkable polygon will not be built for this room. " +
                 "Patrol sampling will be unavailable.",
                 this
             );
@@ -860,23 +876,7 @@ public class RoomBoundaryGenerator : MonoBehaviour
             return;
         }
 
-        List<Vector2> polygon = new List<Vector2>();
-        polygon.AddRange(perimeterChains[1]);
-
-        // Skip perimeterChains[0]'s first point if it duplicates chain[1]'s last point (the shared
-        // apex), to avoid redundant/zero-length edge in the polygon
-        for(int i = 0; i < perimeterChains[0].Count; i++)
-        {
-            if(i == 0 && polygon.Count > 0 &&
-                Vector2.Distance(polygon[polygon.Count - 1], perimeterChains[0][0]) < 0.0001f)
-            {
-                continue;
-            }
-
-            polygon.Add(perimeterChains[0][i]);
-        }
-
-        walkablePolygon = polygon.ToArray();
+        walkablePolygon = perimeterChain.ToArray();
     }
 
     // Point-in-polygon ray-casting algorithm.
@@ -1022,4 +1022,36 @@ public class RoomBoundaryGenerator : MonoBehaviour
             );
         }
     }
+    
+    // Instantiates each configured stealth wall prefab at its matching local-space position,
+    // parented to this room so it moves/hides correctly alongside the room exactly like spawned
+    // enemies and keys already do elsewhere in this class
+    private void SpawnStealthWalls()
+    {
+        PartialFractalWallPlacer fractalWallPlacer = GetComponent<PartialFractalWallPlacer>();
+
+        if(fractalWallPlacer == null)
+        {
+            return;
+        }
+
+        fractalWallPlacer.PlacePartialFractalWalls();
+    }
+
+
+    // Resolves (or creates) this room's RoomPathGrid component and builds it against the
+    // now-finished room geometry. Called after SpawnStealthWalls() and before SpawnEnemyIfConfigured(), so pathfinding is ready the instant an enemy exists
+    private void BuildPathGrid()
+    {
+        pathGrid = GetComponent<RoomPathGrid>();
+
+        if(pathGrid == null)
+        {
+            pathGrid = gameObject.AddComponent<RoomPathGrid>();
+        }
+
+        pathGrid.BuildGrid();
+    }
+
+    
 }

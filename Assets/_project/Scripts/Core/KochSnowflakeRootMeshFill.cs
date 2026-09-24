@@ -65,6 +65,21 @@ public class KochSnowflakeRootMeshFill : MonoBehaviour
         ApplyMaterial();
     }
 
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if(meshRenderer == null)
+        {
+            meshRenderer = GetComponent<MeshRenderer>();
+        }
+
+        if(meshRenderer != null)
+        {
+            ApplyMaterial();
+        }
+    }
+#endif
+
     private void ApplyMaterial()
     {
         Material material = GetFillMaterial();
@@ -174,7 +189,42 @@ public class KochSnowflakeRootMeshFill : MonoBehaviour
         }
 
         mesh.vertices = vertices;
+
+        if(triangleIndices.Count >= 3)
+        {
+            Vector3 a = vertices[triangleIndices[0]];
+            Vector3 b = vertices[triangleIndices[1]];
+            Vector3 c = vertices[triangleIndices[2]];
+            float signedArea = (b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y);
+
+            if(signedArea > 0)
+            {
+                for(int i = 0; i < triangleIndices.Count; i += 3)
+                {
+                    int temp = triangleIndices[i + 1];
+                    triangleIndices[i + 1] = triangleIndices[i + 2];
+                    triangleIndices[i + 2] = temp;
+                }
+            }
+        }
+
         mesh.triangles = triangleIndices.ToArray();
+        Vector2[] uvs = new Vector2[boundary.Count];
+
+        Bounds tempBounds = new Bounds(vertices[0], Vector3.zero);
+        foreach(Vector3 v in vertices)
+            tempBounds.Encapsulate(v);
+
+        for(int i = 0; i < boundary.Count; i++)
+        {
+            uvs[i] = new Vector2(
+                (boundary[i].x - tempBounds.min.x) / tempBounds.size.x,
+                (boundary[i].y - tempBounds.min.y) / tempBounds.size.y
+            );
+        }
+
+        mesh.uv = uvs;
+        
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
 

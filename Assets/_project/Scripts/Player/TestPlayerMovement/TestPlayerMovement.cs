@@ -8,6 +8,11 @@ public class TestPlayerMovement : MonoBehaviour
     // last non-zero movement direction, normalized. Defaults to facing "up" top-down perspective
     private Vector2 currentFacingDirection = Vector2.up;
 
+    // when true, FixedUpdate() ignores input and zeroes velocity, effectively freezing the player in place
+    // Set by PlayerAttack while an attack animation is playing
+    private bool movementLocked;
+
+
     // public read-only access for other scripts (PlayerAttack) via GetComponent
     public Vector2 CurrentFacingDirection
     {
@@ -19,25 +24,32 @@ public class TestPlayerMovement : MonoBehaviour
 
     void Awake() => rb = GetComponent<Rigidbody2D>();
 
-    //JUST TO TEST DAMAGE ON PLAYER
-    //private void Update()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        GetComponent<PlayerHealth>().TakeDamage(25f);
-    //    }
-    //}
+    // public so other systems (PlayerAttack, and later stun/knockback effects if needed)
+    // can freeze/unfreeze movement
+    public void SetMovementLocked(bool locked)
+    {
+        movementLocked = locked;
+
+        if(movementLocked)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+
 
     void FixedUpdate()
     {
+        if(movementLocked)
+        {
+            return;
+        }
+
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb.linearVelocity = input.normalized * speed;
 
-        // only update facing when there IS actual movement input this frame
-        // if input is zero (player standing still), currentFacingDirection deliberately keeps its last value
         if(input.sqrMagnitude > 0.0001f)
         {
             currentFacingDirection = input.normalized;
-        }        
+        }
     }
 }

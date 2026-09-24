@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DefaultEnemySpawnTable
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnTable
   entries:
-  - enemyPrefab: {fileID: 7844229960732277928, guid: aa2b8d1fd32785a489fb7fd1294a3e3a, type: 3}
+  - enemyPrefab: {fileID: 7844229960732277928, guid: ee507df8bc5b42146ae24ad2c0903f5c, type: 3}
     spawnWeight: 1

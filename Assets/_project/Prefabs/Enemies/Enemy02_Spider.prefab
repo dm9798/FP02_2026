@@ -123,14 +123,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676f17832a7d5c140851e6dd7f49cff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  detectionRadius: 4
-  loseInterestRadius: 6
+  detectionRadius: 6
+  loseInterestRadius: 8
+  sightBlockingLayers:
+    serializedVersion: 2
+    m_Bits: 2056
+  maxSearchTime: 3
   attackRange: 1
   attackCooldown: 1
   patrolSpeed: 2.5
   chaseSpeed: 4
   patrolArrivalTolerance: 0.3
   maxPatrolWaitTime: 4
+  waypointArrivalTolerance: 0.25
+  pathRepathInterval: 0.5
   maxHealth: 30
   hitFlashColor: {r: 1, g: 1, b: 0, a: 1}
   hitFlashDuration: 0.3
