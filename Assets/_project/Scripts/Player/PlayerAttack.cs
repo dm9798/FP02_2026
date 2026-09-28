@@ -21,6 +21,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float projectileSpeed = 8f;
     [SerializeField] private float projectileDamage = 10f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSfx;
+    [Tooltip("Randomizes pitch slightly per-shot")]
+    [SerializeField] private Vector2 pitchRange = new Vector2(0.95f, 1.05f);
+
     //[Header("Firing")]
     //[SerializeField] private float fireCooldown = 0.05f;
 
@@ -79,6 +85,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         OnAttack?.Invoke();
+        PlayShootSfx();
 
         StopAllCoroutines();
         StartCoroutine(LockMovementDuringAttack());
@@ -113,6 +120,17 @@ public class PlayerAttack : MonoBehaviour
         projectileController.Initialize(fireDirection, projectileSpeed, projectileDamage);
 
         
+    }
+
+    private void PlayShootSfx()
+    {
+        if(audioSource == null || shootSfx == null)
+        {
+            return;
+        }
+
+        audioSource.pitch = UnityEngine.Random.Range(pitchRange.x, pitchRange.y);
+        audioSource.PlayOneShot(shootSfx);
     }
 
     // Finds whichever of the 8 compass directions has the smallest angle to rawDirection

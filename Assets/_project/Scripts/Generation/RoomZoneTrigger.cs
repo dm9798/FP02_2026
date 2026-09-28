@@ -10,6 +10,12 @@ public class RoomZoneTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        HandleExternalTriggerEnter(other);
+    }
+
+    // Public entry point - contains the exact same logic OnTriggerEnter2D used to run directly
+    public void HandleExternalTriggerEnter(Collider2D other)
+    {
         if(!other.CompareTag("Player"))
             return;
 
@@ -51,7 +57,7 @@ public class RoomZoneTrigger : MonoBehaviour
 
     // helper for child-edge (isReturnEdge==false) and parent -edge (isReturnEdge==true) crossing
     // Calculates where along this edge in world space coords the collider currently is
-    // EdgeCollider2D .points on this gameobj .points are in local space, so need transforming to world space
+    // EdgeCollider2D .points on this gameobj .points are in local space, so need transforming to world space    
     private float CalculateCrossingT(Collider2D other)
     {
         float crossingT = 0.5f; // default to midpoint

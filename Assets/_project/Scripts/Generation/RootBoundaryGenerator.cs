@@ -1,4 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
+
+// RootBoundaryGenerator - builds the 6 traversal trigger edges (Edge_A..Edge_F, one per child
+// room letter) for the depth-0 root motif. Unlike RoomBoundaryGenerator, the root has NO parent
+// edge/notch to cut - it is the top of the fractal tree, so its boundary is one single, fully
+// closed loop with six equal traversal edges and no "return" edge
 
 [RequireComponent(typeof(RootKochLayoutSettings))]
 public class RootBoundaryGenerator : MonoBehaviour
@@ -17,6 +23,22 @@ public class RootBoundaryGenerator : MonoBehaviour
 
     [Header("Traversal Wiring")]
     [SerializeField] private FractalUniverseManager universeManager;
+
+    // Perimeter blocking - physically stops the player and projectiles from leaving the root's
+    // boundary, mirroring RoomBoundaryGenerator's blockingLayerName/blockingEdgeRecursionDepth.
+    [Header("Perimeter Blocking")]
+    [SerializeField] private string blockingLayerName = "RoomBlocker";
+
+    [SerializeField] private int blockingEdgeRecursionDepth = 2;
+    [SerializeField] private float perimeterSnowflakeRadiusRatio = 1.6f;
+
+    [Header("Perimeter Blocking Debug Visual")]
+    [SerializeField] private bool showPerimeterBlockDebugLine = true;
+    [SerializeField] private Color perimeterBlockDebugColor = Color.magenta;
+    [SerializeField] private float perimeterBlockDebugLineWidth = 0.08f;
+
+    // cached closed polygon (local space) - the full perimeter loop
+    private Vector2[] walkablePolygon;
 
     private RootKochLayoutSettings layoutSettings;
 
@@ -117,6 +139,134 @@ public class RootBoundaryGenerator : MonoBehaviour
                 i
             );
         }
+
+        
+        CreatePerimeterBlockingEdge(points);
+    }
+
+    // Builds ONE solid, non-trigger EdgeCollider2D tracing the root's fractal boundary
+    private void CreatePerimeterBlockingEdge(Vector2[] hexPoints)
+    {
+        float snowflakeGenerationRadius = layoutSettings.BoundaryRadius * perimeterSnowflakeRadiusRatio;
+
+        Vector2[] rawSnowflakePoints = KochMath.GenerateSnowflake(
+            layoutSettings.center,
+            snowflakeGenerationRadius,
+            blockingEdgeRecursionDepth
+        );
+
+        int rawCount = rawSnowflakePoints.Length - 1; // drop GenerateSnowflake's closing duplicate
+        List<Vector2> filteredPoints = new List<Vector2>();
+
+        for(int i = 0; i < rawCount; i++)
+        {
+            Vector2 point = rawSnowflakePoints[i];
+
+            bool outsideAnyRoof =
+                KochMath.IsOutsideEdge(point, hexPoints[0], hexPoints[1], layoutSettings.center)
+                || KochMath.IsOutsideEdge(point, hexPoints[1], hexPoints[2], layoutSettings.center)
+                || KochMath.IsOutsideEdge(point, hexPoints[2], hexPoints[3], layoutSettings.center)
+                || KochMath.IsOutsideEdge(point, hexPoints[3], hexPoints[4], layoutSettings.center)
+                || KochMath.IsOutsideEdge(point, hexPoints[4], hexPoints[5], layoutSettings.center)
+                || KochMath.IsOutsideEdge(point, hexPoints[5], hexPoints[0], layoutSettings.center);
+
+            if(outsideAnyRoof)
+            {
+                filteredPoints.Add(point);
+            }
+        }
+
+        if(filteredPoints.Count < 3)
+        {
+            Debug.LogWarning(
+                name + ": CreatePerimeterBlockingEdge filtered down to only " +
+                filteredPoints.Count + " points - the root's fractal boundary may not have " +
+                "the intended shape. Check blockingEdgeRecursionDepth and BoundaryRadius.",
+                this
+            );
+
+            return;
+        }
+
+        // close the loop back to the first point
+        filteredPoints.Add(filteredPoints[0]);
+
+        Vector2[] finalPoints = filteredPoints.ToArray();
+        walkablePolygon = finalPoints;
+
+        GameObject edgeObject = new GameObject("Edge_PerimeterBlock");
+        edgeObject.transform.SetParent(boundaryContainer, worldPositionStays: false);
+        edgeObject.isStatic = false;
+
+        int blockingLayer = LayerMask.NameToLayer(blockingLayerName);
+
+        if(blockingLayer >= 0)
+        {
+            edgeObject.layer = blockingLayer;
+        }
+        else
+        {
+            Debug.LogWarning(
+                name + ": blockingLayerName \"" + blockingLayerName +
+                "\" is not a valid layer - " + edgeObject.name +
+                " will remain on the Default layer.",
+                this
+            );
+        }
+
+        EdgeCollider2D edgeCollider = edgeObject.AddComponent<EdgeCollider2D>();
+        edgeCollider.points = finalPoints;
+        edgeCollider.isTrigger = false;
+
+        if(showPerimeterBlockDebugLine)
+        {
+            LineRenderer debugLine = edgeObject.AddComponent<LineRenderer>();
+            debugLine.useWorldSpace = false;
+            debugLine.loop = true;
+            debugLine.positionCount = finalPoints.Length;
+
+            Vector3[] debugPoints3D = new Vector3[finalPoints.Length];
+
+            for(int i = 0; i < finalPoints.Length; i++)
+            {
+                debugPoints3D[i] = new Vector3(finalPoints[i].x, finalPoints[i].y, 0f);
+            }
+
+            debugLine.SetPositions(debugPoints3D);
+            debugLine.startWidth = perimeterBlockDebugLineWidth;
+            debugLine.endWidth = perimeterBlockDebugLineWidth;
+            debugLine.startColor = perimeterBlockDebugColor;
+            debugLine.endColor = perimeterBlockDebugColor;
+            debugLine.sortingLayerName = sortingLayerName;
+            debugLine.sortingOrder = sortingOrder + 10;
+
+            if(edgeMaterial != null)
+            {
+                debugLine.sharedMaterial = edgeMaterial;
+            }
+        }
+    }
+
+    public static bool IsPointInPolygon(Vector2 point, Vector2[] polygon)
+    {
+        bool inside = false;
+        int j = polygon.Length - 1;
+
+        for(int i = 0; i < polygon.Length; i++)
+        {
+            Vector2 pi = polygon[i];
+            Vector2 pj = polygon[j];
+
+            if((pi.y > point.y) != (pj.y > point.y) &&
+                point.x < (pj.x - pi.x) * (point.y - pi.y) / (pj.y - pi.y) + pi.x)
+            {
+                inside = !inside;
+            }
+
+            j = i;
+        }
+
+        return inside;
     }
 
     private void CreateEdge(

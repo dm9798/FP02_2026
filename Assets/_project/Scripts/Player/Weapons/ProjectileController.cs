@@ -18,6 +18,8 @@ public class ProjectileController : MonoBehaviour
     private float damageAmount;
     private int perimeterLayer;
     private float lifetimeTimer;
+    private Vector2 travelDirection;
+
 
     private void Awake()
     {
@@ -36,11 +38,18 @@ public class ProjectileController : MonoBehaviour
     }
 
     // Called once by PlayerAttack immediately after Instantiate()
-    // Sets the projectile flying in a fixed direction at a fixed speed - no per-frame targeting, just travels straigh
+    // Sets the projectile flying in a fixed direction at a fixed speed - no per-frame targeting, just travels straight
+    //change direction of projectile per playing forward-facing dir
     public void Initialize(Vector2 direction, float speed, float damage)
     {
-        rb.linearVelocity = direction.normalized * speed;
+        Vector2 normalizedDirection = direction.normalized;
+
+        travelDirection = normalizedDirection;
+        rb.linearVelocity = normalizedDirection * speed;
         damageAmount = damage;
+
+        float angle = Mathf.Atan2(normalizedDirection.y, normalizedDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     private void Update()
@@ -67,7 +76,7 @@ public class ProjectileController : MonoBehaviour
 
         if(enemyController != null)
         {
-            enemyController.TakeDamage(damageAmount);
+            enemyController.TakeDamage(damageAmount, travelDirection);
             Destroy(gameObject);
         }
     }

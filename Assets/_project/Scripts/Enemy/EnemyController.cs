@@ -5,13 +5,9 @@
 // persists as a child of that room's permanent instance.
 // Die() destroys this GameObject - since the room instance itself is never destroyed (only hidden/reused, per FUM's GetOrCreateChild)
 // the room's own hierarchy is the sole record of "this enemy is dead" - no external tracking needed
+
 //
-// UPDATED for stealth mechanics: detection is now gated by line-of-sight (Physics2D.Raycast
-// against sightBlockingLayers, which should include the new "StealthWall" layer and the room
-// perimeter) as well as distance, so hiding behind a stealth wall genuinely breaks detection
-// even within detectionRadius.
-//
-// Chase and Search now route through RoomPathGrid + GridAStarPathfinder instead of straight-line
+// Chase and Search now routed through RoomPathGrid + GridAStarPathfinder instead of straight-line
 // MoveTowards(), so the enemy actually navigates around stealth walls rather than sliding along
 // them or getting stuck.
 
@@ -76,11 +72,34 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Color hitFlashColor = Color.white;
     [SerializeField] private float hitFlashDuration = 0.12f;
 
+    [Header("Hit Stun & Knockback")]
+    [Tooltip("How long (seconds) the enemy freezes - immediately after taking damage.")]
+    [SerializeField] private float hitStunDuration = 0.15f;
+    [Tooltip("Speed applied to the enemy, in the direction it was hit from, the instant damage is taken")]
+    [SerializeField] private float knockbackSpeed = 4f;
+
     [Header("Death Flash + Fade")]
     [SerializeField] private Color deathFlashColor = Color.red;
     [SerializeField] private int deathFlashCount = 3;
     [SerializeField] private float deathFlashInterval = 0.08f;
     [SerializeField] private float deathFadeDuration = 0.6f;
+
+
+    [Header("Death Animation")]
+    [SerializeField] private string deathAnimatorStateName = "Die";
+    [Tooltip("Extra seconds to wait after the death clip finishes).")]
+    [SerializeField] private float deathAnimationExtraDelay = 0f;
+
+    [Tooltip("Fallback duration (seconds)")]
+    [SerializeField] private float deathFallbackDuration = 3f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip attackSfx;
+    [SerializeField] private AudioClip damageSfx;
+    [SerializeField] private AudioClip deathSfx;
+    [Tooltip("Randomizes pitch slightly per-hit")]
+    [SerializeField] private Vector2 damagePitchRange = new Vector2(0.95f, 1.05f);
 
     [Header("Stuck Detection (Chase/Search)")]
     [Tooltip("measure whether the enemy is making real progress while chasing/searching")]
@@ -125,6 +144,7 @@ public class EnemyController : MonoBehaviour
     private bool hasValidPatrolTarget;
     private float patrolWaitTimer;
     private float attackCooldownTimer;
+    private float hitStunTimer;
     private bool isDead;
 
     // shared by Chase and Search the currently active A* path (world-space waypoints) and
@@ -143,6 +163,8 @@ public class EnemyController : MonoBehaviour
     private Collider2D[] colliders;
 
     private EnemyAnimationController animationController;
+    private Animator animator;
+
 
     public float CurrentSpeed
     {
@@ -155,6 +177,17 @@ public class EnemyController : MonoBehaviour
 
     // Exposes isDead read-only, so EnemyAnimationController can poll it every frame
     public bool IsDead => isDead;
+
+    public float HealthPercent01
+    {
+        get
+        {
+            if(maxHealth <= 0f)
+                return 0f;
+
+            return Mathf.Clamp01(currentHealth / maxHealth);
+        }
+    }
 
     // Called by component that spawns this enemy (RoomBoundaryGenerator) immediately after
     // Instantiate(), mirroring same "Initialize() before Start()" pattern already used vy that component
@@ -254,6 +287,18 @@ public class EnemyController : MonoBehaviour
     {
         if(isDead)
             return;
+
+        if(hitStunTimer > 0f)
+        {
+            hitStunTimer -= Time.deltaTime;
+            accumulatedPathLength += Vector2.Distance(rb.position, lastFramePosition);
+            lastFramePosition = rb.position;
+            patrolAccumulatedPathLength += Vector2.Distance(rb.position, patrolLastFramePosition);
+            patrolLastFramePosition = rb.position;
+
+            CurrentSpeed = rb.linearVelocity.magnitude;            
+            return;
+        }
 
         accumulatedPathLength += Vector2.Distance(rb.position, lastFramePosition);
         lastFramePosition = rb.position;
@@ -615,6 +660,9 @@ public class EnemyController : MonoBehaviour
                 attack.Attack(transform, playerTransform);
             }
 
+            PlayAttackSfx();
+
+
             // Fires the AttackTrigger Animator parameter at the same moment the actual attack
             // logic runs, mirroring PlayerAnimationController's OnAttack event pattern
             if(animationController != null)
@@ -651,7 +699,7 @@ public class EnemyController : MonoBehaviour
 
     // Applies damage to this enemy
     // Once currentHealth reaches zero or below, triggers Die() callers should call THIS method, not Die() directly, so health is always respected consistently
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Vector2 hitDirection)
     {
         if(isDead || amount <= 0f)
             return;
@@ -664,7 +712,17 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-      
+        PlayDamageSfx();
+
+
+        // Knockback - one-shot velocity impulse along the hit direction, resolved by normal
+        // Rigidbody2D physics from this point on
+        if(hitDirection.sqrMagnitude > 0.0001f)
+        {
+            rb.linearVelocity = hitDirection.normalized * knockbackSpeed;
+        }
+
+        hitStunTimer = hitStunDuration;
 
         if(spriteRenderer == null)
         {
@@ -680,6 +738,13 @@ public class EnemyController : MonoBehaviour
         hitFlashRoutine = StartCoroutine(HitFlashCoroutine());
     }
 
+
+    // Backward-compatible overload for any existing caller not yet updated to pass a direction - just in case
+    public void TakeDamage(float amount)
+    {
+        TakeDamage(amount, Vector2.zero);
+    }
+
     // Public method to destroy gameObject outright since the OWNING room instance is never destroyed (only hidden/reused across revisits)
     // this permanently removes the enemy from that room's hierarchy
     public void Die()
@@ -692,6 +757,9 @@ public class EnemyController : MonoBehaviour
        
         CurrentSpeed = 0f;
 
+        PlayDeathSfx();
+
+
         // tell RoomDirector this enemy is gone, before Destroy() runs, so the room-cleared check
         // always sees a consistent state
         if(ownerRoom != null)
@@ -702,10 +770,25 @@ public class EnemyController : MonoBehaviour
             {
                 director.NotifyEnemyDefeated(this);
             }
+
+            FractalUniverseManager universeManager = ownerRoom.GetUniverseManager();
+
+            if(universeManager != null)
+            {
+                universeManager.NotifyMonsterSlain();
+            }
+            else
+            {
+                Debug.LogWarning(
+                    name + ": Die() could not find a FractalUniverseManager via ownerRoom - " +
+                    "the global Monsters Slain counter was not incremented for this kill.",
+                    this
+                       );
+            }
         }
 
-        // FOR LATER.. code block to trigger death VFX/loot as independent objects here if/when needed
-        if(hitFlashRoutine != null)
+            // FOR LATER.. code block to trigger death VFX/loot as independent objects here if/when needed
+            if(hitFlashRoutine != null)
         {
             StopCoroutine(hitFlashRoutine);
             hitFlashRoutine = null;
@@ -754,23 +837,102 @@ public class EnemyController : MonoBehaviour
             yield return new WaitForSeconds(deathFlashInterval);
         }
 
-        float elapsed = 0f;
-        Color fadeStartColor = baseColor;
+        // Restore full opacity/base color before the death animation clip takes over visually -
+        // no more manual color/alpha fading here, since the Animator's own Death clip is now
+        // responsible for however the sprite should look while dying
+        spriteRenderer.color = baseColor;
 
-        while(elapsed < deathFadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / deathFadeDuration;
+        float waitDuration = ResolveDeathClipDuration();
 
-            Color faded = fadeStartColor;
-            faded.a = Mathf.Lerp(1f, 0f, t);
-            spriteRenderer.color = faded;
-
-            yield return null;
-        }
+        yield return new WaitForSeconds(waitDuration + deathAnimationExtraDelay);
 
         Destroy(gameObject);
     }
+
+    private float ResolveDeathClipDuration()
+    {
+        if(animator == null || !animator.isInitialized)
+        {
+            Debug.LogWarning(
+                name + ": no initialized Animator - falling back to deathFallbackDuration (" +
+                deathFallbackDuration + "s) for death timing.",
+                this
+            );
+
+            return deathFallbackDuration;
+        }
+
+        AnimatorClipInfo[] clipInfos = animator.GetCurrentAnimatorClipInfo(0);
+
+        if(clipInfos == null || clipInfos.Length == 0)
+        {
+            Debug.LogWarning(
+                name + ": Animator has no current clip info on layer 0 - falling back to " +
+                "deathFallbackDuration (" + deathFallbackDuration + "s) for death timing. " +
+                "Check that IsDead correctly transitions into a Death state.",
+                this
+            );
+
+            return deathFallbackDuration;
+        }
+
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        // stateInfo.length already accounts for the clip's own length AND the state's speed
+        // multiplier (Unity bakes both into AnimatorStateInfo.length directly), so no extra
+        // division/multiplication by speed is needed here.
+        float resolvedLength = stateInfo.length;
+
+        if(resolvedLength <= 0f)
+        {
+            Debug.LogWarning(
+                name + ": resolved death animator state length was " + resolvedLength +
+                " - falling back to deathFallbackDuration (" + deathFallbackDuration +
+                "s). Check deathAnimatorStateName (\"" + deathAnimatorStateName +
+                "\") matches the actual state name in the Animator Controller.",
+                this
+            );
+
+            return deathFallbackDuration;
+        }
+
+        return resolvedLength;
+    }
+
+    private void PlayAttackSfx()
+    {
+        if(audioSource == null || attackSfx == null)
+        {
+            return;
+        }
+
+        audioSource.pitch = 1f;
+        audioSource.PlayOneShot(attackSfx);
+    }
+
+    private void PlayDamageSfx()
+    {
+        if(audioSource == null || damageSfx == null)
+        {
+            return;
+        }
+
+        audioSource.pitch = Random.Range(damagePitchRange.x, damagePitchRange.y);
+        audioSource.PlayOneShot(damageSfx);
+    }
+
+    private void PlayDeathSfx()
+    {
+        if(audioSource == null || deathSfx == null)
+        {
+            return;
+        }
+
+        audioSource.pitch = 1f;
+        audioSource.PlayOneShot(deathSfx);
+    }
+
+
 
     private void OnDrawGizmosSelected()
     {

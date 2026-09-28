@@ -5,12 +5,7 @@ using UnityEngine.SceneManagement;
 
 // PlayerHealth - tracks current/max HP and exposes TakeDamage/Die for other scripts
 // (enemy attacks, projectiles, hazards) to call into
-//
-// NOTE: Death is now driven by PlayerAnimationController via the OnDeath event
-//
-// The session-reset-then-reload flow (SessionResetMessageUI, reloadDelayAfterDeath) has it own coroutine so it
-// runs on a fixed delay after death rather than waiting on flash/fade timing - to also give
-// the new Death animation clip time to actually play before the scene reloads
+// player death -> gameover transition
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health")]
@@ -21,12 +16,19 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private float hitFlashDuration = 0.08f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip damageSfx;
+    [SerializeField] private AudioClip deathSfx;
+    [Tooltip("Randomizes pitch slightly")]
+    [SerializeField] private Vector2 damagePitchRange = new Vector2(0.95f, 1.05f);
+
     [Header("Session Reset")]
     [SerializeField] private float reloadDelayAfterDeath = 1.5f;
 
-    [Header("Session Reset UI")]
-    [Tooltip("Shows a brief message before reloading after the player dies")]
-    [SerializeField] private SessionResetMessageUI sessionResetMessageUI;
+    [Header("Scene Transition")]
+    [SerializeField] private string gameOverSceneName = "GameOverScene";
+    [SerializeField] private FractalUniverseManager universeManager;
 
     private SpriteRenderer spriteRenderer;
     private Color baseColor;
@@ -38,14 +40,8 @@ public class PlayerHealth : MonoBehaviour
     public float MaxHealth => maxHealth;
     public bool IsDead => isDead;
 
-    // NEW - subscribed to by PlayerAnimationController.HandleDamaged() to fire the DamageTrigger
-    // animation. Raised once per TakeDamage() call that does not result in death (Die() raises
-    // OnDeath instead, not OnDamaged, so the two are mutually exclusive per hit).
     public event Action OnDamaged;
-
-    // NEW - subscribed to by PlayerAnimationController.HandleDeath() to fire the DeathTrigger
-    // animation and disable movement/attack input. Raised exactly once, the first time Die() is
-    // called - isDead guards against it firing more than once.
+    public event Action OnHealed;
     public event Action OnDeath;
 
     void Awake()
@@ -78,7 +74,21 @@ public class PlayerHealth : MonoBehaviour
 
         hitFlashRoutine = StartCoroutine(HitFlashCoroutine());
 
+        PlayDamageSfx();
+
         OnDamaged?.Invoke();
+    }
+
+    public void Heal(float amount)
+    {
+        if(isDead || amount <= 0f)
+        {
+            return;
+        }
+
+        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+
+        OnHealed?.Invoke();
     }
 
     public void Die()
@@ -97,14 +107,35 @@ public class PlayerHealth : MonoBehaviour
             hitFlashRoutine = null;
         }
 
-        // Ensure sprite is left at its normal colour - the Death animation clip now handles all
-        // death visual feedback, so we no longer want a stray hit-flash colour left applied
-        // underneath it.
         spriteRenderer.color = baseColor;
+
+        PlayDeathSfx();
 
         OnDeath?.Invoke();
 
         StartCoroutine(ReloadAfterDeathCoroutine());
+    }
+
+    private void PlayDamageSfx()
+    {
+        if(audioSource == null || damageSfx == null)
+        {
+            return;
+        }
+
+        audioSource.pitch = UnityEngine.Random.Range(damagePitchRange.x, damagePitchRange.y);
+        audioSource.PlayOneShot(damageSfx);
+    }
+
+    private void PlayDeathSfx()
+    {
+        if(audioSource == null || deathSfx == null)
+        {
+            return;
+        }
+
+        audioSource.pitch = 1f;
+        audioSource.PlayOneShot(deathSfx);
     }
 
     private IEnumerator HitFlashCoroutine()
@@ -117,26 +148,38 @@ public class PlayerHealth : MonoBehaviour
         hitFlashRoutine = null;
     }
 
-    // Replaces the old DeathFlashThenFadeCoroutine. Waits reloadDelayAfterDeath seconds - giving
-    // the Death animation clip (triggered via OnDeath, above) time to actually play out - then
-    // shows the session-reset message and reloads, exactly as before.
     private IEnumerator ReloadAfterDeathCoroutine()
     {
         yield return new WaitForSeconds(reloadDelayAfterDeath);
 
-        if(sessionResetMessageUI != null)
+        CaptureRunStats();
+
+        SceneManager.LoadScene(gameOverSceneName);
+    }
+
+    private void CaptureRunStats()
+    {
+        if(universeManager == null)
         {
-            sessionResetMessageUI.ShowMessageThenReload("You died.\n\nResetting...");
+            universeManager = FindObjectOfType<FractalUniverseManager>();
         }
-        else
+
+        if(universeManager == null)
         {
             Debug.LogWarning(
-                name + ": no SessionResetMessageUI assigned - reloading immediately with no message.",
+                name + ": could not find a FractalUniverseManager to capture run stats from - " +
+                "Game Over scene will show default/zero values.",
                 this
             );
 
-            Scene activeScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(activeScene.name);
+            RunStatsSnapshot.Capture(0, 0, 0);
+            return;
         }
+
+        RunStatsSnapshot.Capture(
+            universeManager.CurrentLevel,
+            universeManager.RoomsVisited,
+            universeManager.TotalMonstersSlain
+        );
     }
 }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -4041090492411726406}
   - component: {fileID: 4260962299567485136}
   - component: {fileID: 4965195509946289506}
+  - component: {fileID: -5615729704793149710}
   m_Layer: 8
   m_Name: Enemy02_Spider
   m_TagString: Untagged
@@ -140,10 +141,26 @@ MonoBehaviour:
   maxHealth: 30
   hitFlashColor: {r: 1, g: 1, b: 0, a: 1}
   hitFlashDuration: 0.3
+  hitStunDuration: 0.15
+  knockbackSpeed: 4
   deathFlashColor: {r: 1, g: 0, b: 0, a: 1}
   deathFlashCount: 3
   deathFlashInterval: 0.08
   deathFadeDuration: 0.6
+  deathAnimatorStateName: Die
+  deathAnimationExtraDelay: 0
+  deathFallbackDuration: 3
+  audioSource: {fileID: -5615729704793149710}
+  attackSfx: {fileID: 8300000, guid: 65af8f3f739ad7d43b4198f51a97a8da, type: 3}
+  damageSfx: {fileID: 8300000, guid: 4c90affe5c6f83b43b3196acc669d9f1, type: 3}
+  deathSfx: {fileID: 8300000, guid: b61a734728fe83243a9ea622a07f506f, type: 3}
+  damagePitchRange: {x: 0.95, y: 1.05}
+  stuckCheckInterval: 1
+  stuckMovementThreshold: 1
+  stuckWindowsBeforeGivingUp: 2
+  stuckGiveUpCooldown: 2
+  patrolStuckCheckInterval: 1
+  patrolStuckMovementThreshold: 0.3
 --- !u!114 &7666657811329295223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,3 +268,100 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!82 &-5615729704793149710
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844229960732277928}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

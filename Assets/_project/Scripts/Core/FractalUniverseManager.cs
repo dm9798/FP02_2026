@@ -49,15 +49,23 @@ public class FractalUniverseManager : MonoBehaviour
     [Header("Session Room Limit")]
     [Tooltip("Number of DISTINCT new rooms (first-time visits only, not re-entries) the " +
     "player may explore before the scene reloads and the run resets from the start")]
-    [SerializeField] private int maxNewRoomsPerSession = 20;
+    [SerializeField] private int maxNewRoomsPerSession = 2000;
 
     private int newRoomsVisitedThisSession = 0;
+
+    private int totalMonstersSlain = 0;
+
+    public int TotalMonstersSlain => totalMonstersSlain;
 
     private bool sessionLimitReachedThisFrame = false;
 
     [Header("Session Reset UI")]
     [Tooltip("Shows a brief message before reloading once the room limit is reached.")]
     [SerializeField] private SessionResetMessageUI sessionResetMessageUI;
+
+    [Header("Traversal Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip traversalSfx;
 
 
 
@@ -86,6 +94,9 @@ public class FractalUniverseManager : MonoBehaviour
             return activeChain[activeChain.Count - 1].RoomLetterIndex;
         }
     }
+
+    public int RoomsVisited => newRoomsVisitedThisSession;
+
 
     public bool IsAtRoot
     {
@@ -151,6 +162,11 @@ public class FractalUniverseManager : MonoBehaviour
         }
 
         BeginTransitionToParent(crossingT, playerTransform);
+    }
+
+    public void NotifyMonsterSlain()
+    {
+        totalMonstersSlain++;
     }
 
     // Helper - the node currently occupied (root if chain is empty)
@@ -264,8 +280,8 @@ public class FractalUniverseManager : MonoBehaviour
         // reload the scene once the current traversal finishes
         if(newRoomsVisitedThisSession >= maxNewRoomsPerSession)
         {
-            sessionLimitReachedThisFrame = true;
-            Debug.Log("[ROOM COUNTER] LIMIT REACHED - sessionLimitReachedThisFrame set to true.");
+            //sessionLimitReachedThisFrame = true;
+            //Debug.Log("[ROOM COUNTER] LIMIT REACHED - sessionLimitReachedThisFrame set to true.");
         }
 
 
@@ -313,9 +329,9 @@ public class FractalUniverseManager : MonoBehaviour
 
     // Coroutine child-edge (room scale/position lerp, collider enabling, visibility toggling, activeChain logging)   
     private IEnumerator ZoomIntoChildCoroutine(
-        int targetLetterIndex,
-        float crossingT,
-        Transform playerTransform)
+    int targetLetterIndex,
+    float crossingT,
+    Transform playerTransform)
     {
         KochMotifNode parentNode = CurrentNode;
         int slot = GetSlotForTarget(parentNode, targetLetterIndex);
@@ -340,13 +356,12 @@ public class FractalUniverseManager : MonoBehaviour
             yield break;
         }
 
-        Vector3 normalLocalScale = GetRoomNormalLocalScale(childNode);
+        PlayTraversalSfx();
 
-        // Read world pos from settings -> converts into equivalent local pos relative to parentNode        
+        Vector3 normalLocalScale = GetRoomNormalLocalScale(childNode);
         Vector3 normalWorldPosition = GetRoomNormalWorldPosition(childNode);
         Vector3 normalLocalPosition = parentNode.transform.InverseTransformPoint(normalWorldPosition);
 
-        // Start point for the scale and position animation
         parentNode.AttachChild(childNode, slot);
 
         Vector3 fittedLocalScale = childNode.transform.localScale;
@@ -355,7 +370,18 @@ public class FractalUniverseManager : MonoBehaviour
         RoomBoundaryGenerator childBoundaryGenerator =
             childNode.GetComponentInChildren<RoomBoundaryGenerator>(true);
 
-        // Reenabling all triggers/colliders        
+        
+        if(childBoundaryGenerator != null)
+        {
+            RoomDirector roomDirector = childBoundaryGenerator.GetComponent<RoomDirector>();
+
+            if(roomDirector != null)
+            {
+                roomDirector.NotifyPlayerEntered();
+            }
+        }
+
+        
         if(childBoundaryGenerator != null)
         {
             childBoundaryGenerator.RestoreAllEdgeCollisionSettings();
@@ -384,7 +410,6 @@ public class FractalUniverseManager : MonoBehaviour
         if(incomingVisibility != null)
             incomingVisibility.SetVisualVisible(true);
 
-        // Hide the outgoing room NOW, before the animation runs, not after
         if(activeRoomVisibility != null)
         {
             activeRoomVisibility.SetVisualVisible(false);
@@ -407,7 +432,7 @@ public class FractalUniverseManager : MonoBehaviour
             }
         }
 
-        Transform roomTransform = childNode.transform;  
+        Transform roomTransform = childNode.transform;
 
         bool canDriveCrossingPlayer =
             playerTransform != null && childBoundaryGenerator != null;
@@ -431,10 +456,6 @@ public class FractalUniverseManager : MonoBehaviour
             roomTransform.localScale = Vector3.LerpUnclamped(fittedLocalScale, normalLocalScale, eased);
             roomTransform.localPosition = Vector3.LerpUnclamped(fittedLocalPosition, normalLocalPosition, eased);
 
-            // reread new room's (moving/scaling) parent edge world endpoints
-            // snap the player onto equivalent point along that edge every frame
-            // using same crossingT captured at the moment they originally crossed the old room's child edge
-            // Position only -does not touch rotation & scale
             if(canDriveCrossingPlayer)
             {
                 Vector2 currentParentEdgeStart = childBoundaryGenerator.GetParentEdgeWorldStart();
@@ -460,7 +481,6 @@ public class FractalUniverseManager : MonoBehaviour
         roomTransform.localScale = normalLocalScale;
         roomTransform.localPosition = normalLocalPosition;
 
-        // ensure the player ends up exactly on new room's final parent edge position
         if(canDriveCrossingPlayer)
         {
             Vector2 finalEdgeStart = childBoundaryGenerator.GetParentEdgeWorldStart();
@@ -477,25 +497,12 @@ public class FractalUniverseManager : MonoBehaviour
             );
         }
 
-     
-
         activeChain.Add(childNode);
         activeRoomVisibility = incomingVisibility;
 
-        // notify the destination room's RoomDirector (if present) that the player has
-        // now fully arrived, so it can seal the room (child edges unblocked, parent edge blocked, traversal edges painted red)
-        // Reuses childBoundaryGenerator, Deliberately only wired here (not
-        // in ZoomOutToParentCoroutine), since sealing only makes sense when moving deeper into a room for the first time
-        // not when retreating back through an already-opened parent edge
-        if(childBoundaryGenerator != null)
-        {
-            RoomDirector roomDirector = childBoundaryGenerator.GetComponent<RoomDirector>();
-
-            if(roomDirector != null)
-            {
-                roomDirector.NotifyPlayerEntered();
-            }
-        }
+        // roomDirector.NotifyPlayerEntered() now called much earlier, right
+        // after childBoundaryGenerator is resolved (see above). Nothing else needed here in its
+        // place; the rest of the coroutine's ending is unchanged.
 
         traversalBlockedUntil = Time.unscaledTime + traversalCooldown;
         currentState = TraversalState.Exploration;
@@ -506,20 +513,12 @@ public class FractalUniverseManager : MonoBehaviour
             this
         );
 
-       // Debug.Log("[ZOOM COROUTINE END] Reached end of ZoomIntoChildCoroutine. " +
-       //"sessionLimitReachedThisFrame = " + sessionLimitReachedThisFrame);
-
-
-
-        // if this room's instantiation just hit the session room limit, reload the
-        // scene now that the transition has fully completed
         if(sessionLimitReachedThisFrame)
         {
             Debug.Log("[ZOOM COROUTINE END] Calling ReloadSessionScene() now.");
             ReloadSessionScene();
         }
     }
-
 
 
     private IEnumerator ZoomOutToParentCoroutine(float crossingT, Transform playerTransform)
@@ -529,6 +528,8 @@ public class FractalUniverseManager : MonoBehaviour
             currentState = TraversalState.Exploration;
             yield break;
         }
+
+        PlayTraversalSfx();
 
         KochMotifNode currentRoomNode = activeChain[activeChain.Count - 1];
 
@@ -1026,6 +1027,17 @@ public class FractalUniverseManager : MonoBehaviour
             Scene activeScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(activeScene.name);
         }
+    }
+
+    private void PlayTraversalSfx()
+    {
+        if(audioSource == null || traversalSfx == null)
+        {
+            return;
+        }
+
+        audioSource.pitch = 1f;
+        audioSource.PlayOneShot(traversalSfx);
     }
 
 }

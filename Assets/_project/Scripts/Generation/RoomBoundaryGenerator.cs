@@ -37,6 +37,21 @@ public class RoomBoundaryGenerator : MonoBehaviour
     [SerializeField] private bool selfEdgeCollisionEnabled = true;
     [SerializeField] private bool nextEdgeCollisionEnabled = true;
 
+    [Header("Child Portal (traversal trigger)")]
+    [Tooltip("Sprite rendered for each child portal.")]
+    [SerializeField] private Sprite portalSprite;
+    [Tooltip("World-space radius of each child portal's visual and CircleCollider2D trigger.")]
+    [SerializeField] private float portalRadius = 0.35f;
+    [SerializeField] private Color portalColor = Color.yellow;
+
+    [SerializeField] private string portalSortingLayerName = "Default";
+    [SerializeField] private int portalSortingOrder = -1;
+
+    private RoomDirector cachedRoomDirector;
+
+
+
+
     // perimeter blocking edge - player and enemy bounds
     // Depth deliberately kept low for collider performance    
     [Header("Perimeter Blocking Edge Pattern Detail")]
@@ -83,6 +98,14 @@ public class RoomBoundaryGenerator : MonoBehaviour
     private LineRenderer nextEdgeLine;
     private LineRenderer parentEdgeLine;
 
+    private CircleCollider2D prevPortalCollider;
+    private CircleCollider2D selfPortalCollider;
+    private CircleCollider2D nextPortalCollider;
+
+    private SpriteRenderer prevPortalRenderer;
+    private SpriteRenderer selfPortalRenderer;
+    private SpriteRenderer nextPortalRenderer;
+
     public Vector2[] ChildEmergeLocalPoints { get; private set; } = new Vector2[3];
 
     [Header("Enemy Spawning")]
@@ -125,6 +148,12 @@ public class RoomBoundaryGenerator : MonoBehaviour
     {
         return transform.TransformPoint(ParentEdgeLocalEnd);
     }
+
+    public FractalUniverseManager GetUniverseManager()
+    {
+        return universeManager;
+    }
+
 
     // cached closed polygon (local space), built once in GenerateEdges() alongside the
     // perimeter blocking colliders, reusing same cluster points
@@ -185,16 +214,47 @@ public class RoomBoundaryGenerator : MonoBehaviour
         return TryGetRandomWalkableWorldPoint(out worldPoint);
     }
 
-    // Rejection-samples a point inside the triangle formed by the parent edge's two endpoints and the room's center - this is the "Non-Child" interior/area
-    // deliberately excluding the three child wedges that surround each fractal spike.
-    // Also must pass the existing walkablePolygon check, so a key can never spawn outside the room's actual geometry
-    private bool TryGetRandomPointInNonChildTriangle(out Vector2 localPoint, int maxAttempts = 30)
+    // Returns a random walkable world-space point inside ONE of the room's three child wedges (prev/self/next) random call
+    // Each wedge is the triangle formed by the room's center and that child edge's two endpoints
+    // Used by SpawnEnemyIfConfigured() so enemies spawn nearer one of the three doorways
+
+    public bool TryGetRandomPointInChildWedge(out Vector2 worldPoint, int maxAttempts = 30)
+    {
+        worldPoint = transform.TransformPoint(layoutSettings != null ? layoutSettings.center : Vector2.zero);
+
+        Vector2[] hexPoints = BuildBoundaryHexPoints();
+
+        if(hexPoints == null || hexPoints.Length < 4)
+        {
+            return false;
+        }
+
+        // Three child wedges, matching prevEdgeCollider/selfEdgeCollider/nextEdgeCollider's own
+        // endpoint pairs exactly: (hex0,hex1), (hex1,hex2), (hex2,hex3)
+        int wedgeIndex = UnityEngine.Random.Range(0, 3);
+        Vector2 wedgeStart = hexPoints[wedgeIndex];
+        Vector2 wedgeEnd = hexPoints[wedgeIndex + 1];
+        Vector2 center = layoutSettings.center;
+
+        if(TryGetRandomPointInTriangle(wedgeStart, wedgeEnd, center, out Vector2 localPoint, maxAttempts))
+        {
+            worldPoint = transform.TransformPoint(localPoint);
+            return true;
+        }
+
+        Debug.LogWarning(
+            name + ": TryGetRandomPointInChildWedge failed to find a valid point in wedge " +
+            wedgeIndex + " after " + maxAttempts + " attempts - falling back to room center.",
+            this
+        );
+
+        return false;
+    }
+
+    // Shared rejection-sampling core
+    private bool TryGetRandomPointInTriangle(Vector2 a, Vector2 b, Vector2 c, out Vector2 localPoint, int maxAttempts = 30)
     {
         localPoint = layoutSettings != null ? layoutSettings.center : Vector2.zero;
-
-        Vector2 a = ParentEdgeLocalStart;
-        Vector2 b = ParentEdgeLocalEnd;
-        Vector2 c = layoutSettings.center;
 
         float minX = Mathf.Min(a.x, Mathf.Min(b.x, c.x));
         float maxX = Mathf.Max(a.x, Mathf.Max(b.x, c.x));
@@ -220,6 +280,55 @@ public class RoomBoundaryGenerator : MonoBehaviour
         }
 
         return false;
+    }
+
+
+    // Rejection-samples a point inside the triangle formed by the parent edge's two endpoints and the room's center - this is the "Non-Child" interior/area
+    // deliberately excluding the three child wedges that surround each fractal spike.
+    // Also must pass the existing walkablePolygon check, so a key can never spawn outside the room's actual geometry
+    private bool TryGetRandomPointInNonChildTriangle(out Vector2 localPoint, int maxAttempts = 30)
+    {
+        return TryGetRandomPointInTriangle(
+            ParentEdgeLocalStart, ParentEdgeLocalEnd, layoutSettings.center, out localPoint, maxAttempts);
+    }
+
+    // Recomputes hexPoints[0..3] (the BoundaryRadius-scaled, rotated hexagon corners used for
+    // the three child edges) EXACTLY as GenerateEdges() computes them internally. Factored out
+    // as its own method since GenerateEdges() keeps hexPoints as a local variable rather than a
+    // field - this avoids either (a) duplicating the math a third time (it already exists once
+    // in GenerateEdges() and once, differently, in PartialFractalWallPlacer.BuildChildEdgesAtBoundaryRadius()),
+    // or (b) changing GenerateEdges() itself to cache hexPoints as a field purely for this one
+    // new caller's benefit.
+    private Vector2[] BuildBoundaryHexPoints()
+    {
+        if(layoutSettings == null)
+        {
+            return null;
+        }
+
+        int rotationSteps = GetRotationSteps();
+        float rotationAngle = rotationSteps * 60f;
+
+        Vector2[] baseHexPoints = new Vector2[4];
+
+        for(int i = 0; i < baseHexPoints.Length; i++)
+        {
+            float angle = i * 60f;
+
+            baseHexPoints[i] = layoutSettings.center + layoutSettings.BoundaryRadius * new Vector2(
+                Mathf.Cos(angle * Mathf.Deg2Rad),
+                Mathf.Sin(angle * Mathf.Deg2Rad)
+            );
+        }
+
+        Vector2[] hexPoints = new Vector2[4];
+
+        for(int i = 0; i < hexPoints.Length; i++)
+        {
+            hexPoints[i] = RotatePoint(baseHexPoints[i], rotationAngle);
+        }
+
+        return hexPoints;
     }
 
     private static bool IsPointInTriangle(Vector2 p, Vector2 a, Vector2 b, Vector2 c)
@@ -281,21 +390,29 @@ public class RoomBoundaryGenerator : MonoBehaviour
         {
             Debug.LogWarning(
                 "ReapplyChildEdgeCollisionSettings called on " + name +
-                " before GenerateEdges() has run - nothing to reapply yet.",
+                " before GenerateEdges has run - nothing to reapply yet.",
                 this
             );
 
             return;
         }
 
-        if(prevEdgeCollider != null)
-            prevEdgeCollider.enabled = prevEdgeCollisionEnabled;
+      
+        // defer to RoomDirector's authoritative state if present
+        RoomDirector roomDirector = GetRoomDirector();
 
-        if(selfEdgeCollider != null)
-            selfEdgeCollider.enabled = selfEdgeCollisionEnabled;
+        if(roomDirector != null && roomDirector.CurrentState == RoomDirector.RoomState.Sealed)
+        {
+            ApplyPortalState(prevPortalCollider, prevPortalRenderer, false);
+            ApplyPortalState(selfPortalCollider, selfPortalRenderer, false);
+            ApplyPortalState(nextPortalCollider, nextPortalRenderer, false);
 
-        if(nextEdgeCollider != null)
-            nextEdgeCollider.enabled = nextEdgeCollisionEnabled;
+            return;
+        }
+
+        ApplyPortalState(prevPortalCollider, prevPortalRenderer, prevEdgeCollisionEnabled);
+        ApplyPortalState(selfPortalCollider, selfPortalRenderer, selfEdgeCollisionEnabled);
+        ApplyPortalState(nextPortalCollider, nextPortalRenderer, nextEdgeCollisionEnabled);
     }
 
     public void RestoreAllEdgeCollisionSettings()
@@ -339,21 +456,19 @@ public class RoomBoundaryGenerator : MonoBehaviour
         {
             Debug.LogWarning(
                 "SetAllChildEdgeCollisions called on " + name +
-                " before GenerateEdges() has run - nothing to set yet.",
+                " before GenerateEdges has run - nothing to set yet.",
                 this
             );
 
             return;
         }
 
-        if(prevEdgeCollider != null)
-            prevEdgeCollider.enabled = enabled;
-
-        if(selfEdgeCollider != null)
-            selfEdgeCollider.enabled = enabled;
-
-        if(nextEdgeCollider != null)
-            nextEdgeCollider.enabled = enabled;
+        
+        // prevEdgeCollider/selfEdgeCollider/nextEdgeCollider no longer needed - they stay permanently disabled (see CreateEdge()).
+        // Portals are the only thing this method needs to gate now
+        ApplyPortalState(prevPortalCollider, prevPortalRenderer, enabled);
+        ApplyPortalState(selfPortalCollider, selfPortalRenderer, enabled);
+        ApplyPortalState(nextPortalCollider, nextPortalRenderer, enabled);
     }
 
     // Repaints all 4 traversal edges (parent + 3 children) to a single color, used by
@@ -528,7 +643,9 @@ public class RoomBoundaryGenerator : MonoBehaviour
             isReturnEdge: false,
             targetLetterIndex: childLetters[0],
             collisionEnabled: prevEdgeCollisionEnabled,
-            createdLine: out prevEdgeLine
+            createdLine: out prevEdgeLine,
+            createdPortalCollider: out prevPortalCollider,
+            createdPortalRenderer: out prevPortalRenderer
         );
 
 
@@ -538,7 +655,9 @@ public class RoomBoundaryGenerator : MonoBehaviour
             isReturnEdge: false,
             targetLetterIndex: childLetters[1],
             collisionEnabled: selfEdgeCollisionEnabled,
-            createdLine: out selfEdgeLine
+            createdLine: out selfEdgeLine,
+            createdPortalCollider: out selfPortalCollider,
+            createdPortalRenderer: out selfPortalRenderer
         );
 
 
@@ -548,7 +667,9 @@ public class RoomBoundaryGenerator : MonoBehaviour
             isReturnEdge: false,
             targetLetterIndex: childLetters[2],
             collisionEnabled: nextEdgeCollisionEnabled,
-            createdLine: out nextEdgeLine
+            createdLine: out nextEdgeLine,
+            createdPortalCollider: out nextPortalCollider,
+            createdPortalRenderer: out nextPortalRenderer
         );
 
         //parent edge TRIGGER collider
@@ -557,7 +678,9 @@ public class RoomBoundaryGenerator : MonoBehaviour
             "Parent",
             isReturnEdge: true,
             targetLetterIndex: -1,
-            createdLine: out parentEdgeLine
+            createdLine: out parentEdgeLine,
+            createdPortalCollider: out _,
+            createdPortalRenderer: out _
         );
 
 
@@ -805,38 +928,32 @@ public class RoomBoundaryGenerator : MonoBehaviour
     // Outputs the created LineRenderer via createdLine, so callers can cache it
     // for later color repainting (RoomDirector), mirroring the existing collider caching
     private EdgeCollider2D CreateEdge(
-        Vector2 start,
-        Vector2 end,
-        string edgeName,
-        bool isReturnEdge,
-        int targetLetterIndex,
-        out LineRenderer createdLine,
-        bool collisionEnabled = true)
+       Vector2 start,
+       Vector2 end,
+       string edgeName,
+       bool isReturnEdge,
+       int targetLetterIndex,
+       out LineRenderer createdLine,
+       out CircleCollider2D createdPortalCollider,
+       out SpriteRenderer createdPortalRenderer,
+       bool collisionEnabled = true)
     {
         GameObject edgeObject = new GameObject($"Edge_{edgeName}");
-
         edgeObject.transform.SetParent(transform, worldPositionStays: false);
 
         EdgeCollider2D edgeCollider = edgeObject.AddComponent<EdgeCollider2D>();
-
         edgeCollider.points = new[] { start, end };
         edgeCollider.isTrigger = true;
-
         edgeCollider.enabled = collisionEnabled;
 
         RoomZoneTrigger trigger = edgeObject.AddComponent<RoomZoneTrigger>();
-
         trigger.roomName = edgeName;
         trigger.isReturnEdge = isReturnEdge;
         trigger.targetLetterIndex = targetLetterIndex;
         trigger.ownerNode = ownerNode;
-
-        // Guaranteed non-null when GenerateEdges() is reached via Initialize
-        // may still be null on the Start() fallback approach if not assigned      
         trigger.universeManager = universeManager;
 
         LineRenderer line = edgeObject.AddComponent<LineRenderer>();
-
         line.useWorldSpace = false;
         line.positionCount = 2;
         line.SetPosition(0, start);
@@ -845,7 +962,6 @@ public class RoomBoundaryGenerator : MonoBehaviour
         line.endWidth = edgeWidth;
         line.startColor = isReturnEdge ? parentEdgeColor : normalEdgeColor;
         line.endColor = isReturnEdge ? parentEdgeColor : normalEdgeColor;
-
         line.sortingLayerName = edgeSortingLayerName;
         line.sortingOrder = edgeSortingOrder;
 
@@ -853,6 +969,23 @@ public class RoomBoundaryGenerator : MonoBehaviour
             line.sharedMaterial = edgeMaterial;
 
         createdLine = line;
+        createdPortalCollider = null;
+        createdPortalRenderer = null;
+
+        if(!isReturnEdge)
+        {
+            edgeCollider.enabled = false;
+            line.enabled = false;
+
+            CreateChildPortal(
+                start,
+                end,
+                edgeObject.transform,
+                trigger,
+                out createdPortalCollider,
+                out createdPortalRenderer
+            );
+        }
 
         return edgeCollider;
     }
@@ -970,7 +1103,28 @@ public class RoomBoundaryGenerator : MonoBehaviour
         if(enemyPrefab == null)
             return;
 
-        GameObject enemyInstance = Instantiate(enemyPrefab, transform);
+        //GameObject enemyInstance = Instantiate(enemyPrefab, transform);
+
+        Vector2 spawnWorldPosition;
+
+        if(TryGetRandomPointInChildWedge(out Vector2 wedgeWorldPoint))
+        {
+            spawnWorldPosition = wedgeWorldPoint;
+        }
+        else if(TryGetRandomWalkableWorldPoint(out Vector2 fallbackWorldPoint))
+        {
+            // Child-wedge sampling failed (heavily wall-obstructed room) - fall back to
+            // the existing general walkable-area sampling
+            spawnWorldPosition = fallbackWorldPoint;
+        }
+        else
+        {
+            // Last-resort fallback - both sampling failed, spawn at the room's own
+            // transform position exactly as the previous unconditional behaviour did
+            spawnWorldPosition = transform.position;
+        }
+
+        GameObject enemyInstance = Instantiate(enemyPrefab, spawnWorldPosition, Quaternion.identity, transform);
 
         EnemyController enemyController = enemyInstance.GetComponent<EnemyController>();
 
@@ -1053,5 +1207,71 @@ public class RoomBoundaryGenerator : MonoBehaviour
         pathGrid.BuildGrid();
     }
 
-    
+
+    // Spawns the small circular portal at the midpoint of a child edge, parented under that
+    // edge's own GameObject
+    private void CreateChildPortal(
+          Vector2 edgeStart,
+          Vector2 edgeEnd,
+          Transform parentEdgeTransform,
+          RoomZoneTrigger parentTrigger,
+          out CircleCollider2D createdCollider,
+          out SpriteRenderer createdRenderer)
+    {
+        Vector2 midpoint = (edgeStart + edgeEnd) / 2f;
+
+        GameObject portalObject = new GameObject("ChildPortal");
+        portalObject.transform.SetParent(parentEdgeTransform, worldPositionStays: false);
+        portalObject.transform.localPosition = midpoint;
+
+        CircleCollider2D portalCollider = portalObject.AddComponent<CircleCollider2D>();
+        portalCollider.radius = portalRadius;
+        portalCollider.isTrigger = true;
+
+        // portals start SEALED (not traversable) by default, matching a room that
+        // still has a live enemy in it. RoomDirector's own SealRoom()/OpenRoom() flow (via
+        // SetAllChildEdgeCollisions, extended below) is what flips this at runtime
+        portalCollider.enabled = false;
+
+        ChildPortalTriggerRelay relay = portalObject.AddComponent<ChildPortalTriggerRelay>();
+        relay.Initialize(parentTrigger);
+
+        SpriteRenderer portalRenderer = portalObject.AddComponent<SpriteRenderer>();
+        portalRenderer.sprite = portalSprite;
+
+      
+        // CHANGED - start red (sealedTraversalColor) instead of the fixed portalColor, so the
+        // portal's very first frame already reflects "not traversable yet", consistent with the
+        // room's initial sealed state
+        portalRenderer.color = sealedTraversalColor;
+
+        portalRenderer.sortingLayerName = portalSortingLayerName;
+        portalRenderer.sortingOrder = portalSortingOrder;
+
+        float diameter = portalRadius * 2f;
+        portalObject.transform.localScale = new Vector3(diameter, diameter, 1f);
+
+        createdCollider = portalCollider;
+        createdRenderer = portalRenderer;
+    }
+
+    //helper function for setallchildedgecollisions
+    private void ApplyPortalState(CircleCollider2D portalCollider, SpriteRenderer portalRenderer, bool enabled)
+    {
+        if(portalCollider != null)
+            portalCollider.enabled = enabled;
+
+        if(portalRenderer != null)
+            portalRenderer.color = enabled ? openTraversalColor : sealedTraversalColor;
+    }
+
+
+    private RoomDirector GetRoomDirector()
+    {
+        if(cachedRoomDirector == null)
+            cachedRoomDirector = GetComponent<RoomDirector>();
+
+        return cachedRoomDirector;
+    }
+
 }
